@@ -1,0 +1,33 @@
+<?php echo $this->RenderLabel(); ?>
+<table class="options-and-connections">
+	<?php foreach ($this->Options as $key => $option): ?>
+		<tr>
+			<td class="option">
+				<?php echo intval($key + 1), '&nbsp;.', $option; ?>
+			</td>
+			<td class="connection">
+				<?php
+					$connection = $this->Connections[$key];
+					$elmId = $this->Name . SimpleForm::HTML_IDS_DELIMITER . $key;
+					$value = isset($this->Value[$key]) ? $this->Value[$key] : '' ;
+					$errorClass = '';
+					if (
+						(strlen($value) === 0 && count($this->Errors) > 0) ||
+						(strlen($value) === 0 && $this->Required && count($this->Value) > 0)
+					) $errorClass = ' error ';
+				?>
+				<label for="<?php echo $elmId; ?>" class="<?php echo $errorClass; ?>">
+					<input id="<?php echo $elmId; ?>"
+							class="<?php echo $errorClass; ?>"
+							name="<?php echo $this->Name; ?>[]"
+							value="<?php echo $value; ?>"
+							min="1"
+							max="<?php echo count($this->Connections); ?>"
+							step="1"
+							type="number" <?php  if ($this->Required) echo 'required="required" '; ?> />
+					<span><?php echo $connection; ?></span>
+				</label>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</table>

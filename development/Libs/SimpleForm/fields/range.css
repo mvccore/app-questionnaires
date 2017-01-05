@@ -1,0 +1,12 @@
+div.range-multiple{position:relative;width:200px;height:42px;text-align:center;}
+div.range-multiple input{pointer-events:none;position:absolute;overflow:hidden;left:0;top:21px;width:200px;outline:none;height:21px;margin:0;padding:0;}
+_:-ms-input-placeholder, :root div.range-multiple input{pointer-events:auto;position:relative;height:10px;top:0;}
+div.range-multiple input::-webkit-slider-thumb{pointer-events:all;position:relative;z-index:1;outline:0;}
+div.range-multiple input::-moz-range-thumb{pointer-events:all;position:relative;z-index:10;-moz-appearance:none;width:9px;}
+div.range-multiple input::-moz-range-track{position:relative;z-index:-1;background-color:rgba(0, 0, 0, 1);border:0;}
+div.range-multiple input:last-of-type::-moz-range-track{-moz-appearance:none;background:none transparent;border:0;}
+div.range-multiple input[type=range]::-moz-focus-outer{border:0;}
+div.range-multiple input[type=range]::-ms-track{background:transparent;border-color:transparent;color:transparent;}
+div.range-multiple input[type=range]::-ms-range-track{background:transparent;border-color:transparent;color:transparent;}
+div.range-multiple input[type=range]::-ms-fill-lower{background:transparent;border:1px solid #000;}
+div.range-multiple input[type=range]::-ms-fill-upper{background:transparent;border:1px solid #000;}

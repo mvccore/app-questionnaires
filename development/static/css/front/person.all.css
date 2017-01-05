@@ -1,0 +1,41 @@
+/* labels */
+label.person_age,
+label.person_sex,
+label.person_edu,
+label.person_job {
+	line-height:1.7em;
+}
+/* person fieldset fields */
+.field.button button.reset{
+	float:right;
+	margin:-60px 100px 0 0;
+}
+.field.button button.refresh{
+	margin:0 auto;
+}
+@supports (-webkit-appearance:none) {
+	.field.button button{
+		overflow:hidden;
+	}
+	.fieldset-person .field.button button span{
+		margin-right:-1px;
+	}
+}
+.field.person.sex label{
+	padding-left:5px;
+}
+.field.person.sex label:first-child{
+	padding-left:0;
+}
+label.person_age span{
+	padding-right:10px;
+}
+input.person_age {
+	width:50px;
+}
+.field.person.age{
+	margin-bottom:0;
+}
+div.range-multiple{
+	top:-20px;
+}

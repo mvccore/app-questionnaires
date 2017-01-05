@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>14</qs:id>
+	<qs:text>Víte, co znamenají tyto zkratky? (Zatrhněte, které znáte.)</qs:text>
+	<qs:type>checkboxes</qs:type>
+	<qs:checkboxes>
+		<qs:checkbox>AJAX</qs:checkbox>
+		<qs:checkbox>HBO</qs:checkbox>
+		<qs:checkbox>BIOS</qs:checkbox>
+		<qs:checkbox>RTFM</qs:checkbox>
+		<qs:checkbox>Wi-Fi</qs:checkbox>
+		<qs:checkbox>XVID</qs:checkbox>
+		<qs:checkbox>TCP/IP</qs:checkbox>
+		<qs:checkbox>H264</qs:checkbox>
+	</qs:checkboxes>
+</qs:data>

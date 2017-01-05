@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>2</qs:id>
+	<qs:text>Jaký máte oblíbený program k jeho užívání? <i class="gray">(více hodnot můžete oddělit čárkou)</i></qs:text>
+	<qs:type>text</qs:type>
+	<qs:max-length>256</qs:max-length>
+	<qs:delimiter>,</qs:delimiter>
+	<qs:solution>Virtual Box, VMware, Parallels, ParalelsDektop, QEMU, Windows Virtual PC, Virtual PC</qs:solution>
+	<qs:levenshtein-comparation-tolerance>3</qs:levenshtein-comparation-tolerance>
+</qs:data>

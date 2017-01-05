@@ -1,0 +1,4 @@
+/* questions fieldset fields */
+form.questionnaire .field.boolean-and-text .field-column:last-child input{
+	width:85%;
+}

@@ -1,0 +1,19 @@
+html,body,table,td,th,label,input,select,option,textarea,fieldset,legend{
+	font-family:'myriad-regular',arial,helvetica,sans-serif;font-size:14px !important;font-weight:normal;line-height:1.4em;letter-spacing:0.03em;
+}
+/* bolds */
+b,strong,th,
+h1,h2,h3,h4,h5,h6,
+h1 b,h2 b,h3 b,h4 b,h5 b,h6 b,
+h1 strong,h2 strong,h3 strong,h4 strong,h5 strong,h6 strong{
+	font-family:'myriad-bold';font-weight:normal;
+}
+/* italics */
+i,em{
+	font-family:'myriad-regular';font-style:italic;
+}
+/* bolds + italics */
+h1 i,h2 i,h3 i,h4 i,h5 i,h6 i,
+h1 em,h2 em,h3 em,h4 em,h5 em,h6 em,
+b i,strong i,th i,b em,strong em,th em,
+i b,i strong,em b,em strong{font-family:'myriad-bold';font-weight:normal;font-style:italic;}

@@ -1,0 +1,12 @@
+/* person fieldset fields */
+.field.person.age,
+.field.person.sex{
+	float:left;
+	margin-top:0;
+}
+.field.person.age{
+	width:37%;
+}
+.field.person.edu{
+	clear:both;
+}

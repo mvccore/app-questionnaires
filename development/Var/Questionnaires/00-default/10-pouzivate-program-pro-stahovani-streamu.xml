@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>10</qs:id>
+	<qs:text>
+		Používáte nějaký program ke stažení živě vysílaných videí? 
+		Například ze serverů youtube.com, stream.cz nebo ceskatelevize.cz?
+	</qs:text>
+	<qs:type>boolean</qs:type>
+</qs:data>

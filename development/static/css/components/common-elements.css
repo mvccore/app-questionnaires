@@ -1,0 +1,26 @@
+h1{font-size:250%;line-height:1.25em;margin:1.15em 0 0.75em 0;}
+h2{font-size:230%;line-height:1.3em;margin:1.15em 0 0.75em 0;}
+h3{font-size:185%;line-height:1.3em;margin:1.0625em 0 0.75em 0;}
+h4{font-size:165%;line-height:1.3em;margin:0.9125em 0 0.75em 0;}
+h5{font-size:135%;line-height:1.3em;margin:0.825em 0 0.75em 0;}
+h6{font-size:117%;line-height:1.3em;margin:0.8em 0 0.75em 0;}
+
+a,
+select,
+input.radio,
+input.checkbox,
+input.submit,
+label{cursor:pointer;cursor:hand;}
+input.text,
+input.password,
+textarea{cursor:text;}
+
+/*div{border:1px dotted #444;}*/
+
+p{font-size:110%;line-height:1.45em;margin:0 0 1.2em 0;}
+label{cursor:pointer;letter-spacing:0;}
+
+sup{font-size:65%;vertical-align:25%;}
+sub{font-size:65%;vertical-align:-25%;}
+small{font-size:70%;line-height:1.2em;}
+big{font-size:120%;line-height:1.2em;}

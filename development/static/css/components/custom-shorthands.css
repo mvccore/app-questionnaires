@@ -1,0 +1,20 @@
+.float-left{float:left;}
+.float-right{float:right;}
+.clear{clear:both;}
+.clear-left{clear:left;}
+.clear-right{clear:right;}
+
+.align-right{text-align:right;}
+.align-center{text-align:center;}
+.align-left{text-align:left;}
+
+.hidden{display:none !important;}
+.visibility-hidden{visibility:hidden !important;}
+.hr{border-top:1px dotted #666;height:0;line-height:0;overflow:hidden;margin:2em 0;}
+a._blank{padding-right:0.9em;background-image:url('<?php echo $this->AssetUrl('/static/img/theme/a-blank-bg.gif'); ?>');background-position:99% 0.2em;background-repeat:no-repeat;}
+.gray{color:#999;}
+
+::selection{background-color:rgb(140,141,142);color:#fff;}
+.ie7- button,
+.ie7- input,
+.ie7- table{overflow:auto;}

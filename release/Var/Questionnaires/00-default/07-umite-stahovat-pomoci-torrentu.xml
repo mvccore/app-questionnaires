@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>7</qs:id>
+	<qs:text>Umíte stahovat pomocí torrentů?</qs:text>
+	<qs:type>boolean</qs:type>
+</qs:data>

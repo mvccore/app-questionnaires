@@ -1,0 +1,29 @@
+<?php include(__DIR__ . '/cfg.css'); ?>
+
+/* layout */
+.master-container{
+	min-width: 150px;
+	margin:10px !important;
+}
+.mc-content .mc-header.absolute{
+	position:absolute;
+	z-index:200;
+	right:0;
+	top:32px;
+}
+.mc-content .mc-header.relative{
+	position:relative;
+	z-index:200;
+	right:0;
+	top:32px;
+}
+.mc-content .mc-header.relative #login{
+	display:table;
+	margin:0 0 0 auto;
+}
+.mc-content .mc-header.full{
+	width:100%;
+	background:#fff;
+}
+
+<?php include(__DIR__ . '/common/login-form.mobile.css'); ?>

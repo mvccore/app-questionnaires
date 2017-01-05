@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>9</qs:id>
+	<qs:text>Znáte některé z těchto trackerů?</qs:text>
+	<qs:type>checkboxes</qs:type>
+	<qs:checkboxes>
+		<qs:checkbox>ThePirateBay</qs:checkbox>
+		<qs:checkbox>Mononova</qs:checkbox>
+		<qs:checkbox>IsoHunt</qs:checkbox>
+		<qs:checkbox>TorrentzEu</qs:checkbox>
+		<qs:checkbox>TorrentHound</qs:checkbox>
+		<qs:checkbox>CzTorrent</qs:checkbox>
+	</qs:checkboxes>
+</qs:data>

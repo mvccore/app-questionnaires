@@ -1,0 +1,10 @@
+@font-face{
+    font-family:'myriad-bold';
+    src:url('<?php echo $this->AssetUrl('/static/fonts/myriadwebpro/font-files/bold.eot'); ?>');
+    src:url('<?php echo $this->AssetUrl('/static/fonts/myriadwebpro/font-files/bold.eot'); ?>?#iefix') format('embedded-opentype'),
+        url('<?php echo $this->AssetUrl('/static/fonts/myriadwebpro/font-files/bold.woff'); ?>') format('woff'),
+        url('<?php echo $this->AssetUrl('/static/fonts/myriadwebpro/font-files/bold.ttf'); ?>') format('truetype'),
+        url('<?php echo $this->AssetUrl('/static/fonts/myriadwebpro/font-files/bold.svg'); ?>#myriad-bold') format('svg');
+    font-weight:normal;
+    font-style:normal;
+}

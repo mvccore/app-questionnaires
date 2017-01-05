@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doc:data xmlns:doc="../Documents.xsd">
+	<doc:title></doc:title>
+	<doc:description></doc:description>
+	<doc:keywords></doc:keywords>
+	<doc:robots>index,follow</doc:robots>
+	<doc:og-image></doc:og-image>
+	<doc:og-title></doc:og-title>
+	<doc:og-description></doc:og-description>
+	<doc:itemprop-name></doc:itemprop-name>
+	<doc:itemprop-description></doc:itemprop-description>
+	<doc:perex></doc:perex>
+	<doc:body>
+		<h1>
+		   <?php echo $this->Document->Title; ?>
+		</h1>
+	</doc:body>
+</doc:data>

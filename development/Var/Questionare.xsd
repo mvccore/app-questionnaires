@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xs:schema [
+	<!ENTITY amp "&#38;#38;">
+]>
+<xs:schema targetNamespace="qr" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="data">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:integer" />
+				<xs:element name="title" type="xs:string" />
+				<xs:element name="description" type="xs:string" />
+				<xs:element name="keywords" type="xs:string" />
+				<xs:element name="robots" type="xs:string" />
+				<xs:element name="og_image" type="xs:string" />
+				<xs:element name="og_title" type="xs:string" />
+				<xs:element name="og_description" type="xs:string" />
+				<xs:element name="itemprop_name" type="xs:string" />
+				<xs:element name="itemprop_description" type="xs:string" />
+				<xs:element name="perex" type="xs:string" />
+				<xs:element name="body" type="xs:html" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,17 @@
+{
+	"name": "mvccore/app-questionnaire",
+	"type": "application",
+	"description": "MvcCore Application - Questionnaires - more complex example how to build very portable application with any tasks types defined in XML.",
+	"keywords": ["mvccore", "framework", "mvc", "simple mvc", "super fast mvc", "easy mvc", "single file application", "questionnaires", "questions", "statistics"],
+	"license": ["BSD-3-Clause"],
+	"authors": [
+		{
+			"name": "Tom Flidr",
+			"homepage": "https://github.com/tomFlidr"
+		}
+	],
+	"require": {
+		"php": ">=5.3.0"
+	},
+	"minimum-stability": "dev"
+}

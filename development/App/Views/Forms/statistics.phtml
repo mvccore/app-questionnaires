@@ -1,0 +1,18 @@
+<?php echo $this->RenderBegin(); ?>
+
+	<?php echo $this->RenderErrors(); ?>
+
+	<div class="fieldset fieldset-person">
+		<?php foreach ($this->Fields as $key => $field): ?>
+			<div class="field <?php echo implode(' ', $field->CssClasses); ?>">
+				<?php echo $field->Render(); ?>
+			</div>
+			<?php if ($field->Type == 'submit'): ?>
+				<div id="statistics-questions-loading" class="loading"><span><?php 
+					echo $this->Translate('Loading statistics...');
+				?></span></div>
+			<?php endif; ?>
+		<?php endforeach; ?>
+	</div>
+
+<?php echo $this->RenderEnd(); ?>

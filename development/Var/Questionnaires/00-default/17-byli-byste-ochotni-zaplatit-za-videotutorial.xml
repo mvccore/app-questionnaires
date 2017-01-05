@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>17</qs:id>
+	<qs:text>Byli byste ochotní zaplatit za videotutoriál nebo raději vyhledáte způsob (jak na to) sami a zdarma na internetu?</qs:text>
+	<qs:type>radios</qs:type>
+	<qs:radios>
+		<qs:radio>
+			Ano, jsem ochotný/á zaplatit, protože mi to šetří čas.
+		</qs:radio>
+		<qs:radio>
+			Ne, vždy jsem si s vyhledáváním dokázal/a poradit.
+		</qs:radio>
+		<qs:radio>
+			Ano, velmi specifické informace dohledat nelze, způsob práce se lze naučit pouze z příkladu/ů.
+		</qs:radio>
+		<qs:radio>
+			Ne, i přes to, že by informace mohly být nepravdivé, neaktuální nebo neužitečné.
+		</qs:radio>
+	</qs:radios>
+	<qs:solution>0</qs:solution>
+</qs:data>

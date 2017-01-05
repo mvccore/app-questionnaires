@@ -1,0 +1,237 @@
+USE [master]
+GO
+
+CREATE DATABASE [Questionnaire];
+GO
+
+ALTER DATABASE [Questionnaire] MODIFY FILE
+( NAME = N'Questionnaire' , SIZE = 512MB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+GO
+
+ALTER DATABASE [Questionnaire] MODIFY FILE
+( NAME = N'Questionnaire_log' , SIZE = 256MB , MAXSIZE = UNLIMITED , FILEGROWTH = 10%)
+GO
+
+USE [Questionnaire]
+GO
+
+CREATE TABLE [dbo].[Answers](
+	[IdQuestionnaire] [int] NOT NULL,
+	[IdQuestion] [int] NOT NULL,
+	[IdPerson] [int] NOT NULL,
+	[Option] [int] NULL,
+	[Boolean] [tinyint] NULL,
+	[Integer] [int] NULL,
+	[Float] [float] NULL,
+	[Varchar] [varchar](256) NULL,
+	[Text] [text] NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [questionnaires_answers_boolean] ON [dbo].[Answers](
+	[Boolean] ASC
+) WITH (	PAD_INDEX = OFF,
+	STATISTICS_NORECOMPUTE = OFF,
+	SORT_IN_TEMPDB = OFF,
+	DROP_EXISTING = OFF,
+	ONLINE = OFF,
+	ALLOW_ROW_LOCKS = ON,
+	ALLOW_PAGE_LOCKS = ON
+) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [questionnaires_answers_float] ON [dbo].[Answers] (
+	[Float] ASC
+) WITH (
+	PAD_INDEX = OFF,
+	STATISTICS_NORECOMPUTE = OFF,
+	SORT_IN_TEMPDB = OFF,
+	DROP_EXISTING = OFF,
+	ONLINE = OFF,
+	ALLOW_ROW_LOCKS = ON,
+	ALLOW_PAGE_LOCKS = ON
+) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [questionnaires_answers_id_person] ON [dbo].[Answers] (
+	[IdPerson] ASC
+) WITH (
+	PAD_INDEX = OFF,
+	STATISTICS_NORECOMPUTE = OFF,
+	SORT_IN_TEMPDB = OFF,
+	DROP_EXISTING = OFF,
+	ONLINE = OFF,
+	ALLOW_ROW_LOCKS = ON,
+	ALLOW_PAGE_LOCKS = ON
+) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [questionnaires_answers_id_question] ON [dbo].[Answers] (
+	[IdQuestion] ASC
+) WITH (
+	PAD_INDEX = OFF,
+	STATISTICS_NORECOMPUTE = OFF,
+	SORT_IN_TEMPDB = OFF,
+	DROP_EXISTING = OFF,
+	ONLINE = OFF,
+	ALLOW_ROW_LOCKS = ON,
+	ALLOW_PAGE_LOCKS = ON
+) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [questionnaires_answers_integer] ON [dbo].[Answers] (
+	[Integer] ASC
+) WITH (
+	PAD_INDEX = OFF,
+	STATISTICS_NORECOMPUTE = OFF,
+	SORT_IN_TEMPDB = OFF,
+	DROP_EXISTING = OFF,
+	ONLINE = OFF,
+	ALLOW_ROW_LOCKS = ON,
+	ALLOW_PAGE_LOCKS = ON
+) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [questionnaires_answers_option] ON [dbo].[Answers] (
+	[Option] ASC
+) WITH (
+	PAD_INDEX = OFF,
+	STATISTICS_NORECOMPUTE = OFF,
+	SORT_IN_TEMPDB = OFF,
+	DROP_EXISTING = OFF,
+	ONLINE = OFF,
+	ALLOW_ROW_LOCKS = ON,
+	ALLOW_PAGE_LOCKS = ON
+) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [questionnaires_answers_varchar] ON [dbo].[Answers] (
+	[Varchar] ASC
+) WITH (
+	PAD_INDEX = OFF,
+	STATISTICS_NORECOMPUTE = OFF,
+	SORT_IN_TEMPDB = OFF,
+	DROP_EXISTING = OFF,
+	ONLINE = OFF,
+	ALLOW_ROW_LOCKS = ON,
+	ALLOW_PAGE_LOCKS = ON
+) ON [PRIMARY]
+GO
+
+
+CREATE TABLE [dbo].[Executed](
+	[IdPerson] [int] NOT NULL,
+	[IdQuestionnaire] [int] NOT NULL
+) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [questionnaires_executed_id_person] ON [dbo].[Executed] (
+	[IdPerson] ASC
+) WITH (
+	PAD_INDEX = OFF,
+	STATISTICS_NORECOMPUTE = OFF,
+	SORT_IN_TEMPDB = OFF,
+	DROP_EXISTING = OFF,
+	ONLINE = OFF,
+	ALLOW_ROW_LOCKS = ON,
+	ALLOW_PAGE_LOCKS = ON
+) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [questionnaires_executed_id_questionnaire] ON [dbo].[Executed] (
+	[IdQuestionnaire] ASC
+) WITH (
+	PAD_INDEX = OFF,
+	STATISTICS_NORECOMPUTE = OFF,
+	SORT_IN_TEMPDB = OFF,
+	DROP_EXISTING = OFF,
+	ONLINE = OFF,
+	ALLOW_ROW_LOCKS = ON,
+	ALLOW_PAGE_LOCKS = ON
+) ON [PRIMARY]
+GO
+
+
+CREATE TABLE [dbo].[Persons](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Created] [datetime] NOT NULL CONSTRAINT [DF_questionnaires_persons_created]  DEFAULT (getdate()),
+	[Sex] [char](1) NOT NULL,
+	[Age] [int] NOT NULL,
+	[Education] [varchar](50) NOT NULL,
+	[Job] [varchar](50) NOT NULL,
+	CONSTRAINT [PK_questionnaires_persons] PRIMARY KEY CLUSTERED (
+		[Id] ASC
+	) WITH (
+		PAD_INDEX = OFF, 
+		STATISTICS_NORECOMPUTE = OFF, 
+		IGNORE_DUP_KEY = OFF, 
+		ALLOW_ROW_LOCKS = ON, 
+		ALLOW_PAGE_LOCKS = ON
+	) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [questionnaires_persons_age] ON [dbo].[Persons] (
+	[Age] ASC
+) WITH (
+	PAD_INDEX = OFF,
+	STATISTICS_NORECOMPUTE = OFF,
+	SORT_IN_TEMPDB = OFF,
+	DROP_EXISTING = OFF,
+	ONLINE = OFF,
+	ALLOW_ROW_LOCKS = ON,
+	ALLOW_PAGE_LOCKS = ON
+) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [questionnaires_persons_created] ON [dbo].[Persons] (
+	[Created] ASC
+) WITH (
+	PAD_INDEX = OFF,
+	STATISTICS_NORECOMPUTE = OFF,
+	SORT_IN_TEMPDB = OFF,
+	DROP_EXISTING = OFF,
+	ONLINE = OFF,
+	ALLOW_ROW_LOCKS = ON,
+	ALLOW_PAGE_LOCKS = ON
+) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [questionnaires_persons_education] ON [dbo].[Persons] (
+	[Education] ASC
+) WITH (
+	PAD_INDEX = OFF,
+	STATISTICS_NORECOMPUTE = OFF,
+	SORT_IN_TEMPDB = OFF,
+	DROP_EXISTING = OFF,
+	ONLINE = OFF,
+	ALLOW_ROW_LOCKS = ON,
+	ALLOW_PAGE_LOCKS = ON
+) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [questionnaires_persons_job] ON [dbo].[Persons] (
+	[Job] ASC
+) WITH (
+	PAD_INDEX = OFF,
+	STATISTICS_NORECOMPUTE = OFF,
+	SORT_IN_TEMPDB = OFF,
+	DROP_EXISTING = OFF,
+	ONLINE = OFF,
+	ALLOW_ROW_LOCKS = ON,
+	ALLOW_PAGE_LOCKS = ON
+) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [questionnaires_persons_sex] ON [dbo].[Persons] (
+	[Sex] ASC
+) WITH (
+	PAD_INDEX = OFF,
+	STATISTICS_NORECOMPUTE = OFF,
+	SORT_IN_TEMPDB = OFF,
+	DROP_EXISTING = OFF,
+	ONLINE = OFF,
+	ALLOW_ROW_LOCKS = ON,
+	ALLOW_PAGE_LOCKS = ON
+) ON [PRIMARY]
+GO

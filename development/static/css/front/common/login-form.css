@@ -1,0 +1,41 @@
+.mc-header #login{
+	position:relative;
+	z-index:300;
+	overflow:visible;
+}
+#login.minimized .content{
+	display:none;
+}
+#login.full{
+	display:table;
+	height:31px;
+}
+#login.full input.username,
+#login.full input.password{
+	width:80px;
+	margin:2px;
+	float:left;
+}
+#login.full .text-inputs{
+	margin-right:5px;
+	border:1px dotted #666;
+	border-radius: 3px;
+	float:left;
+	overflow:hidden;
+}
+#login.full button.send{
+	float:right;
+}
+#login.full button.toggle{
+	display:none;
+}
+#login span.user-info,
+#login button-logout{
+	display:block;
+	float:left;
+}
+#login span.user-info{
+	height:31px;
+	line-height:31px;
+	padding:0 10px 0 0;
+}

@@ -1,0 +1,67 @@
+﻿<!DOCTYPE HTML>
+<html lang="cs-CZ">
+	<head>
+		<meta charset="UTF-8" />
+		<title><?php echo $this->Document->Title; ?></title>
+		<meta name="author" content="" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" /><?php /* force render mode in newest IE, strictly do not use any back compatibility modes in MSIE browsers for this page */ ?>
+		<link rel="shortcut icon" href="<?php echo $this->AssetUrl('/static/img/theme/favicon.ico'); ?>" />
+		<meta property="og:image" content="<?php echo $this->Document->OgImage; ?>"/>
+		<meta property="og:site_name" content="<?php echo $this->OgSiteName; ?>" />
+		<meta property="og:title" content="<?php echo $this->Document->OgTitle; ?>" />
+		<meta property="og:url" content="<?php echo $this->OgUrl; ?>" />
+		<meta property="og:description" content="<?php echo $this->Document->OgDescription; ?>" />
+		<meta itemprop="name" content="<?php echo $this->Document->ItempropName; ?>" />
+		<meta itemprop="description" content="<?php echo $this->Document->ItempropDescription; ?>" />
+		<?php if ($this->MediaSiteKey !== 'full'): ?>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
+		<?php endif; ?>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<base href="<?php
+			$request = $this->Controller->GetRequest();
+			$mediaSiteKeyUrlPart = App_Controllers_Base::$AllowedSiteKeys[$this->MediaSiteKey];
+			echo $request->scheme . '://' . $request->host . ($request->port ? ':' . $request->port : '') . $mediaSiteKeyUrlPart . $request->path;
+		?>/">
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', '<?php echo $this->GoogleAnalyticsCode; ?>', 'auto');
+		  ga('send', 'pageview');
+
+		</script>
+		<?php echo $this->Css('fixedHead')->Render(); ?>
+		<?php echo $this->Css('fixedHeadPrint')->Render(); ?>
+		<?php echo $this->Css('varHead')->Render(); ?>
+		<?php echo $this->Js('fixedHead')->Render(); ?>
+		<?php echo $this->Js('varHead')->Render(); ?>
+	</head>
+	<body>
+		<input id="data-js-website-settings" type="hidden" value="<?php
+			echo $this->jsonAttr((object) array(
+				'mediaSiteKey'		=> $this->MediaSiteKey,
+			));
+		?>" />
+		<!--[if lt IE 9]><div class="filters"><![endif]-->
+		<!--[if (gt IE 8)|!(IE)]><!--><div class="no-filters"><!--<![endif]-->
+			<div class="master-container">
+				<div class="mc-content">
+					<?php echo $this->LoginForm->Render(); ?>
+					<div class="mc-content">
+						<div class="document">
+							<?php echo $this->GetContent(); ?>
+						</div>
+					</div>
+					<?php echo $this->RenderLayout('./front/footer.' . $this->MediaSiteKey); ?>
+				</div>
+			</div>
+		</div>
+        <?php 
+			/* anything to say: Run(); */
+			echo $this->Js('fixedFoot')->Render();
+			echo $this->Js('varFoot')->Render();
+		?>
+	</body>
+</html>

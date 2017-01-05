@@ -1,0 +1,141 @@
+Questionnaires;Dotazníky
+Please choose one of these questionnaires.;Prosím vyberte si některý z následujících dotazníků.
+About you;O Vás
+Reset questionnaire;Vynulovat dotazník
+Questions;Otázky
+Age;Věk
+Sex;Pohlaví
+Female;Žena
+Male;Muž
+Other;Ostatní
+Highest education level;Nejvyšší dosažené vzdělání
+None;Žádné
+Elementary School;Základní škola
+Middle school with apprenticeship certificate;Učiliště s výučním listem
+Middle school with graduation;Střední škola s maturitou
+Gymnasium;Gymnázium
+Higher vocational school;Vyšší odborná škola
+College - bachelor;Vysoká škola – bakalář
+College - magister;Vysoká škola – magistr
+College - doctor and higher;Vysoká škola – doktor a vyšší
+I am;Jsem
+Student;Student
+No job;Nezaměstnaný
+Employed;Zaměstnaný
+Businessman;Podnikatel/živnostník
+I care about/I own company;Starám se o/vlastním firmu
+Pensioner;Důchodce
+Send questionnaire;Odeslat dotazník
+years;let
+Yes;Ano
+No;Ne
+Field '{0}' requires a valid number.;Pole '{0}' vyžaduje platné číslo.
+Field '{0}' requires a valid integer.;Pole '{0}' vyžaduje platné celé číslo.
+Field '{0}' requires a valid option.;Pole '{0}' vyžaduje platnou možnost.
+Field '{0}' has invalid format ('{1}').;Pole '{0}' má špatný formát ('{1}').
+User name or password is incorrect.;Jméno nebo heslo jsou nesprávné.
+User;Uživatel
+Password;Heslo
+{0}. Question;{0}. Otázka
+question-tab;otazka
+No answer;Bez\nodpovědi
+required;povinná"
+not required;nepovinná
+Overview;Přehled
+Total respondents count;Celkový počet respondentů
+Total answers count;Počet odpovídajících respondentů
+No answers count;Počet respondentů bez odpovědi
+Completely no answers count;Počet respondentů bez žádné odpovědi
+Positive answers count;Počet pozitivních odpovědí
+Negative answers count;Počet negativních odpovědí
+Correct answers count;Počet správných odpovědí
+Correct persons count;Počet osob odpovídajících správně
+Correct text answers count;Počet správně zodpovězených textů
+Completely correct answers count;Počet kompletně správných odpovědí
+Incorrect answers count;Počet špatných odpovědí
+Incorrect persons count;Počet osob odpovídajících špatně
+No graph data msg;V databázi nebyly nalezeny žádné odpovědi pro zobrazení grafu. \nProsím změňte nastavení filtrování.
+Anonymous results;Anonymní výsledky:
+Persons filter;Filtrování osob
+Questions statistics;Statistiky otázek
+Selections Percentages;Procenta zatržení
+Selections Counts;Počty zatržení
+Question Options;Možnosti otázky
+Question Answers;Odpovědi otázky
+Selected Options Counts In Answer;Počty zvolených možností v jedné odpovědi
+Respondents Counts;Počty respondentů
+Respondents Count;Počet respondentů
+Respondents Percentages;Procenta respondentů
+Respondents Percentage;Procento respondentů
+Answers Percentages;Procenta odpovědí
+Answers Counts;Počty odpovědí
+Number Of Correct And Incorrect Respondents;Počet chybně a správně odpovídajících respondentů
+1 selected option;1 zatržená volba
+Answered;Odpovídali
+Did not answer;Neodpovídali
+{0} selected options (plural: 2-4);{0} zatržené volby
+{0} selected options (plural: 0,5-Infinite);{0} zatržených voleb
+Correctly answered respondents;Respondenti, kteří odpověděli správně
+Incorrectly answered respondents;Respondenti, kteří odpověděli špatně
+Combination Of Correctly And Incorrectly Answered Options Counts;Kombinace počtů správně a špatně zodpovězených možností
+1 right answer;1 správná
+{0} right answers (plural: 2-4);{0} správné
+{0} right answers (plural: 0,5-Infinite);{0} správných
+1 wrong answer;1 špatná
+{0} wrong answers (plural: 2-4);{0} špatné
+{0} wrong answers (plural: 0,5-Infinite);{0} špatných
+1 answered connection;1 uvedené spojení
+{0} answered connections (plural: 2-4);{0} uvedená spojení
+{0} answered connections (plural: 0,5-Infinite);{0} uvedených spojení
+Summary;Shrnutí
+Presented values;Uvedené hodnoty
+Presented value;Uvedená hodnota
+Question Option;Možnost otázky
+Question Answer;Odpověď otázky
+Answers counts, where option was presented;Počet odpovědí, ve kterých byla možnost uvedena
+Answers percentages, where option was presented;Procento odpovědí, ve kterých byla možnost uvedena
+Any presented option count;Počet uvedení některé možnosti
+Any presented option percentage;Procento uvedení některé možnosti
+Answered Connections Counts;Počet zodpovězených spojení
+Answered Connections Percentages;Procento zodpovězených spojení
+Connections Counts In Answer;Počet spojení v odpovědi
+Most Often Answered Connections;Nejčastěji odpovídaná spojení
+Other Rest Connections;Ostatní zbylá spojení
+Other Rest Options Combinations;Ostatní zbylé kombinace možnosti
+Other Rest Answers Combinations;Ostatní zbylé kombinace odpovědí
+Options Connections;Možnosti a jejich spojení
+Correctly Connected Options Count;Počet Správně spojených možností
+Answered Texts;Zodpovězené texty
+Counts;Počty
+Percentages;Procenta
+Correct;Správně
+Number of people with at least one correct answer;Počet osob s alespoň jednou správnou odpovědí
+Number of people with no one right answer;Počet osob s ani jednou správnou odpovědí
+Loading statistics...;Načítání statistik...
+Graph Title: Question Type - 'boolean', Graph Key - 'Overview';Shrnutí
+Graph Title: Question Type - 'boolean-and-text', Graph Key - 'Overview';Shrnutí
+Graph Title: Question Type - 'boolean-and-text', Graph Key - 'AllTextAnswers';Nejčastěji uváděné texty
+Graph Title: Question Type - 'checkboxes', Graph Key - 'Overview';Nejčastěji volené možnosti
+Graph Title: Question Type - 'integer', Graph Key - 'Overview';Nejčastěji uváděné hodnoty
+Graph Title: Question Type - 'radios', Graph Key - 'Overview';Nejčastěji zvolené možnosti
+Graph Title: Question Type - 'text', Graph Key - 'Overview';Nejčastěji uváděné odpovědi
+Graph Title: Question Type - 'textarea', Graph Key - 'Overview';Nejčastěji uváděné odpovědi
+Graph Title: Question Type - 'connections', Graph Key - 'PresentedOptionsCounts';Počet uvedení možnosti do některé odpovědi
+Graph Title: Question Type - 'connections', Graph Key - 'PresentedAnswersCounts';Počet uvedení odpovědi s některou možností
+Graph Title: Question Type - 'connections', Graph Key - 'ConnectionsCorrectness';Počet správných a špatných spojení pro jednotlivé možnosti
+Graph Title: Question Type - 'connections', Graph Key - 'PersonsAnswersCounts';Počet uváděných spojení v odpovědích
+Graph Title: Question Type - 'connections', Graph Key - 'MostOfftenConnections';Počet nejčastěji odpovídaných spojení
+Graph Title: Question Type - 'connections', Graph Key - 'PeopleCorrectness';Nejčastější počty správně spojených možností
+Graph Title: Question Type - 'checkboxes', Graph Key - 'SelectedOptionsCountsInAnswer';Nejčastější počty zatržených možností v odpovědi
+Graph Title: Question Type - 'checkboxes', Graph Key - 'OptionsCorrectness';Nejčastěji chybně a úspěšně zodpovězené možnosti
+Graph Title: Question Type - 'checkboxes', Graph Key - 'PeopleCorrectness';Nejčastější kombinace správných a mylných možností v odpovědi
+Graph Title: Question Type - 'integer', Graph Key - 'CorrectAnswers';Počet správných odpovědí
+Graph Title: Question Type - 'radios', Graph Key - 'CorrectAnswers';Počet správných odpovědí
+Graph Title: Question Type - 'connections', Graph Key - 'CorrectAnswers';Počet správných odpovědí
+Graph Title: Question Type - 'text', Graph Key - 'CorrectAnswers';Počet správných odpovědí
+Graph Title: Question Type - 'connections', Graph Key - 'Involved';Účast v otázce
+Graph Title: Question Type - 'checkboxes', Graph Key - 'Involved';Účast v otázce
+Graph Title: Question Type - 'integer', Graph Key - 'Involved';Účast v otázce
+Graph Title: Question Type - 'radios', Graph Key - 'Involved';Účast v otázce
+Graph Title: Question Type - 'text', Graph Key - 'Involved';Účast v otázce
+Graph Title: Question Type - 'textarea', Graph Key - 'Involved';Účast v otázce

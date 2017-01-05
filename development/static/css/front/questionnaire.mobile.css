@@ -1,0 +1,5 @@
+/* questions fieldset fields */
+form.questionnaire .field.boolean-and-text input[type=text]{
+	width:94%;
+	margin:3px 0 0 4px;
+}

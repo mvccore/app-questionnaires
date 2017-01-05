@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>12</qs:id>
+	<qs:text>Jaký typ her hrajete nejraději?</qs:text>
+	<qs:type>checkboxes</qs:type>
+	<qs:checkboxes>
+		<qs:checkbox>Akční</qs:checkbox>
+		<qs:checkbox>Střílečky</qs:checkbox>
+		<qs:checkbox>Dobrodružné</qs:checkbox>
+		<qs:checkbox>Strategie</qs:checkbox>
+		<qs:checkbox>Sportovní</qs:checkbox>
+		<qs:checkbox>Flashovky</qs:checkbox>
+		<qs:checkbox>Oldschool</qs:checkbox>
+	</qs:checkboxes>
+</qs:data>

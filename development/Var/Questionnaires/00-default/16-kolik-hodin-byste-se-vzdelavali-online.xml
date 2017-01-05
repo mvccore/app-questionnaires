@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>16</qs:id>
+	<qs:text>Kolik hodin týdně byste byli ochotni věnovat se vzděláváni online pomocí videotutoriálů?</qs:text>
+	<qs:type>integer</qs:type>
+	<qs:min>0</qs:min>
+	<qs:max>24</qs:max>
+	<qs:body>{control}&amp;nbsp;hodin</qs:body>
+	<!--qs:solution>1</qs:solution-->
+</qs:data>

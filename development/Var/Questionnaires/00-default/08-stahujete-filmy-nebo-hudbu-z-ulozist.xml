@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>8</qs:id>
+	<qs:text>Stahujete pirátské filmy nebo hudbu z těchto uložišť?</qs:text>
+	<qs:type>checkboxes</qs:type>
+	<qs:checkboxes>
+		<qs:checkbox>Ulož.to</qs:checkbox>
+		<qs:checkbox>Dropbox</qs:checkbox>
+		<qs:checkbox>Stahuj.cz</qs:checkbox>
+		<qs:checkbox>Datoid</qs:checkbox>
+		<qs:checkbox>Google drive</qs:checkbox>
+		<qs:checkbox>Fastshare</qs:checkbox>
+		<qs:checkbox>MediaFire</qs:checkbox>
+		<qs:checkbox>Rapidgator</qs:checkbox>
+		<qs:checkbox>Hellspy</qs:checkbox>
+	</qs:checkboxes>
+	<qs:solution>0,3,5,6,7,8</qs:solution>
+</qs:data>

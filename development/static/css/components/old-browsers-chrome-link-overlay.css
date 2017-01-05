@@ -1,0 +1,8 @@
+#chrome-frame{display:none;position:absolute;z-index:99999;top:0;left:0;width:100%;height:100%;}
+div.chrome-frame-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;opacity:0.5;filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=50);}
+div.chrome-frame-dialog{position:absolute;top:50px;left:50%;width:840px;height:800px;margin:0 0 0 -430px;background:#000;padding:20px 0 20px 20px;}
+div.chrome-frame-dialog a{padding-top:17px;width:360px;}
+div.chrome-frame-dialog p{margin-left:20px;color:#fff;font-size:80%;width:460px;}
+div.chrome-frame-dialog a,
+div.chrome-frame-dialog p{height:58px;display:block;float:left;}
+div.chrome-frame-dialog iframe{position:absolute;left:19px;top:94px;margin:1px 0 0 1px;width:820px !important;height:725px !important;overflow-x:hidden;}

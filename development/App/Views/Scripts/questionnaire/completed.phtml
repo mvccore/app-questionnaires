@@ -1,0 +1,13 @@
+<h1>Děkujeme</h1>
+<p>
+	Děkujeme za Vaše odpovědi, dotazník je vyhodnocován anonymně.
+</p>
+<p>
+	Pokud by Vás zajímalo, jak odpověděli další lidé před Vámi, <br />
+	<a href="<?php
+		echo $this->Url('Statistics::Default', array('path' => $this->Path));
+	?>">výsledky můžete shlédnout zde</a>.
+</p>
+<p>
+	<a href="<?php echo $this->BackLink; ?>">Zpět na dotazník</a>
+</p>

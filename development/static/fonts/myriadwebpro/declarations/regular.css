@@ -1,0 +1,10 @@
+@font-face{
+    font-family:'myriad-regular';
+    src:url('<?php echo $this->AssetUrl('/static/fonts/myriadwebpro/font-files/regular.eot'); ?>');
+    src:url('<?php echo $this->AssetUrl('/static/fonts/myriadwebpro/font-files/regular.eot'); ?>?#iefix') format('embedded-opentype'),
+        url('<?php echo $this->AssetUrl('/static/fonts/myriadwebpro/font-files/regular.woff'); ?>') format('woff'),
+        url('<?php echo $this->AssetUrl('/static/fonts/myriadwebpro/font-files/regular.ttf'); ?>') format('truetype'),
+        url('<?php echo $this->AssetUrl('/static/fonts/myriadwebpro/font-files/regular.svg'); ?>#myriad-regular') format('svg');
+    font-weight:normal;
+    font-style:normal;
+}

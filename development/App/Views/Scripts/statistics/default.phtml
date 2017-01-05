@@ -1,0 +1,11 @@
+<h1><?php echo $this->Questionnaire->Title; ?></h1>
+<p><?php echo $this->Translate('Anonymous results') ?></p>
+<div class="hr"></div>
+<h2><?php echo $this->Translate('Persons filter'); ?></h2>
+<?php echo $this->FilterForm->Render(); ?>
+<h2 class="questions-statistics"><?php echo $this->Translate('Questions statistics'); ?></h2>
+<div id="statistics-questions-results">
+	<input type="hidden" id="statistics-questions-configuration" value="<?php
+		echo $this->JsonAttr($this->JsConfiguration);
+	?>" />
+</div>

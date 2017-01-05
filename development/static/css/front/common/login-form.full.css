@@ -1,0 +1,8 @@
+<?php include(__DIR__ . '/login-form.css'); ?>
+
+@supports (-webkit-appearance:none) {
+	#login button.toggle,
+	#login button.send{
+		overflow:hidden;
+	}
+}

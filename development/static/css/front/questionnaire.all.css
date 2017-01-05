@@ -1,0 +1,72 @@
+/* questions - question number command text */
+label span.question-number-and-text{
+	display:table;
+}
+label span.question-number-and-text-row{
+	display:table-row;
+}
+label span.question-number,
+label span.question-text{
+	display:table-cell;
+	line-height:1.7em;
+}
+label span.question-number{
+	width:20px;
+	padding-right:5px;
+	text-align:right;
+	font-weight:bold;
+}
+/* fields customization */
+/* options and connections */
+table.options-and-connections{
+	width:100%;
+	margin:5px 0 0 15px;
+}
+table.options-and-connections td.option {
+	padding:3px 5px 10px 0;
+}
+table.options-and-connections td.connection {
+	padding:0 0 10px 0;
+}
+table.options-and-connections td.connection label {
+	display: block;
+}
+table.options-and-connections td.connection label input {
+	position:absolute;
+	width:35px;
+	text-align:center;
+}
+table.options-and-connections td.connection label span {
+	display:block;
+	padding:3px 0 0 45px;
+}
+
+/* questions fieldset fields */
+form.questionnaire textarea {
+	width: 100%;
+    height: 100px;
+}
+form.questionnaire .field.integer input{
+	margin:0 0 0 25px;
+}
+
+form.questionnaire .field.text input{
+	width:94%;
+    margin:0 25px;
+}
+/* submit btn */
+/*form.questionnaire .field.button{
+	overflow:hidden;
+	display:table;
+}*/
+form.questionnaire button.button.send{
+	display:inline-block;
+}
+/* errors */
+input.error[type=number],
+input.error[type=text]{
+	border-color:#FF0011;
+}
+label.error{
+	color:#FF0011;
+}

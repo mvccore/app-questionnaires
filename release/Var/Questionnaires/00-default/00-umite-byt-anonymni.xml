@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>0</qs:id>
+	<qs:text>Umíte být na internetu anonymní? Napište odpovídající čísla k písmenkům:</qs:text>
+	<qs:type>connections</qs:type>
+	<qs:options>
+		<qs:option>Tor</qs:option>
+		<qs:option>SSH</qs:option>
+		<qs:option>Proxy</qs:option>
+		<qs:option>WEP</qs:option>
+		<qs:option>Cookies</qs:option>
+	</qs:options>
+	<qs:connections>
+		<qs:connection>
+			Neprolomitelná zabezpečená komunikace.
+		</qs:connection>
+		<qs:connection>
+			Bod v síti, přes který komunikuji a skryji původní zdroj komunikace.
+		</qs:connection>
+		<qs:connection>
+			Nedostatečně zabezpečené šifrování Wi-Fi sítě.
+		</qs:connection>
+		<qs:connection>
+			Síť zajišťující anonymitu.
+		</qs:connection>
+		<qs:connection>
+			Informace identifikující uživatele.
+		</qs:connection>
+	</qs:connections>
+	<qs:solution>
+		0:3,1:0,2:1,3:2,4:4
+	</qs:solution>
+</qs:data>

@@ -1,0 +1,24 @@
+# disable directory listing
+Options -Indexes
+
+# mod_rewrite
+<IfModule mod_rewrite.c>
+
+	RewriteEngine On
+	
+	# forbid the direct access to app directories (eg. config-files, ...)
+	RewriteRule ^App/.*$ / [F,L]
+	RewriteRule ^Libs/.*$ / [F,L]
+	RewriteRule ^Var/Logs/.*$ / [F,L]
+	RewriteRule ^Var/Documents.*$ / [F,L]
+	RewriteRule ^Var/Questionnaires.*$ / [F,L]
+	
+	# basic zend-framework setup see: http://framework.zend.com/manual/en/zend.controller.html
+	RewriteCond %{REQUEST_FILENAME} -s [OR]
+	RewriteCond %{REQUEST_FILENAME} -l [OR]
+	RewriteCond %{REQUEST_FILENAME} -f
+	RewriteRule ^(.*)$ $1 [NC,L]
+	
+	RewriteRule ^.*$ index.php [NC,L]
+
+</IfModule>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xs:schema [
+	<!ENTITY amp "&#38;#38;">
+]>
+<xs:schema targetNamespace="qs" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="data">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:integer" />
+				<xs:element name="text" type="xs:html" />
+				<xs:element name="type" type="xs:string">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="boolean" />
+							<xs:enumeration value="boolean-and-text" />
+							<xs:enumeration value="text" />
+							<xs:enumeration value="textarea" />
+							<xs:enumeration value="integer" />
+							<xs:enumeration value="float" />
+							<xs:enumeration value="radios" />
+							<xs:enumeration value="checkboxes" />
+							<xs:enumeration value="connections" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="checkboxes">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="checkbox" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="radios">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="radio" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="options">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="option" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="connections">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="connection" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="required" type="xs:boolean" />
+				<xs:element name="min" type="xs:integer" />
+				<xs:element name="max" type="xs:integer" />
+				<xs:element name="max-length" type="xs:integer" />
+				<xs:element name="body" type="xs:string" />
+				<xs:element name="delimiter" type="xs:string" />
+				<xs:element name="solution" type="xs:string" />
+				<xs:element name="levenshtein-comparation-tolerance" type="xs:integer" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

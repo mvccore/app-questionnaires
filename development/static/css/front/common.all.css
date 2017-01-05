@@ -1,0 +1,125 @@
+<?php include(__DIR__ . '/cfg.css'); ?>
+
+/* layout */
+body {
+	margin: 0;
+	background: #3c3f41 !important;
+}
+.master-container{
+	margin: 10px auto 30px auto;
+	padding: 0 30px 30px 30px;
+	border-radius: 5px;
+	box-shadow: 0 0 30px rgba(0,0,0,0.6);
+	background: #fff;
+}
+.master-container .mc-content {
+	position:relative;
+	z-index:100;
+}
+.mc-content .mc-footer {
+	text-align: center;
+	padding: 20px 0 0 0;
+	margin: 20px 0 0 0;
+	border-top:1px dotted #666;
+}
+.mc-footer a{
+	text-decoration:none;
+	color:#666;
+	border-bottom:1px solid #666;
+	display:inline-block;
+	padding:0 1px;
+}
+.mc-footer a:hover,
+.mc-footer a:focus,
+.mc-footer a:active{
+	text-decoration:none;
+	color:#fff;
+	background: #666;
+}
+
+/* document */
+.mc-content .document {
+	padding-top:20px;
+}
+.document h1{
+	margin-top: 10px;
+}
+.document h3{
+	margin-bottom: 5px;
+}
+.document h3 a{
+	color: #71dc00;
+	text-decoration:none;
+	border-bottom:2px solid #71dc00;
+}
+.document h3 a:hover,
+.document h3 a:focus,
+.document h3 a:active {
+	color: #fff !important;
+	background: #71dc00;
+	border-bottom:2px solid transparent;
+}
+.document h3 a:visited{
+	color: #5bb100;
+	text-decoration:none;
+	border-bottom:2px solid #5bb100;
+}
+.document h3 a:visited:hover,
+.document h3 a:visited:focus,
+.document h3 a:visited:active {
+	background: #5bb100 !important;
+}
+.document h3 a{
+	text-decoration:none;
+}
+.document p{
+	text-align:justify;
+}
+
+/* socials */
+.facebook-share-btn-large{
+	border:none;
+	overflow:hidden;
+	float:right;
+}
+
+/* forms */
+form .fieldset{}
+form .fieldset label.block-label{
+	display:block;
+}
+form .field{
+	margin:1.5em 0;
+}
+
+/* form field columns */
+.errors{
+	background:#F09B21;
+    color:#fff;
+    padding:15px;
+    border-radius:5px;
+    border:1px solid #FF0011;
+}
+form .field-columns{
+	display:table;
+	width:100%;
+	margin:0 0 0 20px;
+}
+form .field-columns-row{
+	display:table-row;
+}
+form .field-columns .field-column{
+	display:table-cell;
+}
+form .field-columns-4 .field-column{
+	width:25%;
+}
+form .field-columns-3 .field-column{
+	width:33%;
+}
+form .field-columns-2 .field-column{
+	width:50%;
+}
+form .field-columns .field-column label{
+	white-space:nowrap;
+}
