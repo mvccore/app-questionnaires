@@ -1,5 +1,5 @@
 {
-	"name": "mvccore/app-questionnaire",
+	"name": "mvccore/app-questionnaires",
 	"type": "application",
 	"description": "MvcCore Application - Questionnaires - more complex example how to build very portable application with any tasks types defined in XML.",
 	"keywords": ["mvccore", "framework", "mvc", "simple mvc", "super fast mvc", "easy mvc", "single file application", "questionnaires", "questions", "statistics"],
