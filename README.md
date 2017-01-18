@@ -1,6 +1,6 @@
 # MvcCore - Application - Questionnaires & Statistics
 
-# Main Features
+## Features
 - questionnaires with anonymous statistics
 - all questionnaires and questions readed from XML (dynamic forms completing by XML content)
 - all answers stored in mysql/mssql database in 3 tables
