@@ -29,13 +29,12 @@ class App_Forms_Questionnaire extends App_Forms_Base
 		return $this;
 	}
 	protected function initPersonFields () {
-		$translator = $this->Translator;
 		$age = new SimpleForm_Number(array(
 			'name'			=> 'person_age',
 			'label'			=> 'Age',
 			'required'		=> TRUE,
 			'cssClasses'	=> array('person', 'number', 'age'),
-			'controlWrapper'=> '{control}&nbsp;' . $translator('years'),
+			'controlWrapper'=> '{control}&nbsp;' . call_user_func($this->Translator, 'years'),
 		));
 		$sex = new SimpleForm_RadioGroup(array(
 			'name'			=> 'person_sex',
@@ -66,7 +65,7 @@ class App_Forms_Questionnaire extends App_Forms_Base
 	}
 	protected function initQuestionsFields () {
 		foreach ($this->questions as $key => $question) {
-			$typedInitMethod = 'initQuestionField' . MvcCore::GetPascalCaseFromDashed($question->Type);
+			$typedInitMethod = 'initQuestionField' . MvcCore_Tool::GetPascalCaseFromDashed($question->Type);
 			$field = $this->$typedInitMethod($key, $question);
 			if ($field) {
 				$questionNumberAndText = $this->completeQuestionNumberAndTextCode($key, $question->Text);

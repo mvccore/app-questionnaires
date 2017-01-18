@@ -49,7 +49,7 @@ class App_Models_Question extends App_Models_XmlModel
 	protected function xmlSetUp ($xml)
 	{
 		parent::xmlSetUp($xml);
-		$methodName = '_xmlSetUp' . MvcCore::GetPascalCaseFromDashed($this->Type);
+		$methodName = '_xmlSetUp' . MvcCore_Tool::GetPascalCaseFromDashed($this->Type);
 		if (method_exists($this, $methodName)) $this->$methodName();
 	}
 	private function _xmlSetUpRadios () {

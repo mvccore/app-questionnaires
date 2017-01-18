@@ -28,7 +28,7 @@
 			<?php echo $this->Document->Title; ?>
 		</h1>
 		<p>
-			<?php echo $this->Text()->FixedSpaces($this->Document->Description); ?>
+			<?php echo $this->LineBreaks($this->Document->Description); ?>
 		</p>
 	</qr:body>
 </qr:data>

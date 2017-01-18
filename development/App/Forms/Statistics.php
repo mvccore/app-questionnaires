@@ -10,7 +10,6 @@ class App_Forms_Statistics extends App_Forms_Base
     public function Init ($minAndMaxAges = array()) {
 		parent::Init();
 		$this->initColumnsCount();
-		$translator = $this->Translator;
 		App_Models_Person::GetMinAndMaxAges();
 		$age = new SimpleForm_Range(array(
 			'name'			=> 'age',
@@ -20,7 +19,7 @@ class App_Forms_Statistics extends App_Forms_Base
 			'step'			=> 1,
 			'multiple'		=> TRUE,
 			'cssClasses'	=> array('person', 'range', 'age'),
-			'controlWrapper'=> '{control}&nbsp;' . $translator('years'),
+			'controlWrapper'=> '{control}&nbsp;' . call_user_func($this->Translator, 'years'),
 		));
 		$sex = new SimpleForm_CheckboxGroup(array(
 			'name'			=> 'sex',

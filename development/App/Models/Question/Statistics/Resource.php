@@ -34,20 +34,21 @@ class App_Models_Question_Statistics_Resource extends App_Models_Base
 
 	// faster method variant:
 	public static final function GetInstance () {
+		/** @var $user MvcCoreExt_Auth_User */
 		list($question, $filterData, $user) = func_get_args();
 		$instanceIndex = md5(implode('_', array(
 			__CLASS__,
 			$question->Questionnaire->Id,
 			$question->Id,
 			serialize($filterData),
-			isset($user['username']) ? $user['username'] : ''
+			isset($user->UserName) ? $user->UserName : ''
 		)));
 		if (!isset(self::$instances[$instanceIndex])) {
 			self::$instances[$instanceIndex] = new static($question, $filterData, $user);
 		}
 		return self::$instances[$instanceIndex];
 	}
-	public function __construct (App_Models_Question $question, $filterData, array $user = array()) {
+	public function __construct (App_Models_Question & $question = NULL, $filterData = NULL, $user = array()) {
 		parent::__construct();
 		$this->question = $question;
 		$this->idQuestionnaire = $question->Questionnaire->Id;

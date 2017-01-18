@@ -6,17 +6,15 @@ class App_Models_XmlModel extends App_Models_Base
 	protected static $xmlNameSpace = null;
 	protected static $schemes = array();
 	protected $xml;
+	protected $autoInit = FALSE;
 	public static function GetDataPath() {
 		return static::$dataDir;
 	}
-    public function __construct() {
-        //parent::__construct(); // not necessary for xml model
-    }
 	public static function GetByPath ($path = '') {
 		$path = static::sanitizePath($path);
 		// if request path is "/" or "/any-directory/any-subdirectory/" - fix path to "/index" or "/any-directory/any-subdirectory/index"
 		$xmlPath = (mb_substr($path, mb_strlen($path) - 1, 1) === '/') ? $path . 'index' : $path ;
-		$xmlFullPath = MvcCore::GetRequest()->appRoot . static::$dataDir;
+		$xmlFullPath = MvcCore::GetInstance()->GetRequest()->AppRoot . static::$dataDir;
 		$fileFullPath = str_replace('\\', '/', $xmlFullPath . $xmlPath . '.xml');
 		if (!file_exists($fileFullPath)) {
 			return FALSE;
@@ -26,7 +24,7 @@ class App_Models_XmlModel extends App_Models_Base
     }
 	public static function GetByPathMatch ($pathMatch = '') {
 		$result = array();
-		$xmlFullPath = MvcCore::GetRequest()->appRoot . static::$dataDir;
+		$xmlFullPath = MvcCore::GetInstance()->GetRequest()->AppRoot . static::$dataDir;
 		$di = new DirectoryIterator($xmlFullPath);
 		foreach ($di as $key => $item) {
 			if ($item->isDir()) continue;
@@ -138,7 +136,7 @@ class App_Models_XmlModel extends App_Models_Base
 		foreach ($xml->children(static::$xmlNameSpace, TRUE) as $dataNode) {
 			$nodeName = $dataNode->getName();
 			$rawNodeValue = trim((string)$dataNode);
-			$propertyName = MvcCore::GetPascalCaseFromDashed($nodeName);
+			$propertyName = MvcCore_Tool::GetPascalCaseFromDashed($nodeName);
 			$dataType = 'string';
 			if (isset($columnTypes[$nodeName])) {
 				$dataType = $columnTypes[$nodeName];
@@ -156,7 +154,7 @@ class App_Models_XmlModel extends App_Models_Base
 		} else if ($dataType == 'html') {
 			$this->$propertyName = str_replace(
 				array('%basePath'), 
-				array(MvcCore::GetRequest()->basePath,), 
+				array(MvcCore::GetInstance()->GetRequest()->BasePath,), 
 				$rawNodeValue
 			);
 		} else {

@@ -36,9 +36,8 @@ class App_Forms_Fields_BooleanAndText extends SimpleForm_Core_FieldGroup
 			if (!$valid) {
 				$errorMsg = SimpleForm::$DefaultMessages[SimpleForm::VALID];
 				if ($form->Translate) {
-					$translator = $form->Translator;
-					$errorMsg = $translator($errorMsg);
-					$label = $field->Label ? $translator($field->Label) : $fieldName;
+					$errorMsg = call_user_func($form->Translator, $errorMsg);
+					$label = $field->Label ? call_user_func($form->Translator, $field->Label) : $fieldName;
 				} else {
 					$label = $field->Label ? $field->Label : $fieldName;
 				}
@@ -46,7 +45,7 @@ class App_Forms_Fields_BooleanAndText extends SimpleForm_Core_FieldGroup
 					$errorMsg, array($label)
 				);
 				$form->AddError(
-					$fieldName, $errorMsg
+					$errorMsg, $fieldName
 				);
 			}
 			return $safeValue;
@@ -59,7 +58,7 @@ class App_Forms_Fields_BooleanAndText extends SimpleForm_Core_FieldGroup
 		$translator = $this->Form->Translator;
 		if (!$translator) return;
 		foreach ($this->Options as $key => $value) {
-			if ($value) $this->Options[$key] = $translator((string)$value, $lang);
+			if ($value) $this->Options[$key] = call_user_func($translator, (string)$value, $lang);
 		}
 	}
 	public function RenderControl () {

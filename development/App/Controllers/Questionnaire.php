@@ -39,19 +39,17 @@ class App_Controllers_Questionnaire extends App_Controllers_Base
 		$this->view->Path = $this->path;
 	}
 
-	protected function setUpQuestionnaireAndQuestions()
-	{
+	protected function setUpQuestionnaireAndQuestions() {
 		$this->path = str_replace('-', '\\-', $this->GetParam('path', "a-zA-Z0-9_\-"));
 
 		$matchedQrs = App_Models_Questionnaire::GetByPathMatch("^([0-9]*)\-$this->path$");
 		
-		$debugExists = class_exists('Debug');
 		if (count($matchedQrs) === 0) {
-			if ($debugExists) Debug::log("[App_Controllers_Questionnaire] No questionnaire found in path: '$this->path'.");
+			MvcCore_Debug::Log("[App_Controllers_Questionnaire] No questionnaire found in path: '$this->path'.");
 			$this->view->Document = new App_Models_Document();
 			$this->renderNotFound();
 		} else if (count($matchedQrs) > 1) {
-			if ($debugExists) Debug::log("[App_Controllers_Questionnaire] Ambiguous request to the questionnaire in path: '$this->path'..");
+			MvcCore_Debug::Log("[App_Controllers_Questionnaire] Ambiguous request to the questionnaire in path: '$this->path'..");
 		}
 
 		$this->path = str_replace('\\-', '-', $this->path);
@@ -75,13 +73,12 @@ class App_Controllers_Questionnaire extends App_Controllers_Base
 			$static = self::$staticPath;
 			$this->view->Css('varHead')
 				->AppendRendered($static . '/css/front/person.all.css')
-				->AppendRendered($static . '/css/front/person.' . self::$mediaSiteKey . '.css')
+				->AppendRendered($static . '/css/front/person.' . $this->mediaSiteKey . '.css')
 				->AppendRendered($static . '/css/front/questionnaire.all.css')
-				->AppendRendered($static . '/css/front/questionnaire.' . self::$mediaSiteKey . '.css');
+				->AppendRendered($static . '/css/front/questionnaire.' . $this->mediaSiteKey . '.css');
 		}
 	}
-	protected function setUpForm ()
-	{
+	protected function setUpForm () {
 		$form = new App_Forms_Questionnaire($this);
 
 		$form

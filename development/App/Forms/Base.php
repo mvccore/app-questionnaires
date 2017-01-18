@@ -9,10 +9,10 @@ class App_Forms_Base extends SimpleForm
 
 	public function __construct (/*MvcCore_Controller*/ & $controller) {
 		parent::__construct($controller);
-		static::$jsAssetsRootDir = MvcCore::GetRequest()->appRoot . '/static/js/front';
+		$this->jsAssetsRootDir = MvcCore::GetInstance()->GetRequest()->AppRoot . '/static/js/front';
 	}
 	protected function initColumnsCount () {
-		$mediaSiteKey = $this->Controller->GetRequest()->mediaSiteKey;
+		$mediaSiteKey = $this->Controller->GetRequest()->MediaSiteKey;
 		$this->formColumnsCount = $mediaSiteKey == 'full' ? 3 : 1;
 	}
 }

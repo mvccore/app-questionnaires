@@ -1,3 +1,6 @@
+Display;Zobrazit
+classic;klasicky
+mobile;pro mobily
 Questionnaires;Dotazníky
 Please choose one of these questionnaires.;Prosím vyberte si některý z následujících dotazníků.
 About you;O Vás
@@ -35,6 +38,8 @@ Field '{0}' requires a valid option.;Pole '{0}' vyžaduje platnou možnost.
 Field '{0}' has invalid format ('{1}').;Pole '{0}' má špatný formát ('{1}').
 User name or password is incorrect.;Jméno nebo heslo jsou nesprávné.
 User;Uživatel
+Sign In;Přihlásit
+Log Out;Odhlásit
 Password;Heslo
 {0}. Question;{0}. Otázka
 question-tab;otazka

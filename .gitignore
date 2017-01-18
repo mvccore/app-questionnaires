@@ -52,6 +52,9 @@ Temporary Items
 .hgtags
 
 # Application third party modules contents
+composer.lock
+vendor/*
+development/vendor/*
 development/static/js/front/node_modules/simpleform-custom-js/dev-tools
 development/static/js/front/node_modules/simpleform-custom-js/node_modules
 development/static/js/front/node_modules/simpleform-custom-js/.npmignore

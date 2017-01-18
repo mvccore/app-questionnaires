@@ -32,7 +32,7 @@ class App_Models_Questionnaire_Answers_Resource extends App_Models_Base
 			$answer = NULL;
 			if (isset($this->_answers[$questionId])) $answer = $this->_answers[$questionId];
 
-			$prepareMethodName = '_prepareSql' . MvcCore::GetPascalCaseFromDashed($question->Type);
+			$prepareMethodName = '_prepareSql' . MvcCore_Tool::GetPascalCaseFromDashed($question->Type);
 			list($columns, $valuesGroup) = $this->$prepareMethodName($question, $answer);
 
 			$columns = array_merge(
@@ -161,7 +161,7 @@ class App_Models_Questionnaire_Answers_Resource extends App_Models_Base
 		$columns = array('Boolean');
 		$values = array();
 		if (isset($answer[0]) > 0 && strlen($answer[0]) > 0) {
-			$values[] = strtolower($answer) == 'yes' ? 1 : 0 ;
+			$values[] = strtolower($answer[0]) == 'yes' ? 1 : 0 ;
 		}
 		if (isset($answer[1]) && mb_strlen($answer[1]) > 0) {
 			$columns[] = 'Varchar';

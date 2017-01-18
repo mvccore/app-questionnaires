@@ -1,0 +1,12 @@
+<?php /** @var $this SimpleForm_Core_View */ ?>
+<?php /** @var $this->User MvcCoreExt_Auth_Abstract_User */ ?>
+<div class="mc-header relative">
+	<?php echo $this->RenderBegin(); ?>
+		<span class="user-info">
+			<?php echo $this->Translate('User') ?>: <b><?php echo $this->User->FullName; ?></b>
+		</span>
+		<?php foreach ($this->Form->Fields as $key => & $field): ?>
+			<?php echo $field->Render(); ?>
+		<?php endforeach; ?>
+	<?php echo $this->RenderEnd(); ?>
+</div>

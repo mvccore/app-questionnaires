@@ -9,8 +9,8 @@ class App_Controllers_Statistics extends App_Controllers_Questionnaire
 	private $_minAndMaxAges;
 
 	public function Init () {
-		$this->_minAndMaxAges = App_Models_Person::GetMinAndMaxAges();
 		parent::Init();
+		$this->_minAndMaxAges = App_Models_Person::GetMinAndMaxAges();
 	}
 	public function DefaultAction () {
 		$this->view->Questionnaire = $this->questionnaire;
@@ -89,7 +89,7 @@ class App_Controllers_Statistics extends App_Controllers_Questionnaire
 
 			$extDebugVersions = 0; // set 1 for better development error messages in browser console
 
-			$appRoot = $this->request->appRoot;
+			$appRoot = $this->request->AppRoot;
 			$static = self::$staticPath;
 
 			$extJsFilename = $extDebugVersions ? 'ext-all-debug.js' : 'ext-all.js';
@@ -98,9 +98,9 @@ class App_Controllers_Statistics extends App_Controllers_Questionnaire
 			$this->view->Css('varHead')
 				->AppendRendered($static . '/fonts/awesome/declarations/all.css')
 				->AppendRendered($static . '/css/front/person.all.css')
-				->AppendRendered($static . '/css/front/person.' . self::$mediaSiteKey . '.css')
+				->AppendRendered($static . '/css/front/person.' . $this->mediaSiteKey . '.css')
 				->AppendRendered($static . '/css/front/statistics.all.css')
-				->AppendRendered($static . '/css/front/statistics.' . self::$mediaSiteKey . '.css')
+				->AppendRendered($static . '/css/front/statistics.' . $this->mediaSiteKey . '.css')
 				->Append($static . '/css/libs/ext/6.0.0/theme-triton-custom/theme-triton-all-1.css')
 				->Append($static . '/css/libs/ext/6.0.0/theme-triton-custom/theme-triton-all-2.css')
 				->Append($static . '/css/libs/ext/6.0.0/theme-triton-custom/charts-all.css');
@@ -110,7 +110,7 @@ class App_Controllers_Statistics extends App_Controllers_Questionnaire
 			$extTmpPath = self::$tmpPath . '/' . $extJsFilename;
 			$chartsTmpPath = self::$tmpPath . '/' . $chartsJsFilename;
 
-			if (MvcCore::GetEnvironment() == 'development') {
+			if (MvcCore_Config::IsDevelopment()) {
 				if (!file_exists($appRoot . $extTmpPath)) copy($appRoot . $extSrcPath, $appRoot . $extTmpPath);
 				if (!file_exists($appRoot . $chartsTmpPath)) copy($appRoot . $chartsSrcPath, $appRoot . $chartsTmpPath);
 			}
@@ -179,7 +179,7 @@ class App_Controllers_Statistics extends App_Controllers_Questionnaire
 			->SetMethod(SimpleForm::METHOD_GET)
 			->SetAction($this->Url('Statistics::Submit', array('path' => $this->path)))
 			->SetSuccessUrl($this->Url('Statistics::Default', array('path' => $this->path)))
-			->LoadSession();
+			->Prepare();
 		if (!$form->Data) {
 			$data = array(
 				'age'		=> $this->_minAndMaxAges,

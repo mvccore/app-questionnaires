@@ -43,9 +43,8 @@ class App_Forms_Fields_Connections extends SimpleForm_Core_FieldGroup
 			if (!$valid || ($field->Required && count($field->Options) !== count($safeValue))) {
 				$errorMsg = SimpleForm::$DefaultMessages[SimpleForm::VALID];
 				if ($form->Translate) {
-					$translator = $form->Translator;
-					$errorMsg = $translator($errorMsg);
-					$label = $field->Label ? $translator($field->Label) : $fieldName;
+					$errorMsg = call_user_func($form->Translator, $errorMsg);
+					$label = $field->Label ? call_user_func($form->Translator, $field->Label) : $fieldName;
 				} else {
 					$label = $field->Label ? $field->Label : $fieldName;
 				}
@@ -53,7 +52,7 @@ class App_Forms_Fields_Connections extends SimpleForm_Core_FieldGroup
 					$errorMsg, array($label)
 				);
 				$form->AddError(
-					$fieldName, $errorMsg
+					$errorMsg, $fieldName
 				);
 			}
 			return $safeValue;
@@ -67,13 +66,13 @@ class App_Forms_Fields_Connections extends SimpleForm_Core_FieldGroup
 		foreach ($this->Connections as $key => $value) {
 			if (gettype($value) == 'string') {
 				// most simple key/value array options configuration
-				if ($value) $this->Connections[$key] = $translator((string)$value, $lang);
+				if ($value) $this->Connections[$key] = call_user_func($translator, (string)$value, $lang);
 			} else if (gettype($value) == 'array') {
 				// advanced configuration with key, text, css class, and any other attributes for single option tag
 				$optObj = (object) $value;
 				$text = isset($optObj->text) ? $optObj->text : $key;
 				if ($text) {
-					$this->Connections[$key]['text'] = $translator((string)$text, $lang);
+					$this->Connections[$key]['text'] = call_user_func($translator, (string)$text, $lang);
 				}
 			}
 		}

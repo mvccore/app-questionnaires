@@ -5,10 +5,9 @@ class App_Views_Helpers_Facebook
     private $_baseUrlEncoded;
     private $_facebookAppId;
 	public function __construct (MvcCore_View & $view) {
-		$request = MvcCore::GetRequest();
-		$this->_baseUrlEncoded = urlencode($request->scheme . '://' . $request->host . ($request->port ? ':' . $request->port : '') . $request->path);
-		$cfg = App_Bootstrap::GetConfig();
-		$this->_facebookAppId = $cfg->general['fb']['appId'];
+		$this->_baseUrlEncoded = urlencode($view->Controller->GetRequest()->RequestUrl);
+		$cfg = MvcCore_Config::GetSystem();
+		$this->_facebookAppId = (string) $cfg->general->fb->appId;
 	}
 	public function Facebook () {
 		return $this;

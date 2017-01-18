@@ -1,0 +1,33 @@
+<?php /** @var $this MvcCore_View */ ?>
+<div class="mc-footer-media-navigation"><?php
+	$newParams = array_merge(array(), $this->Request->Params);
+	unset($newParams['controller'], $newParams['action']);
+	$navigationItems = array(
+		MediaSiteKey::FULL		=> $this->Translate('classic'),
+		MediaSiteKey::MOBILE	=> $this->Translate('mobile'),
+	);
+	echo $this->Translate('Display') . ': ';
+	$i = 0;
+	foreach ($navigationItems as $key => $value):
+		if ($key == $this->MediaSiteKey):
+			?><span><?php
+				echo $value;
+			?></span><?php
+		else:
+			?><a <?php
+				if ($key == $this->MediaSiteKey) echo ' class="selected"';
+			?>href="<?php
+				echo $this->Url(
+					'self', 
+					array_merge($newParams, array(
+						MvcCoreExt_MediaAddress::MEDIA_SITE_KEY_URL_PARAM			=> $key, 
+						MvcCoreExt_MediaAddress::MEDIA_SITE_KEY_SWITCH_URL_PARAM	=> $key,
+					))
+				);
+			?>"><?php
+				echo $value;
+			?></a><?php
+		endif;
+		if (++$i > 0 && $i < count($navigationItems)) echo ', ';
+	endforeach;
+?></div>

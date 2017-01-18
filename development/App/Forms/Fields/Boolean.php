@@ -16,9 +16,8 @@ class App_Forms_Fields_Boolean extends SimpleForm_RadioGroup
 				$safeValue = '';
 				$errorMsg = SimpleForm::$DefaultMessages[SimpleForm::VALID];
 				if ($form->Translate) {
-					$translator = $form->Translator;
-					$errorMsg = $translator($errorMsg);
-					$label = $field->Label ? $translator($field->Label) : $fieldName;
+					$errorMsg = call_user_func($form->Translator, $errorMsg);
+					$label = $field->Label ? call_user_func($form->Translator, $field->Label) : $fieldName;
 				} else {
 					$label = $field->Label ? $field->Label : $fieldName;
 				}
@@ -26,7 +25,7 @@ class App_Forms_Fields_Boolean extends SimpleForm_RadioGroup
 					$errorMsg, array($label)
 				);
 				$form->AddError(
-					$fieldName, $errorMsg
+					$errorMsg, $fieldName
 				);
 			}
 			return $safeValue;
@@ -39,7 +38,7 @@ class App_Forms_Fields_Boolean extends SimpleForm_RadioGroup
 		$translator = $this->Form->Translator;
 		if (!$translator) return;
 		foreach ($this->Options as $key => $value) {
-			if ($value) $this->Options[$key] = $translator((string)$value, $lang);
+			if ($value) $this->Options[$key] = call_user_func($translator, (string)$value, $lang);
 		}
 	}
 }

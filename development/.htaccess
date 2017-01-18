@@ -9,6 +9,7 @@ Options -Indexes
 	# forbid the direct access to app directories (eg. config-files, ...)
 	RewriteRule ^App/.*$ / [F,L]
 	RewriteRule ^Libs/.*$ / [F,L]
+	RewriteRule ^vendor/.*$ / [F,L]
 	RewriteRule ^Var/Logs/.*$ / [F,L]
 	RewriteRule ^Var/Documents.*$ / [F,L]
 	RewriteRule ^Var/Questionnaires.*$ / [F,L]

@@ -1,1 +1,2 @@
-<?php echo $this->document->Body; ?>
+<?php /** @var $this MvcCore_View */ ?>
+<?php echo $this->Evaluate($this->Document->Body); ?>

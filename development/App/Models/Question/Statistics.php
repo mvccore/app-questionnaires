@@ -6,7 +6,7 @@ class App_Models_Question_Statistics extends App_Models_Base
 	public $IdQuestion;
 
 	/**
-	 * @var array
+	 * @var MvcCoreExt_Auth_User
 	 */
 	protected $user = array();
 	/**
@@ -31,19 +31,14 @@ class App_Models_Question_Statistics extends App_Models_Base
 	// faster parent method variant:
 	public static final function GetInstance () {
 		list($user, $question) = func_get_args();
-		$username = isset($user['username']) ? $user['username'] : '';
+		$username = !is_null($user) ? $user->UserName : '';
 		$instanceIndex = __CLASS__.".$username.{$question->Questionnaire->Id}.{$question->Id}";
-		$instanceIndex = md5(implode('_', array(
-			__CLASS__,
-			$question->Questionnaire->Id,
-			$question->Id,
-		)));
 		if (!isset(self::$instances[$instanceIndex])) {
 			self::$instances[$instanceIndex] = new self($user, $question);
 		}
 		return self::$instances[$instanceIndex];
 	}
-	public function __construct (array & $user, App_Models_Question & $question) {
+	public function __construct (MvcCoreExt_Auth_User & $user = NULL, App_Models_Question & $question = NULL) {
 		$this->user = & $user;
 		$this->question = & $question;
 		$this->IdQuestionnaire = $question->Questionnaire->Id;
@@ -58,7 +53,7 @@ class App_Models_Question_Statistics extends App_Models_Base
 		$resource = self::_getResource(array($this->question, $filterData, $this->user));
 		$this->questionnaireAnsweringPersonsCount	= $resource->LoadAllQuestionnairePersonsCount();
 		$this->questionAnsweringPersonsCount		= $resource->LoadQuestionAnsweringPersonsCount();
-		$methodsNameLastPart = MvcCore::GetPascalCaseFromDashed($this->question->Type);
+		$methodsNameLastPart = MvcCore_Tool::GetPascalCaseFromDashed($this->question->Type);
 		$loadMethodName = 'LoadStatisticsFor' . $methodsNameLastPart;
 		$handleMethodName = 'HandleStatisticsFor' . $methodsNameLastPart;
 		$resourceData = $resource->$loadMethodName();

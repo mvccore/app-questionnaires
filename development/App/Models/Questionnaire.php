@@ -8,7 +8,7 @@ class App_Models_Questionnaire extends App_Models_Document
 	private $_questions = null;
 	public static function GetAll () {
 		$result = array();
-		$fullPath = MvcCore::GetRequest()->appRoot . self::$dataDir;
+		$fullPath = MvcCore::GetInstance()->GetRequest()->AppRoot . self::$dataDir;
 		$di = new DirectoryIterator($fullPath);
 		foreach ($di as $key => $item) {
 			if ($item->isDir()) continue;
@@ -30,7 +30,7 @@ class App_Models_Questionnaire extends App_Models_Document
 	public function GetUrl () {
 		if (is_null($this->_url)) {
 			$pathWithoutFirstSlashDigitsAndDash = preg_replace("#^/([0-9]*)\-(.*)$#", "$2", $this->Path);
-			$this->_url = MvcCore::GetController()->Url(
+			$this->_url = MvcCore::GetInstance()->GetController()->Url(
 				'Questionnaire::Default', 
 				array('path' => $pathWithoutFirstSlashDigitsAndDash)
 			);
@@ -51,7 +51,7 @@ class App_Models_Questionnaire extends App_Models_Document
 	}
 	private function _loadQuestions () {
 		$result = array();
-		$fullPath = MvcCore::GetRequest()->appRoot . self::$dataDir . $this->Path;
+		$fullPath = MvcCore::GetInstance()->GetRequest()->AppRoot . self::$dataDir . $this->Path;
 		$di = new DirectoryIterator($fullPath);
 		foreach ($di as $key => $item) {
 			if ($item->isDir()) continue;

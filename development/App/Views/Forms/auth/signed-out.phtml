@@ -1,0 +1,17 @@
+<?php /** @var $this SimpleForm_Core_View */ ?>
+<div class="mc-header absolute">
+	<?php echo $this->RenderBegin(); ?>
+		<button class="toggle button button-green"><span><b><?php echo $this->Translate('Sign In'); ?></b></span></button>
+		<div class="content">
+			<?php foreach ($this->Form->Fields as $key => & $field): ?>
+				<?php if ($key == 'username'): ?>
+					<div class="text-inputs">
+				<?php endif; ?>
+				<?php echo $field->Render(); ?>
+				<?php if ($key == 'password'): ?>
+					</div>
+				<?php endif; ?>
+			<?php endforeach; ?>
+		</div>
+	<?php echo $this->RenderEnd(); ?>
+</div>
