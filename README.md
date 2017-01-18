@@ -46,5 +46,7 @@ composer update
 
 ## Build
 ```shell
-make
+sh make.sh
+# or Windows:
+make.cmd
 ```
