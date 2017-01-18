@@ -31,9 +31,16 @@
 
 ## Instalation
 ```shell
+# load project
 composer require mvccore/app-questionnaires
+
+# update dependencies for packing
 composer update
+
+# go to development directory
 cd development
+
+# update dependencies for application sources
 composer update
 ```
 
