@@ -44,7 +44,7 @@ cd development
 composer update
 ```
 
-## Pack result application
+## Build
 ```shell
 make
 ```
