@@ -19,8 +19,8 @@
   - rendered with [**Ext.JS 6.0.0-gpl graphs API**](http://examples.sencha.com/extjs/6.0.2/examples/kitchensink/?charts=true#all)
 - questionnaire forms and statistic results have desktop and mobile version
 - all packing ways are possible to use:
-	- PHAR
-	- PHP
+	- PHAR	(a little slower then development app version)
+	- PHP	(about 35 % faster then development app version)
 		- strict package
 		- strict hdd
 		- preserve package (currently used for packed app in result dir)
