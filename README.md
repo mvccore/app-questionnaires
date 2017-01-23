@@ -1,5 +1,11 @@
 # MvcCore - Application - Questionnaires & Statistics
 
+[![Latest Stable Version](https://img.shields.io/badge/Stable-v3.0.0-brightgreen.svg?style=plastic)](https://github.com/mvccore/example-helloworld/releases)
+[![License](https://img.shields.io/badge/Licence-BSD-brightgreen.svg?style=plastic)](https://github.com/mvccore/example-helloworld/blob/master/LICENCE.md)
+[![Packager Build](https://img.shields.io/badge/Packager%20Build-passing-brightgreen.svg?style=plastic)](https://github.com/mvccore/packager)
+![PHP Version](https://img.shields.io/badge/PHP->=5.3-brightgreen.svg?style=plastic)
+
+
 ## Features
 - questionnaires with anonymous statistics
 - all questionnaires and questions readed from XML (dynamic forms completing by XML content)
