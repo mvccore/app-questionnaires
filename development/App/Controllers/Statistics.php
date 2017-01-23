@@ -21,7 +21,7 @@ class App_Controllers_Statistics extends App_Controllers_Questionnaire
 			'Questions'			=> array(),
 			'Translations'		=> array(),
 			'FilterFormId'		=> $this->_filterForm->Id,
-			'StatisticsUrl'		=> $this->Url('Statistics::GetQuestionStatistics', array(
+			'StatisticsUrl'		=> $this->Url('Statistics:GetQuestionStatistics', array(
 				'path'				=> $this->path,
 				'id_question'		=> '__ID_QUESTION__',
 			))
@@ -174,21 +174,17 @@ class App_Controllers_Statistics extends App_Controllers_Questionnaire
 			->SetCssRenderer(function (SplFileInfo $cssFile) {
 				$this->addAsset('Css', 'varHead', $cssFile);
 			})
-			->Init($this->_minAndMaxAges)
 			->SetLang(App_Controllers_Base::$Lang)
 			->SetMethod(SimpleForm::METHOD_GET)
-			->SetAction($this->Url('Statistics::Submit', array('path' => $this->path)))
-			->SetSuccessUrl($this->Url('Statistics::Default', array('path' => $this->path)))
-			->Prepare();
-		if (!$form->Data) {
-			$data = array(
+			->SetAction($this->Url('Statistics:Submit', array('path' => $this->path)))
+			->SetSuccessUrl($this->Url('Statistics:Default', array('path' => $this->path)))
+			->Init($this->_minAndMaxAges)
+			->SetDefaults(array(
 				'age'		=> $this->_minAndMaxAges,
 				'sex'		=> array_keys(App_Models_Person::$SexOptions),
 				'education'	=> array_keys(App_Models_Person::$EducationOptions),
 				'job'		=> array_keys(App_Models_Person::$JobOptions),
-			);
-			$form->SetDefaults($data);
-		}
+			));
 		$this->_filterForm = $form;
 	}
 	protected function submitAndManageFormDataForDbLoad () {

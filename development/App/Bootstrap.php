@@ -78,24 +78,24 @@ class App_Bootstrap
 	 */
 	protected static function setUpRoutes () {
 		self::$routes = array(
-			'Default::Home'			=> "#^/$#",
-			'Questionnaire::Submit'	=> array(
+			'Default:Home'			=> "#^/$#",
+			'Questionnaire:Submit'	=> array(
 				'pattern'			=> "#^/dotaznik/([a-zA-Z0-9\-_]*)/odeslat#",
 				'reverse'			=> '/dotaznik/{%path}/odeslat',
 			),
-			'Questionnaire::Completed'	=> array(
+			'Questionnaire:Completed'	=> array(
 				'pattern'			=> "#^/dotaznik/([a-zA-Z0-9\-_]*)/hotovo#",
 				'reverse'			=> '/dotaznik/{%path}/hotovo',
 			),
-			'Questionnaire::Default'=> array(
+			'Questionnaire:Default'=> array(
 				'pattern'			=> "#^/dotaznik/([a-zA-Z0-9\-_]*)#",
 				'reverse'			=> '/dotaznik/{%path}',
 			),
-			'Statistics::Submit'	=> array(
+			'Statistics:Submit'	=> array(
 				'pattern'			=> "#^/vysledky/([a-zA-Z0-9\-_]*)/odeslat#",
 				'reverse'			=> '/vysledky/{%path}/odeslat',
 			),
-			'Statistics::Default'	=> array(
+			'Statistics:Default'	=> array(
 				'pattern'			=> "#^/vysledky/([a-zA-Z0-9\-_]*)#",
 				'reverse'			=> '/vysledky/{%path}',
 			),

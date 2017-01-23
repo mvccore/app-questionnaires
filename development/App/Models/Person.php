@@ -41,17 +41,17 @@ class App_Models_Person extends App_Models_Base
 	);
 
 	public static function Create ($formData) {
-		$newPersonId = self::getResource()->InsertNew((object) $formData);
+		$newPersonId = self::GetResource()->InsertNew((object) $formData);
 		return self::GetById($newPersonId);
 	}
 	public static function GetById ($id) {
-		$data = self::getResource()->GetById($id);
+		$data = self::GetResource()->GetById($id);
 		$result = new static();
 		$result->setUp($data);
 		return $result;
 	}
 	public static function GetMinAndMaxAges () {
-		$minMax = (object) self::getResource()->GetMinAndMaxAges();
+		$minMax = (object) self::GetResource()->GetMinAndMaxAges();
 		return array(intval($minMax->MinAge), intval($minMax->MaxAge));
 	}
 }

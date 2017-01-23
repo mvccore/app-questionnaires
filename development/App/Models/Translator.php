@@ -18,14 +18,14 @@ class App_Models_Translator extends App_Models_Base
 		if (!isset($this->stores[$lang])) {
 			$store = array();
 			$fileFullPath = MvcCore::GetInstance()->GetRequest()->AppRoot . self::$dataDir . '/' . $lang . '.csv';
-			if (!file_exists($fileFullPath)) throw new Exception("[App_Models_Translator] No translations defined. (path: '$fileFullPath')");
+			if (!file_exists($fileFullPath)) throw new Exception("[".__CLASS__."] No translations defined. (path: '$fileFullPath')");
 			$rawCsv = file_get_contents($fileFullPath);
 			$rawCsvRows = explode("\n", str_replace("\r\n", "\n", $rawCsv));
 			foreach ($rawCsvRows as $rowKey => $rawCsvRow) {
 				list($key, $value) = str_getcsv($rawCsvRow, ";", '');
 				if (isset($store[$key])) {
 					$rowKey += 1;
-					throw new Exception("[App_Models_Translator] Translation key already defined. (path: '$fileFullPath', row: '$rowKey', key: '$key')");
+					throw new Exception("[".__CLASS__."] Translation key already defined. (path: '$fileFullPath', row: '$rowKey', key: '$key')");
 				}
 				$store[$key] = str_replace('\\n', "\n", $value);
 			}

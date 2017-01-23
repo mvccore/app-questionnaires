@@ -1,7 +1,12 @@
 # MvcCore - Application - Questionnaires & Statistics
 
+[![Latest Stable Version](https://img.shields.io/badge/Stable-v3.1.2-brightgreen.svg?style=plastic)](https://github.com/mvccore/app-questionnaires/releases)
+[![License](https://img.shields.io/badge/Licence-BSD-brightgreen.svg?style=plastic)](https://github.com/mvccore/app-questionnaires/blob/master/LICENCE.md)
+[![Packager Build](https://img.shields.io/badge/Packager%20Build-passing-brightgreen.svg?style=plastic)](https://github.com/mvccore/packager)
+![PHP Version](https://img.shields.io/badge/PHP->=5.3-brightgreen.svg?style=plastic)
+
 ## Features
-- questionnaires with anonymous statistics
+- [**MvcCore**](https://github.com/mvccore/mvccore) application managing questionnaires with anonymous statistics
 - all questionnaires and questions readed from XML (dynamic forms completing by XML content)
 - all answers stored in mysql/mssql database in 3 tables
 - each questionnaire shoud have any number of questions
@@ -18,35 +23,77 @@
 - each questionnaire has it's own statistics for each question/answer(s)
   - rendered with [**Ext.JS 6.0.0-gpl graphs API**](http://examples.sencha.com/extjs/6.0.2/examples/kitchensink/?charts=true#all)
 - questionnaire forms and statistic results have desktop and mobile version
-- all packing ways are possible to use:
-	- PHAR
-	- PHP
-		- strict package
-		- strict hdd
-		- preserve package (currently used for packed app in result dir)
-		- preserve hdd
+- result application **currently packed in preserve package mode**, 4 packing configurations included in `./.packager/`
+- packed with [**Packager library - mvccore/packager**](https://github.com/mvccore/packager)), all packing ways possible:
+  - **PHAR file**
+    - standard PHAR package with whole devel directory content
+  - **PHP file**
+    - **strict package**
+      - everything is contained in result `index.php`
+      - only `.htaccess` or `web.config` are necessary to use mod_rewrite
+    - **preserve package**
+      - result `index.php` file contains PHP files, 
+        PHTML templates but no CSS/JS/fonts or images
+      - all wrapped file system functions are looking inside 
+        package first, then they try to read data from HDD
+	  - currently used for packed app in result directory
+    - **preserve hdd**
+      - result `index.php` file contains PHP files, 
+        PHTML templates but no CSS/JS/fonts or images
+      - all wrapped file system functions are looking on HDD first, 
+        then they try to read data from package inself
+    - **strict hdd**
+      - result `index.php` file contains only PHP files, 
+        but PHTML templates, all CSS/JS/fonts and images are on HDD
+      - no PHP file system function is wrapped
 - XML files for questionnaires and their questions are excluded from index.php result package,
   to define any other questionnaires and questions in future, but rest of the application is portable, 
   it means everything else is contained in index.php result file.
 
 ## Instalation
 ```shell
-# load project
-composer require mvccore/app-questionnaires
+# load example
+composer create-project mvccore/app-questionnaires
 
-# update dependencies for packing
-composer update
+# go to project development directory
+cd app-questionnaires/development
 
-# go to development directory
-cd development
-
-# update dependencies for application sources
+# update dependencies for app development sources
 composer update
 ```
 
 ## Build
+
+### 1. Prepare application
+- go to `app-questionnaires/development`
+- clear everything in `./Var/Tmp/`
+- change `$app->Run();` to `$app->Run();` in `./index.php`
+- visit all aplication routes where are different JS/CSS bundles 
+  groups to generate `./Var/Tmp/` content for result app
+- run build process
+
+### 2. Build
+
+#### Linux:
 ```shell
+# go to project root directory
+cd app-questionnaires
+# run build process into single PHP file
 sh make.sh
-# or Windows:
+```
+
+#### Windows:
+```shell
+# go to project root directory
+cd app-questionnaires
+# run build process into single PHP file
 make.cmd
+```
+
+#### Browser:
+```shell
+# visit script `make-php.php` in your project root directory:
+http://localhost/app-questionnaires/make-php.php
+# now run your result in:
+http://localhost/app-questionnaires/release/
 ```

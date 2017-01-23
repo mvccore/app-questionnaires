@@ -3,12 +3,12 @@
 class App_Models_Object extends App_Models_Base
 {
     public static function GetByIds ($ids = array(), $key = 'Id') {
-		$records = self::getResource()->GetByIds($ids);
+		$records = self::GetResource()->GetByIds($ids);
 		if (!$records) return array();
 		$result = array();
 		foreach ($records as $record) {
 			$instance = new static();
-			$instance->setUp($record);
+			$instance->SetUp($record);
 			if ($key) {
 				$keyValue = $record[$key];
 				$result[$keyValue] = $instance;
@@ -19,10 +19,10 @@ class App_Models_Object extends App_Models_Base
 		return $result;
 	}
 	public static function GetById ($id = 0) {
-		$record = self::getResource()->GetById($id);
+		$record = self::GetResource()->GetById($id);
 		if (!$record) return FALSE;
 		$instance = new static();
-		$instance->setUp($record);
+		$instance->SetUp($record);
 		return $instance;
 	}
 }

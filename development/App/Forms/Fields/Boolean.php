@@ -12,7 +12,7 @@ class App_Forms_Fields_Boolean extends SimpleForm_RadioGroup
 		parent::__construct($cfg);
 		$this->SetValidators(array(function($submitValue, $fieldName, $field, SimpleForm & $form) {
 			$safeValue = strtolower(trim($submitValue));
-			if ($field->Required && !in_array($safeValue, array('yes', 'no'))) {
+			if (strlen($safeValue) > 0 && !in_array($safeValue, array('yes', 'no'))) {
 				$safeValue = '';
 				$errorMsg = SimpleForm::$DefaultMessages[SimpleForm::VALID];
 				if ($form->Translate) {

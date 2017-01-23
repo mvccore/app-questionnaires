@@ -10,7 +10,7 @@ class App_Controllers_Base extends MvcCore_Controller
 	/** @var App_Models_Document|App_Models_Questionnaire */
 	protected $document;
 
-	/** @var MvcCoreExt_Auth_User */
+	/** @var MvcCoreExt_Auth_Abstract_User */
 	protected $user = NULL;
 
 	protected $mediaSiteKey = '';
@@ -20,7 +20,6 @@ class App_Controllers_Base extends MvcCore_Controller
 	}
 	public function Init () {
 		parent::Init();
-		if ($this->request->Method !== MvcCore_Request::METHOD_GET) $this->DisableView();
 		self::$translator = App_Models_Translator::GetInstance();
 		$this->user = MvcCoreExt_Auth::GetInstance()->GetUser();
 		$this->mediaSiteKey = $this->request->MediaSiteKey;
@@ -48,7 +47,11 @@ class App_Controllers_Base extends MvcCore_Controller
 		$appCompilled = MvcCore::GetInstance()->GetCompiled();
 		if ((substr($appCompilled, 0, 3) !== 'PHP') && $appCompilled !== 'PHAR' && !file_exists($tmpAbsPath)) {
 			\Nette\Utils\SafeStream::register();
-			copy($file->getPathname(), 'nette.safe://' . $tmpAbsPath);
+			$tryCnt = 0;
+			while ($tryCnt++ < 3) {
+				if (copy($file->getPathname(), 'nette.safe://' . $tmpAbsPath)) break;
+				usleep(100);
+			}
 		}
 		if (!$this->view->$assetsType($assetsGroup)->Contains($tmpRelPath)) 
 			$this->view->$assetsType($assetsGroup)->Append($tmpRelPath);
@@ -71,19 +74,15 @@ class App_Controllers_Base extends MvcCore_Controller
 			->SetTemplatePath(
 				'auth/' . (is_null($this->user) ? 'signed-out' : 'signed-in' )
 			);
-		// add green-button for all buttons
-		/** @var $sendButton App_Forms_Fields_Submit */
-		$sendButton = $form->Fields['send'];
-		$sendButton->AddCssClass('button-green');
+		// add green-button css class for send button
+		$form->GetField('send')->AddCssClass('button-green');
 		// ini the form in view to render
 		$this->view->AuthForm = $form;
 	}
 	private function _setUpBundles () {
-		$cfg = MvcCore_Config::GetSystem();
-		$cfgAssets = $cfg->assets;
-		array_walk($cfgAssets, function (& $v, $k) { $v = intval($v); });
-		$cfgAssets->tmpDir = self::$tmpPath;
-		MvcCoreExt_ViewHelpers_Assets::SetGlobalOptions((array) $cfgAssets);
+		MvcCoreExt_ViewHelpers_Assets::SetGlobalOptions(
+			(array) MvcCore_Config::GetSystem()->assets
+		);
 		$static = self::$staticPath;
 		$this->view->Css('fixedHead')
 			->AppendRendered($static . '/fonts/myriadwebpro/declarations/bold.css')
@@ -105,8 +104,9 @@ class App_Controllers_Base extends MvcCore_Controller
 	}
 	private function _setUpCommonSeoProperties () {
 		$this->view->OgSiteName = '';
-		$domainUri = $this->request->Protocol . '://' . $this->request->Host;
-		$this->view->OgUrl = $domainUri . $this->request->Path;
-		if ($this->document) $this->document->OgImage = $domainUri . $this->document->OgImage;
+		$this->view->OgUrl = $this->request->RequestUrl;
+		if ($this->document) {
+			$this->document->OgImage = $this->request->DomainUrl . $this->document->OgImage;
+		}
 	}
 }

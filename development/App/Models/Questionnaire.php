@@ -18,7 +18,7 @@ class App_Models_Questionnaire extends App_Models_Document
 			if ($resultItem !== FALSE) {
 				if (isset($result[$resultItem->Id])) {
 					$id = $resultItem->Id;
-					throw new Exception ("[App_Models_Questionnaire] Questionnaire with Id: $id already defined.");
+					throw new Exception ("[".__CLASS__."] Questionnaire with Id: $id already defined.");
 				} else {
 					$result[$resultItem->Id] = $resultItem;
 				}
@@ -31,7 +31,7 @@ class App_Models_Questionnaire extends App_Models_Document
 		if (is_null($this->_url)) {
 			$pathWithoutFirstSlashDigitsAndDash = preg_replace("#^/([0-9]*)\-(.*)$#", "$2", $this->Path);
 			$this->_url = MvcCore::GetInstance()->GetController()->Url(
-				'Questionnaire::Default', 
+				'Questionnaire:Default', 
 				array('path' => $pathWithoutFirstSlashDigitsAndDash)
 			);
 		}
@@ -61,7 +61,7 @@ class App_Models_Questionnaire extends App_Models_Document
 			if ($resultItem !== FALSE) {
 				if (isset($result[$resultItem->Id])) {
 					$id = $resultItem->Id;
-					throw new Exception ("[App_Models_Questionnaire] Question with Id: $id already defined in path: '$path'.");
+					throw new Exception ("[".__CLASS__."] Question with Id: $id already defined in path: '$path'.");
 				} else {
 					$resultItem->Path = $path;
 					$resultItem->Questionnaire = $this;

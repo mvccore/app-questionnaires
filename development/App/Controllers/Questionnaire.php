@@ -45,11 +45,11 @@ class App_Controllers_Questionnaire extends App_Controllers_Base
 		$matchedQrs = App_Models_Questionnaire::GetByPathMatch("^([0-9]*)\-$this->path$");
 		
 		if (count($matchedQrs) === 0) {
-			MvcCore_Debug::Log("[App_Controllers_Questionnaire] No questionnaire found in path: '$this->path'.");
+			MvcCore_Debug::Log("[".__CLASS__."] No questionnaire found in path: '$this->path'.");
 			$this->view->Document = new App_Models_Document();
 			$this->renderNotFound();
 		} else if (count($matchedQrs) > 1) {
-			MvcCore_Debug::Log("[App_Controllers_Questionnaire] Ambiguous request to the questionnaire in path: '$this->path'..");
+			MvcCore_Debug::Log("[".__CLASS__."] Ambiguous request to the questionnaire in path: '$this->path'..");
 		}
 
 		$this->path = str_replace('\\-', '-', $this->path);
@@ -90,9 +90,9 @@ class App_Controllers_Questionnaire extends App_Controllers_Base
 			})
 			->SetLang(App_Controllers_Base::$Lang)
 			->SetMethod(SimpleForm::METHOD_POST)
-			->SetAction($this->Url('Questionnaire::Submit', array('path' => $this->path)))
-			->SetSuccessUrl($this->Url('Questionnaire::Completed', array('path' => $this->path)))
-			->SetErrorUrl($this->Url('Questionnaire::Default', array('path' => $this->path)))
+			->SetAction($this->Url('Questionnaire:Submit', array('path' => $this->path)))
+			->SetSuccessUrl($this->Url('Questionnaire:Completed', array('path' => $this->path)))
+			->SetErrorUrl($this->Url('Questionnaire:Default', array('path' => $this->path)))
 			->SetQuestions($this->questions);
 		$this->_questionnaireForm = $form;
 	}

@@ -27,6 +27,9 @@ class App_Controllers_Default extends App_Controllers_Base
 		}
 	}
 	public function DefaultAction () {
+		// all not routed requests are routed here by (Bootstrap.php):
+		// MvcCore_Router::GetInstance()->SetRouteToDefaultIfNotMatch();
+		// to get xml file about document to display by request path or render not found page.
 	}
 	public function HomeAction () {
 		$questionnaires =  App_Models_Questionnaire::GetAll();
@@ -38,8 +41,7 @@ class App_Controllers_Default extends App_Controllers_Base
 		} else if ($questionnairesCount === 1) {
 			// redirect to first questionnaire if there is only one
 			self::Redirect(
-				$questionnaires[0]->GetUrl(),
-				303
+				$questionnaires[0]->GetUrl()
 			);
 		} else {
 			// list links to questionnaires

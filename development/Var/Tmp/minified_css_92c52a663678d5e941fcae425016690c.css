@@ -1,10 +1,10 @@
 
 /* /static/fonts/awesome/declarations/all.css */
-@font-face{font-family:'FontAwesome';src:url('/index.php?controller=controller&action=asset&path=/static/fonts/awesome/font-files/awesome.eot');src:url('/index.php?controller=controller&action=asset&path=/static/fonts/awesome/font-files/awesome.eot?#iefix') format('embedded-opentype'),
-url('/index.php?controller=controller&action=asset&path=/static/fonts/awesome/font-files/awesome.woff2') format('woff2'),
-url('/index.php?controller=controller&action=asset&path=/static/fonts/awesome/font-files/awesome.woff') format('woff'),
-url('/index.php?controller=controller&action=asset&path=/static/fonts/awesome/font-files/awesome.ttf') format('truetype'),
-url('/index.php?controller=controller&action=asset&path=/static/fonts/awesome/font-files/awesome.svg#FontAwesome') format('svg');font-weight:normal;font-style:normal}
+@font-face{font-family:'FontAwesome';src:url('?controller=controller&action=asset&path=/static/fonts/awesome/font-files/awesome.eot');src:url('?controller=controller&action=asset&path=/static/fonts/awesome/font-files/awesome.eot?#iefix') format('embedded-opentype'),
+url('?controller=controller&action=asset&path=/static/fonts/awesome/font-files/awesome.woff2') format('woff2'),
+url('?controller=controller&action=asset&path=/static/fonts/awesome/font-files/awesome.woff') format('woff'),
+url('?controller=controller&action=asset&path=/static/fonts/awesome/font-files/awesome.ttf') format('truetype'),
+url('?controller=controller&action=asset&path=/static/fonts/awesome/font-files/awesome.svg#FontAwesome') format('svg');font-weight:normal;font-style:normal}
 
 /* /static/css/front/person.all.css */
 label.person_age,label.person_sex,label.person_edu,label.person_job{line-height:1.7em}.field.button
@@ -25,7 +25,7 @@ form.statistics
 0 10px 0}form.statistics .loading
 span{display:inline-block;line-height:20px;height:20px;padding:6px
 0 5px 40px;margin:0
-auto 0 auto;background:transparent url('/index.php?controller=controller&action=asset&path=/static/img/theme/loading.gif') 0 0 no-repeat}form.statistics
+auto 0 auto;background:transparent url('?controller=controller&action=asset&path=/static/img/theme/loading.gif') 0 0 no-repeat}form.statistics
 .field.button{overflow:hidden;display:table;margin:0
 auto 10px auto}form.statistics .field.button
 button.disabled{opacity:0.7}h2.questions-statistics{margin-top:0}.question-statistics-tab-title-icon{padding-top:4px}.question-statistics-tab-header

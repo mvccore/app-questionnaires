@@ -45,8 +45,8 @@ class App_Models_Question_Statistics extends App_Models_Base
 		$this->IdQuestion = $question->Id;
 
 		//parent::__construct(); // do not create resource in standard way
-		$this->cfg = self::getCfg(self::$connectionIndex);
-		$this->db = self::getDb(self::$connectionIndex);
+		$this->cfg = self::GetCfg(self::$connectionIndex);
+		$this->db = self::GetDb(self::$connectionIndex);
 		return $this;
 	}
 	public function Load (& $filterData) {
@@ -487,13 +487,13 @@ class App_Models_Question_Statistics extends App_Models_Base
 		}
 	}
 	private static function _getResource () {
-		$cfg = self::getCfg();
+		$cfg = self::GetCfg();
 		$resourceClassPath = '_Resource';
 		if ($cfg->driver == 'mysql') {
 			$resourceClassPath .= '_MySql';
 		} else if ($cfg->driver == 'mssql') {
 			$resourceClassPath .= '_MsSql';
 		}
-		return parent::getResource(func_get_arg(0), __CLASS__, $resourceClassPath);
+		return parent::GetResource(func_get_arg(0), __CLASS__, $resourceClassPath);
 	}
 }

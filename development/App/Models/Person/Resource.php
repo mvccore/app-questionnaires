@@ -38,7 +38,7 @@ class App_Models_Person_Resource extends App_Models_Base
 	{
 		$table = self::TABLE_PERSONS;
 		$sql = "SELECT Id,Created,Sex,Age,Education,Job FROM $table WHERE Id=:id";
-		$select = self::getDb()->prepare($sql);
+		$select = self::GetDb()->prepare($sql);
 		$select->execute(array(
 			':id'	=> $id,	
 		));
@@ -51,7 +51,7 @@ class App_Models_Person_Resource extends App_Models_Base
 			MAX(Age) AS MaxAge
 		FROM 
 			$table";
-		$select = self::getDb()->prepare($sql);
+		$select = self::GetDb()->prepare($sql);
 		$select->execute();
 		return $select->fetch(PDO::FETCH_ASSOC);
 	}
