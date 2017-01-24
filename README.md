@@ -71,7 +71,7 @@ composer update
 ### 1. Prepare application
 - go to `app-questionnaires/development`
 - clear everything in `./Var/Tmp/`
-- change `$app->Run();` to `$app->Run();` in `./index.php`
+- change `$app->Run();` to `$app->Run(1);` in `./index.php`
 - visit all aplication routes where are different JS/CSS bundles 
   groups to generate `./Var/Tmp/` content for result app
 - run build process
