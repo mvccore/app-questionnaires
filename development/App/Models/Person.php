@@ -1,6 +1,8 @@
 <?php
 
-class App_Models_Person extends App_Models_Base
+namespace App\Models;
+
+class Person extends Base
 {
 	/** @var int */
 	public $Id;

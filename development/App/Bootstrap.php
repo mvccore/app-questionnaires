@@ -1,6 +1,8 @@
 <?php
 
-class App_Bootstrap
+namespace App;
+
+class Bootstrap
 {
 	/**
 	 * All palication routes
@@ -9,22 +11,20 @@ class App_Bootstrap
 	protected static $routes = array();
 	
 	/**
-	 * Called before application start, before MvcCore::GetInstance()->Run(); in index.php
+	 * Called before application start, before \MvcCore::GetInstance()->Run(); in index.php
 	 * @return void
 	 */
 	public static function Init () {
 
-		$app = MvcCore::GetInstance();
+		$app = \MvcCore::GetInstance();
 		
-		if ($app->GetCompiled()) MvcCore_Config::SetEnvironment(MvcCore_Config::ENVIRONMENT_PRODUCTION);
+		if ($app->GetCompiled()) \MvcCore\Config::SetEnvironment(\MvcCore\Config::ENVIRONMENT_PRODUCTION);
 
-		$app->SetDebugClass(MvcCoreExt_Tracy::class)
-			->SetRequestClass(MvcCoreExt_ApacheDpi::class)
-			->SetRouterClass(MvcCoreExt_MediaAddress::class);
+		$app->SetDebugClass(\MvcCore\Ext\Debug\Tracy::class)
+			->SetRequestClass(\MvcCore\Ext\Request\ApacheDpi::class)
+			->SetRouterClass(\MvcCore\Ext\Router\Media::class);
 
-		MvcCore_View::AddHelpersClassBases('MvcCoreExt_ViewHelpers');
-
-		MvcCoreExt_MediaAddress::GetInstance()->SetStricModeBySession();
+		\MvcCore\Ext\Router\Media::GetInstance()->SetStricModeBySession();
 
 		/**
 		 * Place for manual routes setup
@@ -39,7 +39,7 @@ class App_Bootstrap
 		 *	- before static routes has been processed
 		 *  - before controller is created and dispatched by request params values
 		 */
-		MvcCore::AddPreRouteHandler(function (MvcCore_Request & $request, MvcCore_Response & $response) {
+		\MvcCore::AddPreRouteHandler(function (\MvcCore\Request & $request, \MvcCore\Response & $response) {
 		});
 		
 		/**
@@ -48,7 +48,7 @@ class App_Bootstrap
 		 *	- after static routes has been processed and request object is completed by current route
 		 *  - before controller is created and dispatched by request params values
 		 */
-		MvcCore::AddPreDispatchHandler(function (MvcCore_Request & $request, MvcCore_Response & $response) {
+		\MvcCore::AddPreDispatchHandler(function (\MvcCore\Request & $request, \MvcCore\Response & $response) {
 		});
 
 		/**
@@ -57,10 +57,10 @@ class App_Bootstrap
 		 *	- after controller and action is dispatched and rendered
 		 *  - before all headers are send and before response body is send
 		 */
-		MvcCore::AddPostDispatchHandler(function (MvcCore_Request & $request, MvcCore_Response & $response) {
+		\MvcCore::AddPostDispatchHandler(function (\MvcCore\Request & $request, \MvcCore\Response & $response) {
 			$response->UpdateHeaders();
 			if (!$response->IsRedirect() && $response->IsHtmlOutput()) {
-				if (class_exists('Minify_HTML')) $response->Body = Minify_HTML::minify($response->Body);
+				if (class_exists('\Minify_HTML')) $response->Body = \Minify_HTML::minify($response->Body);
 			}
 		});
 
@@ -68,8 +68,8 @@ class App_Bootstrap
 		 * Initialize authentication service extension
 		 * and set translator to translate sign in/sign out form visible elements.
 		 */
-		MvcCoreExt_Auth::GetInstance()->Init()->SetTranslator(function ($key, $lang = NULL) {
-			return App_Models_Translator::GetInstance()->Translate($key, $lang);
+		\MvcCore\Ext\Auth::GetInstance()->Init()->SetTranslator(function ($key, $lang = NULL) {
+			return \App\Models\Translator::GetInstance()->Translate($key, $lang);
 		});
 	}
 	/**
@@ -78,7 +78,7 @@ class App_Bootstrap
 	 */
 	protected static function setUpRoutes () {
 		self::$routes = array(
-			'Default:Home'			=> "#^/$#",
+			'Index:Home'			=> "#^/$#",
 			'Questionnaire:Submit'	=> array(
 				'pattern'			=> "#^/dotaznik/([a-zA-Z0-9\-_]*)/odeslat#",
 				'reverse'			=> '/dotaznik/{%path}/odeslat',
@@ -87,7 +87,7 @@ class App_Bootstrap
 				'pattern'			=> "#^/dotaznik/([a-zA-Z0-9\-_]*)/hotovo#",
 				'reverse'			=> '/dotaznik/{%path}/hotovo',
 			),
-			'Questionnaire:Default'=> array(
+			'Questionnaire:Index'=> array(
 				'pattern'			=> "#^/dotaznik/([a-zA-Z0-9\-_]*)#",
 				'reverse'			=> '/dotaznik/{%path}',
 			),
@@ -95,12 +95,12 @@ class App_Bootstrap
 				'pattern'			=> "#^/vysledky/([a-zA-Z0-9\-_]*)/odeslat#",
 				'reverse'			=> '/vysledky/{%path}/odeslat',
 			),
-			'Statistics:Default'	=> array(
+			'Statistics:Index'	=> array(
 				'pattern'			=> "#^/vysledky/([a-zA-Z0-9\-_]*)#",
 				'reverse'			=> '/vysledky/{%path}',
 			),
 		);
-		MvcCore_Router::GetInstance()
+		\MvcCore\Router::GetInstance()
 			->AddRoutes(self::$routes, TRUE)
 			->SetRouteToDefaultIfNotMatch();
 	}

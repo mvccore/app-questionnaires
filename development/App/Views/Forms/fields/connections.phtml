@@ -1,4 +1,4 @@
-<?php /** @var $this App_Forms_Fields_Connections */ ?>
+<?php /** @var $this \App\Forms\Fields\Connections */ ?>
 <?php echo $this->RenderLabel(); ?>
 <table class="options-and-connections">
 	<?php foreach ($this->Options as $key => $option): ?>
@@ -9,7 +9,7 @@
 			<td class="connection">
 				<?php
 					$connection = $this->Connections[$key];
-					$elmId = $this->Name . SimpleForm::HTML_IDS_DELIMITER . $key;
+					$elmId = $this->Name . \MvcCore\Ext\Form::HTML_IDS_DELIMITER . $key;
 					$value = isset($this->Value[$key]) ? $this->Value[$key] : '' ;
 					$errorClass = '';
 					if (

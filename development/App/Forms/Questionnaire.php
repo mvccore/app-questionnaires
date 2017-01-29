@@ -1,6 +1,12 @@
 <?php
 
-class App_Forms_Questionnaire extends App_Forms_Base
+namespace App\Forms;
+
+use \App\Forms\Fields,
+	\App\Models,
+	\MvcCore\Ext\Form;
+
+class Questionnaire extends Base
 {
 	public $Id = 'questionnaire';
 	public $CssClass = 'questionnaire';
@@ -14,14 +20,14 @@ class App_Forms_Questionnaire extends App_Forms_Base
 	public function Init () {
 		parent::Init();
 		$this->initColumnsCount();
-		$this->AddField(new SimpleForm_ResetButton(array(
+		$this->AddField(new Form\ResetButton(array(
 			'name'			=> 'reset',
 			'value'			=> 'Reset questionnaire',
 			'cssClasses'	=> array('button', 'button-green'),
 		)));
 		$this->initPersonFields();
 		$this->initQuestionsFields();
-		$this->AddField(new App_Forms_Fields_Submit(array(
+		$this->AddField(new Form\SubmitButton(array(
 			'name'			=> 'send',
 			'value'			=> 'Send questionnaire',
 			'cssClasses'	=> array('button', 'button-green'),
@@ -29,35 +35,35 @@ class App_Forms_Questionnaire extends App_Forms_Base
 		return $this;
 	}
 	protected function initPersonFields () {
-		$age = new SimpleForm_Number(array(
+		$age = new Form\Number(array(
 			'name'			=> 'person_age',
 			'label'			=> 'Age',
 			'required'		=> TRUE,
 			'cssClasses'	=> array('person', 'number', 'age'),
 			'controlWrapper'=> '{control}&nbsp;' . call_user_func($this->Translator, 'years'),
 		));
-		$sex = new SimpleForm_RadioGroup(array(
+		$sex = new Form\RadioGroup(array(
 			'name'			=> 'person_sex',
 			'label'			=> 'Sex',
 			'required'		=> TRUE,
 			'cssClasses'	=> array('person', 'radio-group', 'sex'),
-			'options'		=> App_Models_Person::$SexOptions,
+			'options'		=> Models\Person::$SexOptions,
 		));
-		$edu = new SimpleForm_RadioGroup(array(
+		$edu = new Form\RadioGroup(array(
 			'name'			=> 'person_edu',
 			'label'			=> 'Highest education level',
 			'required'		=> TRUE,
 			'cssClasses'	=> array('person', 'radio-group', 'edu'),
-			'options'		=> App_Models_Person::$EducationOptions,
+			'options'		=> Models\Person::$EducationOptions,
 			'templatePath'	=> 'fields/field-group-with-columns',
 			'columns'		=> $this->formColumnsCount,
 		));
-		$job = new SimpleForm_RadioGroup(array(
+		$job = new Form\RadioGroup(array(
 			'name'			=> 'person_job',
 			'label'			=> 'I am',
 			'required'		=> TRUE,
 			'cssClasses'	=> array('person', 'radio-group', 'job'),
-			'options'		=> App_Models_Person::$JobOptions,
+			'options'		=> Models\Person::$JobOptions,
 			'templatePath'	=> 'fields/field-group-with-columns',
 			'columns'		=> $this->formColumnsCount,
 		));
@@ -65,7 +71,7 @@ class App_Forms_Questionnaire extends App_Forms_Base
 	}
 	protected function initQuestionsFields () {
 		foreach ($this->questions as $key => $question) {
-			$typedInitMethod = 'initQuestionField' . MvcCore_Tool::GetPascalCaseFromDashed($question->Type);
+			$typedInitMethod = 'initQuestionField' . \MvcCore\Tool::GetPascalCaseFromDashed($question->Type);
 			$field = $this->$typedInitMethod($key, $question);
 			if ($field) {
 				$questionNumberAndText = $this->completeQuestionNumberAndTextCode($key, $question->Text);
@@ -90,59 +96,59 @@ class App_Forms_Questionnaire extends App_Forms_Base
 			'</span>'.
 		'</span>';
 	}
-	protected function initQuestionFieldConnections ($key, App_Models_Question & $question) {
-		return new App_Forms_Fields_Connections(array(
+	protected function initQuestionFieldConnections ($key, Models\Question & $question) {
+		return new Fields\Connections(array(
 			'options'		=> $question->Options,
 			'connections'	=> $question->Connections,
 		));
 	}
-	protected function initQuestionFieldBoolean ($key, App_Models_Question & $question) {
-		return new App_Forms_Fields_Boolean(array(
+	protected function initQuestionFieldBoolean ($key, Models\Question & $question) {
+		return new Fields\Boolean(array(
 			'templatePath'	=> 'fields/field-group-with-columns',
 			'columns'		=> $this->formColumnsCount,
 		));
 	}
-	protected function initQuestionFieldText ($key, App_Models_Question & $question) {
-		return new SimpleForm_Text(array(
+	protected function initQuestionFieldText ($key, Models\Question & $question) {
+		return new Form\Text(array(
 			'maxlength'	=> $question->MaxLength,
-			'renderMode'=> SimpleForm::FIELD_RENDER_MODE_NORMAL,
+			'renderMode'=> Form::FIELD_RENDER_MODE_NORMAL,
 		));
 	}
-	protected function initQuestionFieldBooleanAndText ($key, App_Models_Question & $question) {
-		return new App_Forms_Fields_BooleanAndText(array(
+	protected function initQuestionFieldBooleanAndText ($key, Models\Question & $question) {
+		return new Fields\BooleanAndText(array(
 			'templatePath'	=> 'fields/field-group-with-columns',
 			'columns'		=> $this->formColumnsCount,
 		));
 	}
-	protected function initQuestionFieldCheckboxes ($key, App_Models_Question & $question) {
-		return new SimpleForm_CheckboxGroup(array(
+	protected function initQuestionFieldCheckboxes ($key, Models\Question & $question) {
+		return new Form\CheckboxGroup(array(
 			'options'		=> $question->Checkboxes,
 			'templatePath'	=> 'fields/field-group-with-columns',
 			'columns'		=> $this->formColumnsCount,
 		));
 	}
-	protected function initQuestionFieldInteger ($key, App_Models_Question & $question) {
-		return new SimpleForm_Number(array(
+	protected function initQuestionFieldInteger ($key, Models\Question & $question) {
+		return new Form\Number(array(
 			'min'		=> $question->Min,
 			'max'		=> $question->Max,
 			'wrapper'	=> $question->Body,
-			'renderMode'=> SimpleForm::FIELD_RENDER_MODE_NORMAL,
+			'renderMode'=> Form::FIELD_RENDER_MODE_NORMAL,
 		));
 	}
-	protected function initQuestionFieldFloat ($key, App_Models_Question & $question) {
+	protected function initQuestionFieldFloat ($key, Models\Question & $question) {
 		return $this->initQuestionFieldInteger($key, $question);
 	}
-	protected function initQuestionFieldRadios ($key, App_Models_Question & $question) {
-		return new SimpleForm_RadioGroup(array(
+	protected function initQuestionFieldRadios ($key, Models\Question & $question) {
+		return new Form\RadioGroup(array(
 			'options'		=> $question->Radios,
 			'templatePath'	=> 'fields/field-group-with-columns',
 			'columns'		=> 1,
 		));
 	}
-	protected function initQuestionFieldTextarea ($key, App_Models_Question & $question) {
-		return new SimpleForm_Textarea(array(
+	protected function initQuestionFieldTextarea ($key, Models\Question & $question) {
+		return new Form\Textarea(array(
 			'maxlength'	=> $question->MaxLength,
-			'renderMode'=> SimpleForm::FIELD_RENDER_MODE_NORMAL,
+			'renderMode'=> Form::FIELD_RENDER_MODE_NORMAL,
 		));
 	}
 }

@@ -1,9 +1,13 @@
 <?php
 
-class App_Models_Question_Statistics_Resource_MySql extends App_Models_Question_Statistics_Resource
+namespace App\Models\Question\Statistics\Resource;
+
+use \App\Models\Question\Statistics;
+
+class MySql extends Statistics\Resource
 {
 	public function LoadStatisticsForInteger () {
-		$result = new stdClass;
+		$result = new \stdClass;
 		$resultColumns = array(
 			'`a`.`Integer` AS `Value`', 
 			'COUNT(`a`.`Integer`) AS `Count`'
@@ -23,7 +27,7 @@ class App_Models_Question_Statistics_Resource_MySql extends App_Models_Question_
 		return $result;
 	}
 	public function LoadStatisticsForFloat () {
-		$result = new stdClass;
+		$result = new \stdClass;
 		$resultColumns = array(
 			'`a`.`Float` AS `Value`', 
 			'COUNT(`a`.`Float`) AS `Count`',
@@ -43,7 +47,7 @@ class App_Models_Question_Statistics_Resource_MySql extends App_Models_Question_
 		return $result;
 	}
 	public function LoadStatisticsForText () {
-		$result = new stdClass;
+		$result = new \stdClass;
 		$allAnswersNotCompared = $this->getStatisticsAllAnswers(
 			array(
 				'`a`.`Varchar` AS `Value`', 
@@ -73,7 +77,7 @@ class App_Models_Question_Statistics_Resource_MySql extends App_Models_Question_
 		return $result;
 	}
 	public function LoadStatisticsForTextarea () {
-		$result = new stdClass;
+		$result = new \stdClass;
 		$allAnswersNotCompared = $this->getStatisticsAllAnswers(
 			array(
 				'`a`.`Text` AS `Value`', 
@@ -95,7 +99,7 @@ class App_Models_Question_Statistics_Resource_MySql extends App_Models_Question_
 		return $result;
 	}
 	public function LoadStatisticsForBoolean () {
-		$result = new stdClass;
+		$result = new \stdClass;
 		$resultColumns = array(
 			'`a`.`Boolean` AS `Value`', 
 			'COUNT(`a`.`Boolean`) AS `Count`'
@@ -130,7 +134,7 @@ class App_Models_Question_Statistics_Resource_MySql extends App_Models_Question_
 		return $result;
 	}
 	public function LoadStatisticsForRadios () {
-		$result = new stdClass;
+		$result = new \stdClass;
 		$result->Overview = $this->_getStatisticsForOptionsBasedAllAnswers();
 		if (isset($this->question->Solution) && $this->user) {
 			$result->CorrectAnswersCount = $this->getStatisticsAllAnswers(
@@ -144,7 +148,7 @@ class App_Models_Question_Statistics_Resource_MySql extends App_Models_Question_
 		return $result;
 	}
 	public function LoadStatisticsForConnections () {
-		$result = new stdClass;
+		$result = new \stdClass;
 		$result->PresentedOptionsCounts = $this->_getStatisticsForOptionsBasedAllAnswers();
 		$result->PresentedAnswersCounts = $this->_getStatisticsForIntegersBasedAllAnswers();
 		$result->PersonsAnswersCounts = $this->getStatisticsForConnectionsPeopleAnswering(FALSE);
@@ -156,7 +160,7 @@ class App_Models_Question_Statistics_Resource_MySql extends App_Models_Question_
 		return $result;
 	}
 	public function LoadStatisticsForCheckboxes () {
-		$result = new stdClass;
+		$result = new \stdClass;
 		$result->Overview = $this->_getStatisticsForOptionsBasedAllAnswers();
 		$result->SelectedOptionsCountsInAnswer = $this->getStatisticsForSelectedOptionsCountsInAnswer();
 		if (isset($this->question->Solution) && $this->user) {
@@ -195,7 +199,7 @@ class App_Models_Question_Statistics_Resource_MySql extends App_Models_Question_
 			':id_questionnaire2'=> $this->idQuestionnaire,
 			':id_question2'		=> $this->idQuestion,
 		));
-		return self::setUpResultTypes($select->fetchAll(PDO::FETCH_ASSOC));
+		return self::setUpResultTypes($select->fetchAll(\PDO::FETCH_ASSOC));
 	}
 	protected function getStatisticsForConnectionsPeopleAnswering ($onlyCorrectAnswers = TRUE) {
 		$sql = parent::getStatisticsForConnectionsPeopleAnswering($onlyCorrectAnswers);
@@ -205,7 +209,7 @@ class App_Models_Question_Statistics_Resource_MySql extends App_Models_Question_
 			':id_questionnaire'	=> $this->idQuestionnaire,
 			':id_question'		=> $this->idQuestion,
 		));
-		return self::setUpResultTypes($select->fetchAll(PDO::FETCH_ASSOC));
+		return self::setUpResultTypes($select->fetchAll(\PDO::FETCH_ASSOC));
 	}
 	protected function getStatisticsForConnectionsMostOfftenConnections () {
 		$sql = parent::getStatisticsForConnectionsMostOfftenConnections();
@@ -215,7 +219,7 @@ class App_Models_Question_Statistics_Resource_MySql extends App_Models_Question_
 			':id_questionnaire'	=> $this->idQuestionnaire,
 			':id_question'		=> $this->idQuestion,
 		));
-		return self::setUpResultTypes($select->fetchAll(PDO::FETCH_ASSOC));
+		return self::setUpResultTypes($select->fetchAll(\PDO::FETCH_ASSOC));
 	}
 	protected function getStatisticsForCheckboxesOptionsCorrectness () {
 		$sql = parent::getStatisticsForCheckboxesOptionsCorrectness();
@@ -225,7 +229,7 @@ class App_Models_Question_Statistics_Resource_MySql extends App_Models_Question_
 			':id_questionnaire'	=> $this->idQuestionnaire,
 			':id_question'		=> $this->idQuestion,
 		));
-		return self::setUpResultTypes($select->fetchAll(PDO::FETCH_ASSOC));
+		return self::setUpResultTypes($select->fetchAll(\PDO::FETCH_ASSOC));
 	}
 
 	protected function getStatisticsForCheckboxesPeopleCorrectness () {
@@ -238,7 +242,7 @@ class App_Models_Question_Statistics_Resource_MySql extends App_Models_Question_
 			':id_questionnaire2'=> $this->idQuestionnaire,
 			':id_question2'		=> $this->idQuestion,
 		));
-		$rawResult = $select->fetchAll(PDO::FETCH_ASSOC);
+		$rawResult = $select->fetchAll(\PDO::FETCH_ASSOC);
 		foreach ($rawResult as & $item) {
 			list ($correct, $incorrect) = explode('_', $item['PersonsCorrectAndIncorrectAnswersCounts']);
 			$item['CorrectlyAnsweredOptions'] = $correct;

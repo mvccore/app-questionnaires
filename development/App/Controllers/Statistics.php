@@ -1,18 +1,23 @@
 <?php
 
-class App_Controllers_Statistics extends App_Controllers_Questionnaire
+namespace App\Controllers;
+
+use \App\Forms,
+	\App\Models;
+
+class Statistics extends Questionnaire
 {
 	/**
-	 * @var App_Forms_Statistics
+	 * @var \App\Forms\Statistics
 	 */
 	private $_filterForm;
 	private $_minAndMaxAges;
 
 	public function Init () {
 		parent::Init();
-		$this->_minAndMaxAges = App_Models_Person::GetMinAndMaxAges();
+		$this->_minAndMaxAges = Models\Person::GetMinAndMaxAges();
 	}
-	public function DefaultAction () {
+	public function IndexAction () {
 		$this->view->Questionnaire = $this->questionnaire;
 		$this->view->FilterForm = $this->_filterForm;
 		// complete javascript configuration data for Ext.JS app names: 'statistics':
@@ -54,9 +59,9 @@ class App_Controllers_Statistics extends App_Controllers_Questionnaire
 		$success = FALSE;
 
 		$statistics = NULL;
-		if ($question instanceof App_Models_Question) {
+		if ($question instanceof Models\Question) {
 			$success = TRUE;
-			$statistics = App_Models_Question_Statistics::GetInstance($this->user, $question)->Load($filterFormData);
+			$statistics = Models\Question\Statistics::GetInstance($this->user, $question)->Load($filterFormData);
 			// translate all summary table labels
 			if (isset($statistics->Summary)) {
 				foreach ($statistics->Summary as & $item) $item[0] = $this->Translate($item[0]);
@@ -110,7 +115,7 @@ class App_Controllers_Statistics extends App_Controllers_Questionnaire
 			$extTmpPath = self::$tmpPath . '/' . $extJsFilename;
 			$chartsTmpPath = self::$tmpPath . '/' . $chartsJsFilename;
 
-			if (MvcCore_Config::IsDevelopment()) {
+			if (\MvcCore\Config::IsDevelopment()) {
 				if (!file_exists($appRoot . $extTmpPath)) copy($appRoot . $extSrcPath, $appRoot . $extTmpPath);
 				if (!file_exists($appRoot . $chartsTmpPath)) copy($appRoot . $chartsSrcPath, $appRoot . $chartsTmpPath);
 			}
@@ -163,27 +168,27 @@ class App_Controllers_Statistics extends App_Controllers_Questionnaire
 		}
 	}
 	protected function setUpForm () {
-		$form = new App_Forms_Statistics($this);
+		$form = new Forms\Statistics($this);
 		$form
 			->SetTranslator(function ($key = '', $lang = '') {
-				return $this->Translate($key, $lang ? $lang : App_Controllers_Base::$Lang);
+				return $this->Translate($key, $lang ? $lang : Base::$Lang);
 			})
-			->SetJsRenderer(function (SplFileInfo $jsFile) {
+			->SetJsRenderer(function (\SplFileInfo $jsFile) {
 				$this->addAsset('Js', 'varHead', $jsFile);
 			})
-			->SetCssRenderer(function (SplFileInfo $cssFile) {
+			->SetCssRenderer(function (\SplFileInfo $cssFile) {
 				$this->addAsset('Css', 'varHead', $cssFile);
 			})
-			->SetLang(App_Controllers_Base::$Lang)
-			->SetMethod(SimpleForm::METHOD_GET)
+			->SetLang(Base::$Lang)
+			->SetMethod(\MvcCore\Ext\Form::METHOD_GET)
 			->SetAction($this->Url('Statistics:Submit', array('path' => $this->path)))
-			->SetSuccessUrl($this->Url('Statistics:Default', array('path' => $this->path)))
+			->SetSuccessUrl($this->Url('Statistics:Index', array('path' => $this->path)))
 			->Init($this->_minAndMaxAges)
 			->SetDefaults(array(
 				'age'		=> $this->_minAndMaxAges,
-				'sex'		=> array_keys(App_Models_Person::$SexOptions),
-				'education'	=> array_keys(App_Models_Person::$EducationOptions),
-				'job'		=> array_keys(App_Models_Person::$JobOptions),
+				'sex'		=> array_keys(Models\Person::$SexOptions),
+				'education'	=> array_keys(Models\Person::$EducationOptions),
+				'job'		=> array_keys(Models\Person::$JobOptions),
 			));
 		$this->_filterForm = $form;
 	}
@@ -197,11 +202,11 @@ class App_Controllers_Statistics extends App_Controllers_Questionnaire
 			if ($key == 'age') {
 				if ($this->_minAndMaxAges[0] == $values[0] && $this->_minAndMaxAges[1] == $values[1]) unset($filterData[$key]);
 			} else if ($key == 'sex') {
-				if ($valuesCount == count(App_Models_Person::$SexOptions)) unset($filterData[$key]);
+				if ($valuesCount == count(Models\Person::$SexOptions)) unset($filterData[$key]);
 			} else if ($key == 'education') {
-				if ($valuesCount == count(App_Models_Person::$EducationOptions)) unset($filterData[$key]);
+				if ($valuesCount == count(Models\Person::$EducationOptions)) unset($filterData[$key]);
 			} else if ($key == 'job') {
-				if ($valuesCount == count(App_Models_Person::$JobOptions)) unset($filterData[$key]);
+				if ($valuesCount == count(Models\Person::$JobOptions)) unset($filterData[$key]);
 			}
 		}
 		return $filterData;

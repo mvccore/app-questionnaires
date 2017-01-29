@@ -1,4 +1,4 @@
-<?php /** @var $this MvcCore_View */ ?>
+<?php /** @var $this \MvcCore\View */ ?>
 <h1>Děkujeme</h1>
 <p>
 	Děkujeme za Vaše odpovědi, dotazník je vyhodnocován anonymně.
@@ -6,7 +6,7 @@
 <p>
 	Pokud by Vás zajímalo, jak odpověděli další lidé před Vámi, <br />
 	<a href="<?php
-		echo $this->Url('Statistics:Default', array('path' => $this->Path));
+		echo $this->Url('Statistics:Index', array('path' => $this->Path));
 	?>">výsledky můžete shlédnout zde</a>.
 </p>
 <p>

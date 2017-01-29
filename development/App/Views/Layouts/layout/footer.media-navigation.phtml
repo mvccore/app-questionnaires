@@ -1,10 +1,10 @@
-<?php /** @var $this MvcCore_View */ ?>
+<?php /** @var $this \MvcCore\View */ ?>
 <div class="mc-footer-media-navigation"><?php
 	$newParams = array_merge(array(), $this->Request->Params);
 	unset($newParams['controller'], $newParams['action']);
 	$navigationItems = array(
-		MediaSiteKey::FULL		=> $this->Translate('classic'),
-		MediaSiteKey::MOBILE	=> $this->Translate('mobile'),
+		\MvcCore\Ext\Router\MediaSiteKey::FULL		=> $this->Translate('classic'),
+		\MvcCore\Ext\Router\MediaSiteKey::MOBILE	=> $this->Translate('mobile'),
 	);
 	echo $this->Translate('Display') . ': ';
 	$i = 0;
@@ -20,8 +20,8 @@
 				echo $this->Url(
 					'self', 
 					array_merge($newParams, array(
-						MvcCoreExt_MediaAddress::MEDIA_SITE_KEY_URL_PARAM			=> $key, 
-						MvcCoreExt_MediaAddress::MEDIA_SITE_KEY_SWITCH_URL_PARAM	=> $key,
+						\MvcCore\Ext\Router\Media::MEDIA_SITE_KEY_URL_PARAM			=> $key, 
+						\MvcCore\Ext\Router\Media::MEDIA_SITE_KEY_SWITCH_URL_PARAM	=> $key,
 					))
 				);
 			?>"><?php

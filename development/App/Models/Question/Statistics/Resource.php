@@ -1,6 +1,10 @@
 <?php
 
-class App_Models_Question_Statistics_Resource extends App_Models_Base
+namespace App\Models\Question\Statistics;
+
+use App\Models;
+
+class Resource extends Models\Base
 {
 	const LEVENSTHEIN_COMPARATION_TOLERANCE_DEFAULT = 2;
 	/**
@@ -8,7 +12,7 @@ class App_Models_Question_Statistics_Resource extends App_Models_Base
 	 */
 	protected static $columnsTypes = array();
 	/**
-	 * @var App_Models_Question
+	 * @var \App\Models\Question
 	 */
 	protected $question = NULL;
 	/**
@@ -34,7 +38,7 @@ class App_Models_Question_Statistics_Resource extends App_Models_Base
 
 	// faster method variant:
 	public static final function GetInstance () {
-		/** @var $user MvcCoreExt_Auth_User */
+		/** @var $user \MvcCore\Ext\Auth\User */
 		list($question, $filterData, $user) = func_get_args();
 		$instanceIndex = md5(implode('_', array(
 			__CLASS__,
@@ -48,7 +52,7 @@ class App_Models_Question_Statistics_Resource extends App_Models_Base
 		}
 		return self::$instances[$instanceIndex];
 	}
-	public function __construct (App_Models_Question & $question = NULL, $filterData = NULL, $user = array()) {
+	public function __construct (Models\Question & $question = NULL, $filterData = NULL, $user = array()) {
 		parent::__construct();
 		$this->question = $question;
 		$this->idQuestionnaire = $question->Questionnaire->Id;
@@ -110,7 +114,7 @@ class App_Models_Question_Statistics_Resource extends App_Models_Base
 		}
 		$select = $this->db->prepare($sql);
 		$select->execute();
-		$rawData = $select->fetchAll(PDO::FETCH_ASSOC);
+		$rawData = $select->fetchAll(\PDO::FETCH_ASSOC);
 		foreach ($rawData as $item) {
 			self::$columnsTypes[$item['ColumnName']] = $item['DataType'];
 		}
@@ -226,7 +230,7 @@ class App_Models_Question_Statistics_Resource extends App_Models_Base
 			xcv(str_replace(array(':id_questionnaire', ':id_question'), array($this->idQuestionnaire, $this->idQuestion), $sql));
 		}*/
 		if ($fetchMethod == 'fetchAll') {
-			return self::setUpResultTypes($select->fetchAll(PDO::FETCH_ASSOC));
+			return self::setUpResultTypes($select->fetchAll(\PDO::FETCH_ASSOC));
 		} else if ($fetchMethod == 'fetchColumn') {
 			return intval($select->fetchColumn());
 		} else {
@@ -269,7 +273,7 @@ class App_Models_Question_Statistics_Resource extends App_Models_Base
 		/*if ($this->question->Id == 14) {
 			xcv(str_replace(array(':id_questionnaire', ':id_question'), array($this->idQuestionnaire, $this->idQuestion), $sql));
 		}*/
-		return self::setUpResultTypes($select->fetchAll(PDO::FETCH_ASSOC));
+		return self::setUpResultTypes($select->fetchAll(\PDO::FETCH_ASSOC));
 	}
 	protected function getStatisticsForConnectionsPeopleAnswering ($onlyCorrectAnswers = TRUE) {
 		// complete all possible answered counts sql array command
@@ -621,7 +625,7 @@ class App_Models_Question_Statistics_Resource extends App_Models_Base
 			$result->Overview[1] = $negativeRecord;
 		}
 		// translate true and false into words
-		$translator = App_Models_Translator::GetInstance();
+		$translator = Models\Translator::GetInstance();
 		foreach ($result->Overview as & $item) {
 			$item['Value'] = $translator->Translate($item['Value'] ? 'Yes' : 'No');
 		}
@@ -700,7 +704,7 @@ class App_Models_Question_Statistics_Resource extends App_Models_Base
 			$parentSql = "$childSql;";
 			$select = $this->db->prepare($parentSql);
 			$select->execute($sqlParams);
-			$rawResult = $select->fetchAll(PDO::FETCH_ASSOC);
+			$rawResult = $select->fetchAll(\PDO::FETCH_ASSOC);
 			$personsIds = array();
 			foreach ($rawResult as & $item) {
 				$primaryValue = $item['Varchar'];

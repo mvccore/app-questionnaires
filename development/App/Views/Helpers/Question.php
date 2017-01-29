@@ -1,6 +1,8 @@
 <?php
 
-class App_Views_Helpers_Question
+namespace App\Views\Helpers;
+
+class Question
 {
 	const KEY = "question";
 	const GLUE = "_";

@@ -1,22 +1,24 @@
 <?php
 
-class App_Models_Question_Statistics extends App_Models_Base
+namespace App\Models\Question;
+
+use App\Models;
+
+class Statistics extends Models\Base
 {
 	public $IdQuestionnaire;
 	public $IdQuestion;
 
 	/**
-	 * @var MvcCoreExt_Auth_User
+	 * @var \MvcCore\Ext\Auth\User
 	 */
 	protected $user = array();
 	/**
-	 * @var App_Models_Question
+	 * @var \App\Models\Question
 	 */
 	protected $question = NULL;
 	/**
-	 * App_Models_Question_Statistics_(MsSql|MySql)_Resource
-	 * 
-	 * @var App_Models_Question_Statistics_Resource
+	 * @var \App\Models\Question\Statistics\Resource\MsSql|\App\Models\Question\Statistics\Resource\MySql
 	 */
 	protected $resource = NULL;
 	/**
@@ -29,6 +31,7 @@ class App_Models_Question_Statistics extends App_Models_Base
 	protected $questionnaireAnsweringPersonsCount = -1;
 
 	// faster parent method variant:
+	/** @return \App\Models\Question\Statistics */
 	public static final function GetInstance () {
 		list($user, $question) = func_get_args();
 		$username = !is_null($user) ? $user->UserName : '';
@@ -38,7 +41,7 @@ class App_Models_Question_Statistics extends App_Models_Base
 		}
 		return self::$instances[$instanceIndex];
 	}
-	public function __construct (MvcCoreExt_Auth_User & $user = NULL, App_Models_Question & $question = NULL) {
+	public function __construct (\MvcCore\Ext\Auth\User & $user = NULL, Models\Question & $question = NULL) {
 		$this->user = & $user;
 		$this->question = & $question;
 		$this->IdQuestionnaire = $question->Questionnaire->Id;
@@ -53,14 +56,14 @@ class App_Models_Question_Statistics extends App_Models_Base
 		$resource = self::_getResource(array($this->question, $filterData, $this->user));
 		$this->questionnaireAnsweringPersonsCount	= $resource->LoadAllQuestionnairePersonsCount();
 		$this->questionAnsweringPersonsCount		= $resource->LoadQuestionAnsweringPersonsCount();
-		$methodsNameLastPart = MvcCore_Tool::GetPascalCaseFromDashed($this->question->Type);
+		$methodsNameLastPart = \MvcCore\Tool::GetPascalCaseFromDashed($this->question->Type);
 		$loadMethodName = 'LoadStatisticsFor' . $methodsNameLastPart;
 		$handleMethodName = 'HandleStatisticsFor' . $methodsNameLastPart;
 		$resourceData = $resource->$loadMethodName();
 		return $this->$handleMethodName($resourceData);
 	}
 	public function HandleStatisticsForConnections (& $result) {
-		$translator = App_Models_Translator::GetInstance();
+		$translator = Models\Translator::GetInstance();
 		$this->_setUpGraphsValuesByQuestionOptions($result->PresentedOptionsCounts, 'Options');
 		$this->_setUpGraphsValuesByQuestionOptions($result->PresentedAnswersCounts, 'Connections');
 		$this->_setUpGraphsPercentageValuesInSingleGraphsData($result->PresentedOptionsCounts, FALSE, $this->questionnaireAnsweringPersonsCount);
@@ -114,7 +117,7 @@ class App_Models_Question_Statistics extends App_Models_Base
 		return $result;
 	}
 	public function HandleStatisticsForCheckboxes (& $result) {
-		$translator = App_Models_Translator::GetInstance();
+		$translator = Models\Translator::GetInstance();
 		$this->_setUpGraphsValuesByQuestionOptions($result->Overview, 'Checkboxes');
 		if ($this->questionnaireAnsweringPersonsCount - $this->questionAnsweringPersonsCount > 0) {
 			array_unshift($result->SelectedOptionsCountsInAnswer, array(
@@ -162,7 +165,7 @@ class App_Models_Question_Statistics extends App_Models_Base
 		return $result;
 	}
 	public function HandleStatisticsForRadios (& $result) {
-		$translator = App_Models_Translator::GetInstance();
+		$translator = Models\Translator::GetInstance();
 		$this->_setUpGraphsValuesByQuestionOptions($result->Overview, 'Radios');
 		if ($this->questionnaireAnsweringPersonsCount - $this->questionAnsweringPersonsCount > 0) {
 			array_unshift($result->Overview, array(
@@ -212,7 +215,7 @@ class App_Models_Question_Statistics extends App_Models_Base
 	}
 	public function HandleStatisticsForBoolean (& $result) {
 		// add no answers counts
-		$translator = App_Models_Translator::GetInstance();
+		$translator = Models\Translator::GetInstance();
 		$result->Overview[] =  array(
 			'Value'	=> $translator->Translate('No answer'),
 			'Count'	=> $this->questionnaireAnsweringPersonsCount - $this->questionAnsweringPersonsCount,
@@ -244,7 +247,7 @@ class App_Models_Question_Statistics extends App_Models_Base
 		return $result;
 	}
 	public function HandleStatisticsForBooleanAndText (& $result) {
-		$translator = App_Models_Translator::GetInstance();
+		$translator = Models\Translator::GetInstance();
 		if ($this->user) {
 			if (isset($this->question->Solution)) {
 				$correctPersonsCount = $result->CorrectPersonsCount;
@@ -275,7 +278,7 @@ class App_Models_Question_Statistics extends App_Models_Base
 				array('No answers count',		$noAnswersCount, 100 - $answeredPersonsPercentage),
 			);
 			if (isset($this->question->Solution)) {
-				$translator = App_Models_Translator::GetInstance();
+				$translator = Models\Translator::GetInstance();
 				$correctPersonsCount = $result->CorrectPersonsCount;
 				$incorectPersonscount = $this->questionnaireAnsweringPersonsCount - $result->CorrectPersonsCount;
 				$result->CorrectAnswers = array(
@@ -309,7 +312,7 @@ class App_Models_Question_Statistics extends App_Models_Base
 		return $result;
 	}
 	private function _handleStatisticsForIntegerAndFloat (& $result) {
-		$translator = App_Models_Translator::GetInstance();
+		$translator = Models\Translator::GetInstance();
 		if ($this->questionnaireAnsweringPersonsCount - $this->questionAnsweringPersonsCount > 0) {
 			array_unshift($result->Overview, array(
 				'Value'	=> $translator->Translate('No answer'),
@@ -351,7 +354,7 @@ class App_Models_Question_Statistics extends App_Models_Base
 		return $result;
 	}
 	private function _handleStatisticsForConnectionsManageMostOfftenConnections (& $result) {
-		$translator = App_Models_Translator::GetInstance();
+		$translator = Models\Translator::GetInstance();
 		$counter = 0;
 		$newMostOfftenConnections = array();
 		$addCorrectness = $this->user && isset($this->question->Solution);
@@ -396,7 +399,7 @@ class App_Models_Question_Statistics extends App_Models_Base
 		$result->MostOfftenConnections = $newMostOfftenConnections;
 	}
 	private function _handleStatisticsForConnectionsManageConnectionsCorrectness (& $result) {
-		$translator = App_Models_Translator::GetInstance();
+		$translator = Models\Translator::GetInstance();
 		foreach ($result->ConnectionsCorrectness as & $item) {
 			$optionIndex = $item['Value'];
 			$questionSolutionOptionValue = $this->question->Solution[$optionIndex];
@@ -420,7 +423,7 @@ class App_Models_Question_Statistics extends App_Models_Base
 		// for each property and value containing 'count' word in $key - complete total count
 		$totalCounts = array();
 		if ($totalCount == -1) {
-			foreach ($graphData as $dataKey1 => & $dataItem1) {
+			foreach ($graphData as & $dataItem1) {
 				foreach ($dataItem1 as $key => $item) {
 					if (strpos($key, 'Count') !== FALSE) {
 						if (!isset($totalCounts[$key])) $totalCounts[$key] = 0;
@@ -431,7 +434,7 @@ class App_Models_Question_Statistics extends App_Models_Base
 		}
 		// for each property and value containing 'count' word in $key - make percentage and label equivalent
 		foreach ($graphData as $dataKey2 => & $dataItem2) {
-			$newDataItem = new stdClass;
+			$newDataItem = new \stdClass;
 			foreach ($dataItem2 as $key => $item) {
 				if (strpos($key, 'Count') !== FALSE) {
 					$itemTotalCount = $totalCount > -1 ? $totalCount : $totalCounts[$key];
@@ -458,7 +461,7 @@ class App_Models_Question_Statistics extends App_Models_Base
 	}
 	private function _setUpGraphsValuesByQuestionOptions (& $graphData, $optionsKey = '') {
 		$questionOptions = $this->question->$optionsKey;
-		foreach ($graphData as $dataKey => & $dataItem) {
+		foreach ($graphData as & $dataItem) {
 			$value = $dataItem['Value'];
 			if (isset($questionOptions[$value])) {
 				$dataItem['Value'] = trim($questionOptions[$value]);
@@ -466,7 +469,7 @@ class App_Models_Question_Statistics extends App_Models_Base
 		}
 	}
 	private function _setUpInvolvedPieGraphDataAndTranslations (& $result) {
-		$translator = App_Models_Translator::GetInstance();
+		$translator = Models\Translator::GetInstance();
 		$result->Involved = array(
 			array(
 				'Value' => $translator->Translate('Answered'),
@@ -481,18 +484,18 @@ class App_Models_Question_Statistics extends App_Models_Base
 	}
 	private function _addTranslationsIntoResult (& $result, $translations = array()) {
 		if (!isset($result->Translations)) $result->Translations = array();
-		$translator = App_Models_Translator::GetInstance();
+		$translator = Models\Translator::GetInstance();
 		foreach ($translations as $translation) {
 			$result->Translations[$translation] = $translator->Translate($translation);
 		}
 	}
 	private static function _getResource () {
 		$cfg = self::GetCfg();
-		$resourceClassPath = '_Resource';
+		$resourceClassPath = '\Resource';
 		if ($cfg->driver == 'mysql') {
-			$resourceClassPath .= '_MySql';
+			$resourceClassPath .= '\MySql';
 		} else if ($cfg->driver == 'mssql') {
-			$resourceClassPath .= '_MsSql';
+			$resourceClassPath .= '\MsSql';
 		}
 		return parent::GetResource(func_get_arg(0), __CLASS__, $resourceClassPath);
 	}

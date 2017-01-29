@@ -1,6 +1,10 @@
 <?php
 
-class App_Forms_Fields_BooleanAndText extends SimpleForm_Core_FieldGroup
+namespace App\Forms\Fields;
+
+use \MvcCore\Ext\Form;
+
+class BooleanAndText extends Form\Core\FieldGroup
 {
 	public $Type = 'radio';
 	public $Options = array(
@@ -9,13 +13,13 @@ class App_Forms_Fields_BooleanAndText extends SimpleForm_Core_FieldGroup
 	);
 	public $Value = array();
 	public $Validators = array();
-	protected static $templates = array(
+	public static $Templates = array(
 		'control'			=> '<input id="{id}" name="{name}[]" type="{type}" value="{value}"{checked}{attrs} />',
 	);
 	public function __construct(array $cfg = array()) {
 		parent::__construct($cfg);
-		static::$templates = (object) array_merge((array)parent::$templates, (array)self::$templates);
-		$this->SetValidators(array(function($submitValues, $fieldName, $field, SimpleForm & $form) {
+		static::$Templates = (object) array_merge((array)parent::$Templates, (array)self::$Templates);
+		$this->SetValidators(array(function($submitValues, $fieldName, $field, Form & $form) {
 			// possible values - empty array, array with one or two elements,
 			//   first element could be boolean and also a text field
 			$valid = TRUE;
@@ -34,14 +38,14 @@ class App_Forms_Fields_BooleanAndText extends SimpleForm_Core_FieldGroup
 				}
 			}
 			if (!$valid) {
-				$errorMsg = SimpleForm::$DefaultMessages[SimpleForm::VALID];
+				$errorMsg = Form::$DefaultMessages[Form::VALID];
 				if ($form->Translate) {
 					$errorMsg = call_user_func($form->Translator, $errorMsg);
 					$label = $field->Label ? call_user_func($form->Translator, $field->Label) : $fieldName;
 				} else {
 					$label = $field->Label ? $field->Label : $fieldName;
 				}
-				$errorMsg = SimpleForm_Core_View::Format(
+				$errorMsg = Form\Core\View::Format(
 					$errorMsg, array($label)
 				);
 				$form->AddError(
@@ -67,12 +71,12 @@ class App_Forms_Fields_BooleanAndText extends SimpleForm_Core_FieldGroup
 		return $result;
 	}
 	public function RenderControlItemText ($key, $option) {
-		$itemControlId = implode(SimpleForm::HTML_IDS_DELIMITER, array(
+		$itemControlId = implode(Form::HTML_IDS_DELIMITER, array(
 			$this->Form->Id, $this->Name, $key
 		));
 		$controlAttrsStr = $this->completeControlAttrsStr($key, $option);
 		$value = count($this->Value) > 0 ? $this->Value[count($this->Value) - 1] : '';
-		return SimpleForm_Core_View::Format(static::$templates->control, array(
+		return Form\Core\View::Format(static::$Templates->control, array(
 			'id'		=> $itemControlId,
 			'name'		=> $this->Name,
 			'type'		=> 'text',

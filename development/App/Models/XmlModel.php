@@ -1,6 +1,8 @@
 <?php
 
-class App_Models_XmlModel extends App_Models_Base
+namespace App\Models;
+
+class XmlModel extends Base
 {
 	protected static $dataDir = null;
 	protected static $xmlNameSpace = null;
@@ -14,7 +16,7 @@ class App_Models_XmlModel extends App_Models_Base
 		$path = static::sanitizePath($path);
 		// if request path is "/" or "/any-directory/any-subdirectory/" - fix path to "/index" or "/any-directory/any-subdirectory/index"
 		$xmlPath = (mb_substr($path, mb_strlen($path) - 1, 1) === '/') ? $path . 'index' : $path ;
-		$xmlFullPath = MvcCore::GetInstance()->GetRequest()->AppRoot . static::$dataDir;
+		$xmlFullPath = \MvcCore::GetInstance()->GetRequest()->AppRoot . static::$dataDir;
 		$fileFullPath = str_replace('\\', '/', $xmlFullPath . $xmlPath . '.xml');
 		if (!file_exists($fileFullPath)) {
 			return FALSE;
@@ -24,9 +26,9 @@ class App_Models_XmlModel extends App_Models_Base
     }
 	public static function GetByPathMatch ($pathMatch = '') {
 		$result = array();
-		$xmlFullPath = MvcCore::GetInstance()->GetRequest()->AppRoot . static::$dataDir;
-		$di = new DirectoryIterator($xmlFullPath);
-		foreach ($di as $key => $item) {
+		$xmlFullPath = \MvcCore::GetInstance()->GetRequest()->AppRoot . static::$dataDir;
+		$di = new \DirectoryIterator($xmlFullPath);
+		foreach ($di as $item) {
 			if ($item->isDir()) continue;
 			if ($item->getExtension() != 'xml') continue;
 			$fileName = $item->getFilename();
@@ -61,7 +63,7 @@ class App_Models_XmlModel extends App_Models_Base
 	protected static function loadXmlNamespaceAndSchema (& $xmlStr, & $fileFullPath) {
 		preg_match("# xmlns\:([a-z0-9]*)=\"([^\"]*)\"#", $xmlStr, $matches);
 		if (!isset($matches[1]) || !isset($matches[2])) {
-			throw new Exception("[App_Models_XmlModel] No XML namespace and schema defined in file: '$fileFullPath'. Define namespace and scheme file in root node: '<schemeName:rootNodeName xmlns:schemeName=\"../Path/To/Scheme.xsd\">'");
+			throw new \Exception("[".get_called_class()."] No XML namespace and schema defined in file: '$fileFullPath'. Define namespace and scheme file in root node: '<schemeName:rootNodeName xmlns:schemeName=\"../Path/To/Scheme.xsd\">'");
 		}
 		$ns = $matches[1];
 		static::$xmlNameSpace = $ns;
@@ -123,7 +125,7 @@ class App_Models_XmlModel extends App_Models_Base
 				$column = $e->column;
 				$msgs[] = "$msg (file: $fileFullPath, line: $line, column: $column)";
 			}
-			throw new Exception (implode('<br />', $msgs));
+			throw new \Exception (implode('<br />', $msgs));
 		}
 		return $xml;
 	}
@@ -136,7 +138,7 @@ class App_Models_XmlModel extends App_Models_Base
 		foreach ($xml->children(static::$xmlNameSpace, TRUE) as $dataNode) {
 			$nodeName = $dataNode->getName();
 			$rawNodeValue = trim((string)$dataNode);
-			$propertyName = MvcCore_Tool::GetPascalCaseFromDashed($nodeName);
+			$propertyName = \MvcCore\Tool::GetPascalCaseFromDashed($nodeName);
 			$dataType = 'string';
 			if (isset($columnTypes[$nodeName])) {
 				$dataType = $columnTypes[$nodeName];
@@ -153,8 +155,8 @@ class App_Models_XmlModel extends App_Models_Base
 			$this->$propertyName = boolval($rawNodeValue);
 		} else if ($dataType == 'html') {
 			$this->$propertyName = str_replace(
-				array('%basePath'), 
-				array(MvcCore::GetInstance()->GetRequest()->BasePath,), 
+				array('%basePath'),
+				array(\MvcCore::GetInstance()->GetRequest()->BasePath,), 
 				$rawNodeValue
 			);
 		} else {

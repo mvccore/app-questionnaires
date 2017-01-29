@@ -1,6 +1,8 @@
 <?php
 
-class App_Models_Question extends App_Models_XmlModel
+namespace App\Models;
+
+class Question extends XmlModel
 {
 	/**
 	* Public vars bellow is not necessary to define here manualy,
@@ -43,13 +45,13 @@ class App_Models_Question extends App_Models_XmlModel
         //parent::__construct(); // not necessary for xml model
     }
 	public static function GetByPath ($path = '') {
-		if (is_null(static::$dataDir)) static::$dataDir = App_Models_Questionnaire::GetDataPath();
+		if (is_null(static::$dataDir)) static::$dataDir = \App\Models\Questionnaire::GetDataPath();
 		return parent::GetByPath($path);
     }
 	protected function xmlSetUp ($xml)
 	{
 		parent::xmlSetUp($xml);
-		$methodName = '_xmlSetUp' . MvcCore_Tool::GetPascalCaseFromDashed($this->Type);
+		$methodName = '_xmlSetUp' . \MvcCore\Tool::GetPascalCaseFromDashed($this->Type);
 		if (method_exists($this, $methodName)) $this->$methodName();
 	}
 	private function _xmlSetUpRadios () {

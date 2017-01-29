@@ -1,6 +1,10 @@
 <?php
 
-class App_Models_Object_Resource extends App_Models_Base
+namespace App\Models\Object;
+
+use \App\Models;
+
+class Resource extends Models\Base
 {
 	protected static $commonTable = 'Object';
 	protected static $localizedTable = 'ObjectLocalized';
@@ -12,7 +16,7 @@ class App_Models_Object_Resource extends App_Models_Base
 		$sql = "SELECT * FROM " . static::$commonTable . " WHERE Id IN (" . implode(', ', array_keys($params)) . ');';
 		$select = $this->db->prepare($sql);
 		$select->execute($params);
-		return $select->fetchAll(PDO::FETCH_ASSOC);
+		return $select->fetchAll(\PDO::FETCH_ASSOC);
 	}
 	public function GetById ($id = 0) {
 		$sql = "SELECT * FROM " . static::$commonTable . " WHERE Id = :id";

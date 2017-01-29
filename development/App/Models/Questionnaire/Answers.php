@@ -1,6 +1,10 @@
 <?php
 
-class App_Models_Questionnaire_Answers extends App_Models_Base
+namespace App\Models\Questionnaire;
+
+use App\Models;
+
+class Answers extends Models\Base
 {
 	public static function Create ($personId, $questions, $answers) {
 		$db = self::GetDb();

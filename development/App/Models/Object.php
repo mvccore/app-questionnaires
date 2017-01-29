@@ -1,6 +1,8 @@
 <?php
 
-class App_Models_Object extends App_Models_Base
+namespace App\Models;
+
+class Object extends Base
 {
     public static function GetByIds ($ids = array(), $key = 'Id') {
 		$records = self::GetResource()->GetByIds($ids);

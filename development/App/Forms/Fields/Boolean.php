@@ -1,6 +1,10 @@
 <?php
 
-class App_Forms_Fields_Boolean extends SimpleForm_RadioGroup
+namespace App\Forms\Fields;
+
+use \MvcCore\Ext\Form;
+
+class Boolean extends Form\RadioGroup
 {
 	public $Type = 'radio';
 	public $Options = array(
@@ -10,18 +14,18 @@ class App_Forms_Fields_Boolean extends SimpleForm_RadioGroup
 	public $Validators = array();
 	public function __construct(array $cfg = array()) {
 		parent::__construct($cfg);
-		$this->SetValidators(array(function($submitValue, $fieldName, $field, SimpleForm & $form) {
+		$this->SetValidators(array(function($submitValue, $fieldName, $field, Form & $form) {
 			$safeValue = strtolower(trim($submitValue));
 			if (strlen($safeValue) > 0 && !in_array($safeValue, array('yes', 'no'))) {
 				$safeValue = '';
-				$errorMsg = SimpleForm::$DefaultMessages[SimpleForm::VALID];
+				$errorMsg = Form::$DefaultMessages[Form::VALID];
 				if ($form->Translate) {
 					$errorMsg = call_user_func($form->Translator, $errorMsg);
 					$label = $field->Label ? call_user_func($form->Translator, $field->Label) : $fieldName;
 				} else {
 					$label = $field->Label ? $field->Label : $fieldName;
 				}
-				$errorMsg = SimpleForm_Core_View::Format(
+				$errorMsg = Form\Core\View::Format(
 					$errorMsg, array($label)
 				);
 				$form->AddError(

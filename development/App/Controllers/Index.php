@@ -1,6 +1,10 @@
 <?php
 
-class App_Controllers_Default extends App_Controllers_Base
+namespace App\Controllers;
+
+use App\Models;
+
+class Index extends Base
 {
 	protected $renderNotFoundIfNoDocument = TRUE;
 	
@@ -11,7 +15,7 @@ class App_Controllers_Default extends App_Controllers_Base
         if (strrpos($documentPath, $indexStr) === strlen($documentPath) - strlen($indexStr)) {
             $documentPath = substr($documentPath, 0, strrpos($documentPath, $indexStr));
         }
-		$this->document = App_Models_Document::GetByPath($documentPath);
+		$this->document = Models\Document::GetByPath($documentPath);
 	}
 	public function PreDispatch () {
 		parent::PreDispatch();
@@ -19,25 +23,25 @@ class App_Controllers_Default extends App_Controllers_Base
 			$this->view->Document = $this->document;	
 			$this->view->Title = $this->document->Title;
 		}
-		if (!$this->ajax && $this->request->Method == MvcCore_Request::METHOD_GET && !$this->document) {
+		if (!$this->ajax && $this->request->Method == \MvcCore\Request::METHOD_GET && !$this->document) {
 			if ($this->renderNotFoundIfNoDocument) {
-				$this->view->Document = new App_Models_Document();
+				$this->view->Document = new Models\Document();
 				$this->renderNotFound();
 			}
 		}
 	}
-	public function DefaultAction () {
+	public function IndexAction () {
 		// all not routed requests are routed here by (Bootstrap.php):
-		// MvcCore_Router::GetInstance()->SetRouteToDefaultIfNotMatch();
+		// \MvcCore\Router::GetInstance()->SetRouteToDefaultIfNotMatch();
 		// to get xml file about document to display by request path or render not found page.
 	}
 	public function HomeAction () {
-		$questionnaires =  App_Models_Questionnaire::GetAll();
+		$questionnaires =  Models\Questionnaire::GetAll();
 		$questionnairesCount = count($questionnaires);
 		if ($questionnairesCount === 0) {
 			// display no questionnaires message
 			$this->view->Questionnaires = array();
-			$this->view->Path = App_Models_Questionnaire::GetDataPath();
+			$this->view->Path = Models\Questionnaire::GetDataPath();
 		} else if ($questionnairesCount === 1) {
 			// redirect to first questionnaire if there is only one
 			self::Redirect(

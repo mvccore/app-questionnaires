@@ -1,6 +1,12 @@
 <?php
 
-class App_Controllers_Questionnaire extends App_Controllers_Base
+namespace App\Controllers;
+
+use \App\Forms,
+	\App\Models,
+	\MvcCore\Ext\Form;
+
+class Questionnaire extends Base
 {
 	protected $renderNotFoundIfNoDocument = FALSE;
 
@@ -8,7 +14,7 @@ class App_Controllers_Questionnaire extends App_Controllers_Base
 	protected $questionnaire;
 	protected $questions;
 	/**
-	 * @var App_Forms_Questionnaire
+	 * @var \App\Forms\Questionnaire
 	 */
 	private $_questionnaireForm;
 	
@@ -19,17 +25,17 @@ class App_Controllers_Questionnaire extends App_Controllers_Base
 		$this->setUpAssets();
 	}
 	
-	public function DefaultAction () {
+	public function IndexAction () {
 		$this->view->Questionnaire = $this->questionnaire;
 		$this->view->QuestionnaireForm = $this->_questionnaireForm;
 	}
 	public function SubmitAction () {
 		list ($result, $data, $errors) = $this->_questionnaireForm->Submit();
-		if ($result === SimpleForm::RESULT_SUCCESS) {
+		if ($result === Form::RESULT_SUCCESS) {
 			$personData = $this->_submitCompleteData($data, 'person_', 'string');
 			$answerData = $this->_submitCompleteData($data, 'question_', 'int');
-			$person = App_Models_Person::Create($personData);
-			App_Models_Questionnaire_Answers::Create($person->Id, $this->questions, $answerData);
+			$person = Models\Person::Create($personData);
+			Models\Questionnaire\Answers::Create($person->Id, $this->questions, $answerData);
 		}
 		$this->_questionnaireForm->ClearSession();
 		$this->_questionnaireForm->RedirectAfterSubmit();
@@ -42,14 +48,14 @@ class App_Controllers_Questionnaire extends App_Controllers_Base
 	protected function setUpQuestionnaireAndQuestions() {
 		$this->path = str_replace('-', '\\-', $this->GetParam('path', "a-zA-Z0-9_\-"));
 
-		$matchedQrs = App_Models_Questionnaire::GetByPathMatch("^([0-9]*)\-$this->path$");
+		$matchedQrs = Models\Questionnaire::GetByPathMatch("^([0-9]*)\-$this->path$");
 		
 		if (count($matchedQrs) === 0) {
-			MvcCore_Debug::Log("[".__CLASS__."] No questionnaire found in path: '$this->path'.");
-			$this->view->Document = new App_Models_Document();
+			\MvcCore\Debug::Log("[".__CLASS__."] No questionnaire found in path: '$this->path'.");
+			$this->view->Document = new Models\Document();
 			$this->renderNotFound();
 		} else if (count($matchedQrs) > 1) {
-			MvcCore_Debug::Log("[".__CLASS__."] Ambiguous request to the questionnaire in path: '$this->path'..");
+			\MvcCore\Debug::Log("[".__CLASS__."] Ambiguous request to the questionnaire in path: '$this->path'..");
 		}
 
 		$this->path = str_replace('\\-', '-', $this->path);
@@ -79,20 +85,20 @@ class App_Controllers_Questionnaire extends App_Controllers_Base
 		}
 	}
 	protected function setUpForm () {
-		$form = new App_Forms_Questionnaire($this);
+		$form = new Forms\Questionnaire($this);
 
 		$form
 			->SetTranslator(function ($key = '', $lang = '') {
-				return $this->Translate($key, $lang ? $lang : App_Controllers_Base::$Lang);
+				return $this->Translate($key, $lang ? $lang : Base::$Lang);
 			})
-			->SetJsRenderer(function (SplFileInfo $jsFile) {
+			->SetJsRenderer(function (\SplFileInfo $jsFile) {
 				$this->addAsset('Js', 'varHead', $jsFile);
 			})
-			->SetLang(App_Controllers_Base::$Lang)
-			->SetMethod(SimpleForm::METHOD_POST)
+			->SetLang(Base::$Lang)
+			->SetMethod(\MvcCore\Ext\Form::METHOD_POST)
 			->SetAction($this->Url('Questionnaire:Submit', array('path' => $this->path)))
 			->SetSuccessUrl($this->Url('Questionnaire:Completed', array('path' => $this->path)))
-			->SetErrorUrl($this->Url('Questionnaire:Default', array('path' => $this->path)))
+			->SetErrorUrl($this->Url('Questionnaire:Index', array('path' => $this->path)))
 			->SetQuestions($this->questions);
 		$this->_questionnaireForm = $form;
 	}

@@ -1,8 +1,12 @@
 <?php
 
-class App_Models_Person_Resource extends App_Models_Base
+namespace App\Models\Person;
+
+use \App\Models;
+
+class Resource extends Models\Base
 {
-    public function InsertNew (stdClass $formData)
+    public function InsertNew (\stdClass $formData)
 	{
 		$this->db->beginTransaction();
 
@@ -42,7 +46,7 @@ class App_Models_Person_Resource extends App_Models_Base
 		$select->execute(array(
 			':id'	=> $id,	
 		));
-		return $select->fetch(PDO::FETCH_ASSOC);
+		return $select->fetch(\PDO::FETCH_ASSOC);
 	}
 	public function GetMinAndMaxAges () {
 		$table = self::TABLE_PERSONS;
@@ -53,6 +57,6 @@ class App_Models_Person_Resource extends App_Models_Base
 			$table";
 		$select = self::GetDb()->prepare($sql);
 		$select->execute();
-		return $select->fetch(PDO::FETCH_ASSOC);
+		return $select->fetch(\PDO::FETCH_ASSOC);
 	}
 }

@@ -1,12 +1,14 @@
 <?php
 
-class App_Views_Helpers_Facebook
+namespace App\Views\Helpers;
+
+class Facebook
 {
     private $_baseUrlEncoded;
     private $_facebookAppId;
-	public function __construct (MvcCore_View & $view) {
+	public function __construct (\MvcCore\View & $view) {
 		$this->_baseUrlEncoded = urlencode($view->Controller->GetRequest()->RequestUrl);
-		$cfg = MvcCore_Config::GetSystem();
+		$cfg = \MvcCore\Config::GetSystem();
 		$this->_facebookAppId = (string) $cfg->general->fb->appId;
 	}
 	public function Facebook () {

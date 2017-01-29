@@ -1,6 +1,10 @@
 <?php
 
-class App_Models_Questionnaire_Answers_Resource extends App_Models_Base
+namespace App\Models\Questionnaire\Answers;
+
+use App\Models;
+
+class Resource extends Models\Base
 {
 	private $_personId = 0;
 	private $_questions = array();
@@ -32,7 +36,7 @@ class App_Models_Questionnaire_Answers_Resource extends App_Models_Base
 			$answer = NULL;
 			if (isset($this->_answers[$questionId])) $answer = $this->_answers[$questionId];
 
-			$prepareMethodName = '_prepareSql' . MvcCore_Tool::GetPascalCaseFromDashed($question->Type);
+			$prepareMethodName = '_prepareSql' . \MvcCore\Tool::GetPascalCaseFromDashed($question->Type);
 			list($columns, $valuesGroup) = $this->$prepareMethodName($question, $answer);
 
 			$columns = array_merge(
@@ -63,7 +67,7 @@ class App_Models_Questionnaire_Answers_Resource extends App_Models_Base
 		return $insertCmd->execute();
 	}
 
-	private function _prepareSqlRadios (App_Models_Question & $question, $answer) {
+	private function _prepareSqlRadios (Models\Question & $question, $answer) {
 		$values = array();
 		if (strlen($answer) > 0) {
 			$values[] = intval($answer);
@@ -73,7 +77,7 @@ class App_Models_Questionnaire_Answers_Resource extends App_Models_Base
 			$values
 		);
 	}
-	private function _prepareSqlCheckboxes (App_Models_Question & $question, $answer) {
+	private function _prepareSqlCheckboxes (Models\Question & $question, $answer) {
 		$values = array();
 		foreach ($answer as $optionIndex) {
 			$values[] = array(intval($optionIndex), 1);
@@ -83,7 +87,7 @@ class App_Models_Questionnaire_Answers_Resource extends App_Models_Base
 			$values
 		);
 	}
-	private function _prepareSqlConnections (App_Models_Question & $question, $bfuAnswers) {
+	private function _prepareSqlConnections (Models\Question & $question, $bfuAnswers) {
 		$values = array();
 		$questionOptionsCount = count($question->Options);
 		foreach ($bfuAnswers as $formFieldIndex => $bfuAnswerIndexStr) {
@@ -100,7 +104,7 @@ class App_Models_Questionnaire_Answers_Resource extends App_Models_Base
 			$values
 		);
 	}
-	private function _prepareSqlInteger (App_Models_Question & $question, $answer) {
+	private function _prepareSqlInteger (Models\Question & $question, $answer) {
 		$values = array();
 		if (strlen($answer) > 0) {
 			$values[] = intval($answer);
@@ -110,7 +114,7 @@ class App_Models_Questionnaire_Answers_Resource extends App_Models_Base
 			$values
 		);
 	}
-	private function _prepareSqlFloat (App_Models_Question & $question, $answer) {
+	private function _prepareSqlFloat (Models\Question & $question, $answer) {
 		$values = array();
 		if (strlen($answer) > 0) {
 			$values[] = floatval($answer);
@@ -120,7 +124,7 @@ class App_Models_Questionnaire_Answers_Resource extends App_Models_Base
 			$values
 		);
 	}
-	private function _prepareSqlText (App_Models_Question & $question, $answer) {
+	private function _prepareSqlText (Models\Question & $question, $answer) {
 		$values = array();
 		if (isset($question->Delimiter) && $question->Delimiter) {
 			$answersExploded = explode($question->Delimiter, $answer);
@@ -136,7 +140,7 @@ class App_Models_Questionnaire_Answers_Resource extends App_Models_Base
 			$values
 		);
 	}
-	private function _prepareSqlTextarea (App_Models_Question & $question, $answer) {
+	private function _prepareSqlTextarea (Models\Question & $question, $answer) {
 		$values = array();
 		if (strlen($answer) > 0) {
 			$values[] = $this->db->quote($answer);
@@ -146,7 +150,7 @@ class App_Models_Questionnaire_Answers_Resource extends App_Models_Base
 			$values
 		);
 	}
-	private function _prepareSqlBoolean (App_Models_Question & $question, $answer) {
+	private function _prepareSqlBoolean (Models\Question & $question, $answer) {
 		if (strlen($answer) > 0) {
 			$values = strtolower($answer) == 'yes' ? array(1) : array(0) ;
 		} else {
@@ -157,7 +161,7 @@ class App_Models_Questionnaire_Answers_Resource extends App_Models_Base
 			$values
 		);
 	}
-	private function _prepareSqlBooleanAndText (App_Models_Question & $question, $answer) {
+	private function _prepareSqlBooleanAndText (Models\Question & $question, $answer) {
 		$columns = array('Boolean');
 		$values = array();
 		if (isset($answer[0]) > 0 && strlen($answer[0]) > 0) {

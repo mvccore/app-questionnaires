@@ -11,7 +11,7 @@ $config = array(
 		"^/Var/Logs/.*",							// App development logs
 		"composer\.(json|lock)",					// composer.json and composer.lock
 		"LICEN(C|S)E\.(txt|TXT|md|MD)",				// libraries licence files
-		"\.(bak|BAK`bat|BAT|md|MD|phpt|PHPT)$",
+		"\.(bak|BAK|bat|BAT|sh|SH|md|MD|phpt|PHPT)$",
 		
 		// Every file in mobile detect library directory,
 		// but only one file will be included by overide pattern later
@@ -24,8 +24,8 @@ $config = array(
 		"^/static/js",
 		"^/static/css",
 		"/declarations/([a-z]*).css$",
-		"/SimpleForm/simple-form.js",
-		"/SimpleForm/fields/",
+		"/MvcCore/Ext/Form/mvccore-form.js",
+		"/MvcCore/Ext/Form/fields/",
 	),
 	// include paterns overides exclude patterns:
 	'includePatterns'		=> array(
@@ -37,7 +37,7 @@ $config = array(
 		// after all tmp assets with single file mode are generated - change this boolean back
 		'$app->Run(1);'		=> '$app->Run();',
 		// Remove Debug library only after application is successfly packed (optional):
-		"->SetDebugClass(MvcCoreExt_Tracy::class)"	=> "",
+		'->SetDebugClass(\MvcCore\Ext\Debug\Tracy::class)'	=> '',
 	),
 	'minifyTemplates'		=> 0,// Remove non-conditional comments and whitespaces
 	'minifyPhp'				=> 0,// Remove comments and whitespaces

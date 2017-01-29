@@ -1,6 +1,8 @@
 <?php
 
-class App_Models_Document extends App_Models_XmlModel
+namespace App\Models;
+
+class Document extends XmlModel
 {
 	protected static $dataDir = '/Var/Documents';
 	public static function GetDataPath() {

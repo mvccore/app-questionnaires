@@ -1,6 +1,8 @@
 <?php
 
-class App_Models_Questionnaire extends App_Models_Document
+namespace App\Models;
+
+class Questionnaire extends Document
 {
 	protected static $dataDir = '/Var/Questionnaires';
 	private static $_appInstance;
@@ -8,9 +10,9 @@ class App_Models_Questionnaire extends App_Models_Document
 	private $_questions = null;
 	public static function GetAll () {
 		$result = array();
-		$fullPath = MvcCore::GetInstance()->GetRequest()->AppRoot . self::$dataDir;
-		$di = new DirectoryIterator($fullPath);
-		foreach ($di as $key => $item) {
+		$fullPath = \MvcCore::GetInstance()->GetRequest()->AppRoot . self::$dataDir;
+		$di = new \DirectoryIterator($fullPath);
+		foreach ($di as $item) {
 			if ($item->isDir()) continue;
 			$fileName = $item->getFilename();
 			$path = preg_replace("#(.*)\.xml$#", "$1", $fileName);
@@ -18,7 +20,7 @@ class App_Models_Questionnaire extends App_Models_Document
 			if ($resultItem !== FALSE) {
 				if (isset($result[$resultItem->Id])) {
 					$id = $resultItem->Id;
-					throw new Exception ("[".__CLASS__."] Questionnaire with Id: $id already defined.");
+					throw new \Exception ("[".__CLASS__."] Questionnaire with Id: $id already defined.");
 				} else {
 					$result[$resultItem->Id] = $resultItem;
 				}
@@ -30,8 +32,8 @@ class App_Models_Questionnaire extends App_Models_Document
 	public function GetUrl () {
 		if (is_null($this->_url)) {
 			$pathWithoutFirstSlashDigitsAndDash = preg_replace("#^/([0-9]*)\-(.*)$#", "$2", $this->Path);
-			$this->_url = MvcCore::GetInstance()->GetController()->Url(
-				'Questionnaire:Default', 
+			$this->_url = \MvcCore::GetInstance()->GetController()->Url(
+				'Questionnaire:Index', 
 				array('path' => $pathWithoutFirstSlashDigitsAndDash)
 			);
 		}
@@ -51,17 +53,17 @@ class App_Models_Questionnaire extends App_Models_Document
 	}
 	private function _loadQuestions () {
 		$result = array();
-		$fullPath = MvcCore::GetInstance()->GetRequest()->AppRoot . self::$dataDir . $this->Path;
-		$di = new DirectoryIterator($fullPath);
-		foreach ($di as $key => $item) {
+		$fullPath = \MvcCore::GetInstance()->GetRequest()->AppRoot . self::$dataDir . $this->Path;
+		$di = new \DirectoryIterator($fullPath);
+		foreach ($di as $item) {
 			if ($item->isDir()) continue;
 			$fileName = $item->getFilename();
 			$path = $this->Path . '/' . preg_replace("#(.*)\.xml$#", "$1", $fileName);
-			$resultItem = App_Models_Question::GetByPath($path);
+			$resultItem = \App\Models\Question::GetByPath($path);
 			if ($resultItem !== FALSE) {
 				if (isset($result[$resultItem->Id])) {
 					$id = $resultItem->Id;
-					throw new Exception ("[".__CLASS__."] Question with Id: $id already defined in path: '$path'.");
+					throw new \Exception ("[".__CLASS__."] Question with Id: $id already defined in path: '$path'.");
 				} else {
 					$resultItem->Path = $path;
 					$resultItem->Questionnaire = $this;

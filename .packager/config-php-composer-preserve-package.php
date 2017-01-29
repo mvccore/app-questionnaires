@@ -11,14 +11,14 @@ $config = array(
 		"^/Var/Logs/.*",							// App development logs
 		"composer\.(json|lock)",					// composer.json and composer.lock
 		"LICEN(C|S)E\.(txt|TXT|md|MD)",				// libraries licence files
-		"\.(bak|BAK`bat|BAT|md|MD|phpt|PHPT)$",
+		"\.(bak|BAK|bat|BAT|sh|SH|md|MD|phpt|PHPT)$",
 
 		// Exclude specific PHP libraries
 		"^/vendor/composer/.*",						// composer itself
 		"^/vendor/autoload\.php",					// composer autoload file
 		"^/vendor/mvccore/mvccore/src/startup\.php",// mvccore autoload file
 		"^/vendor/tracy/.*",						// tracy library (https://tracy.nette.org/)
-		"^/vendor/mvccore/ext-tracy.*",				// mvccore tracy adapter and tracy panel extensions
+		"^/vendor/mvccore/ext-debug-tracy.*",		// mvccore tracy adapter and tracy panel extensions
 		"^/vendor/nette/safe-stream.*",				// nette safe stream used to complete assets in cache
 
 		// Every file in mobile detect library directory,
@@ -32,8 +32,8 @@ $config = array(
 		"^/static/js",
 		"^/static/css",
 		"/declarations/([a-z]*).css$",
-		"/SimpleForm/simple-form.js",
-		"/SimpleForm/fields/",
+		"/MvcCore/Ext/Form/mvccore-form.js",
+		"/MvcCore/Ext/Form/fields/",
 
 		// do not pack any source xml files - to manipulate with questionnaires in future
 		// not possible for PHAR packing!!!
@@ -49,7 +49,7 @@ $config = array(
 		// after all tmp assets with single file mode are generated - change this boolean back
 		'$app->Run(1);'		=> '$app->Run();',
 		// Remove Debug library only after application is successfly packed (optional):
-		"->SetDebugClass(MvcCoreExt_Tracy::class)"	=> "",
+		'->SetDebugClass(\MvcCore\Ext\Debug\Tracy::class)'	=> '',
 	),
 	'minifyTemplates'		=> 1,// Remove non-conditional comments and whitespaces
 	'minifyPhp'				=> 1,// Remove comments and whitespaces

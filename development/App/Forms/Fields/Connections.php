@@ -1,14 +1,18 @@
 <?php
 
-class App_Forms_Fields_Connections extends SimpleForm_Core_FieldGroup
+namespace App\Forms\Fields;
+
+use \MvcCore\Ext\Form;
+
+class Connections extends Form\Core\FieldGroup
 {
 	public $Type = 'connections';
 	public $Options = array();
 	public $Connections = array();
 	public $TemplatePath = 'fields/connections';
 	public $Validators = array();
-	public $JsClass = 'SimpleForm.Connections';
-	public $Js = '__SIMPLE_FORM_DIR__/fields/connections.js';
+	public $JsClass = 'MvcCoreForm.Connections';
+	public $Js = '__MVCCORE_FORM_DIR__/fields/connections.js';
 	/* setters *******************************************************************************/
 	public function SetConnections ($connections) {
 		$this->Connections = $connections;
@@ -17,8 +21,8 @@ class App_Forms_Fields_Connections extends SimpleForm_Core_FieldGroup
 	/* core methods **************************************************************************/
 	public function __construct(array $cfg = array()) {
 		parent::__construct($cfg);
-		static::$templates = (object) array_merge((array)parent::$templates, (array)self::$templates);
-		$this->SetValidators(array(function($submitValues, $fieldName, $field, SimpleForm & $form) {
+		static::$Templates = (object) array_merge((array)parent::$Templates, (array)self::$Templates);
+		$this->SetValidators(array(function($submitValues, $fieldName, $field, Form & $form) {
 			$valid = TRUE;
 			// filter submitted values for duplicated connections
 			$safeValue = array();
@@ -41,14 +45,14 @@ class App_Forms_Fields_Connections extends SimpleForm_Core_FieldGroup
 				$safeValue[intval($key)] = $submitValueInt;
 			}
 			if (!$valid || ($field->Required && count($field->Options) !== count($safeValue))) {
-				$errorMsg = SimpleForm::$DefaultMessages[SimpleForm::VALID];
+				$errorMsg = Form::$DefaultMessages[Form::VALID];
 				if ($form->Translate) {
 					$errorMsg = call_user_func($form->Translator, $errorMsg);
 					$label = $field->Label ? call_user_func($form->Translator, $field->Label) : $fieldName;
 				} else {
 					$label = $field->Label ? $field->Label : $fieldName;
 				}
-				$errorMsg = SimpleForm_Core_View::Format(
+				$errorMsg = Form\Core\View::Format(
 					$errorMsg, array($label)
 				);
 				$form->AddError(

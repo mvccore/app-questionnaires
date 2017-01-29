@@ -1,10 +1,12 @@
 <?php
 
-class App_Controllers_System extends App_Controllers_Base
+namespace App\Controllers;
+
+class System extends \App\Controllers\Base
 {
 	public function JsErrorsLogAction () {
 		$this->DisableView();
-		if (MvcCore_Config::IsProduction()) return;
+		if (\MvcCore\Config::IsProduction()) return;
 		$keys = array(
 			'message'=>1,
 			'uri'		=> 1,
@@ -23,7 +25,7 @@ class App_Controllers_System extends App_Controllers_Base
 			$data[$key] = $param;
 		}
 		$msg = json_encode($data);
-		MvcCore_Debug::Log($msg, MvcCore_Debug::JAVASCRIPT);
+		\MvcCore\Debug::Log($msg, \MvcCore\Debug::JAVASCRIPT);
 	}
 	private static function _hexToStr ($hex) {
 		$string='';

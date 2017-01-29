@@ -1,12 +1,14 @@
 <?php
 
-class App_Views_Helpers_Translate
+namespace App\Views\Helpers;
+
+class Translate
 {
-	private $_controller;
-	public function __construct (MvcCore_View & $view) {
-		$this->_controller = $view->Controller;
+	private $_translator;
+	public function __construct (\MvcCore\View & $view) {
+		$this->_translator = \App\Models\Translator::GetInstance();
 	}
 	public function Translate ($key = '', $lang = '') {
-		return $this->_controller->Translate($key, $lang);
+		return $this->_translator->Translate($key, $lang);
 	}
 }

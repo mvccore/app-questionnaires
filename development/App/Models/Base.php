@@ -1,6 +1,8 @@
 <?php
 
-class App_Models_Base extends MvcCore_Model
+namespace App\Models;
+
+class Base extends \MvcCore\Model
 {
 	const TABLE_ANSWERS = 'Answers';
 	const TABLE_EXECUTED = 'Executed';

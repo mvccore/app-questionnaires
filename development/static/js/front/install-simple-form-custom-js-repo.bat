@@ -1,1 +1,0 @@
-npm install mvccore/simpleform-custom-js

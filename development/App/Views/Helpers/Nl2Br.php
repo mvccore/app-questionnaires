@@ -1,6 +1,8 @@
 <?php
 
-class App_Views_Helpers_Nl2Br
+namespace App\Views\Helpers;
+
+class Nl2Br
 {
 	public function Nl2Br ($str = NULL) {
 

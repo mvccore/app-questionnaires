@@ -2,7 +2,18 @@
 	"name": "mvccore/app-questionnaires",
 	"type": "application",
 	"description": "MvcCore Application - Questionnaires & Statistics - more complex example how to build very portable app with questionnaires definitions in XML, any question types also defined in XML and answers and anonymous statistics stored and loaded from mysql/mssql database.",
-	"keywords": ["mvccore", "framework", "mvc", "simple mvc", "super fast mvc", "easy mvc", "single file application", "questionnaires", "questions", "statistics"],
+	"keywords": [
+		"mvc",
+		"mvccore",
+		"easy mvc",
+		"questions",
+		"framework",
+		"statistics",
+		"simple mvc",
+		"questionnaires",
+		"super fast mvc",
+		"single file application"
+	],
 	"license": ["BSD-3-Clause"],
 	"authors": [
 		{
@@ -13,7 +24,7 @@
 	"require": {
 		"php": ">=5.3.0",
 		"mrclay/minify": "^2.2",
-		"mvccore/packager": ">=2.1.5"
+		"mvccore/packager": ">=2.1.11"
 	},
 	"minimum-stability": "dev"
 }
