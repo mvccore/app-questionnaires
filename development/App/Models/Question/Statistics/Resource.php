@@ -72,6 +72,10 @@ class Resource extends Models\Base
 					$values = gettype($values) == 'array' ? $values : array($values);
 					$filterCondition = "p.$ucfKey >= " . $values[0];
 					if (isset($values[1])) $filterCondition = "($filterCondition AND p.$ucfKey <= " . $values[1] . ')';
+				} else if ($key == 'from') {
+					$filterCondition = "p.Created >= CAST('" . str_replace('T', ' ', $values) . "' AS DATETIME)";
+				} else if ($key == 'to') {
+					$filterCondition = "p.Created <= CAST('" . str_replace('T', ' ', $values) . "' AS DATETIME)";
 				} else {
 					$filterCondition = "p.$ucfKey IN ('" . implode("', '", $values) . "')";
 				}

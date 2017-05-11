@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>19</qs:id>
+	<qs:text>Používáte některý z verzovacích systémů?</qs:text>
+	<qs:type>checkboxes</qs:type>
+	<qs:checkboxes>
+    <qs:checkbox>Git</qs:checkbox>
+    <qs:checkbox>Mercurial HG</qs:checkbox>
+    <qs:checkbox>Subversion</qs:checkbox>
+    <qs:checkbox>CVS</qs:checkbox>
+	</qs:checkboxes>
+  <qs:solution>0,1</qs:solution>
+</qs:data>

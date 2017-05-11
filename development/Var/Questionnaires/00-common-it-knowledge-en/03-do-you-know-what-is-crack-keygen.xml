@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>3</qs:id>
+	<qs:text>Do you know what is a crack/keygen?</qs:text>
+	<qs:type>boolean</qs:type>
+</qs:data>

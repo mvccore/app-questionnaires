@@ -19,7 +19,7 @@ class Bootstrap
 		$app = \MvcCore::GetInstance();
 		
 		if ($app->GetCompiled()) \MvcCore\Config::SetEnvironment(\MvcCore\Config::ENVIRONMENT_PRODUCTION);
-
+		
 		$app->SetDebugClass(\MvcCore\Ext\Debug\Tracy::class)
 			->SetRequestClass(\MvcCore\Ext\Request\ApacheDpi::class)
 			->SetRouterClass(\MvcCore\Ext\Router\Media::class);
@@ -80,24 +80,24 @@ class Bootstrap
 		self::$routes = array(
 			'Index:Home'			=> "#^/$#",
 			'Questionnaire:Submit'	=> array(
-				'pattern'			=> "#^/dotaznik/([a-zA-Z0-9\-_]*)/odeslat#",
-				'reverse'			=> '/dotaznik/{%path}/odeslat',
+				'pattern'			=> "#^/questions/([a-zA-Z0-9\-_]*)/send#",
+				'reverse'			=> '/questions/{%path}/send',
 			),
 			'Questionnaire:Completed'	=> array(
-				'pattern'			=> "#^/dotaznik/([a-zA-Z0-9\-_]*)/hotovo#",
-				'reverse'			=> '/dotaznik/{%path}/hotovo',
+				'pattern'			=> "#^/questions/([a-zA-Z0-9\-_]*)/done#",
+				'reverse'			=> '/questions/{%path}/done',
 			),
 			'Questionnaire:Index'=> array(
-				'pattern'			=> "#^/dotaznik/([a-zA-Z0-9\-_]*)#",
-				'reverse'			=> '/dotaznik/{%path}',
+				'pattern'			=> "#^/questions/([a-zA-Z0-9\-_]*)#",
+				'reverse'			=> '/questions/{%path}',
 			),
 			'Statistics:Submit'	=> array(
-				'pattern'			=> "#^/vysledky/([a-zA-Z0-9\-_]*)/odeslat#",
-				'reverse'			=> '/vysledky/{%path}/odeslat',
+				'pattern'			=> "#^/results/([a-zA-Z0-9\-_]*)/send#",
+				'reverse'			=> '/results/{%path}/send',
 			),
 			'Statistics:Index'	=> array(
-				'pattern'			=> "#^/vysledky/([a-zA-Z0-9\-_]*)#",
-				'reverse'			=> '/vysledky/{%path}',
+				'pattern'			=> "#^/results/([a-zA-Z0-9\-_]*)#",
+				'reverse'			=> '/results/{%path}',
 			),
 		);
 		\MvcCore\Router::GetInstance()

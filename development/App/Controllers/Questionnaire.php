@@ -18,16 +18,23 @@ class Questionnaire extends Base
 	 */
 	private $_questionnaireForm;
 	
+	public function Init () {
+		parent::Init();
+		$this->findAndSetUpQuestionnaireAndQuestions();
+	}
+
 	public function PreDispatch () {
 		parent::PreDispatch();
-		$this->setUpQuestionnaireAndQuestions();
+		if (!$this->ajax) $this->view->Document = $this->questionnaire;
 		$this->setUpForm();
 		$this->setUpAssets();
 	}
 	
 	public function IndexAction () {
+		// xx($this->questionnaire);
 		$this->view->Questionnaire = $this->questionnaire;
 		$this->view->QuestionnaireForm = $this->_questionnaireForm;
+		$this->view->DisplayFacebookShare = isset($this->questionnaire->FacebookShare) && $this->questionnaire->FacebookShare;
 	}
 	public function SubmitAction () {
 		list ($result, $data, $errors) = $this->_questionnaireForm->Submit();
@@ -45,7 +52,7 @@ class Questionnaire extends Base
 		$this->view->Path = $this->path;
 	}
 
-	protected function setUpQuestionnaireAndQuestions() {
+	protected function findAndSetUpQuestionnaireAndQuestions() {
 		$this->path = str_replace('-', '\\-', $this->GetParam('path', "a-zA-Z0-9_\-"));
 
 		$matchedQrs = Models\Questionnaire::GetByPathMatch("^([0-9]*)\-$this->path$");
@@ -60,7 +67,10 @@ class Questionnaire extends Base
 
 		$this->path = str_replace('\\-', '-', $this->path);
 
-		$questionnaire = $matchedQrs[0];
+		$this->setUpQuestionnaireAndQuestions($matchedQrs[0]);
+	}
+	protected function setUpQuestionnaireAndQuestions (Models\Questionnaire $questionnaire) {
+		Base::$Lang = $questionnaire->Lang;
 		$title = strip_tags($questionnaire->Title);
 		$description = strip_tags($questionnaire->Description);
 		if (!$questionnaire->Keywords) $questionnaire->Keywords = $description;
@@ -71,8 +81,7 @@ class Questionnaire extends Base
 
 		$this->questionnaire = $questionnaire;
 		$this->questions = $this->questionnaire->GetQuestions();
-		$this->document = $this->questionnaire;	
-		if (!$this->ajax) $this->view->Document = $this->questionnaire;
+		$this->document = $this->questionnaire;
 	}
 	protected function setUpAssets () {
 		if ($this->viewEnabled) {
@@ -86,7 +95,7 @@ class Questionnaire extends Base
 	}
 	protected function setUpForm () {
 		$form = new Forms\Questionnaire($this);
-
+		
 		$form
 			->SetTranslator(function ($key = '', $lang = '') {
 				return $this->Translate($key, $lang ? $lang : Base::$Lang);
@@ -99,7 +108,7 @@ class Questionnaire extends Base
 			->SetAction($this->Url('Questionnaire:Submit', array('path' => $this->path)))
 			->SetSuccessUrl($this->Url('Questionnaire:Completed', array('path' => $this->path)))
 			->SetErrorUrl($this->Url('Questionnaire:Index', array('path' => $this->path)))
-			->SetQuestions($this->questions);
+			->SetQuestionnaire($this->questionnaire);
 		$this->_questionnaireForm = $form;
 	}
 

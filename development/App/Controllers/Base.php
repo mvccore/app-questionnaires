@@ -7,7 +7,7 @@ use \MvcCore\Ext\Form,
 
 class Base extends \MvcCore\Controller
 {
-	public static $Lang = 'cs';
+	public static $Lang = 'en'; // by default
 
 	/** @var \App\Models\Translator */
 	protected static $translator;

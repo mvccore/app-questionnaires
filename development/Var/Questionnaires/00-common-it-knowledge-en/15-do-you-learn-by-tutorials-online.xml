@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>15</qs:id>
+	<qs:text>Do you learn by videos (tutorials) online?</qs:text>
+	<qs:type>boolean</qs:type>
+</qs:data>

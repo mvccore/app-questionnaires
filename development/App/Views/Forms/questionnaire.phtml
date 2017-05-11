@@ -4,17 +4,21 @@
 	<?php echo $this->RenderErrors(); ?>
 
 	<div class="fieldset fieldset-person">
-		<h2><?php echo $this->Translate('About you'); ?></h2>
+		<?php if ($this->Form->PersonsForm): ?>
+			<h2><?php echo $this->Translate('About you'); ?></h2>
+		<?php else: ?>
+			<h2><?php echo $this->Translate('Questions'); ?></h2>
+		<?php endif; ?>
 		<?php $previousKey = ''; ?>
 		<?php foreach ($this->Fields as $key => $field): ?>
-			<?php if ($field->Name == 'send'): ?>
+			<?php if ($field->Name == 'send' && $this->Controller->GetView()->DisplayFacebookShare): ?>
 				<?php echo $this->Facebook()->ShareButton('questionnaire-bottom'); ?>
 			<?php endif; ?>
 			<?php if (strpos($field->Name, 'question') === 0 && strpos($this->Fields[$previousKey]->Name, 'person') === 0): ?>
-	</div>
-	<div class="hr"></div>
-	<div class="fieldset fieldset-questions">
-		<h2><?php echo $this->Translate('Questions'); ?></h2>
+					</div>
+				<div class="hr"></div>
+				<div class="fieldset fieldset-questions">
+				<h2><?php echo $this->Translate('Questions'); ?></h2>
 			<?php endif; ?>
 			<div class="field <?php echo implode(' ', $field->CssClasses); ?>">
 				<?php echo $field->Render(); ?>

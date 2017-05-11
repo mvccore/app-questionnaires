@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>6</qs:id>
+	<qs:text>Have you any paid account on any online (legal or warez) storrage? Which one?</qs:text>
+	<qs:type>boolean-and-text</qs:type>
+  <qs:columns>3</qs:columns>
+</qs:data>

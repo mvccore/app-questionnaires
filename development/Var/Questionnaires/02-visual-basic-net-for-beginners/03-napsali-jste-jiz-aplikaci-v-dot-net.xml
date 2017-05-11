@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>3</qs:id>
+	<qs:text>Napsali jste již nějakou aplikaci v prostředí .NET? Na jazyce nyní nezáleží, může být VB, ale i C#, F#&#8230;</qs:text>
+	<qs:type>boolean</qs:type>
+</qs:data>

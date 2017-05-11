@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>4</qs:id>
+	<qs:text>Jakou příponu má projektový soubor Vaší aplikace ve Visual Studiu v jazyce Visual Basic .NET?</qs:text>
+	<qs:type>radios</qs:type>
+	<qs:radios>
+    <qs:radio>.vbproj</qs:radio>
+    <qs:radio>.vba</qs:radio>
+    <qs:radio>.vbproject</qs:radio>
+    <qs:radio>.vbp</qs:radio>
+    <qs:radio>.proj</qs:radio>
+    <qs:radio>Nemá koncovku</qs:radio>
+	</qs:radios>
+  <qs:columns>3</qs:columns>
+	<qs:solution>0</qs:solution>
+</qs:data>

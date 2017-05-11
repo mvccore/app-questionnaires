@@ -52,9 +52,24 @@ class Person extends Base
 		$result->setUp($data);
 		return $result;
 	}
-	public static function GetMinAndMaxAges () {
-		$minMax = (object) self::GetResource()->GetMinAndMaxAges();
+	/**
+	 * @return int[]
+	 */
+	public static function GetMinAndMaxAges ($idQuestionnaire) {
+		$minMax = (object) self::GetResource()->GetMinAndMaxAges($idQuestionnaire);
 		return array(intval($minMax->MinAge), intval($minMax->MaxAge));
+	}
+	/**
+	 * @return \DateTime[]
+	 */
+	public static function GetMinAndMaxDates ($idQuestionnaire) {
+		$minMax = (object) self::GetResource()->GetMinAndMaxDates($idQuestionnaire);
+		$nowStr = date('Y-m-d H:i:s', time());
+		$minMax->MinDate = is_null($minMax->MinDate) ? $nowStr : $minMax->MinDate ;
+		$minMax->MaxDate = is_null($minMax->MaxDate) ? $nowStr : $minMax->MaxDate ;
+		$minDate = \DateTime::createFromFormat('Y-m-d H:i:s', $minMax->MinDate);
+		$maxDate = \DateTime::createFromFormat('Y-m-d H:i:s', $minMax->MaxDate);
+		return array($minDate, $maxDate);
 	}
 }
 

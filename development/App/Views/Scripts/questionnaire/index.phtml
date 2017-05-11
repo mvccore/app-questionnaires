@@ -4,6 +4,8 @@
 
 <div class="hr"></div>
 
-<?php echo $this->Facebook()->ShareButton('questionnaire-top'); ?>
+<?php if ($this->DisplayFacebookShare): ?>
+	<?php echo $this->Facebook()->ShareButton('questionnaire-top'); ?>
+<?php endif; ?>
 
 <?php echo $this->QuestionnaireForm->Render(); ?>

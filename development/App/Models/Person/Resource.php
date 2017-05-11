@@ -48,15 +48,40 @@ class Resource extends Models\Base
 		));
 		return $select->fetch(\PDO::FETCH_ASSOC);
 	}
-	public function GetMinAndMaxAges () {
-		$table = self::TABLE_PERSONS;
+	public function GetMinAndMaxAges ($idQuestionnaire) {
+		$personsTable = self::TABLE_PERSONS;
+		$executedTable = self::TABLE_EXECUTED;
 		$sql = "SELECT 
 			MIN(Age) AS MinAge,
 			MAX(Age) AS MaxAge
-		FROM 
-			$table";
+		FROM
+			$personsTable AS p
+		JOIN
+			$executedTable AS e ON
+				p.Id = e.IdPerson AND
+				e.IdQuestionnaire = :idQuestionnaire";
 		$select = self::GetDb()->prepare($sql);
-		$select->execute();
+		$select->execute(array(
+			':idQuestionnaire'	=> $idQuestionnaire,
+		));
+		return $select->fetch(\PDO::FETCH_ASSOC);
+	}
+	public function GetMinAndMaxDates ($idQuestionnaire) {
+		$personsTable = self::TABLE_PERSONS;
+		$executedTable = self::TABLE_EXECUTED;
+		$sql = "SELECT
+			MIN(Created) AS MinDate,
+			MAX(Created) AS MaxDate
+		FROM
+			$personsTable AS p
+		JOIN
+			$executedTable AS e ON
+				p.Id = e.IdPerson AND
+				e.IdQuestionnaire = :idQuestionnaire";
+		$select = self::GetDb()->prepare($sql);
+		$select->execute(array(
+			':idQuestionnaire'	=> $idQuestionnaire,
+		));
 		return $select->fetch(\PDO::FETCH_ASSOC);
 	}
 }

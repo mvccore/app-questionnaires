@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+  <qs:id>10</qs:id>
+  <qs:text>Jaké je maximum úrovní, které může mít pole ve VB.NET?</qs:text>
+  <qs:type>radios</qs:type>
+  <qs:radios>
+    <qs:radio>3</qs:radio>
+    <qs:radio>5</qs:radio>
+    <qs:radio>32</qs:radio>
+    <qs:radio>Bez limitu.</qs:radio>
+  </qs:radios>
+  <qs:columns>3</qs:columns>
+  <qs:solution>3</qs:solution>
+</qs:data>

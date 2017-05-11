@@ -8,16 +8,17 @@ url('?controller=controller&action=asset&path=/static/fonts/awesome/font-files/a
 
 /* /static/css/front/person.all.css */
 label.person_age,label.person_sex,label.person_edu,label.person_job{line-height:1.7em}.field.button
-button.reset{float:right;margin:-60px 100px 0 0}.field.button
+button.reset{float:right}.field.button
 button.refresh{margin:0
-auto}@supports (-webkit-appearance:none){.field.button
-button{overflow:hidden}.fieldset-person .field.button button
-span{margin-right:-1px}}.field.person.sex
+auto}.field.person.sex
 label{padding-left:5px}.field.person.sex label:first-child{padding-left:0}label.person_age
 span{padding-right:10px}input.person_age{width:50px}.field.person.age{margin-bottom:0}div.range-multiple{top:-20px}
 
 /* /static/css/front/person.full.css */
-.field.person.age,.field.person.sex{float:left;margin-top:0}.field.person.age{width:37%}.field.person.edu{clear:both}
+.field.button
+button.reset{margin:-60px 0 0 0}.field.button button.reset.fb-share-beside{margin:-60px 100px 0 0}.field.person.age,.field.person.sex{float:left;margin-top:0}.field.person.age{width:37%}.field.person.edu{clear:both}@supports (-webkit-appearance:none){.field.button
+button.reset{overflow:hidden}.fieldset-person .field.button button.reset
+span{margin-right:-1px}}
 
 /* /static/css/front/statistics.all.css */
 form.statistics
@@ -25,7 +26,11 @@ form.statistics
 0 10px 0}form.statistics .loading
 span{display:inline-block;line-height:20px;height:20px;padding:6px
 0 5px 40px;margin:0
-auto 0 auto;background:transparent url('?controller=controller&action=asset&path=/static/img/theme/loading.gif') 0 0 no-repeat}form.statistics
+auto 0 auto;background:transparent url('?controller=controller&action=asset&path=/static/img/theme/loading.gif') 0 0 no-repeat}form.statistics .field.from,
+form.statistics
+.field.to{margin-top:0}form.statistics .field.from input,
+form.statistics .field.to
+input{margin-left:10px}form.statistics
 .field.button{overflow:hidden;display:table;margin:0
 auto 10px auto}form.statistics .field.button
 button.disabled{opacity:0.7}h2.questions-statistics{margin-top:0}.question-statistics-tab-title-icon{padding-top:4px}.question-statistics-tab-header
@@ -49,7 +54,9 @@ td.percentage{padding:3px
 15px 3px 10px;text-align:right;white-space:nowrap;width:10%}.question-statistics-tab-content .no-graph-data-msg{padding:15px;text-align:center;font-size:100%}
 
 /* /static/css/front/statistics.full.css */
-
+form.statistics .field.from,
+form.statistics
+.field.to{display:inline-block;margin-right:30px}
 
 /* /static/css/libs/ext/6.0.0/theme-triton-custom/theme-triton-all-1.css */
 .fa{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0,0)}.fa-lg{font-size:1.33333em;line-height:0.75em;vertical-align:-15%}.fa-2x{font-size:2em}.fa-3x{font-size:3em}.fa-4x{font-size:4em}.fa-5x{font-size:5em}.fa-fw{width:1.28571em;text-align:center}.fa-ul{padding-left:0;margin-left:2.14286em;list-style-type:none}.fa-ul>li{position:relative}.fa-li{position:absolute;left:-2.14286em;width:2.14286em;top:0.14286em;text-align:center}.fa-li.fa-lg{left:-1.85714em}.fa-border{padding: .2em .25em .15em;border:solid .08em #eee;border-radius: .1em}.pull-right{float:right}.pull-left{float:left}.fa.pull-left{margin-right: .3em}.fa.pull-right{margin-left: .3em}.fa-spin{-webkit-animation:fa-spin 2s infinite linear;animation:fa-spin 2s infinite linear}.fa-pulse{-webkit-animation:fa-spin 1s infinite steps(8);animation:fa-spin 1s infinite steps(8)}@-webkit-keyframes fa-spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}100%{-webkit-transform:rotate(359deg);transform:rotate(359deg)}}@keyframes fa-spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}100%{-webkit-transform:rotate(359deg);transform:rotate(359deg)}}.fa-rotate-90{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);-webkit-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg)}.fa-rotate-180{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);-webkit-transform:rotate(180deg);-ms-transform:rotate(180deg);transform:rotate(180deg)}.fa-rotate-270{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);-webkit-transform:rotate(270deg);-ms-transform:rotate(270deg);transform:rotate(270deg)}.fa-flip-horizontal{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=0);-webkit-transform:scale(-1,1);-ms-transform:scale(-1,1);transform:scale(-1,1)}.fa-flip-vertical{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);-webkit-transform:scale(1, -1);-ms-transform:scale(1, -1);transform:scale(1, -1)}:root .fa-rotate-90,

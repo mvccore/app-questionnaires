@@ -155,10 +155,10 @@ GO
 CREATE TABLE [dbo].[Persons](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Created] [datetime] NOT NULL CONSTRAINT [DF_questionnaires_persons_created]  DEFAULT (getdate()),
-	[Sex] [char](1) NOT NULL,
-	[Age] [int] NOT NULL,
-	[Education] [varchar](50) NOT NULL,
-	[Job] [varchar](50) NOT NULL,
+	[Sex] [char](1) NULL,
+	[Age] [int] NULL,
+	[Education] [varchar](50) NULL,
+	[Job] [varchar](50) NULL,
 	CONSTRAINT [PK_questionnaires_persons] PRIMARY KEY CLUSTERED (
 		[Id] ASC
 	) WITH (

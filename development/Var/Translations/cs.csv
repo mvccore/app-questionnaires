@@ -1,3 +1,7 @@
+Thanks;Děkujeme
+Thank you for your answers, the questionnaire is evaluated anonymously.;Děkujeme za Vaše odpovědi, dotazník je vyhodnocován anonymně.
+If you are interested in how other people answered, %linkBegin%you can see the global anonymous results here%linkEnd%.;Pokud by Vás zajímalo, jak odpověděli další lidé před Vámi, %linkBegin%výsledky můžete shlédnout zde%linkEnd%.
+Back to questions;Zpět na dotazník
 Display;Zobrazit
 classic;klasicky
 mobile;pro mobily
@@ -7,7 +11,7 @@ About you;O Vás
 Reset questionnaire;Vynulovat dotazník
 Questions;Otázky
 Age;Věk
-Sex;Pohlaví
+Gender;Pohlaví
 Female;Žena
 Male;Muž
 Other;Ostatní
@@ -32,6 +36,8 @@ Send questionnaire;Odeslat dotazník
 years;let
 Yes;Ano
 No;Ne
+From;Od
+To;Do
 Field '{0}' requires a valid number.;Pole '{0}' vyžaduje platné číslo.
 Field '{0}' requires a valid integer.;Pole '{0}' vyžaduje platné celé číslo.
 Field '{0}' requires a valid option.;Pole '{0}' vyžaduje platnou možnost.
@@ -60,7 +66,7 @@ Completely correct answers count;Počet kompletně správných odpovědí
 Incorrect answers count;Počet špatných odpovědí
 Incorrect persons count;Počet osob odpovídajících špatně
 No graph data msg;V databázi nebyly nalezeny žádné odpovědi pro zobrazení grafu. \nProsím změňte nastavení filtrování.
-Anonymous results;Anonymní výsledky:
+Anonymous results:;Anonymní výsledky:
 Persons filter;Filtrování osob
 Questions statistics;Statistiky otázek
 Selections Percentages;Procenta zatržení

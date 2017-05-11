@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>12</qs:id>
+	<qs:text>Které požadavky musí být ve VB.NET splněny při designu kódu vlastní funkce pro rozšížení některé ze základních vestavěných tříd .NET? (např. String)</qs:text>
+	<qs:type>checkboxes</qs:type>
+	<qs:checkboxes>
+		<qs:checkbox>Třída ve které funkce je musí být <pre><code>Shared</code></pre></qs:checkbox>
+		<qs:checkbox>Funkce musí být v <pre><code>Modulu</code></pre>.</qs:checkbox>
+    <qs:checkbox>Třída musí být opatřena atributem <pre><code>&#60;Extension&#62;</code></pre>.</qs:checkbox>
+    <qs:checkbox>Modul musí být opatřen atributem <pre><code>&#60;Extension&#62;</code></pre>.</qs:checkbox>
+    <qs:checkbox>Funkce musí být opatřena atributem <pre><code>&#60;Extension&#62;</code></pre>.</qs:checkbox>
+    <qs:checkbox>Název třídy/modulu musí mít jméno složené z: typu který rozšiřuji + slovo 'Extensions'.</qs:checkbox>
+    <qs:checkbox>Třída/modul, ve kterém je rozšiřovací funkce musí být ve stejném namespace jako rozšiřovaný typ.</qs:checkbox>
+    <qs:checkbox>Třída/modul, ve kterém je rozšiřovací funkce může být v jakémkoliv vlastním namespace.</qs:checkbox>
+    <qs:checkbox>Na hodnotu proměnné typu které rozšiřuji se odkazuji pomocí klíčového slova <pre><code>Me</code></pre>.</qs:checkbox>
+    <qs:checkbox>Na hodnotu proměnné typu které rozšiřuji se odkazuji pomocí prvního parametru funkce.</qs:checkbox>
+	</qs:checkboxes>
+  <qs:columns>1</qs:columns>
+  <qs:solution>1,3,4,5,7,9</qs:solution>
+</qs:data>

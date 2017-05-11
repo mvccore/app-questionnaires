@@ -11,11 +11,13 @@ class Statistics extends Questionnaire
 	 * @var \App\Forms\Statistics
 	 */
 	private $_filterForm;
-	private $_minAndMaxAges;
+	private $_minMaxAges;
+	private $_minMaxDates;
 
 	public function Init () {
 		parent::Init();
-		$this->_minAndMaxAges = Models\Person::GetMinAndMaxAges();
+		$this->_minMaxAges = Models\Person::GetMinAndMaxAges($this->questionnaire->Id);
+		$this->_minMaxDates = Models\Person::GetMinAndMaxDates($this->questionnaire->Id);
 	}
 	public function IndexAction () {
 		$this->view->Questionnaire = $this->questionnaire;
@@ -183,31 +185,51 @@ class Statistics extends Questionnaire
 			->SetMethod(\MvcCore\Ext\Form::METHOD_GET)
 			->SetAction($this->Url('Statistics:Submit', array('path' => $this->path)))
 			->SetSuccessUrl($this->Url('Statistics:Index', array('path' => $this->path)))
-			->Init($this->_minAndMaxAges)
+			->SetAuthenticated(!is_null($this->user))
+			->SetQuestionnaire($this->questionnaire)
+			->SetMinMaxAges($this->_minMaxAges)
+			->Init()
 			->SetDefaults(array(
-				'age'		=> $this->_minAndMaxAges,
+				'age'		=> $this->_minMaxAges,
 				'sex'		=> array_keys(Models\Person::$SexOptions),
 				'education'	=> array_keys(Models\Person::$EducationOptions),
 				'job'		=> array_keys(Models\Person::$JobOptions),
+				'from'		=> $this->_minMaxDates[0],
+				'to'		=> $this->_minMaxDates[1]
 			));
 		$this->_filterForm = $form;
 	}
 	protected function submitAndManageFormDataForDbLoad () {
 		list(,$filterData,) = $this->_filterForm->Submit();
+		$dateFormat = 'Y-m-d\TH:i';
+		$minMaxDates = array(
+			date_format($this->_minMaxDates[0], $dateFormat),
+			date_format($this->_minMaxDates[1], $dateFormat)
+		);
 		$filterKeys = array_keys($filterData);
 		for ($i = 0, $l = count($filterKeys); $i < $l; $i += 1) {
 			$key = $filterKeys[$i];
 			$values = $filterData[$key];
 			$valuesCount = count($values);
 			if ($key == 'age') {
-				if ($this->_minAndMaxAges[0] == $values[0] && $this->_minAndMaxAges[1] == $values[1]) unset($filterData[$key]);
+				if ($this->_minMaxAges[0] == $values[0] && $this->_minMaxAges[1] == $values[1]) unset($filterData[$key]);
 			} else if ($key == 'sex') {
 				if ($valuesCount == count(Models\Person::$SexOptions)) unset($filterData[$key]);
 			} else if ($key == 'education') {
 				if ($valuesCount == count(Models\Person::$EducationOptions)) unset($filterData[$key]);
 			} else if ($key == 'job') {
 				if ($valuesCount == count(Models\Person::$JobOptions)) unset($filterData[$key]);
+			} else if ($key == 'from') {
+				if ($minMaxDates[0] == $values) unset($filterData[$key]);
+			} else if ($key == 'to') {
+				if ($minMaxDates[1] == $values) unset($filterData[$key]);
 			}
+		}
+		if (!$this->questionnaire->PersonsForm) {
+			unset($filterData['age'], $filterData['sex'], $filterData['education'], $filterData['job']);
+		}
+		if (is_null($this->user)) {
+			unset($filterData['from'], $filterData['to']);
 		}
 		return $filterData;
 	}

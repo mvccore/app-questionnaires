@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>1</qs:id>
+	<qs:text>
+    Zkusili jste nebo již programujete v některém z těchto programovacích jazyků?
+    Zvládli byste v některém napsat například cyklus for?</qs:text>
+	<qs:type>checkboxes</qs:type>
+	<qs:checkboxes>
+    <qs:checkbox>Java</qs:checkbox>
+    <qs:checkbox>C/C++</qs:checkbox>
+    <qs:checkbox>C#</qs:checkbox>
+    <qs:checkbox>Python</qs:checkbox>
+    <qs:checkbox>PHP</qs:checkbox>
+    <qs:checkbox>Visual Basic .NET</qs:checkbox>
+    <qs:checkbox>VBA</qs:checkbox>
+    <qs:checkbox>Javascript</qs:checkbox>
+    <qs:checkbox>Delphi/Object Pascal</qs:checkbox>
+    <qs:checkbox>Objective-C</qs:checkbox>
+    <qs:checkbox>Perl</qs:checkbox>
+    <qs:checkbox>SQL</qs:checkbox>
+	</qs:checkboxes>
+</qs:data>

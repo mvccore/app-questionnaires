@@ -1,6 +1,7 @@
 /* questions - question number command text */
 label span.question-number-and-text{
 	display:table;
+    margin-bottom:5px;
 }
 label span.question-number-and-text-row{
 	display:table-row;
@@ -16,6 +17,7 @@ label span.question-number{
 	text-align:right;
 	font-weight:bold;
 }
+
 /* fields customization */
 /* options and connections */
 table.options-and-connections{

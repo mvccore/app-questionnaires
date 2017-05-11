@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+  <qs:id>0</qs:id>
+  <qs:text>Která(é) z tříd neexistuje(í) v jmenném prostu tříd (namespace) <pre><code>System.Collections.Generic</code></pre>?</qs:text>
+  <qs:type>checkboxes</qs:type>
+  <qs:checkboxes>
+    <qs:checkbox>List</qs:checkbox>
+    <qs:checkbox>ArrayObject</qs:checkbox>
+    <qs:checkbox>Dictionary</qs:checkbox>
+    <qs:checkbox>StringBuilder</qs:checkbox>
+    <qs:checkbox>SortedList</qs:checkbox>
+    <qs:checkbox>ICollection</qs:checkbox>
+  </qs:checkboxes>
+  <qs:solution>1,3</qs:solution>
+</qs:data>

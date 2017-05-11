@@ -26,36 +26,37 @@
 				<xs:element name="checkboxes">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="checkbox" type="xs:string" />
+							<xs:element name="checkbox" type="xs:html" />
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
 				<xs:element name="radios">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="radio" type="xs:string" />
+							<xs:element name="radio" type="xs:html" />
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
 				<xs:element name="options">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="option" type="xs:string" />
+							<xs:element name="option" type="xs:html" />
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
 				<xs:element name="connections">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="connection" type="xs:string" />
+							<xs:element name="connection" type="xs:html" />
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
 				<xs:element name="required" type="xs:boolean" />
+        <xs:element name="columns" type="xs:integer" />
 				<xs:element name="min" type="xs:integer" />
 				<xs:element name="max" type="xs:integer" />
 				<xs:element name="max-length" type="xs:integer" />
-				<xs:element name="body" type="xs:string" />
+				<xs:element name="body" type="xs:html" />
 				<xs:element name="delimiter" type="xs:string" />
 				<xs:element name="solution" type="xs:string" />
 				<xs:element name="levenshtein-comparation-tolerance" type="xs:integer" />

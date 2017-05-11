@@ -16,6 +16,7 @@ class Index extends Base
             $documentPath = substr($documentPath, 0, strrpos($documentPath, $indexStr));
         }
 		$this->document = Models\Document::GetByPath($documentPath);
+		if ($this->document->Lang) Base::$Lang = $this->document->Lang;
 	}
 	public function PreDispatch () {
 		parent::PreDispatch();

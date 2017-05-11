@@ -1,9 +1,9 @@
-h1{font-size:250%;line-height:1.25em;margin:1.15em 0 0.75em 0;}
-h2{font-size:230%;line-height:1.3em;margin:1.15em 0 0.75em 0;}
-h3{font-size:185%;line-height:1.3em;margin:1.0625em 0 0.75em 0;}
-h4{font-size:165%;line-height:1.3em;margin:0.9125em 0 0.75em 0;}
-h5{font-size:135%;line-height:1.3em;margin:0.825em 0 0.75em 0;}
-h6{font-size:117%;line-height:1.3em;margin:0.8em 0 0.75em 0;}
+h1{font-size:235%;line-height:1.25em;margin:1.15em 0 0.75em 0;}
+h2{font-size:209%;line-height:1.3em;margin:1.15em 0 0.75em 0;}
+h3{font-size:183%;line-height:1.3em;margin:1.0625em 0 0.75em 0;}
+h4{font-size:157%;line-height:1.3em;margin:0.9125em 0 0.75em 0;}
+h5{font-size:131%;line-height:1.3em;margin:0.825em 0 0.75em 0;}
+h6{font-size:105%;line-height:1.3em;margin:0.8em 0 0.75em 0;}
 
 a,
 select,
@@ -24,3 +24,7 @@ sup{font-size:65%;vertical-align:25%;}
 sub{font-size:65%;vertical-align:-25%;}
 small{font-size:70%;line-height:1.2em;}
 big{font-size:120%;line-height:1.2em;}
+
+pre,code{display:inline-block !important;}
+pre{margin:0 3px;}
+pre code{background:#f7f7f7;padding:0 5px;font-weight:bold;}

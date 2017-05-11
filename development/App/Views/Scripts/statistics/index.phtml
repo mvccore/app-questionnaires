@@ -1,9 +1,16 @@
 <?php /** @var $this \MvcCore\View */ ?>
 <h1><?php echo $this->Questionnaire->Title; ?></h1>
-<p><?php echo $this->Translate('Anonymous results') ?></p>
+<p><?php echo $this->Questionnaire->Perex; ?></p>
+<p><?php echo $this->Translate('Anonymous results:') ?></p>
 <div class="hr"></div>
-<h2><?php echo $this->Translate('Persons filter'); ?></h2>
-<?php echo $this->FilterForm->Render(); ?>
+<?php if ($this->FilterForm->Authenticated || $this->FilterForm->PersonsForm): ?>
+	<h2><?php echo $this->Translate('Persons filter'); ?></h2>
+	<?php echo $this->FilterForm->Render(); ?>
+<?php else: ?>
+	<div class="hidden">
+		<?php echo $this->FilterForm->Render(); ?>
+	</div>
+<?php endif; ?>
 <h2 class="questions-statistics"><?php echo $this->Translate('Questions statistics'); ?></h2>
 <div id="statistics-questions-results">
 	<input type="hidden" id="statistics-questions-configuration" value="<?php

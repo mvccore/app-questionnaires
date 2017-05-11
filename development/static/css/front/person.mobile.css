@@ -1,1 +1,7 @@
-/**/
+/* person fieldset fields */
+.field.button{
+    display: table;
+}
+.field.button button.reset.no-person-form{
+	float:none;
+}

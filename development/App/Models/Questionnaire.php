@@ -4,10 +4,48 @@ namespace App\Models;
 
 class Questionnaire extends Document
 {
+	/**
+	 * Public vars bellow is not necessary to define here manualy,
+	 * variables are initialized automaticly by xml file loading,
+	 * but here they are for IDE whispering
+	 */
+	/** @var int */
+	public $Id;
+	/* @var string */
+	public $Lang;
+	/* @var bool */
+	public $PersonsForm;
+	/* @var string */
+	public $Title;
+	/* @var string */
+	public $Description;
+	/* @var string */
+	public $Keywords;
+	/* @var string */
+	public $Robots;
+	/* @var string */
+	public $OgImage;
+	/* @var string */
+	public $OgTitle;
+	/* @var string */
+	public $OgDescription;
+	/* @var string */
+	public $ItempropName;
+	/* @var string */
+	public $ItempropDescription;
+	/* @var bool */
+	public $FacebookShare;
+	/* @var string */
+	public $Perex;
+	/* @var string */
+	public $Body;
+
 	protected static $dataDir = '/Var/Questionnaires';
+
 	private static $_appInstance;
 	private $_url = null;
 	private $_questions = null;
+
 	public static function GetAll () {
 		$result = array();
 		$fullPath = \MvcCore::GetInstance()->GetRequest()->AppRoot . self::$dataDir;

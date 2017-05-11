@@ -1,0 +1,152 @@
+Thanks;Thanks
+Thank you for your answers, the questionnaire is evaluated anonymously.;Thank you for your answers, the questionnaire is evaluated anonymously.
+If you are interested in how other people answered, %linkBegin%you can see the global anonymous results here%linkEnd%.;If you are interested in how other people answered, %linkBegin%you can see the global anonymous results here%linkEnd%.
+Back to questions;Back to questions
+Display;Display
+classic;classic
+mobile;mobile
+Questionnaires;Questionnaires
+Please choose one of these questionnaires.;Please choose one of these questionnaires.
+About you;About you
+Reset questionnaire;Reset questionnaire
+Questions;Questions
+Age;Age
+Gender;Gender
+Female;Female
+Male;Male
+Other;Other
+Highest education level;Highest education level
+None;None
+Elementary School;Elementary School
+Middle school with apprenticeship certificate;Middle school with apprenticeship certificate
+Middle school with graduation;Middle school with graduation
+Gymnasium;Gymnasium
+Higher vocational school;Higher vocational school
+College - bachelor;College - bachelor
+College - magister;College - magister
+College - doctor and higher;College - doctor and higher
+I am;I am
+Student;Student
+No job;No job
+Employed;Employed
+Businessman;Businessman
+I care about/I own company;I care about/I own company
+Pensioner;Pensioner
+Send questionnaire;Send questionnaire
+years;years
+Yes;Yes
+No;No
+From;From
+To;To
+Field '{0}' requires a valid number.;Field '{0}' requires a valid number.
+Field '{0}' requires a valid integer.;Field '{0}' requires a valid integer.
+Field '{0}' requires a valid option.;Field '{0}' requires a valid option.
+Field '{0}' has invalid format ('{1}').;Field '{0}' has invalid format ('{1}').
+User name or password is incorrect.;User name or password is incorrect.
+User;User
+Sign In;Sign In
+Log Out;Log Out
+Password;Password
+{0}. Question;{0}. Question
+question-tab;question-tab
+No answer;No answer
+required;required
+not required;not required
+Overview;Overview
+Total respondents count;Total respondents count
+Total answers count;Total answers count
+No answers count;No answers count
+Completely no answers count;Completely no answers count
+Positive answers count;Positive answers count
+Negative answers count;Negative answers count
+Correct answers count;Correct answers count
+Correct persons count;Correct persons count
+Correct text answers count;Correct text answers count
+Completely correct answers count;Completely correct answers count
+Incorrect answers count;Incorrect answers count
+Incorrect persons count;Incorrect persons count
+No graph data msg;No graph data msg
+Anonymous results:;Anonymous results:
+Persons filter;Persons filter
+Questions statistics;Questions statistics
+Selections Percentages;Selections Percentages
+Selections Counts;Selections Counts
+Question Options;Question Options
+Question Answers;Question Answers
+Selected Options Counts In Answer;Selected Options Counts In Answer
+Respondents Counts;Respondents Counts
+Respondents Count;Respondents Count
+Respondents Percentages;Respondents Percentages
+Respondents Percentage;Respondents Percentage
+Answers Percentages;Answers Percentages
+Answers Counts;Answers Counts
+Number Of Correct And Incorrect Respondents;Number Of Correct And Incorrect Respondents
+1 selected option;1 selected option
+Answered;Answered
+Did not answer;Did not answer
+{0} selected options (plural: 2-4);{0} selected options (plural: 2-4)
+{0} selected options (plural: 0,5-Infinite);{0} selected options (plural: 0,5-Infinite)
+Correctly answered respondents;Correctly answered respondents
+Incorrectly answered respondents;Incorrectly answered respondents
+Combination Of Correctly And Incorrectly Answered Options Counts;Combination Of Correctly And Incorrectly Answered Options Counts
+1 right answer;1 right answer
+{0} right answers (plural: 2-4);{0} right answers (plural: 2-4)
+{0} right answers (plural: 0,5-Infinite);{0} right answers (plural: 0,5-Infinite)
+1 wrong answer;1 wrong answer
+{0} wrong answers (plural: 2-4);{0} wrong answers (plural: 2-4)
+{0} wrong answers (plural: 0,5-Infinite);{0} wrong answers (plural: 0,5-Infinite)
+1 answered connection;1 answered connection
+{0} answered connections (plural: 2-4);{0} answered connections (plural: 2-4)
+{0} answered connections (plural: 0,5-Infinite);{0} answered connections (plural: 0,5-Infinite)
+Summary;Summary
+Presented values;Presented values
+Presented value;Presented value
+Question Option;Question Option
+Question Answer;Question Answer
+Answers counts, where option was presented;Answers counts, where option was presented
+Answers percentages, where option was presented;Answers percentages, where option was presented
+Any presented option count;Any presented option count
+Any presented option percentage;Any presented option percentage
+Answered Connections Counts;Answered Connections Counts
+Answered Connections Percentages;Answered Connections Percentages
+Connections Counts In Answer;Connections Counts In Answer
+Most Often Answered Connections;Most Often Answered Connections
+Other Rest Connections;Other Rest Connections
+Other Rest Options Combinations;Other Rest Options Combinations
+Other Rest Answers Combinations;Other Rest Answers Combinations
+Options Connections;Options Connections
+Correctly Connected Options Count;Correctly Connected Options Count
+Answered Texts;Answered Texts
+Counts;Counts
+Percentages;Percentages
+Correct;Correct
+Number of people with at least one correct answer;Number of people with at least one correct answer
+Number of people with no one right answer;Number of people with no one right answer
+Loading statistics...;Loading statistics...
+Graph Title: Question Type - 'boolean', Graph Key - 'Overview';Overview
+Graph Title: Question Type - 'boolean-and-text', Graph Key - 'Overview';Overview
+Graph Title: Question Type - 'boolean-and-text', Graph Key - 'AllTextAnswers';The most frequently sended texts
+Graph Title: Question Type - 'checkboxes', Graph Key - 'Overview';The most frequently chosen options
+Graph Title: Question Type - 'integer', Graph Key - 'Overview';The most frequently sended values
+Graph Title: Question Type - 'radios', Graph Key - 'Overview';The most frequently chosen options
+Graph Title: Question Type - 'text', Graph Key - 'Overview';The most frequently sended answers
+Graph Title: Question Type - 'textarea', Graph Key - 'Overview';The most frequently sended answers
+Graph Title: Question Type - 'connections', Graph Key - 'PresentedOptionsCounts';Number of options included in a response
+Graph Title: Question Type - 'connections', Graph Key - 'PresentedAnswersCounts';Number of answers with any option
+Graph Title: Question Type - 'connections', Graph Key - 'ConnectionsCorrectness';Number of right and wrong connections for each option
+Graph Title: Question Type - 'connections', Graph Key - 'PersonsAnswersCounts';Number of created connections in answers
+Graph Title: Question Type - 'connections', Graph Key - 'MostOfftenConnections';Number of most frequently answered connections
+Graph Title: Question Type - 'connections', Graph Key - 'PeopleCorrectness';The most common number of correctly connected options
+Graph Title: Question Type - 'checkboxes', Graph Key - 'SelectedOptionsCountsInAnswer';The most frequent numbers of checked options in the answer
+Graph Title: Question Type - 'checkboxes', Graph Key - 'OptionsCorrectness';The most frequently missed and successfully answered options
+Graph Title: Question Type - 'checkboxes', Graph Key - 'PeopleCorrectness';The most common combinations of right and wrong connections in answers
+Graph Title: Question Type - 'integer', Graph Key - 'CorrectAnswers';Number of correct answers
+Graph Title: Question Type - 'radios', Graph Key - 'CorrectAnswers';Number of correct answers
+Graph Title: Question Type - 'connections', Graph Key - 'CorrectAnswers';Number of correct answers
+Graph Title: Question Type - 'text', Graph Key - 'CorrectAnswers';Number of correct answers
+Graph Title: Question Type - 'connections', Graph Key - 'Involved';Participation in the question
+Graph Title: Question Type - 'checkboxes', Graph Key - 'Involved';Participation in the question
+Graph Title: Question Type - 'integer', Graph Key - 'Involved';Participation in the question
+Graph Title: Question Type - 'radios', Graph Key - 'Involved';Participation in the question
+Graph Title: Question Type - 'text', Graph Key - 'Involved';Participation in the question
+Graph Title: Question Type - 'textarea', Graph Key - 'Involved';Participation in the question

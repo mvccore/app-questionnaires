@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>12</qs:id>
+	<qs:text>Which type of games do you play most likely?</qs:text>
+	<qs:type>checkboxes</qs:type>
+	<qs:checkboxes>
+		<qs:checkbox>Action</qs:checkbox>
+		<qs:checkbox>Shooting</qs:checkbox>
+		<qs:checkbox>Adventures</qs:checkbox>
+		<qs:checkbox>Strategic</qs:checkbox>
+		<qs:checkbox>Sports</qs:checkbox>
+		<qs:checkbox>Flash</qs:checkbox>
+		<qs:checkbox>Oldschool</qs:checkbox>
+	</qs:checkboxes>
+</qs:data>

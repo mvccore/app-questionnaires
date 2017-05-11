@@ -9,20 +9,37 @@ class Question extends XmlModel
 	* variables are initialized automaticly by xml file loading,
 	* but here they are for IDE whispering
 	*/
+	/** @var int */
 	public $Id;
+	/** @var string */
 	public $Text;
+	/** @var string */
 	public $Type;
+	/** @var array */
 	public $Checkboxes;
+	/** @var array */
 	public $Radios;
+	/** @var array */
 	public $Options;
+	/** @var array */
 	public $Connections;
+	/** @var bool */
 	public $Required;
+	/** @var int */
+	public $Columns;
+	/** @var int */
 	public $Min;
+	/** @var int */
 	public $Max;
+	/** @var int */
 	public $MaxLength;
+	/** @var string */
 	public $Body;
+	/** @var string */
 	public $Delimiter;
+	/** @var string */
 	public $Solution;
+	/** @var int */
 	public $LevenstheinComparationTolerance;
 
 	protected $xml;

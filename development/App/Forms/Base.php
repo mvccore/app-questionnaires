@@ -9,7 +9,7 @@ class Base extends Form
 	public $TemplateTypePath = 'Forms';
 	public $FieldsDefaultRenderMode = Form::FIELD_RENDER_MODE_LABEL_AROUND;
 
-	protected $formColumnsCount;
+	protected $formColumnsCount = NULL;
 
 	public static function AllFormsInit () {
 		// customize templates for all forms in whole application
@@ -25,7 +25,8 @@ class Base extends Form
 		$this->jsAssetsRootDir = \MvcCore::GetInstance()->GetRequest()->AppRoot . '/static/js/front';
 	}
 	protected function initColumnsCount () {
-		$mediaSiteKey = $this->Controller->GetRequest()->MediaSiteKey;
-		$this->formColumnsCount = $mediaSiteKey == 'full' ? 3 : 1;
+		if ($this->Controller->GetRequest()->MediaSiteKey != 'full') {
+			$this->formColumnsCount = 1;
+		}
 	}
 }

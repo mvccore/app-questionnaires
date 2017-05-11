@@ -10,6 +10,14 @@ form.statistics .loading span{
 	margin:0 auto 0 auto;
 	background:transparent url('<?php echo $this->AssetUrl('/static/img/theme/loading.gif'); ?>') 0 0 no-repeat; 
 }
+form.statistics .field.from,
+form.statistics .field.to{
+	margin-top:0;
+}
+form.statistics .field.from input,
+form.statistics .field.to input{
+	margin-left:10px;
+}
 form.statistics .field.button{
 	overflow:hidden;
 	display:table;

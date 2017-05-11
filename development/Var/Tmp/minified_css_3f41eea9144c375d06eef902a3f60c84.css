@@ -1,19 +1,20 @@
 
 /* /static/css/front/person.all.css */
 label.person_age,label.person_sex,label.person_edu,label.person_job{line-height:1.7em}.field.button
-button.reset{float:right;margin:-60px 100px 0 0}.field.button
+button.reset{float:right}.field.button
 button.refresh{margin:0
-auto}@supports (-webkit-appearance:none){.field.button
-button{overflow:hidden}.fieldset-person .field.button button
-span{margin-right:-1px}}.field.person.sex
+auto}.field.person.sex
 label{padding-left:5px}.field.person.sex label:first-child{padding-left:0}label.person_age
 span{padding-right:10px}input.person_age{width:50px}.field.person.age{margin-bottom:0}div.range-multiple{top:-20px}
 
 /* /static/css/front/person.full.css */
-.field.person.age,.field.person.sex{float:left;margin-top:0}.field.person.age{width:37%}.field.person.edu{clear:both}
+.field.button
+button.reset{margin:-60px 0 0 0}.field.button button.reset.fb-share-beside{margin:-60px 100px 0 0}.field.person.age,.field.person.sex{float:left;margin-top:0}.field.person.age{width:37%}.field.person.edu{clear:both}@supports (-webkit-appearance:none){.field.button
+button.reset{overflow:hidden}.fieldset-person .field.button button.reset
+span{margin-right:-1px}}
 
 /* /static/css/front/questionnaire.all.css */
-label span.question-number-and-text{display:table}label span.question-number-and-text-row{display:table-row}label span.question-number,
+label span.question-number-and-text{display:table;margin-bottom:5px}label span.question-number-and-text-row{display:table-row}label span.question-number,
 label span.question-text{display:table-cell;line-height:1.7em}label span.question-number{width:20px;padding-right:5px;text-align:right;font-weight:bold}table.options-and-connections{width:100%;margin:5px
 0 0 15px}table.options-and-connections
 td.option{padding:3px

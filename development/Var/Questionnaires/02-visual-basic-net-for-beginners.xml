@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<qr:data xmlns:qr="../Questionare.xsd">
+	<qr:id>2</qr:id>
+  <qr:lang>cs</qr:lang>
+  <qr:persons-form>false</qr:persons-form>
+	<qr:title>Visual Basic .NET pro začátečníky</qr:title>
+	<qr:description>
+    Informace z tohoto dotazníku vstupních znalostí jsou anonymní.<br />
+    Slouží pouze lektorovi pro lepší přípravu a zacílení nadcházejícího kurzu/tréninku.<br /><br />
+    Pokud některou otázku <b>nevíte</b>, prosím <b>netypujte a neodpovídejte</b> na ni.<br />
+    Taktéž posím <b>nic nevyhledávejte</b>, zajímá mne co víte, ne co nevíte nebo umíte vygooglit:-)<br /><br />
+    <b>Hromadné  výsledky</b> můžete shlédnout na této stránce po odeslání dotazníku. <br /><br />
+    Předem Vám mnohokrát děkuji, Váš lektor.
+</qr:description>
+	<qr:keywords></qr:keywords>
+	<qr:robots>index,follow</qr:robots>
+	<qr:og-image></qr:og-image>
+	<qr:og-title>Dotazník</qr:og-title>
+	<qr:og-description>
+		Dotazník vstupních znalostí pro kurz Visual Basic v prostředí .NET pro úplné začátečníky, domácí samouky či programátory z jiných jazyků.
+	</qr:og-description>
+	<qr:itemprop-name>Dotazník</qr:itemprop-name>
+	<qr:itemprop-description></qr:itemprop-description>
+  <qr:facebook-share>false</qr:facebook-share>
+	<qr:perex>
+    Dotazník vstupních znalostí pro kurz Visual Basic v prostředí .NET pro úplné začátečníky, domácí samouky či programátory z jiných jazyků.
+  </qr:perex>
+	<qr:body>
+		<h1>
+			<?php echo $this->Document->Title; ?>
+		</h1>
+		<p class="align-left">
+			<?php echo $this->LineBreaks($this->Document->Description); ?>
+		</p>
+	</qr:body>
+</qr:data>

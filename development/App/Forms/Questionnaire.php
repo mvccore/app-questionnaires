@@ -12,9 +12,17 @@ class Questionnaire extends Base
 	public $CssClass = 'questionnaire';
 	public $TemplatePath = 'questionnaire';
 	public $Translate = TRUE;
+
+	public $PersonsForm = TRUE;
+	/** @var \App\Models\Questionnaire */
+	protected $questionnaire;
+	/** @var \App\Models\Question[] */
 	protected $questions = array();
-	public function SetQuestions (array $questions = array()) {
-		$this->questions = $questions;
+
+	public function SetQuestionnaire (Models\Questionnaire $questionnaire) {
+		$this->questionnaire = $questionnaire;
+		$this->questions = $questionnaire->GetQuestions();
+		$this->PersonsForm = $this->questionnaire->PersonsForm;
 		return $this;
 	}
 	public function Init () {
@@ -23,9 +31,13 @@ class Questionnaire extends Base
 		$this->AddField(new Form\ResetButton(array(
 			'name'			=> 'reset',
 			'value'			=> 'Reset questionnaire',
-			'cssClasses'	=> array('button', 'button-green'),
+			'cssClasses'	=> array(
+				'button', 'button-green', 
+				$this->Controller->GetView()->DisplayFacebookShare ? 'fb-share-beside' : '',
+				$this->PersonsForm ? '' : 'no-person-form'
+			),
 		)));
-		$this->initPersonFields();
+		if ($this->PersonsForm) $this->initPersonFields();
 		$this->initQuestionsFields();
 		$this->AddField(new Form\SubmitButton(array(
 			'name'			=> 'send',
@@ -44,7 +56,7 @@ class Questionnaire extends Base
 		));
 		$sex = new Form\RadioGroup(array(
 			'name'			=> 'person_sex',
-			'label'			=> 'Sex',
+			'label'			=> 'Gender',
 			'required'		=> TRUE,
 			'cssClasses'	=> array('person', 'radio-group', 'sex'),
 			'options'		=> Models\Person::$SexOptions,
@@ -56,7 +68,8 @@ class Questionnaire extends Base
 			'cssClasses'	=> array('person', 'radio-group', 'edu'),
 			'options'		=> Models\Person::$EducationOptions,
 			'templatePath'	=> 'fields/field-group-with-columns',
-			'columns'		=> $this->formColumnsCount,
+			'columns'		=> !empty($this->formColumnsCount) ? $this->formColumnsCount : 1,
+			'columns'		=> empty($this->formColumnsCount) ? 3 :  $this->formColumnsCount
 		));
 		$job = new Form\RadioGroup(array(
 			'name'			=> 'person_job',
@@ -65,7 +78,7 @@ class Questionnaire extends Base
 			'cssClasses'	=> array('person', 'radio-group', 'job'),
 			'options'		=> Models\Person::$JobOptions,
 			'templatePath'	=> 'fields/field-group-with-columns',
-			'columns'		=> $this->formColumnsCount,
+			'columns'		=> empty($this->formColumnsCount) ? 3 :  $this->formColumnsCount
 		));
 		$this->AddFields($age, $sex, $edu, $job);
 	}
@@ -105,7 +118,9 @@ class Questionnaire extends Base
 	protected function initQuestionFieldBoolean ($key, Models\Question & $question) {
 		return new Fields\Boolean(array(
 			'templatePath'	=> 'fields/field-group-with-columns',
-			'columns'		=> $this->formColumnsCount,
+			'columns'		=> empty($this->formColumnsCount)
+				? (!empty($question->Columns) ? $question->Columns : 3)
+				:  $this->formColumnsCount,
 		));
 	}
 	protected function initQuestionFieldText ($key, Models\Question & $question) {
@@ -117,14 +132,18 @@ class Questionnaire extends Base
 	protected function initQuestionFieldBooleanAndText ($key, Models\Question & $question) {
 		return new Fields\BooleanAndText(array(
 			'templatePath'	=> 'fields/field-group-with-columns',
-			'columns'		=> $this->formColumnsCount,
+			'columns'		=> empty($this->formColumnsCount)
+				? (!empty($question->Columns) ? $question->Columns : 3)
+				:  $this->formColumnsCount,
 		));
 	}
 	protected function initQuestionFieldCheckboxes ($key, Models\Question & $question) {
 		return new Form\CheckboxGroup(array(
 			'options'		=> $question->Checkboxes,
 			'templatePath'	=> 'fields/field-group-with-columns',
-			'columns'		=> $this->formColumnsCount,
+			'columns'		=> empty($this->formColumnsCount)
+				? (!empty($question->Columns) ? $question->Columns : 3)
+				:  $this->formColumnsCount,
 		));
 	}
 	protected function initQuestionFieldInteger ($key, Models\Question & $question) {
@@ -142,7 +161,9 @@ class Questionnaire extends Base
 		return new Form\RadioGroup(array(
 			'options'		=> $question->Radios,
 			'templatePath'	=> 'fields/field-group-with-columns',
-			'columns'		=> 1,
+			'columns'		=> empty($this->formColumnsCount)
+				? (!empty($question->Columns) ? $question->Columns : 3)
+				:  $this->formColumnsCount,
 		));
 	}
 	protected function initQuestionFieldTextarea ($key, Models\Question & $question) {

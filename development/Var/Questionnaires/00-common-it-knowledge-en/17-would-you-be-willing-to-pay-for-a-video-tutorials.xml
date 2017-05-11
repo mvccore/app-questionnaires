@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>17</qs:id>
+	<qs:text>
+    Would you be willing to pay for a video tutorials or rather
+    to make a research online and find a free way how to do things?
+  </qs:text>
+	<qs:type>radios</qs:type>
+	<qs:radios>
+		<qs:radio>
+      Yes, I am willing to pay a good tutorials because it saves my time.
+    </qs:radio>
+		<qs:radio>
+      No, I've always been able to help myself with the research online.
+    </qs:radio>
+		<qs:radio>
+      Yes, very specific information is hard possible or not possible to find, 
+      the way how to work/program or do very specific things can be learned only from the example (s).
+    </qs:radio>
+		<qs:radio>
+      No, despite the fact that the information online should be false, outdated or ineffective.
+    </qs:radio>
+	</qs:radios>
+  <qs:columns>1</qs:columns>
+	<qs:solution>0,2</qs:solution>
+</qs:data>

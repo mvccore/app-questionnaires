@@ -1,1 +1,5 @@
-/**/
+form.statistics .field.from,
+form.statistics .field.to{
+	display:inline-block;
+    margin-right:30px;
+}

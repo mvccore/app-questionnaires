@@ -92,7 +92,10 @@ class Statistics extends Models\Base
 			$item->Value = str_replace('{0}', $item->Value, $translator->Translate($key));
 		}
 		if ($this->user) {
-			$answeredPersonsPercentage = round(($this->questionAnsweringPersonsCount / $this->questionnaireAnsweringPersonsCount) * 1000) / 10;
+			$answeredPersonsPercentage = 0;
+			if ($this->questionnaireAnsweringPersonsCount > 0) {
+				$answeredPersonsPercentage = round(($this->questionAnsweringPersonsCount / $this->questionnaireAnsweringPersonsCount) * 1000) / 10;
+			}
 			$result->Summary = array(
 				array('Total respondents count',	$this->questionnaireAnsweringPersonsCount),
 				array('Total answers count',		$this->questionAnsweringPersonsCount, $answeredPersonsPercentage + ' %'),
@@ -464,7 +467,9 @@ class Statistics extends Models\Base
 		foreach ($graphData as & $dataItem) {
 			$value = $dataItem['Value'];
 			if (isset($questionOptions[$value])) {
-				$dataItem['Value'] = trim($questionOptions[$value]);
+				$dataItem['Value'] = Models\Base::TranslateHtmlEntitiesToUtfChars(
+					trim(strip_tags($questionOptions[$value]))
+				);
 			}
 		}
 	}

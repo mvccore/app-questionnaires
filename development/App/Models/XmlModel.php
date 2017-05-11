@@ -78,9 +78,8 @@ class XmlModel extends Base
 			$schemeFileFullPath = str_replace('\\', '/', mb_substr($fileFullPath, 0, $lastSlashPos) . '/' . $matches[2]);
 			$xmlScheme = static::loadXmlScheme($schemeFileFullPath);
 			$rootNodeDescriptorBase = $xmlScheme->children('xs', TRUE);
-			$rootNodeDescriptorType = $rootNodeDescriptorBase->children('xs', TRUE);
-			$rootNodeDescriptorSequence = $rootNodeDescriptorType->children('xs', TRUE);
-			foreach ($rootNodeDescriptorSequence->children('xs', TRUE) as $dataNode) {
+			$rootNodeDescriptorBase->registerXPathNamespace('xs', 'http://www.w3.org/2001/XMLSchema');
+			foreach ($rootNodeDescriptorBase->xpath('//xs:element[@type]') as $dataNode) {
 				$attrs = $dataNode->attributes();
 				$nodeName = trim((string)$attrs['name']);
 				if (!isset($attrs['type'])) {
@@ -152,7 +151,11 @@ class XmlModel extends Base
 		} else if ($dataType == 'float') {
 			$this->$propertyName = floatval($rawNodeValue);
 		} else if ($dataType == 'boolean') {
-			$this->$propertyName = boolval($rawNodeValue);
+			if (strtolower($rawNodeValue) == "false") {
+				$this->$propertyName = FALSE;
+			} else {
+				$this->$propertyName = boolval($rawNodeValue);
+			}
 		} else if ($dataType == 'html') {
 			$this->$propertyName = str_replace(
 				array('%basePath'),

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+  <qs:id>6</qs:id>
+  <qs:text>Které klíčové slovo/operátor slouží pro rozšíření (podědění) třídy?</qs:text>
+  <qs:type>radios</qs:type>
+  <qs:radios>
+    <qs:radio>Inherit</qs:radio>
+    <qs:radio>Inherits</qs:radio>
+    <qs:radio>Uses</qs:radio>
+    <qs:radio>Imports</qs:radio>
+    <qs:radio>Implement</qs:radio>
+    <qs:radio>Implements</qs:radio>
+    <qs:radio>Extend</qs:radio>
+    <qs:radio>Extends</qs:radio>
+    <qs:radio>Extending</qs:radio>
+    <qs:radio>Using</qs:radio>
+    <qs:radio>Operátor čárka.</qs:radio>
+    <qs:radio>Operátor dvojtečka.</qs:radio>
+  </qs:radios>
+  <qs:solution>1</qs:solution>
+</qs:data>

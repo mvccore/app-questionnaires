@@ -8,16 +8,14 @@ url('?controller=controller&action=asset&path=/static/fonts/awesome/font-files/a
 
 /* /static/css/front/person.all.css */
 label.person_age,label.person_sex,label.person_edu,label.person_job{line-height:1.7em}.field.button
-button.reset{float:right;margin:-60px 100px 0 0}.field.button
+button.reset{float:right}.field.button
 button.refresh{margin:0
-auto}@supports (-webkit-appearance:none){.field.button
-button{overflow:hidden}.fieldset-person .field.button button
-span{margin-right:-1px}}.field.person.sex
+auto}.field.person.sex
 label{padding-left:5px}.field.person.sex label:first-child{padding-left:0}label.person_age
 span{padding-right:10px}input.person_age{width:50px}.field.person.age{margin-bottom:0}div.range-multiple{top:-20px}
 
 /* /static/css/front/person.mobile.css */
-
+.field.button{display:table}.field.button button.reset.no-person-form{float:none}
 
 /* /static/css/front/statistics.all.css */
 form.statistics
@@ -25,7 +23,11 @@ form.statistics
 0 10px 0}form.statistics .loading
 span{display:inline-block;line-height:20px;height:20px;padding:6px
 0 5px 40px;margin:0
-auto 0 auto;background:transparent url('?controller=controller&action=asset&path=/static/img/theme/loading.gif') 0 0 no-repeat}form.statistics
+auto 0 auto;background:transparent url('?controller=controller&action=asset&path=/static/img/theme/loading.gif') 0 0 no-repeat}form.statistics .field.from,
+form.statistics
+.field.to{margin-top:0}form.statistics .field.from input,
+form.statistics .field.to
+input{margin-left:10px}form.statistics
 .field.button{overflow:hidden;display:table;margin:0
 auto 10px auto}form.statistics .field.button
 button.disabled{opacity:0.7}h2.questions-statistics{margin-top:0}.question-statistics-tab-title-icon{padding-top:4px}.question-statistics-tab-header

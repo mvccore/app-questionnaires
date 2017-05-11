@@ -8,18 +8,9 @@ label.person_job {
 /* person fieldset fields */
 .field.button button.reset{
 	float:right;
-	margin:-60px 100px 0 0;
 }
 .field.button button.refresh{
 	margin:0 auto;
-}
-@supports (-webkit-appearance:none) {
-	.field.button button{
-		overflow:hidden;
-	}
-	.fieldset-person .field.button button span{
-		margin-right:-1px;
-	}
 }
 .field.person.sex label{
 	padding-left:5px;

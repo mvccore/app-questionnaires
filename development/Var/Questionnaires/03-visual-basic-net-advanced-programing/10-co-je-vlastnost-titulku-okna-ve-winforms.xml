@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+  <qs:id>10</qs:id>
+  <qs:text>Kterou vlastnost musím aktualizovat abych změnil titulek okna Windows Forms aplikaci?</qs:text>
+  <qs:type>radios</qs:type>
+  <qs:radios>
+    <qs:radio>Name</qs:radio>
+    <qs:radio>Text</qs:radio>
+    <qs:radio>Title</qs:radio>
+    <qs:radio>Length</qs:radio>
+    <qs:radio>Font</qs:radio>
+  </qs:radios>
+  <qs:solution>1</qs:solution>
+</qs:data>

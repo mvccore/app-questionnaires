@@ -7,18 +7,22 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="id" type="xs:integer" />
+        <xs:element name="lang" type="xs:string" />
+        <xs:element name="persons-form" type="xs:boolean" />
 				<xs:element name="title" type="xs:string" />
-				<xs:element name="description" type="xs:string" />
+				<xs:element name="description" type="xs:html" />
 				<xs:element name="keywords" type="xs:string" />
 				<xs:element name="robots" type="xs:string" />
-				<xs:element name="og_image" type="xs:string" />
-				<xs:element name="og_title" type="xs:string" />
-				<xs:element name="og_description" type="xs:string" />
-				<xs:element name="itemprop_name" type="xs:string" />
-				<xs:element name="itemprop_description" type="xs:string" />
+				<xs:element name="og-image" type="xs:string" />
+				<xs:element name="og-title" type="xs:string" />
+				<xs:element name="og-description" type="xs:string" />
+				<xs:element name="itemprop-name" type="xs:string" />
+				<xs:element name="itemprop-description" type="xs:string" />
+        <xs:element name="facebook-share" type="xs:boolean" />
 				<xs:element name="perex" type="xs:string" />
 				<xs:element name="body" type="xs:html" />
 			</xs:sequence>
+      <xs:anyAttribute/>
 		</xs:complexType>
 	</xs:element>
 </xs:schema>

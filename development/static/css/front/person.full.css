@@ -1,4 +1,10 @@
 /* person fieldset fields */
+.field.button button.reset{
+	margin:-60px 0 0 0;
+}
+.field.button button.reset.fb-share-beside{
+	margin:-60px 100px 0 0;
+}
 .field.person.age,
 .field.person.sex{
 	float:left;
@@ -9,4 +15,13 @@
 }
 .field.person.edu{
 	clear:both;
+}
+
+@supports (-webkit-appearance:none) {
+	.field.button button.reset{
+		overflow:hidden;
+	}
+	.fieldset-person .field.button button.reset span{
+		margin-right:-1px;
+	}
 }

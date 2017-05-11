@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>15</qs:id>
+	<qs:text>K čemu všemu mohou sloužit tzv. <pre><code>Linq</code></pre> výrazy ve VB.NET?</qs:text>
+	<qs:type>checkboxes</qs:type>
+  <qs:checkboxes>
+    <qs:checkbox>Filtrování dat v operační paměti.</qs:checkbox>
+    <qs:checkbox>Řazení dat v operační paměti.</qs:checkbox>
+    <qs:checkbox>Seskupování dat v operační paměti (grouping).</qs:checkbox>
+    <qs:checkbox>Spojovat kolekce dat v operační paměti (joining).</qs:checkbox>
+    <qs:checkbox>Přepočítávat data v operační paměti (counting).</qs:checkbox>
+    <qs:checkbox>Agregovat data v operační paměti.</qs:checkbox>
+    <qs:checkbox>Linq výrazy ve VB.NET neexistují.</qs:checkbox>
+	</qs:checkboxes>
+  <qs:columns>1</qs:columns>
+  <qs:solution>0,1,2,3,4,5</qs:solution>
+</qs:data>

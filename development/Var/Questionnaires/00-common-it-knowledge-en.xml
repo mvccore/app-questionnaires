@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qr:data xmlns:qr="../Questionare.xsd">
+	<qr:id>0</qr:id>
+  <qr:lang>en</qr:lang>
+  <qr:persons-form>true</qr:persons-form>
+	<qr:title>Common IT knowledge</qr:title>
+	<qr:description>
+    Discovering the practical behaviour of teenagers, students or working people online,
+    Their computer literacy and working with information technologies,
+    That all by anonymous data collection.
+    You can see result of all answers after completing the questionnaire on this page.
+  </qr:description>
+	<qr:keywords></qr:keywords>
+	<qr:robots>index,follow</qr:robots>
+	<qr:og-image></qr:og-image>
+	<qr:og-title>Common IT knowledge</qr:og-title>
+	<qr:og-description>
+    Discovering the practical behaviour of teenagers, students or working people online,
+    Their computer literacy and working with information technologies,
+    That all by anonymous data collection.
+  </qr:og-description>
+	<qr:itemprop-name>Dotazník</qr:itemprop-name>
+	<qr:itemprop-description></qr:itemprop-description>
+	<qr:perex>
+    Discovering the practical behaviour of teenagers, students or working people online,
+    Their computer literacy and working with information technologies,
+    That all by anonymous data collection.
+  </qr:perex>
+  <qr:facebook-share>true</qr:facebook-share>
+	<qr:body>
+		<h1>
+			<?php echo $this->Document->Title; ?>
+		</h1>
+		<p>
+			<?php echo $this->LineBreaks($this->Document->Description); ?>
+		</p>
+	</qr:body>
+</qr:data>
