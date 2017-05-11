@@ -1,17 +1,17 @@
 {
 	"require": {
 		"php": ">=5.3.0",
-		"mvccore/mvccore": "^4.0",
-		"mvccore/ext-form": "^4.0",
-		"mvccore/ext-request-apachedpi": "^4.0",
-		"mvccore/ext-router-media": "^4.0",
-		"mvccore/ext-view-helper-assets": "^4.0",
-		"mvccore/ext-view-helper-linebreaks": "^4.0",
-		"mvccore/ext-auth": "^4.0",
-		"mvccore/ext-debug-tracy": "^4.0",
-		"mvccore/ext-debug-tracy-auth": "^4.0",
-		"mvccore/ext-debug-tracy-mvccore": "^4.0",
-		"mvccore/ext-debug-tracy-routing": "^4.0",
-		"mvccore/ext-debug-tracy-session": "^4.0"
+		"mvccore/mvccore": "^4.1",
+		"mvccore/ext-form": "^4.1",
+		"mvccore/ext-request-apachedpi": "^4.1",
+		"mvccore/ext-router-media": "^4.1",
+		"mvccore/ext-view-helper-assets": "^4.1",
+		"mvccore/ext-view-helper-linebreaks": "^4.1",
+		"mvccore/ext-auth": "^4.1",
+		"mvccore/ext-debug-tracy": "^4.1",
+		"mvccore/ext-debug-tracy-auth": "^4.1",
+		"mvccore/ext-debug-tracy-mvccore": "^4.1",
+		"mvccore/ext-debug-tracy-routing": "^4.1",
+		"mvccore/ext-debug-tracy-session": "^4.1"
 	}
 }
