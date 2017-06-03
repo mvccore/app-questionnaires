@@ -1,13 +1,13 @@
 # MvcCore - Application - Questionnaires & Statistics
 
-[![Latest Stable Version](https://img.shields.io/badge/Stable-v4.1.0-brightgreen.svg?style=plastic)](https://github.com/mvccore/app-questionnaires/releases)
+[![Latest Stable Version](https://img.shields.io/badge/Stable-v4.1.1-brightgreen.svg?style=plastic)](https://github.com/mvccore/app-questionnaires/releases)
 [![License](https://img.shields.io/badge/Licence-BSD-brightgreen.svg?style=plastic)](https://github.com/mvccore/app-questionnaires/blob/master/LICENCE.md)
 [![Packager Build](https://img.shields.io/badge/Packager%20Build-passing-brightgreen.svg?style=plastic)](https://github.com/mvccore/packager)
 ![PHP Version](https://img.shields.io/badge/PHP->=5.3-brightgreen.svg?style=plastic)
 
 ## Demo
-- [**Questionnaire Form**](http://ankety.tomflidr.cz/dotaznik/default)
-- [**Questionnaire Statistics**](http://ankety.tomflidr.cz/vysledky/default)
+- [**Questionnaire Form**](http://ankety.tomflidr.cz/questions/common-it-knowledge-en)
+- [**Questionnaire Statistics**](http://ankety.tomflidr.cz/results/common-it-knowledge-en)
 
 ## Features
 - [**MvcCore**](https://github.com/mvccore/mvccore) application managing questionnaires with anonymous statistics
