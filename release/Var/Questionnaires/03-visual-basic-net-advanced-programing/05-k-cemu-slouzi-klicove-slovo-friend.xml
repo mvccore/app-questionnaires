@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <qs:data xmlns:qs="../../Question.xsd">
-  <qs:id>5</qs:id>
-  <qs:text>K čemu slouží klíčové slovo <pre><code>Friend</code></pre>?</qs:text>
-  <qs:type>radios</qs:type>
-  <qs:radios>
-    <qs:radio>Určuje třídu jako sdílenou v rámci bežících procesů Windows.</qs:radio>
-    <qs:radio>Určuje třídu nebo element třídy jako veřejný ale pouze v rámci svého assembly.</qs:radio>
-    <qs:radio>Optimalizuje třídu nebo element třídy pro 32 i 64 bitovou atchitekturu procesorů.</qs:radio>
-    <qs:radio>Určuje třídu jako fixně spojenou s právě běžícím procesem, musí být neustále v paměti.</qs:radio>
-  </qs:radios>
-  <qs:columns>1</qs:columns>
-  <qs:solution>1</qs:solution>
+	<qs:id>5</qs:id>
+	<qs:text>K čemu slouží klíčové slovo <pre><code>Friend</code></pre>?</qs:text>
+	<qs:type>radios</qs:type>
+	<qs:radios>
+		<qs:radio>Určuje třídu jako sdílenou v rámci bežících procesů Windows.</qs:radio>
+		<qs:radio>Určuje třídu nebo element třídy jako veřejný ale pouze v rámci svého assembly.</qs:radio>
+		<qs:radio>Optimalizuje třídu nebo element třídy pro 32 i 64 bitovou atchitekturu procesorů.</qs:radio>
+		<qs:radio>Určuje třídu jako fixně spojenou s právě běžícím procesem, musí být neustále v paměti.</qs:radio>
+	</qs:radios>
+	<qs:columns>1</qs:columns>
+	<qs:solution>1</qs:solution>
 </qs:data>

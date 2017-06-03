@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <qs:data xmlns:qs="../../Question.xsd">
-  <qs:id>18</qs:id>
-  <qs:text>Co znamená zkratka JSON ve VB.NET</qs:text>
-  <qs:type>radios</qs:type>
-  <qs:radios>
-    <qs:radio>Japan Sort Of Nerds</qs:radio>
-    <qs:radio>Javascript Object Notation</qs:radio>
-    <qs:radio>Javascript Sealed Object Node</qs:radio>
-    <qs:radio>Joined Scalable and Opened Networks</qs:radio>
-  </qs:radios>
-  <qs:columns>2</qs:columns>
-  <qs:solution>1</qs:solution>
+	<qs:id>18</qs:id>
+	<qs:text>Co znamená zkratka JSON ve VB.NET</qs:text>
+	<qs:type>radios</qs:type>
+	<qs:radios>
+		<qs:radio>Japan Sort Of Nerds</qs:radio>
+		<qs:radio>Javascript Object Notation</qs:radio>
+		<qs:radio>Javascript Sealed Object Node</qs:radio>
+		<qs:radio>Joined Scalable and Opened Networks</qs:radio>
+	</qs:radios>
+	<qs:columns>2</qs:columns>
+	<qs:solution>1</qs:solution>
 </qs:data>

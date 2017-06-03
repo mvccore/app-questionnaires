@@ -109,6 +109,7 @@ class Questionnaire extends Document
 				}
 			}
 		}
+		ksort($result);
 		$this->_questions = $result;
 	}
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <qs:data xmlns:qs="../../Question.xsd">
-  <qs:id>20</qs:id>
-  <qs:text>Co od kurzu očekáváte? Co byste se rádi naučili?</qs:text>
-  <qs:type>textarea</qs:type>
-  <qs:max-length>1024</qs:max-length>
+	<qs:id>20</qs:id>
+	<qs:text>Co od kurzu očekáváte? Co byste se rádi naučili?</qs:text>
+	<qs:type>textarea</qs:type>
+	<qs:max-length>1024</qs:max-length>
 </qs:data>

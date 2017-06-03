@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <qs:data xmlns:qs="../../Question.xsd">
-  <qs:id>11</qs:id>
-  <qs:text>Může procedura <pre><code>Sub()</code></pre> v jazyce Visual Basic .NET vracet nějaký výsledek?</qs:text>
-  <qs:type>radios</qs:type>
-  <qs:radios>
-    <qs:radio>Ano</qs:radio>
-    <qs:radio>Ne</qs:radio>
-    <qs:radio>Obojí</qs:radio>
-  </qs:radios>
-  <qs:columns>3</qs:columns>
-  <qs:solution>1</qs:solution>
+	<qs:id>11</qs:id>
+	<qs:text>Může procedura <pre><code>Sub()</code></pre> v jazyce Visual Basic .NET vracet nějaký výsledek?</qs:text>
+	<qs:type>radios</qs:type>
+	<qs:radios>
+		<qs:radio>Ano</qs:radio>
+		<qs:radio>Ne</qs:radio>
+		<qs:radio>Obojí</qs:radio>
+	</qs:radios>
+	<qs:columns>3</qs:columns>
+	<qs:solution>1</qs:solution>
 </qs:data>

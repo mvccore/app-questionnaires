@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>12</qs:id>
+	<qs:text>Které požadavky musí být ve C# splněny při designu kódu vlastní funkce pro rozšížení některé ze základních vestavěných tříd .NET? (např. String)</qs:text>
+	<qs:type>checkboxes</qs:type>
+	<qs:checkboxes>
+		<qs:checkbox>Třída ve které funkce je musí být <pre><code>static</code></pre>.</qs:checkbox>
+		<qs:checkbox>Funkce musí být <pre><code>static</code></pre>.</qs:checkbox>
+		<qs:checkbox>Třída musí být opatřena atributem <pre><code>[Extension]</code></pre>.</qs:checkbox>
+		<qs:checkbox>Funkce musí být opatřena atributem <pre><code>[Extension]</code></pre>.</qs:checkbox>
+		<qs:checkbox>Název třídy musí mít jméno složené přesně ze dvou částí: typu který rozšiřuji + slovo 'Extensions'.</qs:checkbox>
+		<qs:checkbox>Třída, ve kterém je rozšiřovací funkce musí být ve stejném namespace jako rozšiřovaný typ.</qs:checkbox>
+		<qs:checkbox>Třída, ve kterém je rozšiřovací funkce může být v jakémkoliv vlastním namespace.</qs:checkbox>
+		<qs:checkbox>Na hodnotu proměnné typu které rozšiřuji se odkazuji pomocí klíčového slova <pre><code>this</code></pre>.</qs:checkbox>
+		<qs:checkbox>Na hodnotu proměnné typu které rozšiřuji se odkazuji pomocí prvního parametru funkce, libovolně pojmenovaného s přehledlým klíčovým slovem <pre><code>this</code></pre> před typem tohoto parametru.</qs:checkbox>
+	</qs:checkboxes>
+	<qs:columns>1</qs:columns>
+	<qs:solution>0,1,2,3,6,8</qs:solution>
+</qs:data>

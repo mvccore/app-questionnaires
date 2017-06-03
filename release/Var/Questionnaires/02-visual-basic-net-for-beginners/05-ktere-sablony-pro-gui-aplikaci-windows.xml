@@ -4,12 +4,12 @@
 	<qs:text>Kterou(é) šablonu(y) projektu můžete použít, pokud chcete založit projekt desktopové aplikaci pro Windows, které má vlastní GUI (Graphic User Interface):</qs:text>
 	<qs:type>checkboxes</qs:type>
 	<qs:checkboxes>
-    <qs:checkbox>Class Library</qs:checkbox>
-    <qs:checkbox>Console Application</qs:checkbox>
-    <qs:checkbox>WPF Application</qs:checkbox>
-    <qs:checkbox>Windows Form Application</qs:checkbox>
-    <qs:checkbox>Wpf Browser Application</qs:checkbox>
-    <qs:checkbox>ASP.NET Web Application</qs:checkbox>
+		<qs:checkbox>Class Library</qs:checkbox>
+		<qs:checkbox>Console Application</qs:checkbox>
+		<qs:checkbox>WPF Application</qs:checkbox>
+		<qs:checkbox>Windows Form Application</qs:checkbox>
+		<qs:checkbox>Wpf Browser Application</qs:checkbox>
+		<qs:checkbox>ASP.NET Web Application</qs:checkbox>
 	</qs:checkboxes>
-  <qs:solution>2,3</qs:solution>
+	<qs:solution>2,3</qs:solution>
 </qs:data>

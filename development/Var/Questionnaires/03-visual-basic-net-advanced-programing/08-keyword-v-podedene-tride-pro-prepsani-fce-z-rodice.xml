@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <qs:data xmlns:qs="../../Question.xsd">
-  <qs:id>8</qs:id>
-  <qs:text>Které klíčové slovo slouží v poděděné třídě pro přepsání elementu (fce/procedury apod.) z rodičovské třídy?</qs:text>
-  <qs:type>radios</qs:type>
-  <qs:radios>
-    <qs:radio>New</qs:radio>
-    <qs:radio>Overloads</qs:radio>
-    <qs:radio>Overrides</qs:radio>
-    <qs:radio>Imports</qs:radio>
-    <qs:radio>Overridable</qs:radio>
-    <qs:radio>Overwrite</qs:radio>
-    <qs:radio>Wtf</qs:radio>
-  </qs:radios>
-  <qs:solution>2</qs:solution>
+	<qs:id>8</qs:id>
+	<qs:text>Které klíčové slovo slouží v poděděné třídě pro přepsání elementu (fce/procedury apod.) z rodičovské třídy?</qs:text>
+	<qs:type>checkboxes</qs:type>
+	<qs:checkboxes>
+		<qs:checkbox>New</qs:checkbox>
+		<qs:checkbox>Overloads</qs:checkbox>
+		<qs:checkbox>Overrides</qs:checkbox>
+		<qs:checkbox>Imports</qs:checkbox>
+		<qs:checkbox>Shadows</qs:checkbox>
+		<qs:checkbox>Overwrite</qs:checkbox>
+		<qs:checkbox>Wtf</qs:checkbox>
+	</qs:checkboxes>
+	<qs:solution>2</qs:solution>
 </qs:data>

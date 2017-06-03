@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>16</qs:id>
+	<qs:text>Co je to tzv. <pre><code>Lambda</code></pre> výraz?</qs:text>
+	<qs:type>checkboxes</qs:type>
+	<qs:checkboxes>
+		<qs:checkbox>Speciální grafické třídy pro programování her.</qs:checkbox>
+		<qs:checkbox>Funkce, která nemá jméno a existuje pouze v lokálním kontextu jako proměnná.</qs:checkbox>
+		<qs:checkbox>Procedura, která nemá jméno a existuje pouze v lokálním kontextu jako proměnná.</qs:checkbox>
+		<qs:checkbox>Speciální objekt ve C# pro výpočet vlnové délky.</qs:checkbox>
+		<qs:checkbox>Dočasný kód v jazyce C#, do kterého je možné uzavřít hodnoty primitivních typů.</qs:checkbox>
+	</qs:checkboxes>
+	<qs:columns>1</qs:columns>
+	<qs:solution>1,2,4</qs:solution>
+</qs:data>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>6</qs:id>
+	<qs:text>Jak mohu sečíst dva řetězce v jazyce VB.NET?</qs:text>
+	<qs:type>checkboxes</qs:type>
+	<qs:checkboxes>
+		<qs:checkbox>Operátorem <pre><code>+</code></pre>.</qs:checkbox>
+		<qs:checkbox>Operátorem <pre><code>&#38;</code></pre>.</qs:checkbox>
+		<qs:checkbox>Operátorem (tečka) <pre><code>.</code></pre>.</qs:checkbox>
+		<qs:checkbox>Oba operátory <pre><code>+</code></pre> i <pre><code>&#38;</code></pre>.</qs:checkbox>
+		<qs:checkbox>Funkcí <pre><code>String.Concat();</code></pre>.</qs:checkbox>
+	</qs:checkboxes>
+	<qs:solution>0,3</qs:solution>
+</qs:data>

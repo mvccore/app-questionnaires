@@ -4,13 +4,13 @@
 	<qs:text>Které klíčové slovo(a)/operátor(y) slouží pro přiřazení funkce události v jazyce VB.NET?</qs:text>
 	<qs:type>checkboxes</qs:type>
 	<qs:checkboxes>
-    <qs:checkbox>AddEvent</qs:checkbox>
-    <qs:checkbox>AddHandler</qs:checkbox>
-    <qs:checkbox>AddressOf</qs:checkbox>
-    <qs:checkbox>HandlerOf</qs:checkbox>
-    <qs:checkbox>Operátor <pre><code>=</code></pre></qs:checkbox>
-    <qs:checkbox>Operátor <pre><code>+=</code></pre></qs:checkbox>
-  </qs:checkboxes>
-  <qs:columns>1</qs:columns>
-  <qs:solution>1,2</qs:solution>
+		<qs:checkbox>AddEvent</qs:checkbox>
+		<qs:checkbox>AddHandler</qs:checkbox>
+		<qs:checkbox>AddressOf</qs:checkbox>
+		<qs:checkbox>HandlerOf</qs:checkbox>
+		<qs:checkbox>Operátor <pre><code>=</code></pre></qs:checkbox>
+		<qs:checkbox>Operátor <pre><code>+=</code></pre></qs:checkbox>
+	</qs:checkboxes>
+	<qs:columns>1</qs:columns>
+	<qs:solution>1,2</qs:solution>
 </qs:data>

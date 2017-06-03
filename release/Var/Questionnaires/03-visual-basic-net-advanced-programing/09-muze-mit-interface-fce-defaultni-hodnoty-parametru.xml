@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <qs:data xmlns:qs="../../Question.xsd">
-  <qs:id>9</qs:id>
-  <qs:text>Může mít funkce/procedura v rozhraní (v Interface) defaultní hodnoty parametrů?</qs:text>
-  <qs:type>radios</qs:type>
-  <qs:radios>
-    <qs:radio>Ano.</qs:radio>
-    <qs:radio>Ne, procedura nemůže být v Interface.</qs:radio>
-    <qs:radio>Ne, Interface neumožňuje deklarovat defaultní hodnoty parametrů.</qs:radio>
-  </qs:radios>
-  <qs:columns>1</qs:columns>
-  <qs:solution>0</qs:solution>
+	<qs:id>9</qs:id>
+	<qs:text>Může mít funkce/procedura v rozhraní (v Interface) defaultní hodnoty parametrů?</qs:text>
+	<qs:type>radios</qs:type>
+	<qs:radios>
+		<qs:radio>Ano.</qs:radio>
+		<qs:radio>Ne, procedura nemůže být v Interface.</qs:radio>
+		<qs:radio>Ne, Interface neumožňuje deklarovat defaultní hodnoty parametrů.</qs:radio>
+	</qs:radios>
+	<qs:columns>1</qs:columns>
+	<qs:solution>0</qs:solution>
 </qs:data>

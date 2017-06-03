@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <qr:data xmlns:qr="../Questionare.xsd">
 	<qr:id>1</qr:id>
-  <qr:lang>cs</qr:lang>
-  <qr:persons-form>true</qr:persons-form>
+	<qr:lang>cs</qr:lang>
+	<qr:persons-form>true</qr:persons-form>
 	<qr:title>Obecný přehled v IT</qr:title>
 	<qr:description>
-    Zjišťování praktického chování teenagerů, pracujících lidí či studentů na internetu, 
-    jejich gramotnost a práce s informačními technologiemi pomocí anonymního sběru dat. 
-    Hromadné výsledky všech odpovědí můžete shlédnout po dokončení dotazníku na této stránce.
-  </qr:description>
+		Zjišťování praktického chování teenagerů, pracujících lidí či studentů na internetu, 
+		jejich gramotnost a práce s informačními technologiemi pomocí anonymního sběru dat. 
+		Hromadné výsledky všech odpovědí můžete shlédnout po dokončení dotazníku na této stránce.
+	</qr:description>
 	<qr:keywords></qr:keywords>
 	<qr:robots>index,follow</qr:robots>
 	<qr:og-image></qr:og-image>
 	<qr:og-title>Dotazník</qr:og-title>
 	<qr:og-description>
-    Zjišťování praktického chování teenagerů, pracujících lidí či studentů na internetu,
-    jejich gramotnost a práce s informačními technologiemi pomocí anonymního sběru dat.
-  </qr:og-description>
+		Zjišťování praktického chování teenagerů, pracujících lidí či studentů na internetu,
+		jejich gramotnost a práce s informačními technologiemi pomocí anonymního sběru dat.
+	</qr:og-description>
 	<qr:itemprop-name>Dotazník</qr:itemprop-name>
 	<qr:itemprop-description></qr:itemprop-description>
 	<qr:perex>
-    Zjišťování praktického chování teenagerů, pracujících lidí či studentů na internetu,
-    jejich gramotnost a práce s informačními technologiemi pomocí anonymního sběru dat.
-  </qr:perex>
-  <qr:facebook-share>true</qr:facebook-share>
+		Zjišťování praktického chování teenagerů, pracujících lidí či studentů na internetu,
+		jejich gramotnost a práce s informačními technologiemi pomocí anonymního sběru dat.
+	</qr:perex>
+	<qr:facebook-share>true</qr:facebook-share>
 	<qr:body>
 		<h1>
 			<?php echo $this->Document->Title; ?>

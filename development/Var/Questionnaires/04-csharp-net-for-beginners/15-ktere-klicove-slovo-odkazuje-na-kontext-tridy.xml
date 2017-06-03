@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>15</qs:id>
+	<qs:text>Které klíčové slovo jazyka C# .NET odkazuje na aktuální kontext instance třídy uvnitř třídy?</qs:text>
+	<qs:type>radios</qs:type>
+	<qs:radios>
+		<qs:radio>me</qs:radio>
+		<qs:radio>parent</qs:radio>
+		<qs:radio>this</qs:radio>
+		<qs:radio>base</qs:radio>
+		<qs:radio>super</qs:radio>
+		<qs:radio>self</qs:radio>
+		<qs:radio>context</qs:radio>
+	</qs:radios>
+	<qs:columns>3</qs:columns>
+	<qs:solution>2</qs:solution>
+</qs:data>

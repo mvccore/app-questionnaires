@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>11</qs:id>
+	<qs:text>Z které top třídy jsou odvozené všechny objekty v prostředí .NET?</qs:text>
+	<qs:type>radios</qs:type>
+	<qs:radios>
+		<qs:radio>Object</qs:radio>
+		<qs:radio>System.Net</qs:radio>
+		<qs:radio>System.Object</qs:radio>
+		<qs:radio>System</qs:radio>
+		<qs:radio>System.Root</qs:radio>
+	</qs:radios>
+	<qs:columns>3</qs:columns>
+	<qs:solution>0</qs:solution>
+</qs:data>

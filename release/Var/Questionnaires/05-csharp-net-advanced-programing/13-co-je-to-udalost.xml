@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>13</qs:id>
+	<qs:text>Co je událost (event) v jazyce C#?</qs:text>
+	<qs:type>checkboxes</qs:type>
+	<qs:checkboxes>
+		<qs:checkbox>Jde o spojení dvou vláken zpět do jednoho, kdy jedno vlákno předává informace druhému.</qs:checkbox>
+		<qs:checkbox>Jde se o element uvnitř třídy, kam je možné později mimo definici třídy přidat vlastní funkce/procedury.</qs:checkbox>
+		<qs:checkbox>Jde o případ, kdy dvě či více vláken mají projít postupně, nikoliv zároveň jedním místem.</qs:checkbox>
+		<qs:checkbox>Jde o element ve třídě, kam je možné navěsit jednu nebo více funkcí/procedur k vykonání ve frontě.</qs:checkbox>
+		<qs:checkbox>Jde o případ ve třídě, kdy jsou všichni moji spolužáci taky pod obraz.</qs:checkbox>
+	</qs:checkboxes>
+	<qs:columns>1</qs:columns>
+	<qs:solution>1,3</qs:solution>
+</qs:data>

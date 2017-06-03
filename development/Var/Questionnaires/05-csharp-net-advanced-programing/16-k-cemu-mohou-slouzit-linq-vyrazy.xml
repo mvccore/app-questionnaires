@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>15</qs:id>
+	<qs:text>K čemu všemu mohou sloužit tzv. <pre><code>Linq</code></pre> výrazy ve C#?</qs:text>
+	<qs:type>checkboxes</qs:type>
+	<qs:checkboxes>
+		<qs:checkbox>Filtrování dat.</qs:checkbox>
+		<qs:checkbox>Řazení dat.</qs:checkbox>
+		<qs:checkbox>Seskupování dat (grouping).</qs:checkbox>
+		<qs:checkbox>Spojovat data (joining).</qs:checkbox>
+		<qs:checkbox>Přepočítávat data (counting).</qs:checkbox>
+		<qs:checkbox>Agregovat data.</qs:checkbox>
+		<qs:checkbox>Linq výrazy slouží pouze pro dotazování databází.</qs:checkbox>
+	</qs:checkboxes>
+	<qs:columns>2</qs:columns>
+	<qs:solution>0,1,2,3,4,5</qs:solution>
+</qs:data>

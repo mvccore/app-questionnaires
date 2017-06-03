@@ -4,15 +4,15 @@
 	<qs:text>Která třídy <b>NEJSOU</b> formulářové prvky Windows Forms aplikace?</qs:text>
 	<qs:type>checkboxes</qs:type>
 	<qs:checkboxes>
-    <qs:checkbox>TextBox</qs:checkbox>
-    <qs:checkbox>TextField</qs:checkbox>
-    <qs:checkbox>Autocomplete</qs:checkbox>
-    <qs:checkbox>RadioButton</qs:checkbox>
-    <qs:checkbox>Label</qs:checkbox>
-    <qs:checkbox>Button</qs:checkbox>
-    <qs:checkbox>DropDown</qs:checkbox>
-    <qs:checkbox>ComboBox</qs:checkbox>
-    <qs:checkbox>ListBox</qs:checkbox>
+		<qs:checkbox>TextBox</qs:checkbox>
+		<qs:checkbox>TextField</qs:checkbox>
+		<qs:checkbox>Autocomplete</qs:checkbox>
+		<qs:checkbox>RadioButton</qs:checkbox>
+		<qs:checkbox>Label</qs:checkbox>
+		<qs:checkbox>Button</qs:checkbox>
+		<qs:checkbox>DropDown</qs:checkbox>
+		<qs:checkbox>ComboBox</qs:checkbox>
+		<qs:checkbox>ListBox</qs:checkbox>
 	</qs:checkboxes>
-  <qs:solution>1,2,6</qs:solution>
+	<qs:solution>1,2,6</qs:solution>
 </qs:data>

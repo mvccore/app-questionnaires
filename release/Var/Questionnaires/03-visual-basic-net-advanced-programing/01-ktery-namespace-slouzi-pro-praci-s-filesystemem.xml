@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <qs:data xmlns:qs="../../Question.xsd">
-  <qs:id>1</qs:id>
-  <qs:text>Který(é) jmenný(é) prostor(y) tříd (namespace) slouží pro práci se souborovým systémem?</qs:text>
-  <qs:type>checkboxes</qs:type>
-  <qs:checkboxes>
-    <qs:checkbox>System.IO</qs:checkbox>
-    <qs:checkbox>System.FileObjects</qs:checkbox>
-    <qs:checkbox>System.FileSystem</qs:checkbox>
-    <qs:checkbox>System.Files</qs:checkbox>
-    <qs:checkbox>System.Folders</qs:checkbox>
-    <qs:checkbox>Ani jeden.</qs:checkbox>
-  </qs:checkboxes>
-  <qs:solution>0</qs:solution>
+	<qs:id>1</qs:id>
+	<qs:text>Který(é) jmenný(é) prostor(y) tříd (namespace) slouží pro práci se souborovým systémem?</qs:text>
+	<qs:type>checkboxes</qs:type>
+	<qs:checkboxes>
+		<qs:checkbox>System.IO</qs:checkbox>
+		<qs:checkbox>System.FileObjects</qs:checkbox>
+		<qs:checkbox>System.FileSystem</qs:checkbox>
+		<qs:checkbox>System.Files</qs:checkbox>
+		<qs:checkbox>System.Folders</qs:checkbox>
+		<qs:checkbox>Ani jeden.</qs:checkbox>
+	</qs:checkboxes>
+	<qs:solution>0</qs:solution>
 </qs:data>

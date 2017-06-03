@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>5</qs:id>
+	<qs:text>K čemu slouží v C# klíčové slovo <pre><code>internal</code></pre>?</qs:text>
+	<qs:type>radios</qs:type>
+	<qs:radios>
+		<qs:radio>Určuje třídu jako sdílenou, existující pouze jednou, pro využívání všech bežících procesů.</qs:radio>
+		<qs:radio>Určuje třídu nebo element třídy jako veřejný ale pouze v rámci svého assembly.</qs:radio>
+		<qs:radio>Optimalizuje třídu přímo do bajtkódu bez kompilace do CLI.</qs:radio>
+		<qs:radio>Určuje třídu jako fixně spojenou s právě běžícím procesem, musí být neustále v paměti.</qs:radio>
+	</qs:radios>
+	<qs:columns>1</qs:columns>
+	<qs:solution>1</qs:solution>
+</qs:data>

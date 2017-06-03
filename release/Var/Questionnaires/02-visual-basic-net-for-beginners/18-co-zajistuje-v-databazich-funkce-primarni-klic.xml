@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <qs:data xmlns:qs="../../Question.xsd">
-  <qs:id>18</qs:id>
-  <qs:text>Co všechno zajišťujě v databázích funkce 'primární klíč'?</qs:text>
-  <qs:type>checkboxes</qs:type>
-  <qs:checkboxes>
-    <qs:checkbox>Unikátnost - určitá hodnota do sloupce může být uložena pouze jednou.</qs:checkbox>
-    <qs:checkbox>Hodnota celého čísla ve sloupci automaticky roste.</qs:checkbox>
-    <qs:checkbox>Data sloupce jsou automaticky rychle fitrována a řazena bez opětovného čtení celé tabulky.</qs:checkbox>
-    <qs:checkbox>Umožňuje ukládat pouze celočíselné hodnoty, brání uložení plovoucích hodnot a řetězců.</qs:checkbox>
-  </qs:checkboxes>
-  <qs:columns>1</qs:columns>
-  <qs:solution>0,2</qs:solution>
+	<qs:id>18</qs:id>
+	<qs:text>Co všechno zajišťujě v databázích funkce 'primární klíč'?</qs:text>
+	<qs:type>checkboxes</qs:type>
+	<qs:checkboxes>
+		<qs:checkbox>Unikátnost - určitá hodnota do sloupce může být uložena pouze jednou.</qs:checkbox>
+		<qs:checkbox>Hodnota celého čísla ve sloupci automaticky roste.</qs:checkbox>
+		<qs:checkbox>Data sloupce jsou automaticky rychle fitrována a řazena bez opětovného čtení celé tabulky.</qs:checkbox>
+		<qs:checkbox>Umožňuje ukládat pouze celočíselné hodnoty, brání uložení plovoucích hodnot a řetězců.</qs:checkbox>
+	</qs:checkboxes>
+	<qs:columns>1</qs:columns>
+	<qs:solution>0,2</qs:solution>
 </qs:data>

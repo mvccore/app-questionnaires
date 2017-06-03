@@ -6,12 +6,12 @@
 	<qs:checkboxes>
 		<qs:checkbox>Deklarativní jazyk</qs:checkbox>
 		<qs:checkbox>Procedurální jazyk</qs:checkbox>
-    <qs:checkbox>Statický jazyk</qs:checkbox>
-    <qs:checkbox>Dynamický jazyk</qs:checkbox>
-    <qs:checkbox>Hyperlink jazyk</qs:checkbox>
-    <qs:checkbox>Sekvenční jazyk</qs:checkbox>
-    <qs:checkbox>Dekorativní jazyk</qs:checkbox>
-    <qs:checkbox>Ukecaný jazyk</qs:checkbox>
+		<qs:checkbox>Statický jazyk</qs:checkbox>
+		<qs:checkbox>Dynamický jazyk</qs:checkbox>
+		<qs:checkbox>Hyperlink jazyk</qs:checkbox>
+		<qs:checkbox>Sekvenční jazyk</qs:checkbox>
+		<qs:checkbox>Dekorativní jazyk</qs:checkbox>
+		<qs:checkbox>Ukecaný jazyk</qs:checkbox>
 	</qs:checkboxes>
-  <qs:solution>1,2,7</qs:solution>
+	<qs:solution>1,2,7</qs:solution>
 </qs:data>

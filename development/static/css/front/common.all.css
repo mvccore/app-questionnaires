@@ -1,16 +1,16 @@
 <?php include(__DIR__ . '/cfg.css'); ?>
 
 /* layout */
-body {
-	margin: 0;
-	background: #3c3f41 !important;
+body{
+	margin:0;
+	background:#3c3f41 !important;
 }
 .master-container{
-	margin: 10px auto 30px auto;
-	padding: 0 30px 30px 30px;
-	border-radius: 5px;
-	box-shadow: 0 0 30px rgba(0,0,0,0.6);
-	background: #fff;
+	margin:10px auto 30px auto;
+	padding:0 30px 30px 30px;
+	border-radius:5px;
+	box-shadow:0 0 30px rgba(0,0,0,0.6);
+	background:#fff;
 }
 .master-container .mc-content {
 	position:relative;

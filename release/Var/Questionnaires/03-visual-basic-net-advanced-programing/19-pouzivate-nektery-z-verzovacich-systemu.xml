@@ -4,10 +4,11 @@
 	<qs:text>Používáte některý z verzovacích systémů?</qs:text>
 	<qs:type>checkboxes</qs:type>
 	<qs:checkboxes>
-    <qs:checkbox>Git</qs:checkbox>
-    <qs:checkbox>Mercurial HG</qs:checkbox>
-    <qs:checkbox>Subversion</qs:checkbox>
-    <qs:checkbox>CVS</qs:checkbox>
+		<qs:checkbox>Git</qs:checkbox>
+		<qs:checkbox>Mercurial HG</qs:checkbox>
+		<qs:checkbox>Subversion</qs:checkbox>
+		<qs:checkbox>CVS</qs:checkbox>
 	</qs:checkboxes>
-  <qs:solution>0,1</qs:solution>
+	<qs:columns>2</qs:columns>
+	<qs:solution>0,1,2,3</qs:solution>
 </qs:data>

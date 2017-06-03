@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <qs:data xmlns:qs="../../Question.xsd">
-  <qs:id>15</qs:id>
-  <qs:text>Které klíčové slovo jazyka VB.NET odkazuje na aktuální kontext instance třídy uvnitř třídy?</qs:text>
-  <qs:type>radios</qs:type>
-  <qs:radios>
-    <qs:radio>This</qs:radio>
-    <qs:radio>Me</qs:radio>
-    <qs:radio>MyBase</qs:radio>
-    <qs:radio>Base</qs:radio>
-    <qs:radio>Super</qs:radio>
-    <qs:radio>Scope</qs:radio>
-    <qs:radio>Context</qs:radio>
-  </qs:radios>
-  <qs:columns>3</qs:columns>
-  <qs:solution>1</qs:solution>
+	<qs:id>15</qs:id>
+	<qs:text>Které klíčové slovo jazyka VB.NET odkazuje na aktuální kontext instance třídy uvnitř třídy?</qs:text>
+	<qs:type>radios</qs:type>
+	<qs:radios>
+		<qs:radio>This</qs:radio>
+		<qs:radio>Me</qs:radio>
+		<qs:radio>MyBase</qs:radio>
+		<qs:radio>Base</qs:radio>
+		<qs:radio>Super</qs:radio>
+		<qs:radio>Scope</qs:radio>
+		<qs:radio>Context</qs:radio>
+	</qs:radios>
+	<qs:columns>3</qs:columns>
+	<qs:solution>1</qs:solution>
 </qs:data>

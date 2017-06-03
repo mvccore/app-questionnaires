@@ -118,8 +118,8 @@ input{height:13px;width:13px;margin:3px
 span{padding-left:20px;display:inline-block}
 
 /* /static/css/front/common.mobile.css */
-.master-container{min-width:150px;margin:10px
-!important}.mc-content .mc-header.absolute{position:absolute;z-index:200;right:0;top:32px}.mc-content .mc-header.relative{position:relative;z-index:200;right:0;top:32px}.mc-content .mc-header.relative
+body{background:#fff !important}.master-container{min-width:150px;margin:0
+!important;border-radius:0 !important;box-shadow:none !important}.mc-content .mc-header.absolute{position:absolute;z-index:200;right:0;top:32px}.mc-content .mc-header.relative{position:relative;z-index:200;right:0;top:32px}.mc-content .mc-header.relative
 #login{display:table;margin:0
 0 0 auto}.mc-content .mc-header.full{width:100%;background:#fff}.mc-header .sign-in{position:relative;z-index:300;overflow:visible}.sign-in.minimized
 .content{display:none}.sign-in.full{display:table;height:31px}.sign-in.full input.username,

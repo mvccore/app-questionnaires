@@ -12,19 +12,19 @@
 	</qs:options>
 	<qs:connections>
 		<qs:connection>
-      Very secure encrypted communication.
-    </qs:connection>
-		<qs:connection>
-      Network point, which I can comunicate throught to hide my original communication source.
+			Very secure encrypted communication.
 		</qs:connection>
 		<qs:connection>
-      Insufficient security encryption of the Wi-Fi network.
-    </qs:connection>
-		<qs:connection>
-      Virtual network providing anonymity.
+			Network point, which I can comunicate throught to hide my original communication source.
 		</qs:connection>
 		<qs:connection>
-      Meta information to identify a user.
+			Insufficient security encryption of the Wi-Fi network.
+		</qs:connection>
+		<qs:connection>
+			Virtual network providing anonymity.
+		</qs:connection>
+		<qs:connection>
+			Meta information to identify a user.
 		</qs:connection>
 	</qs:connections>
 	<qs:solution>

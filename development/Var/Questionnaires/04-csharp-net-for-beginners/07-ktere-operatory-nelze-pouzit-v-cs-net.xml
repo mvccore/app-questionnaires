@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>7</qs:id>
+	<qs:text>Který(é) operátor(y) <b>NELZE</b> použít v jazykce C# .NET?</qs:text>
+	<qs:type>checkboxes</qs:type>
+	<qs:checkboxes>
+		<qs:checkbox><pre><code>!&#60;</code></pre></qs:checkbox>
+		<qs:checkbox><pre><code>&#60;&#62;</code></pre></qs:checkbox>
+		<qs:checkbox><pre><code>!!</code></pre></qs:checkbox>
+		<qs:checkbox><pre><code>++</code></pre></qs:checkbox>
+		<qs:checkbox><pre><code>??</code></pre></qs:checkbox>
+		<qs:checkbox><pre><code>||</code></pre></qs:checkbox>
+		<qs:checkbox><pre><code>&#62;&#62;</code></pre></qs:checkbox>
+		<qs:checkbox><pre><code>&#38;&#38;</code></pre></qs:checkbox>
+		<qs:checkbox><pre><code>!==</code></pre></qs:checkbox>
+	</qs:checkboxes>
+	<qs:solution>0,1,8</qs:solution>
+</qs:data>

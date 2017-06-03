@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>7</qs:id>
+	<qs:text>Které klíčové slovo/operátor slouží pro implementaci rozhraní na třídu?</qs:text>
+	<qs:type>radios</qs:type>
+	<qs:radios>
+		<qs:radio>inherit</qs:radio>
+		<qs:radio>inherits</qs:radio>
+		<qs:radio>uses</qs:radio>
+		<qs:radio>imports</qs:radio>
+		<qs:radio>implement</qs:radio>
+		<qs:radio>implements</qs:radio>
+		<qs:radio>extend</qs:radio>
+		<qs:radio>extends</qs:radio>
+		<qs:radio>extending</qs:radio>
+		<qs:radio>using</qs:radio>
+		<qs:radio>operátor čárka <pre><code>,</code></pre>.</qs:radio>
+		<qs:radio>operátor dvojtečka <pre><code>:</code></pre>.</qs:radio>
+	</qs:radios>
+	<qs:solution>10</qs:solution>
+</qs:data>

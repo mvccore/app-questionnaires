@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>8</qs:id>
+	<qs:text>Které(á) klíčové(á) slovo(a) <b>NESLOUŽÍ</b> k žádné části konstrukce smyčky/cyklu ve VB.NET?</qs:text>
+	<qs:type>checkboxes</qs:type>
+	<qs:checkboxes>
+		<qs:checkbox>do</qs:checkbox>
+		<qs:checkbox>until</qs:checkbox>
+		<qs:checkbox>while</qs:checkbox>
+		<qs:checkbox>continue</qs:checkbox>
+		<qs:checkbox>as</qs:checkbox>
+		<qs:checkbox>in</qs:checkbox>
+		<qs:checkbox>exit</qs:checkbox>
+		<qs:checkbox>for</qs:checkbox>
+		<qs:checkbox>to</qs:checkbox>
+	</qs:checkboxes>
+	<qs:solution>1,4,6,8</qs:solution>
+</qs:data>

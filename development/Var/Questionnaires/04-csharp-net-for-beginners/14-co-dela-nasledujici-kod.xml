@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<qs:data xmlns:qs="../../Question.xsd">
+	<qs:id>14</qs:id>
+	<qs:text>
+		Co dělá následující kód?
+<pre><code>var actor = new {
+   Name = "Johny",
+   Surname = "Depp",
+   KnownAs = "pirate"
+};</code></pre>
+	</qs:text>
+	<qs:type>radios</qs:type>
+	<qs:radios>
+		<qs:radio>Vytvoří novou instanci typu 'actor'.</qs:radio>
+		<qs:radio>Vytvoří anonymní objekt s třemi položkami.</qs:radio>
+		<qs:radio>Uvedený kód je nefunkční.</qs:radio>
+		<qs:radio>Zničí Johnymu kariéru.</qs:radio>
+	</qs:radios>
+	<qs:columns>2</qs:columns>
+	<qs:solution>1</qs:solution>
+</qs:data>

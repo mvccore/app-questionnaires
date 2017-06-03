@@ -3,15 +3,15 @@
 	<qs:id>15</qs:id>
 	<qs:text>K čemu všemu mohou sloužit tzv. <pre><code>Linq</code></pre> výrazy ve VB.NET?</qs:text>
 	<qs:type>checkboxes</qs:type>
-  <qs:checkboxes>
-    <qs:checkbox>Filtrování dat v operační paměti.</qs:checkbox>
-    <qs:checkbox>Řazení dat v operační paměti.</qs:checkbox>
-    <qs:checkbox>Seskupování dat v operační paměti (grouping).</qs:checkbox>
-    <qs:checkbox>Spojovat kolekce dat v operační paměti (joining).</qs:checkbox>
-    <qs:checkbox>Přepočítávat data v operační paměti (counting).</qs:checkbox>
-    <qs:checkbox>Agregovat data v operační paměti.</qs:checkbox>
-    <qs:checkbox>Linq výrazy ve VB.NET neexistují.</qs:checkbox>
+	<qs:checkboxes>
+		<qs:checkbox>Filtrování dat.</qs:checkbox>
+		<qs:checkbox>Řazení dat.</qs:checkbox>
+		<qs:checkbox>Seskupování dat (grouping).</qs:checkbox>
+		<qs:checkbox>Spojovat data (joining).</qs:checkbox>
+		<qs:checkbox>Přepočítávat data (counting).</qs:checkbox>
+		<qs:checkbox>Agregovat data.</qs:checkbox>
+		<qs:checkbox>Linq výrazy slouží pouze pro dotazování databází.</qs:checkbox>
 	</qs:checkboxes>
-  <qs:columns>1</qs:columns>
-  <qs:solution>0,1,2,3,4,5</qs:solution>
+	<qs:columns>2</qs:columns>
+	<qs:solution>0,1,2,3,4,5</qs:solution>
 </qs:data>

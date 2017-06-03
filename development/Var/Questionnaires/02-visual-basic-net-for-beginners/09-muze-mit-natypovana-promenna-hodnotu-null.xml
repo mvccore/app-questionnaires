@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <qs:data xmlns:qs="../../Question.xsd">
-  <qs:id>9</qs:id>
-  <qs:text>
-    Může mít nebo má deklarovaná proměnná <pre><code>jmeno</code></pre> na řádku níže hodnotu <pre><code>Null</code></pre>?
-    <pre><code>Dim jmeno As String</code></pre>
-  </qs:text>
-  <qs:type>radios</qs:type>
-  <qs:radios>
-    <qs:radio>Ano, každá proměnná může mít i <pre><code>Null</code></pre> hodnotu.</qs:radio>
-    <qs:radio>Ano, ale pouze pokud je používaná jako reference.</qs:radio>
-    <qs:radio>Ne, musela by být typem <pre><code>Nullable(Of String)</code></pre>.</qs:radio>
-  </qs:radios>
-  <qs:columns>1</qs:columns>
-  <qs:solution>2</qs:solution>
+	<qs:id>9</qs:id>
+	<qs:text>
+		Může mít nebo má deklarovaná proměnná <pre><code>jmeno</code></pre> na řádku níže hodnotu <pre><code>Null</code></pre>?
+		<pre><code>Dim jmeno As String</code></pre>
+	</qs:text>
+	<qs:type>radios</qs:type>
+	<qs:radios>
+		<qs:radio>Ano, každá proměnná může mít i <pre><code>Null</code></pre> hodnotu.</qs:radio>
+		<qs:radio>Ano, ale pouze pokud je používaná jako reference.</qs:radio>
+		<qs:radio>Ne, musela by být typem <pre><code>Nullable(Of String)</code></pre>.</qs:radio>
+	</qs:radios>
+	<qs:columns>1</qs:columns>
+	<qs:solution>2</qs:solution>
 </qs:data>

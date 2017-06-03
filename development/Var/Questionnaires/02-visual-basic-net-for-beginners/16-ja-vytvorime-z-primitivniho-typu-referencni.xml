@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <qs:data xmlns:qs="../../Question.xsd">
-  <qs:id>16</qs:id>
-  <qs:text>Jak vytvořím u parametru funkce/procedury z primitivního typu parametru referenční typ?</qs:text>
-  <qs:type>radios</qs:type>
-  <qs:radios>
-    <qs:radio>ByObject</qs:radio>
-    <qs:radio>ByVal</qs:radio>
-    <qs:radio>ByRef</qs:radio>
-    <qs:radio>Out</qs:radio>
-    <qs:radio>Ref</qs:radio>
-    <qs:radio>Nijak.</qs:radio>
-  </qs:radios>
-  <qs:columns>3</qs:columns>
-  <qs:solution>2</qs:solution>
+	<qs:id>16</qs:id>
+	<qs:text>Jak vytvořím u parametru funkce/procedury z primitivního typu parametru referenční typ?</qs:text>
+	<qs:type>radios</qs:type>
+	<qs:radios>
+		<qs:radio>ByObject</qs:radio>
+		<qs:radio>ByVal</qs:radio>
+		<qs:radio>ByRef</qs:radio>
+		<qs:radio>Out</qs:radio>
+		<qs:radio>Ref</qs:radio>
+		<qs:radio>Nijak.</qs:radio>
+	</qs:radios>
+	<qs:columns>3</qs:columns>
+	<qs:solution>2</qs:solution>
 </qs:data>
