@@ -138,7 +138,7 @@ class Statistics extends Models\Base
 		$overviewData = & $result->Overview;
 		// complete summary if user authenticated
 		if ($this->user) {
-			$answeredPersonsPercentage = round(($this->questionAnsweringPersonsCount / $this->questionnaireAnsweringPersonsCount) * 1000) / 10;
+			$answeredPersonsPercentage = round((max($this->questionAnsweringPersonsCount, 1) / max($this->questionnaireAnsweringPersonsCount, 1)) * 1000) / 10;
 			$result->Summary = array(
 				array('Total respondents count',$this->questionnaireAnsweringPersonsCount),
 				array('Total answers count',	$this->questionAnsweringPersonsCount, $answeredPersonsPercentage + ' %'),
