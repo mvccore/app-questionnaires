@@ -17,12 +17,12 @@ class Person extends Base
 	/** @var string */
     public $Job;
 
-	public static $SexOptions = array(
+	public static $SexOptions = [
 		'F'						=> 'Female',
 		'M'						=> 'Male',
 		'O'						=> 'Other'
-	);
-	public static $EducationOptions = array(
+	];
+	public static $EducationOptions = [
 		'none'					=> 'None',
 		'elementary'			=> 'Elementary School',
 		'middle-apprenticeship'	=> 'Middle school with apprenticeship certificate',
@@ -32,15 +32,15 @@ class Person extends Base
 		'collage-bachelor'		=> 'College - bachelor',
 		'collage-magister'		=> 'College - magister',
 		'collage-doctor'		=> 'College - doctor and higher',
-	);
-	public static $JobOptions = array(
+	];
+	public static $JobOptions = [
 		'student'				=> 'Student',
 		'no-job'				=> 'No job',
 		'employed'				=> 'Employed',
 		'businessman'			=> 'Businessman',
 		'business-company'		=> 'I care about/I own company',
 		'pensioner'				=> 'Pensioner',
-	);
+	];
 
 	public static function Create ($formData) {
 		$newPersonId = self::GetResource()->InsertNew((object) $formData);
@@ -57,7 +57,7 @@ class Person extends Base
 	 */
 	public static function GetMinAndMaxAges ($idQuestionnaire) {
 		$minMax = (object) self::GetResource()->GetMinAndMaxAges($idQuestionnaire);
-		return array(intval($minMax->MinAge), intval($minMax->MaxAge));
+		return [intval($minMax->MinAge), intval($minMax->MaxAge)];
 	}
 	/**
 	 * @return \DateTime[]
@@ -69,7 +69,7 @@ class Person extends Base
 		$minMax->MaxDate = is_null($minMax->MaxDate) ? $nowStr : $minMax->MaxDate ;
 		$minDate = \DateTime::createFromFormat('Y-m-d H:i:s', $minMax->MinDate);
 		$maxDate = \DateTime::createFromFormat('Y-m-d H:i:s', $minMax->MaxDate);
-		return array($minDate, $maxDate);
+		return [$minDate, $maxDate];
 	}
 }
 

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <qr:data xmlns:qr="../Questionare.xsd">
 	<qr:id>3</qr:id>
-	<qr:lang>cs</qr:lang>
+	<qr:localization>cs-CZ</qr:localization>
 	<qr:title>Visual Basic .NET pro pokročilé</qr:title>
 	<qr:description>
 		Informace z tohoto dotazníku vstupních znalostí jsou anonymní.<br />

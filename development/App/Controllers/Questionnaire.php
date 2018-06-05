@@ -20,12 +20,14 @@ class Questionnaire extends Base
 	
 	public function Init () {
 		parent::Init();
-		$this->findAndSetUpQuestionnaireAndQuestions();
+		$this->initSetUpQuestionnaireAndQuestions();
 	}
 
 	public function PreDispatch () {
 		parent::PreDispatch();
-		if (!$this->ajax) $this->view->Document = $this->questionnaire;
+		if ($this->viewEnabled) {
+			$this->view->Document = $this->questionnaire;
+		}
 		$this->setUpForm();
 		$this->setUpAssets();
 	}
@@ -37,7 +39,7 @@ class Questionnaire extends Base
 		$this->view->DisplayFacebookShare = isset($this->questionnaire->FacebookShare) && $this->questionnaire->FacebookShare;
 	}
 	public function SubmitAction () {
-		list ($result, $data, $errors) = $this->_questionnaireForm->Submit();
+		list ($result, $data, ) = $this->_questionnaireForm->Submit();
 		if ($result === Form::RESULT_SUCCESS) {
 			$personData = $this->_submitCompleteData($data, 'person_', 'string');
 			$answerData = $this->_submitCompleteData($data, 'question_', 'int');
@@ -52,25 +54,24 @@ class Questionnaire extends Base
 		$this->view->Path = $this->path;
 	}
 
-	protected function findAndSetUpQuestionnaireAndQuestions() {
-		$this->path = str_replace('-', '\\-', $this->GetParam('path', "a-zA-Z0-9_\-"));
-
-		$matchedQrs = Models\Questionnaire::GetByPathMatch("^([0-9]*)\-$this->path$");
+	protected function initSetUpQuestionnaireAndQuestions () {
+		$this->path = $this->GetParam('path', "a-zA-Z0-9_\-");
+		
+		$matchedQrs = Models\Questionnaire::GetByPathMatch(
+			"^([0-9]*)\-" . str_replace('-', '\\-', $this->path) . "$"
+		);
 		
 		if (count($matchedQrs) === 0) {
 			\MvcCore\Debug::Log("[".__CLASS__."] No questionnaire found in path: '$this->path'.");
-			$this->view->Document = new Models\Document();
+			$this->document = new Models\Document();
 			$this->renderNotFound();
 		} else if (count($matchedQrs) > 1) {
 			\MvcCore\Debug::Log("[".__CLASS__."] Ambiguous request to the questionnaire in path: '$this->path'..");
 		}
-
-		$this->path = str_replace('\\-', '-', $this->path);
-
+		
 		$this->setUpQuestionnaireAndQuestions($matchedQrs[0]);
 	}
 	protected function setUpQuestionnaireAndQuestions (Models\Questionnaire $questionnaire) {
-		Base::$Lang = $questionnaire->Lang;
 		$title = strip_tags($questionnaire->Title);
 		$description = strip_tags($questionnaire->Description);
 		if (!$questionnaire->Keywords) $questionnaire->Keywords = $description;
@@ -82,38 +83,39 @@ class Questionnaire extends Base
 		$this->questionnaire = $questionnaire;
 		$this->questions = $this->questionnaire->GetQuestions();
 		$this->document = $this->questionnaire;
+		$this->setUpLangAndLocaleByDocument();
 	}
 	protected function setUpAssets () {
 		if ($this->viewEnabled) {
 			$static = self::$staticPath;
 			$this->view->Css('varHead')
 				->AppendRendered($static . '/css/front/person.all.css')
-				->AppendRendered($static . '/css/front/person.' . $this->mediaSiteKey . '.css')
+				->AppendRendered($static . '/css/front/person.' . $this->mediaSiteVersion . '.css')
 				->AppendRendered($static . '/css/front/questionnaire.all.css')
-				->AppendRendered($static . '/css/front/questionnaire.' . $this->mediaSiteKey . '.css');
+				->AppendRendered($static . '/css/front/questionnaire.' . $this->mediaSiteVersion . '.css');
 		}
 	}
 	protected function setUpForm () {
 		$form = new Forms\Questionnaire($this);
 		
 		$form
-			->SetTranslator(function ($key = '', $lang = '') {
-				return $this->Translate($key, $lang ? $lang : Base::$Lang);
+			->SetTranslator(function ($key, $lang = NULL) {
+				return $this->Translate($key, $lang);
 			})
-			->SetJsRenderer(function (\SplFileInfo $jsFile) {
+			->SetJsSupportFilesRenderer(function (\SplFileInfo $jsFile) {
 				$this->addAsset('Js', 'varHead', $jsFile);
 			})
-			->SetLang(Base::$Lang)
+			->SetLang($this->request->GetLang())
 			->SetMethod(\MvcCore\Ext\Form::METHOD_POST)
-			->SetAction($this->Url('Questionnaire:Submit', array('path' => $this->path)))
-			->SetSuccessUrl($this->Url('Questionnaire:Completed', array('path' => $this->path)))
-			->SetErrorUrl($this->Url('Questionnaire:Index', array('path' => $this->path)))
+			->SetAction($this->Url('Questionnaire:Submit', ['path' => $this->path]))
+			->SetSuccessUrl($this->Url('Questionnaire:Completed', ['path' => $this->path]))
+			->SetErrorUrl($this->Url('Questionnaire:Index', ['path' => $this->path]))
 			->SetQuestionnaire($this->questionnaire);
 		$this->_questionnaireForm = $form;
 	}
 
 	private function _submitCompleteData ($data, $keyPrefix, $resultKeyType = 'string') {
-		$result = array();
+		$result = [];
 		$keyPrefixLen = strlen($keyPrefix);
 		foreach ($data as $key => $value) {
 			if (strpos($key, $keyPrefix) === 0) {

@@ -1,0 +1,91 @@
+{
+	"name": "mvccore/app-questionnaires",
+	"type": "application",
+	"description": "MvcCore Application - Questionnaires & Statistics - more complex example how to build very portable app with questionnaires definitions in XML, any question types also defined in XML and answers and anonymous statistics stored and loaded from mysql/mssql database.",
+	"keywords": [
+		"mvc",
+		"mvccore",
+		"easy mvc",
+		"questions",
+		"framework",
+		"statistics",
+		"simple mvc",
+		"questionnaires",
+		"super fast mvc",
+		"single file application"
+	],
+	"license": ["BSD-3-Clause"],
+	"authors": [{
+		"name": "Tom Flidr",
+		"homepage": "https://github.com/tomFlidr"
+	}],
+	"repositories": [{
+		"packagist.org": false
+	},{
+		"type": "path",
+		"url": "../../../packages/mvccore/mvccore"
+	},{
+		"type": "path",
+		"url": "../../../packages/mvccore/ext-router-media"
+	},{
+		"type": "path",
+		"url": "../../../packages/mvccore/ext-view-helper"
+	},{
+		"type": "path",
+		"url": "../../../packages/mvccore/ext-view-helper-assets"
+	},{
+		"type": "path",
+		"url": "../../../packages/mvccore/ext-view-helper-linebreaks"
+	},{
+		"type": "path",
+		"url": "../../../packages/mobiledetect/mobiledetectlib"
+	},{
+		"type": "path",
+		"url": "../../../packages/nette/safe-stream"
+	},{
+		"type": "path",
+		"url": "../../../packages/tracy/tracy"
+	},{
+		"type": "path",
+		"url": "../../../packages/mrclay/minify"
+	},{
+		"type": "path",
+		"url": "../../../packages/mvccore/ext-form"
+	},{
+		"type": "path",
+		"url": "../../../packages/mvccore/ext-auth"
+	},{
+		"type": "path",
+		"url": "../../../packages/mvccore/ext-auth-basic"
+	},{
+		"type": "path",
+		"url": "../../../packages/mvccore/ext-debug-tracy"
+	},{
+		"type": "path",
+		"url": "../../../packages/mvccore/ext-debug-tracy-auth"
+	},{
+		"type": "path",
+		"url": "../../../packages/mvccore/ext-debug-tracy-mvccore"
+	},{
+		"type": "path",
+		"url": "../../../packages/mvccore/ext-debug-tracy-routing"
+	},{
+		"type": "path",
+		"url": "../../../packages/mvccore/ext-debug-tracy-session"
+	}],
+	"require": {
+		"php": ">=5.4.0",
+		"mvccore/mvccore": "dev-master",
+		"mvccore/ext-form": "dev-master",
+		"mvccore/ext-router-media": "dev-master",
+		"mvccore/ext-view-helper-assets": "dev-master",
+		"mvccore/ext-view-helper-linebreaks": "dev-master",
+		"mvccore/ext-auth-basic": "dev-master",
+		"mvccore/ext-debug-tracy": "dev-master",
+		"mvccore/ext-debug-tracy-auth": "dev-master",
+		"mvccore/ext-debug-tracy-mvccore": "dev-master",
+		"mvccore/ext-debug-tracy-routing": "dev-master",
+		"mvccore/ext-debug-tracy-session": "dev-master"
+	},
+	"minimum-stability": "dev"
+}

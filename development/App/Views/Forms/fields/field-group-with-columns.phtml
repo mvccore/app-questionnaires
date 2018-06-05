@@ -1,15 +1,19 @@
 <?php /** @var $this \MvcCore\Ext\Form\Core\Field */ ?>
 <?php
 	echo $this->RenderLabel();
-	$columnsCount = isset($this->Columns) ? $this->Columns : intval(floor(sqrt(count($this->Options))));
-	$itemsInColumn = intval(ceil(count($this->Options)/$columnsCount));
+	$columnsCount = isset($this->columns) 
+		? $this->GetColumns() 
+		: intval(floor(sqrt(count($this->GetOptions()))));
+	$itemsInColumn = $columnsCount > 0
+		? intval(ceil(count($this->GetOptions())/$columnsCount))
+		: 0;
 ?>
 <div class="field-columns field-columns-<?php echo $columnsCount; ?>">
 	<div class="field-columns-row">
 		<div class="field-column"><?php
 			$counter = 0;
 			$createdColumnsCount = 1;
-			foreach ($this->Options as $key => $value):
+			foreach ($this->GetOptions() as $key => $value):
 				if ($counter > 0 && $counter % $itemsInColumn === 0):
 					$createdColumnsCount++;
 					?></div><div class="field-column"><?php
@@ -23,13 +27,13 @@
 				for ($i = 0, $l = $columnsCount - $createdColumnsCount; $i < $l; $i++):
 					?></div><div class="field-column"><?php
 					// if field is boolean and text - next additional column always contains additional text control
-					if ($i == 0 && $this->Field instanceof \App\Forms\Fields\BooleanAndText):
-						echo $this->Field->RenderControlItemText('text', '');
+					if ($i == 0 && $this->GetField() instanceof \App\Forms\Fields\BooleanAndText):
+						echo $this->GetField()->RenderControlItemText('text', '');
 					endif;
 				endfor;
 			endif;
-			if ($columnsCount == 1 && $this->Field instanceof \App\Forms\Fields\BooleanAndText):
-				echo $this->Field->RenderControlItemText('text', '');
+			if ($columnsCount == 1 && $this->GetField() instanceof \App\Forms\Fields\BooleanAndText):
+				echo $this->GetField()->RenderControlItemText('text', '');
 			endif;
 		?></div>
 	</div>

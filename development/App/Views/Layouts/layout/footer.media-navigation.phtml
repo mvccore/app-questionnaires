@@ -1,32 +1,28 @@
-<?php /** @var $this \MvcCore\View */ ?>
-<div class="mc-footer-media-navigation"><?php
-	$newParams = array_merge(array(), $this->Request->Params);
-	unset($newParams['controller'], $newParams['action']);
-	$navigationItems = array(
-		\MvcCore\Ext\Router\MediaSiteKey::FULL		=> $this->Translate('classic'),
-		\MvcCore\Ext\Router\MediaSiteKey::MOBILE	=> $this->Translate('mobile'),
-	);
-	echo $this->Translate('Display') . ': ';
+<?php
+	/** @var $this->request \MvcCore\Request */ 
+	$navigationItems = [
+		\MvcCore\Ext\Routers\IMedia::MEDIA_VERSION_FULL	=> $this->Translate('classic'),
+		\MvcCore\Ext\Routers\IMedia::MEDIA_VERSION_MOBILE	=> $this->Translate('mobile'),
+	];
+	$fullUrl = $this->request->GetFullUrl();
+	$questionMarchMatched = mb_strpos($fullUrl, '?') !== FALSE;
 	$i = 0;
+?><div class="mc-footer-media-navigation"><?php
+	echo $this->Translate('Display') . ': ';
 	foreach ($navigationItems as $key => $value):
-		if ($key == $this->MediaSiteKey):
-			?><span><?php
-				echo $value;
-			?></span><?php
+		if ($key == $this->mediaSiteVersion):
+			?><span><?php echo $value; ?></span><?php
 		else:
-			?><a <?php
-				if ($key == $this->MediaSiteKey) echo ' class="selected"';
-			?>href="<?php
-				echo $this->Url(
-					'self', 
-					array_merge($newParams, array(
-						\MvcCore\Ext\Router\Media::MEDIA_SITE_KEY_URL_PARAM			=> $key, 
-						\MvcCore\Ext\Router\Media::MEDIA_SITE_KEY_SWITCH_URL_PARAM	=> $key,
-					))
-				);
-			?>"><?php
-				echo $value;
-			?></a><?php
+			?><a href="<?php
+			/*echo $this->Url(
+				'self',
+				[\MvcCore\Ext\Routers\IMedia::SWITCH_MEDIA_VERSION_URL_PARAM  => $key]
+			);*/
+			echo $fullUrl 
+				. ($questionMarchMatched ? '&' : '?')
+				. \MvcCore\Ext\Routers\IMedia::SWITCH_MEDIA_VERSION_URL_PARAM 
+				. '=' . $key;
+			?>"><?php echo $value; ?></a><?php
 		endif;
 		if (++$i > 0 && $i < count($navigationItems)) echo ', ';
 	endforeach;

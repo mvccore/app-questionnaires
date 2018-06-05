@@ -8,8 +8,8 @@ class Resource extends Models\Base
 {
 	protected static $commonTable = 'Object';
 	protected static $localizedTable = 'ObjectLocalized';
-    public function GetByIds ($ids = array()) {
-		$params = array();
+    public function GetByIds ($ids = []) {
+		$params = [];
 		foreach ($ids as $key => $id) {
 			$params[':id' . $key] = $id;
 		}
@@ -21,7 +21,7 @@ class Resource extends Models\Base
 	public function GetById ($id = 0) {
 		$sql = "SELECT * FROM " . static::$commonTable . " WHERE Id = :id";
 		$select = $this->db->prepare($sql);
-		$select->execute(array(':id' => $id));
+		$select->execute([':id' => $id]);
 		return $select->fetch();
 	}
 }

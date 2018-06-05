@@ -7,8 +7,8 @@ use App\Models;
 class Resource extends Models\Base
 {
 	private $_personId = 0;
-	private $_questions = array();
-	private $_answers = array();
+	private $_questions = [];
+	private $_answers = [];
 
 	public function __construct ($personId, $questions, $answers) {
 		parent::__construct();
@@ -28,7 +28,7 @@ class Resource extends Models\Base
 
 	public function SaveQuestionnaireAnswers () {
 		$table = self::TABLE_ANSWERS;
-		$sqlItems = array();
+		$sqlItems = [];
 		foreach ($this->_questions as $question) {
 
 			$questionId = $question->Id;
@@ -40,7 +40,7 @@ class Resource extends Models\Base
 			list($columns, $valuesGroup) = $this->$prepareMethodName($question, $answer);
 
 			$columns = array_merge(
-				array('IdQuestionnaire', 'IdQuestion', 'IdPerson'),
+				['IdQuestionnaire', 'IdQuestion', 'IdPerson'],
 				$columns
 			);
 			if ($this->cfg->driver == 'mysql') {
@@ -68,27 +68,27 @@ class Resource extends Models\Base
 	}
 
 	private function _prepareSqlRadios (Models\Question & $question, $answer) {
-		$values = array();
+		$values = [];
 		if (strlen($answer) > 0) {
 			$values[] = intval($answer);
 		}
-		return array(
-			array('Option'),
+		return [
+			['Option'],
 			$values
-		);
+		];
 	}
 	private function _prepareSqlCheckboxes (Models\Question & $question, $answer) {
-		$values = array();
+		$values = [];
 		foreach ($answer as $optionIndex) {
-			$values[] = array(intval($optionIndex), 1);
+			$values[] = [intval($optionIndex), 1];
 		}
-		return array(
-			array('Option', 'Boolean'),
+		return [
+			['Option', 'Boolean'],
 			$values
-		);
+		];
 	}
 	private function _prepareSqlConnections (Models\Question & $question, $bfuAnswers) {
-		$values = array();
+		$values = [];
 		$questionOptionsCount = count($question->Options);
 		foreach ($bfuAnswers as $formFieldIndex => $bfuAnswerIndexStr) {
 			$bfuAnswerIndexInt = intval($bfuAnswerIndexStr);
@@ -97,35 +97,35 @@ class Resource extends Models\Base
 			} else {
 				continue;
 			}
-			$values[] = array($answerForComputer, intval($formFieldIndex));
+			$values[] = [$answerForComputer, intval($formFieldIndex)];
 		}
-		return array(
-			array('Option', 'Integer'),
+		return [
+			['Option', 'Integer'],
 			$values
-		);
+		];
 	}
 	private function _prepareSqlInteger (Models\Question & $question, $answer) {
-		$values = array();
+		$values = [];
 		if (strlen($answer) > 0) {
 			$values[] = intval($answer);
 		}
-		return array(
-			array('Integer'),
+		return [
+			['Integer'],
 			$values
-		);
+		];
 	}
 	private function _prepareSqlFloat (Models\Question & $question, $answer) {
-		$values = array();
+		$values = [];
 		if (strlen($answer) > 0) {
 			$values[] = floatval($answer);
 		}
-		return array(
-			array('Float'),
+		return [
+			['Float'],
 			$values
-		);
+		];
 	}
 	private function _prepareSqlText (Models\Question & $question, $answer) {
-		$values = array();
+		$values = [];
 		if (isset($question->Delimiter) && $question->Delimiter) {
 			$answersExploded = explode($question->Delimiter, $answer);
 			foreach ($answersExploded as $answerExploded) {
@@ -135,45 +135,45 @@ class Resource extends Models\Base
 		} else {
 			$values[] = $this->db->quote($answer);
 		}
-		return array(
-			array('Varchar'),
+		return [
+			['Varchar'],
 			$values
-		);
+		];
 	}
 	private function _prepareSqlTextarea (Models\Question & $question, $answer) {
-		$values = array();
+		$values = [];
 		if (strlen($answer) > 0) {
 			$values[] = $this->db->quote($answer);
 		}
-		return array(
-			array('Text'),
+		return [
+			['Text'],
 			$values
-		);
+		];
 	}
 	private function _prepareSqlBoolean (Models\Question & $question, $answer) {
 		if (strlen($answer) > 0) {
-			$values = strtolower($answer) == 'yes' ? array(1) : array(0) ;
+			$values = strtolower($answer) == 'yes' ? [1] : [0] ;
 		} else {
-			$values = array();
+			$values = [];
 		}
-		return array(
-			array('Boolean'),
+		return [
+			['Boolean'],
 			$values
-		);
+		];
 	}
 	private function _prepareSqlBooleanAndText (Models\Question & $question, $answer) {
-		$columns = array('Boolean');
-		$values = array();
+		$columns = ['Boolean'];
+		$values = [];
 		if (isset($answer[0]) > 0 && strlen($answer[0]) > 0) {
 			$values[] = strtolower($answer[0]) == 'yes' ? 1 : 0 ;
 		}
 		if (isset($answer[1]) && mb_strlen($answer[1]) > 0) {
 			$columns[] = 'Varchar';
-			$values[0] = array($values[0], $this->db->quote($answer[1]));
+			$values[0] = [$values[0], $this->db->quote($answer[1])];
 		}
-		return array(
+		return [
 			$columns,
 			$values
-		);
+		];
 	}
 }

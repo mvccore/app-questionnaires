@@ -4,11 +4,11 @@
 	<?php echo $this->RenderErrors(); ?>
 
 	<div class="fieldset fieldset-person">
-		<?php foreach ($this->Fields as $key => $field): ?>
-			<div class="field <?php echo implode(' ', $field->CssClasses); ?>">
+		<?php foreach ($this->fields as $key => $field): ?>
+			<div class="field <?php echo implode(' ', $field->GetCssClasses()); ?>">
 				<?php echo $field->Render(); ?>
 			</div>
-			<?php if ($field->Type == 'submit'): ?>
+			<?php if ($field->GetType() === 'submit'): ?>
 				<div id="statistics-questions-loading" class="loading"><span><?php 
 					echo $this->Translate('Loading statistics...');
 				?></span></div>

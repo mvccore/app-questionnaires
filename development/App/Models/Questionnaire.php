@@ -12,7 +12,7 @@ class Questionnaire extends Document
 	/** @var int */
 	public $Id;
 	/* @var string */
-	public $Lang;
+	public $Localization;
 	/* @var bool */
 	public $PersonsForm;
 	/* @var string */
@@ -47,8 +47,8 @@ class Questionnaire extends Document
 	private $_questions = null;
 
 	public static function GetAll () {
-		$result = array();
-		$fullPath = \MvcCore::GetInstance()->GetRequest()->AppRoot . self::$dataDir;
+		$result = [];
+		$fullPath = \MvcCore\Application::GetInstance()->GetRequest()->GetAppRoot() . self::$dataDir;
 		$di = new \DirectoryIterator($fullPath);
 		foreach ($di as $item) {
 			if ($item->isDir()) continue;
@@ -68,11 +68,11 @@ class Questionnaire extends Document
 		return $result;
 	}
 	public function GetUrl () {
-		if (is_null($this->_url)) {
+		if ($this->_url === NULL) {
 			$pathWithoutFirstSlashDigitsAndDash = preg_replace("#^/([0-9]*)\-(.*)$#", "$2", $this->Path);
-			$this->_url = \MvcCore::GetInstance()->GetController()->Url(
+			$this->_url = \MvcCore\Application::GetInstance()->GetController()->Url(
 				'Questionnaire:Index', 
-				array('path' => $pathWithoutFirstSlashDigitsAndDash)
+				['path' => $pathWithoutFirstSlashDigitsAndDash]
 			);
 		}
 		return $this->_url;
@@ -90,8 +90,8 @@ class Questionnaire extends Document
 		}
 	}
 	private function _loadQuestions () {
-		$result = array();
-		$fullPath = \MvcCore::GetInstance()->GetRequest()->AppRoot . self::$dataDir . $this->Path;
+		$result = [];
+		$fullPath = \MvcCore\Application::GetInstance()->GetRequest()->GetAppRoot() . self::$dataDir . $this->Path;
 		$di = new \DirectoryIterator($fullPath);
 		foreach ($di as $item) {
 			if ($item->isDir()) continue;

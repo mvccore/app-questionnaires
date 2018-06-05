@@ -13,6 +13,6 @@ class Answers extends Models\Base
 		$executedInsertResult = $resource->SaveQuestionnaireExecuted();
 		$answersInsertCount = $resource->SaveQuestionnaireAnswers();
 		$db->commit();
-		return array($executedInsertResult, $answersInsertCount);
+		return [$executedInsertResult, $answersInsertCount];
 	}
 }

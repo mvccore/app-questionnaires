@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <qr:data xmlns:qr="../Questionare.xsd">
 	<qr:id>0</qr:id>
-	<qr:lang>en</qr:lang>
+	<qr:localization>en-US</qr:localization>
 	<qr:persons-form>true</qr:persons-form>
 	<qr:title>Common IT knowledge</qr:title>
 	<qr:description>

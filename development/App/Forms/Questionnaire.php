@@ -2,84 +2,86 @@
 
 namespace App\Forms;
 
-use \App\Forms\Fields,
+use \App\Forms\CustomFields,
 	\App\Models,
-	\MvcCore\Ext\Form;
+	\MvcCore\Ext\Form,
+	\MvcCore\Ext\Forms\Fields;
 
 class Questionnaire extends Base
 {
-	public $Id = 'questionnaire';
-	public $CssClass = 'questionnaire';
-	public $TemplatePath = 'questionnaire';
-	public $Translate = TRUE;
+	protected $id = 'questionnaire';
 
-	public $PersonsForm = TRUE;
+	/** @var bool */
+	protected $personsForm = TRUE;
 	/** @var \App\Models\Questionnaire */
 	protected $questionnaire;
 	/** @var \App\Models\Question[] */
-	protected $questions = array();
+	protected $questions = [];
+
+	protected $viewScript = TRUE;
 
 	public function SetQuestionnaire (Models\Questionnaire $questionnaire) {
 		$this->questionnaire = $questionnaire;
 		$this->questions = $questionnaire->GetQuestions();
-		$this->PersonsForm = $this->questionnaire->PersonsForm;
+		$this->personsForm = $this->questionnaire->PersonsForm;
 		return $this;
 	}
+
 	public function Init () {
 		parent::Init();
 		$this->initColumnsCount();
-		$this->AddField(new Form\ResetButton(array(
+		$this->AddField(new Fields\ResetButton([
 			'name'			=> 'reset',
 			'value'			=> 'Reset questionnaire',
-			'cssClasses'	=> array(
+			'cssClasses'	=> [
 				'button', 'button-green', 
-				$this->Controller->GetView()->DisplayFacebookShare ? 'fb-share-beside' : '',
-				$this->PersonsForm ? '' : 'no-person-form'
-			),
-		)));
-		if ($this->PersonsForm) $this->initPersonFields();
+				$this->parentController->GetView()->DisplayFacebookShare ? 'fb-share-beside' : '',
+				$this->personsForm ? '' : 'no-person-form'
+			],
+		]));
+		if ($this->personsForm) $this->initPersonFields();
 		$this->initQuestionsFields();
-		$this->AddField(new Form\SubmitButton(array(
+		$this->AddField(new Fields\SubmitButton([
 			'name'			=> 'send',
 			'value'			=> 'Send questionnaire',
-			'cssClasses'	=> array('button', 'button-green'),
-		)));
+			'cssClasses'	=> ['button', 'button-green'],
+		]));
 		return $this;
 	}
 	protected function initPersonFields () {
-		$age = new Form\Number(array(
+		$age = new Fields\Number([
 			'name'			=> 'person_age',
 			'label'			=> 'Age',
 			'required'		=> TRUE,
-			'cssClasses'	=> array('person', 'number', 'age'),
-			'controlWrapper'=> '{control}&nbsp;' . call_user_func($this->Translator, 'years'),
-		));
-		$sex = new Form\RadioGroup(array(
+			'cssClasses'	=> ['person', 'number', 'age'],
+			'controlWrapper'=> '{control}&nbsp;' . $this->Translate('years'),
+		]);
+		$sex = new Fields\RadioGroup([
 			'name'			=> 'person_sex',
 			'label'			=> 'Gender',
 			'required'		=> TRUE,
-			'cssClasses'	=> array('person', 'radio-group', 'sex'),
+			'cssClasses'	=> ['person', 'radio-group', 'sex'],
 			'options'		=> Models\Person::$SexOptions,
-		));
-		$edu = new Form\RadioGroup(array(
+		]);
+		$edu = new Fields\RadioGroup([
 			'name'			=> 'person_edu',
 			'label'			=> 'Highest education level',
 			'required'		=> TRUE,
-			'cssClasses'	=> array('person', 'radio-group', 'edu'),
+			'cssClasses'	=> ['person', 'radio-group', 'edu'],
 			'options'		=> Models\Person::$EducationOptions,
 			'templatePath'	=> 'fields/field-group-with-columns',
-			'columns'		=> !empty($this->formColumnsCount) ? $this->formColumnsCount : 1,
+			//'columns'		=> !empty($this->formColumnsCount) ? $this->formColumnsCount : 1,
 			'columns'		=> empty($this->formColumnsCount) ? 3 :  $this->formColumnsCount
-		));
-		$job = new Form\RadioGroup(array(
+		]);
+		$job = new Fields\RadioGroup([
 			'name'			=> 'person_job',
 			'label'			=> 'I am',
 			'required'		=> TRUE,
-			'cssClasses'	=> array('person', 'radio-group', 'job'),
+			'cssClasses'	=> ['person', 'radio-group', 'job'],
 			'options'		=> Models\Person::$JobOptions,
 			'templatePath'	=> 'fields/field-group-with-columns',
 			'columns'		=> empty($this->formColumnsCount) ? 3 :  $this->formColumnsCount
-		));
+		]);
 		$this->AddFields($age, $sex, $edu, $job);
 	}
 	protected function initQuestionsFields () {
@@ -91,8 +93,7 @@ class Questionnaire extends Base
 				$field
 					->SetName('question_' . $question->Id)
 					->SetLabel($questionNumberAndText)
-					->SetTranslate(FALSE)
-					->AddCssClass($question->Type);
+					->AddCssClasses($question->Type);
 				if (isset($question->Required)) {
 					$field->SetRequired($question->Required);
 				}
@@ -101,7 +102,7 @@ class Questionnaire extends Base
 		}
 	}
 	protected function completeQuestionNumberAndTextCode ($key, $text) {
-		$text = $this->Controller->GetView()->Nl2Br($text);
+		$text = $this->parentController->GetView()->Nl2Br($text);
 		return '<span class="question-number-and-text">'.
 			'<span class="question-number-and-text-row">'.
 				'<span class="question-number">'.intval($key + 1).'.</span>'.
@@ -110,66 +111,66 @@ class Questionnaire extends Base
 		'</span>';
 	}
 	protected function initQuestionFieldConnections ($key, Models\Question & $question) {
-		return new Fields\Connections(array(
+		return new CustomFields\Connections([
 			'options'		=> $question->Options,
 			'connections'	=> $question->Connections,
-		));
+		]);
 	}
 	protected function initQuestionFieldBoolean ($key, Models\Question & $question) {
-		return new Fields\Boolean(array(
+		return new CustomFields\Boolean([
 			'templatePath'	=> 'fields/field-group-with-columns',
 			'columns'		=> empty($this->formColumnsCount)
 				? (!empty($question->Columns) ? $question->Columns : 3)
 				:  $this->formColumnsCount,
-		));
+		]);
 	}
 	protected function initQuestionFieldText ($key, Models\Question & $question) {
-		return new Form\Text(array(
+		return new Fields\Text([
 			'maxlength'	=> $question->MaxLength,
 			'renderMode'=> Form::FIELD_RENDER_MODE_NORMAL,
-		));
+		]);
 	}
 	protected function initQuestionFieldBooleanAndText ($key, Models\Question & $question) {
-		return new Fields\BooleanAndText(array(
+		return new CustomFields\BooleanAndText([
 			'templatePath'	=> 'fields/field-group-with-columns',
 			'columns'		=> empty($this->formColumnsCount)
 				? (!empty($question->Columns) ? $question->Columns : 3)
 				:  $this->formColumnsCount,
-		));
+		]);
 	}
 	protected function initQuestionFieldCheckboxes ($key, Models\Question & $question) {
-		return new Form\CheckboxGroup(array(
+		return new Fields\CheckboxGroup([
 			'options'		=> $question->Checkboxes,
 			'templatePath'	=> 'fields/field-group-with-columns',
 			'columns'		=> empty($this->formColumnsCount)
 				? (!empty($question->Columns) ? $question->Columns : 3)
 				:  $this->formColumnsCount,
-		));
+		]);
 	}
 	protected function initQuestionFieldInteger ($key, Models\Question & $question) {
-		return new Form\Number(array(
+		return new Fields\Number([
 			'min'		=> $question->Min,
 			'max'		=> $question->Max,
 			'wrapper'	=> $question->Body,
 			'renderMode'=> Form::FIELD_RENDER_MODE_NORMAL,
-		));
+		]);
 	}
 	protected function initQuestionFieldFloat ($key, Models\Question & $question) {
 		return $this->initQuestionFieldInteger($key, $question);
 	}
 	protected function initQuestionFieldRadios ($key, Models\Question & $question) {
-		return new Form\RadioGroup(array(
+		return new Fields\RadioGroup([
 			'options'		=> $question->Radios,
 			'templatePath'	=> 'fields/field-group-with-columns',
 			'columns'		=> empty($this->formColumnsCount)
 				? (!empty($question->Columns) ? $question->Columns : 3)
 				:  $this->formColumnsCount,
-		));
+		]);
 	}
 	protected function initQuestionFieldTextarea ($key, Models\Question & $question) {
-		return new Form\Textarea(array(
+		return new Fields\Textarea([
 			'maxlength'	=> $question->MaxLength,
 			'renderMode'=> Form::FIELD_RENDER_MODE_NORMAL,
-		));
+		]);
 	}
 }

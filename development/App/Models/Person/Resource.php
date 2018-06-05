@@ -21,16 +21,16 @@ class Resource extends Models\Base
 		$insertCmd = $this->db->prepare(
 			"INSERT INTO $table (Created,Sex,Age,Education,Job) VALUES ($currentDatetime,:sex,:age,:edu,:job)"
 		);
-		$insertCmd->execute(array(
+		$insertCmd->execute([
 			':sex' => $formData->sex,
 			':age' => $formData->age,
 			':edu' => $formData->edu,
 			':job' => $formData->job,
-		));
+		]);
 
 		$sql = "SELECT Id FROM $table ORDER BY Id DESC";
 		$select = $this->db->prepare($sql);
-		$select->execute(array());
+		$select->execute([]);
 		$lastIdResult = $select->fetch();
 		$lastInsertedId = $lastIdResult['Id'];
 		
@@ -43,9 +43,9 @@ class Resource extends Models\Base
 		$table = self::TABLE_PERSONS;
 		$sql = "SELECT Id,Created,Sex,Age,Education,Job FROM $table WHERE Id=:id";
 		$select = self::GetDb()->prepare($sql);
-		$select->execute(array(
+		$select->execute([
 			':id'	=> $id,	
-		));
+		]);
 		return $select->fetch(\PDO::FETCH_ASSOC);
 	}
 	public function GetMinAndMaxAges ($idQuestionnaire) {
@@ -61,9 +61,9 @@ class Resource extends Models\Base
 				p.Id = e.IdPerson AND
 				e.IdQuestionnaire = :idQuestionnaire";
 		$select = self::GetDb()->prepare($sql);
-		$select->execute(array(
+		$select->execute([
 			':idQuestionnaire'	=> $idQuestionnaire,
-		));
+		]);
 		return $select->fetch(\PDO::FETCH_ASSOC);
 	}
 	public function GetMinAndMaxDates ($idQuestionnaire) {
@@ -79,9 +79,9 @@ class Resource extends Models\Base
 				p.Id = e.IdPerson AND
 				e.IdQuestionnaire = :idQuestionnaire";
 		$select = self::GetDb()->prepare($sql);
-		$select->execute(array(
+		$select->execute([
 			':idQuestionnaire'	=> $idQuestionnaire,
-		));
+		]);
 		return $select->fetch(\PDO::FETCH_ASSOC);
 	}
 }

@@ -1,0 +1,901 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "b722b648294bd93322277662f120bd50",
+    "packages": [
+        {
+            "name": "mobiledetect/mobiledetectlib",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/mobiledetect/mobiledetectlib",
+                "reference": "929433c0d5cb0449b5d7cf3a5ffb1d71f7f9b4af",
+                "shasum": null
+            },
+            "require": {
+                "php": ">=5.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8.35||~5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "Mobile_Detect.php"
+                ],
+                "psr-0": {
+                    "Detection": "namespaced/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Serban Ghita",
+                    "email": "serbanghita@gmail.com",
+                    "homepage": "http://mobiledetect.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Mobile_Detect is a lightweight PHP class for detecting mobile devices. It uses the User-Agent string combined with specific HTTP headers to detect the mobile environment.",
+            "homepage": "https://github.com/serbanghita/Mobile-Detect",
+            "keywords": [
+                "detect mobile devices",
+                "mobile",
+                "mobile detect",
+                "mobile detector",
+                "php mobile detect"
+            ]
+        },
+        {
+            "name": "mrclay/minify",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/mrclay/minify",
+                "reference": "18c80cbe6ac51ed567a39d0529f6072204326c12",
+                "shasum": null
+            },
+            "require": {
+                "ext-pcre": "*",
+                "php": ">=5.2.1"
+            },
+            "require-dev": {
+                "tubalmartin/cssmin": "~2.4.8"
+            },
+            "suggest": {
+                "tubalmartin/cssmin": "Support minify with CSSMin (YUI PHP port)"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "min/lib/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Stephen Clay",
+                    "email": "steve@mrclay.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Minify is a PHP5 app that helps you follow several rules for client-side performance. It combines multiple CSS or Javascript files, removes unnecessary whitespace and comments, and serves them with gzip encoding and optimal client-side cache headers",
+            "homepage": "http://code.google.com/p/minify/",
+            "support": {
+                "email": "minify@googlegroups.com",
+                "issues": "http://code.google.com/p/minify/issues/list",
+                "wiki": "http://code.google.com/p/minify/w/list"
+            }
+        },
+        {
+            "name": "mvccore/ext-auth",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/mvccore/ext-auth",
+                "reference": "9467071143fa9161a7ce0bd9ddf01974124cf982",
+                "shasum": null
+            },
+            "require": {
+                "mvccore/ext-auth-basic": "dev-master",
+                "mvccore/mvccore": "dev-master",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Flidr",
+                    "homepage": "https://github.com/tomFlidr"
+                }
+            ],
+            "description": "MvcCore Extension - Auth - authentication module with automatic authentication module type detection by loaded classes.",
+            "keywords": [
+                "auth",
+                "authenticate",
+                "authentication",
+                "authorization",
+                "ext",
+                "extension",
+                "framework",
+                "log in",
+                "log out",
+                "login",
+                "logout",
+                "mvc",
+                "mvccore",
+                "plug-in",
+                "plugin",
+                "sign in",
+                "sign out",
+                "signin",
+                "signout",
+                "user"
+            ]
+        },
+        {
+            "name": "mvccore/ext-auth-basic",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/mvccore/ext-auth-basic",
+                "reference": "54291fd6b546e42181445d9d67e82deb43ba67c6",
+                "shasum": null
+            },
+            "require": {
+                "mvccore/ext-form": "dev-master",
+                "mvccore/mvccore": "dev-master",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Flidr",
+                    "homepage": "https://github.com/tomFlidr"
+                }
+            ],
+            "description": "MvcCore Extension - Auth - Basic - simple authentication extension, only to signin/signout user. Extension can use credentials defined in system `config.ini` or in database. Possibility to extend user, signin/signout forms, submit controller and extension class itself.",
+            "keywords": [
+                "auth",
+                "authenticate",
+                "authentication",
+                "authorization",
+                "ext",
+                "extension",
+                "framework",
+                "log in",
+                "log out",
+                "login",
+                "logout",
+                "mvc",
+                "mvccore",
+                "plug-in",
+                "plugin",
+                "sign in",
+                "sign out",
+                "signin",
+                "signout",
+                "user"
+            ]
+        },
+        {
+            "name": "mvccore/ext-debug-tracy",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/mvccore/ext-debug-tracy",
+                "reference": "83e1d72ccaf1b0227c235ebf71d32ad77025554c",
+                "shasum": null
+            },
+            "require": {
+                "mvccore/mvccore": "dev-master",
+                "php": ">=5.4.0",
+                "tracy/tracy": "^2.4"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Flidr",
+                    "homepage": "https://github.com/tomFlidr"
+                }
+            ],
+            "description": "MvcCore Extension - Debug - Tracy - adapter class for Nette framework tracy/tracy library.",
+            "keywords": [
+                "debug",
+                "debug bar",
+                "ext",
+                "extension",
+                "framework",
+                "mvc",
+                "mvccore",
+                "nette",
+                "plug-in",
+                "plugin",
+                "tracy",
+                "var dumping"
+            ]
+        },
+        {
+            "name": "mvccore/ext-debug-tracy-auth",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/mvccore/ext-debug-tracy-auth",
+                "reference": "ddf05fac00012bedb738b67c128b08a048ff3d35",
+                "shasum": null
+            },
+            "require": {
+                "mvccore/ext-auth": "dev-master",
+                "mvccore/ext-debug-tracy": "dev-master",
+                "mvccore/mvccore": "dev-master",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Flidr",
+                    "homepage": "https://github.com/tomFlidr"
+                }
+            ],
+            "description": "MvcCore Extension - Debug Tracy Panel - Auth - render and add into tracy debug panel currently authenticated user from \\MvcCore\\Ext\\Auth service singleton instance, printed by \\Tracy\\Dumper::toHtml(\\MvcCore\\Ext\\Auth::GetInstance()->GetUser());.",
+            "keywords": [
+                "auth",
+                "authenticate",
+                "authentication",
+                "authorization",
+                "debug",
+                "ext",
+                "extension",
+                "framework",
+                "log in",
+                "log out",
+                "login",
+                "logout",
+                "mvc",
+                "mvccore",
+                "nette",
+                "plug-in",
+                "plugin",
+                "sign in",
+                "sign out",
+                "signin",
+                "signout",
+                "tracy",
+                "user"
+            ]
+        },
+        {
+            "name": "mvccore/ext-debug-tracy-mvccore",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/mvccore/ext-debug-tracy-mvccore",
+                "reference": "e68a331427aed1aa4f3c303d63587c8e5f26afd1",
+                "shasum": null
+            },
+            "require": {
+                "mvccore/ext-debug-tracy": "dev-master",
+                "mvccore/mvccore": "dev-master",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Flidr",
+                    "homepage": "https://github.com/tomFlidr"
+                }
+            ],
+            "description": "MvcCore Extension - Debug Tracy Panel - MvcCore - render and add into tracy debug panel current MvcCore application instance, printed by \\Tracy\\Dumper::toHtml(\\MvcCore\\Application::GetInstance()); to display main application objects used to render current page response. Rendered objects inside MvcCore app: \\MvcCore\\Request, \\MvcCore\\Response, \\MvcCore\\Router, \\MvcCore\\Controller, all preroute, predispatch and postdispatch configured handlers and many other internal application values.",
+            "keywords": [
+                "app overview",
+                "application",
+                "controller",
+                "debug",
+                "ext",
+                "extension",
+                "framework",
+                "handlers",
+                "instance",
+                "internals",
+                "mvc",
+                "mvccore",
+                "nette",
+                "plug-in",
+                "plugin",
+                "request",
+                "response",
+                "router",
+                "tracy"
+            ]
+        },
+        {
+            "name": "mvccore/ext-debug-tracy-routing",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/mvccore/ext-debug-tracy-routing",
+                "reference": "8f174e6b9e43a30aafd2e86b80979dfef30e32f5",
+                "shasum": null
+            },
+            "require": {
+                "mvccore/ext-debug-tracy": "dev-master",
+                "mvccore/mvccore": "dev-master",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Flidr",
+                    "homepage": "https://github.com/tomFlidr"
+                }
+            ],
+            "description": "MvcCore Extension - Debug Tracy Panel - Routing - render and add into tracy debug panel all configured routes in current MvcCore application router and to display currently matched route.",
+            "keywords": [
+                "active route",
+                "current route",
+                "debug",
+                "ext",
+                "extension",
+                "framework",
+                "mvc",
+                "mvccore",
+                "nette",
+                "plug-in",
+                "plugin",
+                "route",
+                "router",
+                "routes",
+                "routing",
+                "tracy"
+            ]
+        },
+        {
+            "name": "mvccore/ext-debug-tracy-session",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/mvccore/ext-debug-tracy-session",
+                "reference": "6f84effc9b89a0abed5feeca9c7f29bce261aeda",
+                "shasum": null
+            },
+            "require": {
+                "mvccore/ext-debug-tracy": "dev-master",
+                "mvccore/mvccore": "dev-master",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Flidr",
+                    "homepage": "https://github.com/tomFlidr"
+                }
+            ],
+            "description": "MvcCore Extension - Debug Tracy Panel - Session - render and add into tracy debug panel $_SESSION content and \\MvcCore\\Session namespaces content.",
+            "keywords": [
+                "basic session",
+                "debug",
+                "ext",
+                "extension",
+                "framework",
+                "mvc",
+                "mvccore",
+                "nette",
+                "plug-in",
+                "plugin",
+                "session",
+                "session namespace",
+                "tracy"
+            ]
+        },
+        {
+            "name": "mvccore/ext-form",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/mvccore/ext-form",
+                "reference": "dce5b904845b66b9499df37f7b5073e79ca60897",
+                "shasum": null
+            },
+            "require": {
+                "mvccore/mvccore": "dev-master",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Flidr",
+                    "homepage": "https://github.com/tomFlidr"
+                }
+            ],
+            "description": "MvcCore Extension - Form - render web forms with classic user controls and some HTML5 controls, to handle and validate submited user data, to manage forms sessions for default values, to manage user input errors and to extend and develop custom fields and field groups.",
+            "keywords": [
+                "dynamic forms",
+                "ext",
+                "extension",
+                "form",
+                "forms",
+                "framework",
+                "html5",
+                "mvc",
+                "mvccore",
+                "mvccore",
+                "mvccore form",
+                "plug-in",
+                "plugin",
+                "submit",
+                "submitting",
+                "validate",
+                "validating",
+                "validation",
+                "web forms"
+            ]
+        },
+        {
+            "name": "mvccore/ext-router-media",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/mvccore/ext-router-media",
+                "reference": "63ea5c1ded5e6171a1b836f6071e3ec50fa87ca6",
+                "shasum": null
+            },
+            "require": {
+                "mobiledetect/mobiledetectlib": "*",
+                "mvccore/mvccore": "dev-master",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Flidr",
+                    "homepage": "https://github.com/tomFlidr"
+                }
+            ],
+            "description": "MvcCore Extension - Router - Media - router to have media site version (full/tablet/mobile) flag in every GET url, very configurable.",
+            "keywords": [
+                "address",
+                "ext",
+                "extension",
+                "flag",
+                "framework",
+                "full",
+                "media",
+                "mobile",
+                "mvc",
+                "mvccore",
+                "plug-in",
+                "plugin",
+                "router",
+                "routes",
+                "routing",
+                "site",
+                "tablet",
+                "version"
+            ]
+        },
+        {
+            "name": "mvccore/ext-view-helper",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/mvccore/ext-view-helper",
+                "reference": "e9fc93879ee2ec1598c062e46439f859594b3c78",
+                "shasum": null
+            },
+            "require": {
+                "mvccore/mvccore": "dev-master",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Flidr",
+                    "homepage": "https://github.com/tomFlidr"
+                }
+            ],
+            "description": "MvcCore Extension - View Helper - abstract class code and interface support code to create more sofisticated view helpers with better setup and protected properties.",
+            "keywords": [
+                "abstract",
+                "ext",
+                "extension",
+                "framework",
+                "helper",
+                "interface",
+                "mvc",
+                "mvccore",
+                "plug-in",
+                "plugin",
+                "support",
+                "view",
+                "viewhelper"
+            ]
+        },
+        {
+            "name": "mvccore/ext-view-helper-assets",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/mvccore/ext-view-helper-assets",
+                "reference": "e1e52f114d6706d529d260fb467769994496e801",
+                "shasum": null
+            },
+            "require": {
+                "mrclay/minify": "*",
+                "mvccore/ext-view-helper": "dev-master",
+                "mvccore/mvccore": "dev-master",
+                "nette/safe-stream": "*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Flidr",
+                    "homepage": "https://github.com/tomFlidr"
+                }
+            ],
+            "description": "MvcCore Extension - View Helper - Assets - to group, render, minify and cache javascript and css files, to prepare all application assets for final application packing.",
+            "keywords": [
+                "assets",
+                "assets caching",
+                "assets completion",
+                "css",
+                "ext",
+                "extension",
+                "framework",
+                "helper",
+                "javascript",
+                "js",
+                "mvc",
+                "mvccore",
+                "packing",
+                "plug-in",
+                "plugin",
+                "prepare",
+                "sheets",
+                "styles",
+                "view",
+                "viewhelper"
+            ]
+        },
+        {
+            "name": "mvccore/ext-view-helper-linebreaks",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/mvccore/ext-view-helper-linebreaks",
+                "reference": "b2cf22deecabc0cd5bff7c371238ca5d7179e4f9",
+                "shasum": null
+            },
+            "require": {
+                "mvccore/ext-view-helper": "dev-master",
+                "mvccore/mvccore": "dev-master",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Flidr",
+                    "homepage": "https://github.com/tomFlidr"
+                }
+            ],
+            "description": "MvcCore Extension - View Helper - Line Breaks - processing any visible text content for non-line breaking spaces.",
+            "keywords": [
+                "conjunctions",
+                "digits",
+                "ext",
+                "extension",
+                "framework",
+                "helper",
+                "line breaks",
+                "mvc",
+                "mvccore",
+                "new lines",
+                "plug-in",
+                "plugin",
+                "shortcuts",
+                "text",
+                "units",
+                "view",
+                "viewhelper"
+            ]
+        },
+        {
+            "name": "mvccore/mvccore",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/mvccore/mvccore",
+                "reference": "00ad4766c633a10ebbb07a3b0561d0f7590d2f32",
+                "shasum": null
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mvccore/ext-debug-tracy": "*"
+            },
+            "suggest": {
+                "mvccore/ext-tracy": "MvcCore Extension - Debug - Tracy (tracy/tracy) - adapter for better development."
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ],
+                "files": [
+                    "src/startup.php"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Flidr",
+                    "homepage": "https://github.com/tomFlidr"
+                }
+            ],
+            "description": "MvcCore is PHP MVC framework to develop and pack projects (partialy or completely) into super fast single file apps and tools.",
+            "keywords": [
+                "config",
+                "controller",
+                "core",
+                "debug",
+                "easy mvc",
+                "framework",
+                "model",
+                "mvc",
+                "mvccore",
+                "packed",
+                "packed app",
+                "packing",
+                "plugins",
+                "request",
+                "response",
+                "route",
+                "router",
+                "session",
+                "simple mvc",
+                "super fast app",
+                "tool",
+                "view"
+            ]
+        },
+        {
+            "name": "nette/safe-stream",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/nette/safe-stream",
+                "reference": "cd51f7ef93175ad3e73bf3b6a39d6d7dfe9df789",
+                "shasum": null
+            },
+            "require": {
+                "php": ">=5.3.1"
+            },
+            "conflict": {
+                "nette/nette": "<2.2"
+            },
+            "require-dev": {
+                "nette/tester": "~1.7",
+                "tracy/tracy": "^2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/loader.php"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0",
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https://davidgrudl.com"
+                },
+                {
+                    "name": "Nette Community",
+                    "homepage": "https://nette.org/contributors"
+                }
+            ],
+            "description": "Nette SafeStream: atomic and safe manipulation with files via native PHP functions.",
+            "homepage": "https://nette.org",
+            "keywords": [
+                "atomic",
+                "filesystem",
+                "nette",
+                "safe"
+            ]
+        },
+        {
+            "name": "tracy/tracy",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/tracy/tracy",
+                "reference": "76a22ad589596c64edf11dadc522060ee26eb0ef",
+                "shasum": null
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-session": "*",
+                "php": ">=5.4.4"
+            },
+            "require-dev": {
+                "nette/di": "~2.3",
+                "nette/tester": "~1.7"
+            },
+            "suggest": {
+                "https://nette.org/donate": "Please support Tracy via a donation"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src"
+                ],
+                "files": [
+                    "src/shortcuts.php"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https://davidgrudl.com"
+                },
+                {
+                    "name": "Nette Community",
+                    "homepage": "https://nette.org/contributors"
+                }
+            ],
+            "description": "😎 Tracy: the addictive tool to ease debugging PHP code for cool developers. Friendly design, logging, profiler, advanced features like debugging AJAX calls or CLI support. You will love it.",
+            "homepage": "https://tracy.nette.org",
+            "keywords": [
+                "debug",
+                "debugger",
+                "nette",
+                "profiler",
+                "xdebug"
+            ]
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "mvccore/mvccore": 20,
+        "mvccore/ext-form": 20,
+        "mvccore/ext-router-media": 20,
+        "mvccore/ext-view-helper-assets": 20,
+        "mvccore/ext-view-helper-linebreaks": 20,
+        "mvccore/ext-auth-basic": 20,
+        "mvccore/ext-debug-tracy": 20,
+        "mvccore/ext-debug-tracy-auth": 20,
+        "mvccore/ext-debug-tracy-mvccore": 20,
+        "mvccore/ext-debug-tracy-routing": 20,
+        "mvccore/ext-debug-tracy-session": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.4.0"
+    },
+    "platform-dev": []
+}

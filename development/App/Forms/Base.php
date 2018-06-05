@@ -2,31 +2,24 @@
 
 namespace App\Forms;
 
-use \MvcCore\Ext\Form;
+use \MvcCore\Ext\Forms;
 
-class Base extends Form
+class Base extends \MvcCore\Ext\Form
 {
-	public $TemplateTypePath = 'Forms';
-	public $FieldsDefaultRenderMode = Form::FIELD_RENDER_MODE_LABEL_AROUND;
+	protected $defaultFieldsRenderMode = self::FIELD_RENDER_MODE_LABEL_AROUND;
 
 	protected $formColumnsCount = NULL;
 
-	public static function AllFormsInit () {
+	public static function AllFormsCustomizationInit (\MvcCore\Interfaces\IRequest & $request) {
 		// customize templates for all forms in whole application
 		$btnCustomTmpl = '<button id="{id}" name="{name}" type="{type}"{attrs}><span><b>{value}</b></span></button>';
-		Form\SubmitButton::$Templates = (object) Form\SubmitButton::$Templates;
-		Form\ResetButton::$Templates = (object) Form\ResetButton::$Templates;
-		Form\SubmitButton::$Templates->control = $btnCustomTmpl;
-		Form\ResetButton::$Templates->control = $btnCustomTmpl;
+		Forms\Fields\SubmitButton::SetTemplate('control', $btnCustomTmpl);
+		Forms\Fields\ResetButton::SetTemplate('control', $btnCustomTmpl);
+		\MvcCore\Ext\Form::SetJsSupportFilesRootDir($request->GetAppRoot() . '/static/js/front/forms-assets');
 	}
-
-	public function __construct (/*\MvcCore\Controller*/ & $controller) {
-		parent::__construct($controller);
-		$this->jsAssetsRootDir = \MvcCore::GetInstance()->GetRequest()->AppRoot . '/static/js/front';
-	}
+	
 	protected function initColumnsCount () {
-		if ($this->Controller->GetRequest()->MediaSiteKey != 'full') {
+		if ($this->request->GetMediaSiteVersion() != 'full')
 			$this->formColumnsCount = 1;
-		}
 	}
 }

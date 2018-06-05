@@ -1,4 +1,4 @@
 <?php /** @var $this \MvcCore\View */ ?>
 <h1>Oooops!</h1>
-<?php $requestParams = (object) $this->Controller->GetRequest()->Params; ?>
-<p>Error <?php echo $requestParams->code; ?> - <?php echo $this->Nl2Br($requestParams->message); ?>.</p>
+<p><?php echo $this->Title; ?></p>
+<p><?php echo $this->Message; ?></p>

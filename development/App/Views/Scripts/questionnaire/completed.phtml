@@ -5,8 +5,8 @@
 </p>
 <p>
     <?php echo str_replace(
-		array('%linkBegin%', '%linkEnd%'),
-		array('<br /><a href="' . $this->Url('Statistics:Index', array('path' => $this->Path)) . '">', '</a>'),
+		['%linkBegin%', '%linkEnd%'],
+		['<br /><a href="' . $this->Url('Statistics:Index', ['path' => $this->Path]) . '">', '</a>'],
 		$this->Translate('If you are interested in how other people answered, %linkBegin%you can see the global anonymous results here%linkEnd%.')
 	); ?>
 </p>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <doc:data xmlns:doc="../Documents.xsd">
 	<doc:title>Questionnaires</doc:title>
-  <doc:lang>en</doc:lang>
+	<doc:localization>en-US</doc:localization>
 	<doc:description>Please choose one of these questionnaires.</doc:description>
 	<doc:keywords></doc:keywords>
 	<doc:robots>index,follow</doc:robots>

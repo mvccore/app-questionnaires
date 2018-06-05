@@ -3,7 +3,7 @@
 <p><?php echo $this->Questionnaire->Perex; ?></p>
 <p><?php echo $this->Translate('Anonymous results:') ?></p>
 <div class="hr"></div>
-<?php if ($this->FilterForm->Authenticated || $this->FilterForm->PersonsForm): ?>
+<?php if ($this->FilterForm->GetAuthenticated() || $this->FilterForm->GetPersonsForm()): ?>
 	<h2><?php echo $this->Translate('Persons filter'); ?></h2>
 	<?php echo $this->FilterForm->Render(); ?>
 <?php else: ?>

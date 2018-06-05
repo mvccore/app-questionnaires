@@ -12,7 +12,7 @@ class Statistics extends Models\Base
 	/**
 	 * @var \MvcCore\Ext\Auth\User
 	 */
-	protected $user = array();
+	protected $user = [];
 	/**
 	 * @var \App\Models\Question
 	 */
@@ -53,7 +53,7 @@ class Statistics extends Models\Base
 		return $this;
 	}
 	public function Load (& $filterData) {
-		$resource = self::_getResource(array($this->question, $filterData, $this->user));
+		$resource = self::_getResource([$this->question, $filterData, $this->user]);
 		$this->questionnaireAnsweringPersonsCount	= $resource->LoadAllQuestionnairePersonsCount();
 		$this->questionAnsweringPersonsCount		= $resource->LoadQuestionAnsweringPersonsCount();
 		$methodsNameLastPart = \MvcCore\Tool::GetPascalCaseFromDashed($this->question->Type);
@@ -81,10 +81,10 @@ class Statistics extends Models\Base
 			$this->_setUpGraphsPercentageValuesInSingleGraphsData($result->ConnectionsCorrectness, FALSE, $this->questionnaireAnsweringPersonsCount);
 			$this->_setUpGraphsPercentageValuesInSingleGraphsData($result->PeopleCorrectness, FALSE, $this->questionnaireAnsweringPersonsCount);
 			$completlyCorrectConnectionsCount = $result->PeopleCorrectness[count($result->PeopleCorrectness) - 1]->Count;
-			$result->CorrectAnswers = array(
-				array( 'Value'	=> $translator->Translate('Completely correct answers count'), 'Count'	=> $completlyCorrectConnectionsCount, ),
-				array( 'Value'	=> $translator->Translate('Incorrect answers count'), 'Count'	=> $this->questionnaireAnsweringPersonsCount - $completlyCorrectConnectionsCount, ),
-			);
+			$result->CorrectAnswers = [
+				[ 'Value'	=> $translator->Translate('Completely correct answers count'), 'Count'	=> $completlyCorrectConnectionsCount, ],
+				[ 'Value'	=> $translator->Translate('Incorrect answers count'), 'Count'	=> $this->questionnaireAnsweringPersonsCount - $completlyCorrectConnectionsCount, ],
+			];
 			$this->_setUpGraphsPercentageValuesInSingleGraphsData($result->CorrectAnswers, FALSE, $this->questionnaireAnsweringPersonsCount);
 		}
 		foreach ($result->PersonsAnswersCounts as & $item) {
@@ -96,17 +96,17 @@ class Statistics extends Models\Base
 			if ($this->questionnaireAnsweringPersonsCount > 0) {
 				$answeredPersonsPercentage = round(($this->questionAnsweringPersonsCount / $this->questionnaireAnsweringPersonsCount) * 1000) / 10;
 			}
-			$result->Summary = array(
-				array('Total respondents count',	$this->questionnaireAnsweringPersonsCount),
-				array('Total answers count',		$this->questionAnsweringPersonsCount, $answeredPersonsPercentage + ' %'),
-				array('Completely no answers count',$this->questionnaireAnsweringPersonsCount - $this->questionAnsweringPersonsCount, 100 - $answeredPersonsPercentage),
-			);
+			$result->Summary = [
+				['Total respondents count',	$this->questionnaireAnsweringPersonsCount],
+				['Total answers count',		$this->questionAnsweringPersonsCount, $answeredPersonsPercentage + ' %'],
+				['Completely no answers count',$this->questionnaireAnsweringPersonsCount - $this->questionAnsweringPersonsCount, 100 - $answeredPersonsPercentage],
+			];
 			if (isset($this->question->Solution) && isset($result->PeopleCorrectness)) {
-				$result->Summary[] = array('Completely correct answers count', $result->CorrectAnswers[0]->Count, $result->CorrectAnswers[0]->Percentage);
-				$result->Summary[] = array('Incorrect answers count', $result->CorrectAnswers[1]->Count, $result->CorrectAnswers[1]->Percentage);
+				$result->Summary[] = ['Completely correct answers count', $result->CorrectAnswers[0]->Count, $result->CorrectAnswers[0]->Percentage];
+				$result->Summary[] = ['Incorrect answers count', $result->CorrectAnswers[1]->Count, $result->CorrectAnswers[1]->Percentage];
 			}
 		}
-		$this->_addTranslationsIntoResult($result, array(
+		$this->_addTranslationsIntoResult($result, [
 			'Question Options', 'Question Answers', 'Question Option', 'Question Answer',
 			'Answers counts, where option was presented', 'Answers percentages, where option was presented', 
 			'Any presented option count', 'Any presented option percentage',
@@ -115,7 +115,7 @@ class Statistics extends Models\Base
 			'Correctly answered respondents', 'Incorrectly answered respondents', 
 			'Respondents Counts', 'Correctly Connected Options Count',
 			'1 right answer', '{0} right answers (plural: 2-4)', '{0} right answers (plural: 0,5-Infinite)',
-		));
+		]);
 		$this->_setUpInvolvedPieGraphDataAndTranslations($result);
 		return $result;
 	}
@@ -123,10 +123,10 @@ class Statistics extends Models\Base
 		$translator = Models\Translator::GetInstance();
 		$this->_setUpGraphsValuesByQuestionOptions($result->Overview, 'Checkboxes');
 		if ($this->questionnaireAnsweringPersonsCount - $this->questionAnsweringPersonsCount > 0) {
-			array_unshift($result->SelectedOptionsCountsInAnswer, array(
+			array_unshift($result->SelectedOptionsCountsInAnswer, [
 				'Value'	=> 0,
 				'Count'	=> $this->questionnaireAnsweringPersonsCount - $this->questionAnsweringPersonsCount,
-			));
+			]);
 		}
 		if (isset($result->OptionsCorrectness)) $this->_setUpGraphsValuesByQuestionOptions($result->OptionsCorrectness, 'Checkboxes');
 		$this->_setUpGraphsPercentageValuesInAllGraphsData($result);
@@ -139,31 +139,31 @@ class Statistics extends Models\Base
 		// complete summary if user authenticated
 		if ($this->user) {
 			$answeredPersonsPercentage = round((max($this->questionAnsweringPersonsCount, 1) / max($this->questionnaireAnsweringPersonsCount, 1)) * 1000) / 10;
-			$result->Summary = array(
-				array('Total respondents count',$this->questionnaireAnsweringPersonsCount),
-				array('Total answers count',	$this->questionAnsweringPersonsCount, $answeredPersonsPercentage + ' %'),
-				array('No answers count',		$this->questionnaireAnsweringPersonsCount - $this->questionAnsweringPersonsCount, 100 - $answeredPersonsPercentage),
-			);
+			$result->Summary = [
+				['Total respondents count',$this->questionnaireAnsweringPersonsCount],
+				['Total answers count',	$this->questionAnsweringPersonsCount, $answeredPersonsPercentage + ' %'],
+				['No answers count',		$this->questionnaireAnsweringPersonsCount - $this->questionAnsweringPersonsCount, 100 - $answeredPersonsPercentage],
+			];
 			if (isset($this->question->Solution) && isset($result->PeopleCorrectness)) {
 				$solutionCount = count($this->question->Solution);
 				foreach ($result->PeopleCorrectness as $peopleCorrectnessItem) {
 					if ($peopleCorrectnessItem->CorrectlyAnsweredOptions === $solutionCount && $peopleCorrectnessItem->IncorrectlyAnsweredOptions === 0) {
 						$incorrectAnswersCount = $this->questionAnsweringPersonsCount - $peopleCorrectnessItem->PersonsCount;
-						$result->Summary[] = array('Completely correct answers count', $peopleCorrectnessItem->PersonsCount, $peopleCorrectnessItem->PersonsPercentage);
-						$result->Summary[] = array('Incorrect answers count', $incorrectAnswersCount, 100 - $peopleCorrectnessItem->PersonsPercentage);
+						$result->Summary[] = ['Completely correct answers count', $peopleCorrectnessItem->PersonsCount, $peopleCorrectnessItem->PersonsPercentage];
+						$result->Summary[] = ['Incorrect answers count', $incorrectAnswersCount, 100 - $peopleCorrectnessItem->PersonsPercentage];
 						break;
 					}
 				}
 			}
 		}
-		$this->_addTranslationsIntoResult($result, array(
+		$this->_addTranslationsIntoResult($result, [
 			'Selections Percentages', 'Selections Counts', 'Question Options',
 			'Selected Options Counts In Answer', 'Respondents Percentages', 'Respondents Counts',
 			'Number Of Correct And Incorrect Respondents', 'Correctly answered respondents', 'Incorrectly answered respondents',
 			'Combination Of Correctly And Incorrectly Answered Options Counts', 'Completely correct answers count',
 			'1 right answer', '{0} right answers (plural: 2-4)', '{0} right answers (plural: 0,5-Infinite)',
 			'1 wrong answer', '{0} wrong answers (plural: 2-4)', '{0} wrong answers (plural: 0,5-Infinite)',
-		));
+		]);
 		$this->_setUpInvolvedPieGraphDataAndTranslations($result);
 		return $result;
 	}
@@ -171,43 +171,43 @@ class Statistics extends Models\Base
 		$translator = Models\Translator::GetInstance();
 		$this->_setUpGraphsValuesByQuestionOptions($result->Overview, 'Radios');
 		if ($this->questionnaireAnsweringPersonsCount - $this->questionAnsweringPersonsCount > 0) {
-			array_unshift($result->Overview, array(
+			array_unshift($result->Overview, [
 				'Value'	=> $translator->Translate('No answer'),
 				'Count'	=> $this->questionnaireAnsweringPersonsCount - $this->questionAnsweringPersonsCount,
-			));
+			]);
 		}
 		if ($this->user) {
 			if (isset($this->question->Solution) && isset($result->CorrectAnswersCount)) {
 				$correctAnswersCount = $result->CorrectAnswersCount;
 				$incorrectAnswersCount = $this->questionnaireAnsweringPersonsCount - $correctAnswersCount;
 				unset($result->CorrectAnswersCount);
-				$result->CorrectAnswers = array(
-					array( 'Value'	=> $translator->Translate('Correct answers count'), 'Count'	=> $correctAnswersCount, ),
-					array( 'Value'	=> $translator->Translate('Incorrect answers count'), 'Count'	=> $incorrectAnswersCount, ),
-				);
+				$result->CorrectAnswers = [
+					[ 'Value'	=> $translator->Translate('Correct answers count'), 'Count'	=> $correctAnswersCount, ],
+					[ 'Value'	=> $translator->Translate('Incorrect answers count'), 'Count'	=> $incorrectAnswersCount, ],
+				];
 			}
 		}
 		$this->_setUpGraphsPercentageValuesInAllGraphsData($result, FALSE, $this->questionnaireAnsweringPersonsCount);
 		$this->_setUpInvolvedPieGraphDataAndTranslations($result);
 		if ($this->user) {
 			$answeredPersonsPercentage = round(($this->questionAnsweringPersonsCount / $this->questionnaireAnsweringPersonsCount) * 1000) / 10;
-			$result->Summary = array(
-				array('Total respondents count',$this->questionnaireAnsweringPersonsCount),
-				array('Total answers count',	$this->questionAnsweringPersonsCount, $answeredPersonsPercentage + ' %'),
-				array('No answers count',		$this->questionnaireAnsweringPersonsCount - $this->questionAnsweringPersonsCount, 100 - $answeredPersonsPercentage),
-			);
+			$result->Summary = [
+				['Total respondents count',$this->questionnaireAnsweringPersonsCount],
+				['Total answers count',	$this->questionAnsweringPersonsCount, $answeredPersonsPercentage + ' %'],
+				['No answers count',		$this->questionnaireAnsweringPersonsCount - $this->questionAnsweringPersonsCount, 100 - $answeredPersonsPercentage],
+			];
 			if (isset($this->question->Solution)) {
 				$correctAnswersCountPercentage = round($result->CorrectAnswers[0]->Count / $this->questionnaireAnsweringPersonsCount * 1000) / 10;
 				$incorrectAnswersCountPercentage = 100 - $correctAnswersCountPercentage;
-				$result->Summary[] = array('Correct answers count', $result->CorrectAnswers[0]->Count, $correctAnswersCountPercentage);
-				$result->Summary[] = array('Incorrect answers count', $result->CorrectAnswers[1]->Count, $incorrectAnswersCountPercentage);
+				$result->Summary[] = ['Correct answers count', $result->CorrectAnswers[0]->Count, $correctAnswersCountPercentage];
+				$result->Summary[] = ['Incorrect answers count', $result->CorrectAnswers[1]->Count, $incorrectAnswersCountPercentage];
 				
 			}
 		}
-		$this->_addTranslationsIntoResult($result, array(
+		$this->_addTranslationsIntoResult($result, [
 			'Presented values', 'Respondents Percentages', 'Respondents Counts', 
 			'Presented value', 'Respondents Count', 'Respondents Percentage',
-		));
+		]);
 		return $result;
 	}
 	public function HandleStatisticsForInteger (& $result) {
@@ -219,23 +219,23 @@ class Statistics extends Models\Base
 	public function HandleStatisticsForBoolean (& $result) {
 		// add no answers counts
 		$translator = Models\Translator::GetInstance();
-		$result->Overview[] =  array(
+		$result->Overview[] =  [
 			'Value'	=> $translator->Translate('No answer'),
 			'Count'	=> $this->questionnaireAnsweringPersonsCount - $this->questionAnsweringPersonsCount,
-		);
+		];
 		// set up percentage and label values (by user authentication) and unset counts if necessary
 		$this->_setUpGraphsPercentageValuesInSingleGraphsData($result->Overview, TRUE, $this->questionnaireAnsweringPersonsCount);
 		$overviewData = & $result->Overview;
 		// complete summary if user authenticated
 		if ($this->user) {
 			$answeredPersonsPercentage = round((100 - $overviewData[2]->Percentage) * 10) / 10;
-			$result->Summary = array(
-				array('Total respondents count',$this->questionnaireAnsweringPersonsCount),
-				array('Total answers count',	$this->questionAnsweringPersonsCount, $answeredPersonsPercentage + ' %'),
-				array('No answers count',		$overviewData[2]->Count, $overviewData[2]->Percentage),
-				array('Positive answers count',	$overviewData[0]->Count, $overviewData[0]->Percentage),
-				array('Negative answers count',	$overviewData[1]->Count, $overviewData[1]->Percentage),
-			);
+			$result->Summary = [
+				['Total respondents count',$this->questionnaireAnsweringPersonsCount],
+				['Total answers count',	$this->questionAnsweringPersonsCount, $answeredPersonsPercentage + ' %'],
+				['No answers count',		$overviewData[2]->Count, $overviewData[2]->Percentage],
+				['Positive answers count',	$overviewData[0]->Count, $overviewData[0]->Percentage],
+				['Negative answers count',	$overviewData[1]->Count, $overviewData[1]->Percentage],
+			];
 			if (isset($this->question->Solution)) {
 				$solution = boolval($this->question->Solution);
 				$correctRecord = $overviewData[$solution ? 0 : 1];
@@ -243,8 +243,8 @@ class Statistics extends Models\Base
 				$incorrectAnswersCount = $this->questionnaireAnsweringPersonsCount - $correctAnswersCount;
 				$incorrectAnswersPercentage = 100 - $correctRecord->Percentage;
 				$correctAnswersPercentage = 100 - $incorrectAnswersPercentage;
-				$result->Summary[] = array('Correct answers count',		$correctAnswersCount, $correctAnswersPercentage);
-				$result->Summary[] = array('Incorrect answers count',	$incorrectAnswersCount, $incorrectAnswersPercentage);
+				$result->Summary[] = ['Correct answers count',		$correctAnswersCount, $correctAnswersPercentage];
+				$result->Summary[] = ['Incorrect answers count',	$incorrectAnswersCount, $incorrectAnswersPercentage];
 			}
 		}
 		return $result;
@@ -255,19 +255,19 @@ class Statistics extends Models\Base
 			if (isset($this->question->Solution)) {
 				$correctPersonsCount = $result->CorrectPersonsCount;
 				$incorectPersonscount = $this->questionnaireAnsweringPersonsCount - $result->CorrectPersonsCount;
-				$result->CorrectAnswers = array(
-					array( 'Value'	=> $translator->Translate('Number of people with at least one correct answer'), 'Count'	=> $correctPersonsCount, ),
-					array( 'Value'	=> $translator->Translate('Number of people with no one right answer'), 'Count'	=> $incorectPersonscount, ),
-				);
+				$result->CorrectAnswers = [
+					[ 'Value'	=> $translator->Translate('Number of people with at least one correct answer'), 'Count'	=> $correctPersonsCount, ],
+					[ 'Value'	=> $translator->Translate('Number of people with no one right answer'), 'Count'	=> $incorectPersonscount, ],
+				];
 				$this->_setUpGraphsPercentageValuesInSingleGraphsData($result->CorrectAnswers, TRUE, $this->questionnaireAnsweringPersonsCount);
 			}
 		}
 		$result = $this->HandleStatisticsForBoolean($result);
 		$this->_setUpGraphsPercentageValuesInSingleGraphsData($result->AllTextAnswers, FALSE, $this->questionnaireAnsweringPersonsCount);
-		$this->_addTranslationsIntoResult($result, array(
+		$this->_addTranslationsIntoResult($result, [
 			'Answered Texts', 'Respondents Percentages', 'Respondents Counts',
 			'Counts', 'Percentages', 'Correct', 'Yes', 'No',
-		));
+		]);
 		return $result;
 	}
 	public function HandleStatisticsForText (& $result) {
@@ -275,91 +275,91 @@ class Statistics extends Models\Base
 		if ($this->user) {
 			$answeredPersonsPercentage = round(($this->questionAnsweringPersonsCount / $this->questionnaireAnsweringPersonsCount) * 1000) / 10;
 			$noAnswersCount = $this->questionnaireAnsweringPersonsCount - $this->questionAnsweringPersonsCount;
-			$result->Summary = array(
-				array('Total respondents count',$this->questionnaireAnsweringPersonsCount),
-				array('Total answers count',	$this->questionAnsweringPersonsCount, $answeredPersonsPercentage + ' %'),
-				array('No answers count',		$noAnswersCount, 100 - $answeredPersonsPercentage),
-			);
+			$result->Summary = [
+				['Total respondents count',$this->questionnaireAnsweringPersonsCount],
+				['Total answers count',	$this->questionAnsweringPersonsCount, $answeredPersonsPercentage + ' %'],
+				['No answers count',		$noAnswersCount, 100 - $answeredPersonsPercentage],
+			];
 			if (isset($this->question->Solution)) {
 				$translator = Models\Translator::GetInstance();
 				$correctPersonsCount = $result->CorrectPersonsCount;
 				$incorectPersonscount = $this->questionnaireAnsweringPersonsCount - $result->CorrectPersonsCount;
-				$result->CorrectAnswers = array(
-					array( 'Value'	=> $translator->Translate('Number of people with at least one correct answer'), 'Count'	=> $correctPersonsCount, ),
-					array( 'Value'	=> $translator->Translate('Number of people with no one right answer'), 'Count'	=> $incorectPersonscount, ),
-				);
+				$result->CorrectAnswers = [
+					[ 'Value'	=> $translator->Translate('Number of people with at least one correct answer'), 'Count'	=> $correctPersonsCount, ],
+					[ 'Value'	=> $translator->Translate('Number of people with no one right answer'), 'Count'	=> $incorectPersonscount, ],
+				];
 				$this->_setUpGraphsPercentageValuesInSingleGraphsData($result->CorrectAnswers, TRUE, $this->questionnaireAnsweringPersonsCount);
 
 				$correctPersonsPercentage = round(($result->CorrectPersonsCount / $this->questionnaireAnsweringPersonsCount) * 1000) / 10;
 				$incorrectPersonsPercentage = 100 - $correctPersonsPercentage;
-				$result->Summary[] = array('Correct persons count',		$result->CorrectPersonsCount, $correctPersonsPercentage);
-				$result->Summary[] = array('Incorrect persons count',	$this->questionnaireAnsweringPersonsCount - $result->CorrectPersonsCount, $incorrectPersonsPercentage);
-				$result->Summary[] = array('Correct text answers count',$result->CorrectAnswersCount, );
+				$result->Summary[] = ['Correct persons count',		$result->CorrectPersonsCount, $correctPersonsPercentage];
+				$result->Summary[] = ['Incorrect persons count',	$this->questionnaireAnsweringPersonsCount - $result->CorrectPersonsCount, $incorrectPersonsPercentage];
+				$result->Summary[] = ['Correct text answers count',$result->CorrectAnswersCount, ];
 			}
 		}
-		$this->_addTranslationsIntoResult($result, array(
+		$this->_addTranslationsIntoResult($result, [
 			'Answered Texts', 'Respondents Percentages', 'Respondents Counts',
 			'Counts', 'Percentages', 'Correct', 'Yes', 'No',
-		));
+		]);
 		$this->_setUpInvolvedPieGraphDataAndTranslations($result);
 		return $result;
 	}
 
 	public function HandleStatisticsForTextarea (& $result) {
 		$this->_setUpGraphsPercentageValuesInSingleGraphsData($result->Overview, FALSE, $this->questionnaireAnsweringPersonsCount);
-		$this->_addTranslationsIntoResult($result, array(
+		$this->_addTranslationsIntoResult($result, [
 			'Answered Texts', 'Respondents Percentages', 'Respondents Counts',
 			'Counts', 'Percentages',
-		));
+		]);
 		$this->_setUpInvolvedPieGraphDataAndTranslations($result);
 		return $result;
 	}
 	private function _handleStatisticsForIntegerAndFloat (& $result) {
 		$translator = Models\Translator::GetInstance();
 		if ($this->questionnaireAnsweringPersonsCount - $this->questionAnsweringPersonsCount > 0) {
-			array_unshift($result->Overview, array(
+			array_unshift($result->Overview, [
 				'Value'	=> $translator->Translate('No answer'),
 				'Count'	=> $this->questionnaireAnsweringPersonsCount - $this->questionAnsweringPersonsCount,
-			));
+			]);
 		}
 		if ($this->user) {
 			if (isset($this->question->Solution) && isset($result->CorrectAnswersCount)) {
 				$correctAnswersCount = $result->CorrectAnswersCount;
 				$incorrectAnswersCount = $this->questionnaireAnsweringPersonsCount - $correctAnswersCount;
 				unset($result->CorrectAnswersCount);
-				$result->CorrectAnswers = array(
-					array( 'Value'	=> $translator->Translate('Correct answers count'), 'Count'	=> $correctAnswersCount, ),
-					array( 'Value'	=> $translator->Translate('Incorrect answers count'), 'Count'	=> $incorrectAnswersCount, ),
-				);
+				$result->CorrectAnswers = [
+					[ 'Value'	=> $translator->Translate('Correct answers count'), 'Count'	=> $correctAnswersCount, ],
+					[ 'Value'	=> $translator->Translate('Incorrect answers count'), 'Count'	=> $incorrectAnswersCount, ],
+				];
 			}
 		}
 		$this->_setUpGraphsPercentageValuesInAllGraphsData($result, FALSE, $this->questionnaireAnsweringPersonsCount);
 		$this->_setUpInvolvedPieGraphDataAndTranslations($result);
 		if ($this->user) {
 			$answeredPersonsPercentage = round(($this->questionAnsweringPersonsCount / $this->questionnaireAnsweringPersonsCount) * 1000) / 10;
-			$result->Summary = array(
-				array('Total respondents count',$this->questionnaireAnsweringPersonsCount),
-				array('Total answers count',	$this->questionAnsweringPersonsCount, $answeredPersonsPercentage + ' %'),
-				array('No answers count',		$this->questionnaireAnsweringPersonsCount - $this->questionAnsweringPersonsCount, 100 - $answeredPersonsPercentage),
-			);
+			$result->Summary = [
+				['Total respondents count',$this->questionnaireAnsweringPersonsCount],
+				['Total answers count',	$this->questionAnsweringPersonsCount, $answeredPersonsPercentage + ' %'],
+				['No answers count',		$this->questionnaireAnsweringPersonsCount - $this->questionAnsweringPersonsCount, 100 - $answeredPersonsPercentage],
+			];
 			if (isset($this->question->Solution)) {
 				$correctAnswersCountPercentage = round($result->CorrectAnswers[0]->Count / $this->questionnaireAnsweringPersonsCount * 1000) / 10;
 				$incorrectAnswersCountPercentage = 100 - $correctAnswersCountPercentage;
-				$result->Summary[] = array('Correct answers count', $result->CorrectAnswers[0]->Count, $correctAnswersCountPercentage);
-				$result->Summary[] = array('Incorrect answers count', $result->CorrectAnswers[1]->Count, $incorrectAnswersCountPercentage);
+				$result->Summary[] = ['Correct answers count', $result->CorrectAnswers[0]->Count, $correctAnswersCountPercentage];
+				$result->Summary[] = ['Incorrect answers count', $result->CorrectAnswers[1]->Count, $incorrectAnswersCountPercentage];
 				
 			}
 		}
-		$this->_addTranslationsIntoResult($result, array(
+		$this->_addTranslationsIntoResult($result, [
 			'Presented values', 'Respondents Percentages', 'Respondents Counts', 
 			'Presented value', 'Respondents Count', 'Respondents Percentage',
-		));
+		]);
 		return $result;
 	}
 	private function _handleStatisticsForConnectionsManageMostOfftenConnections (& $result) {
 		$translator = Models\Translator::GetInstance();
 		$counter = 0;
-		$newMostOfftenConnections = array();
+		$newMostOfftenConnections = [];
 		$addCorrectness = $this->user && isset($this->question->Solution);
 		foreach ($result->MostOfftenConnections as & $item) {
 			if ($counter > 10 || $item['Count'] === 1) {
@@ -389,12 +389,12 @@ class Statistics extends Models\Base
 			for ($i = $counter, $l = count($result->MostOfftenConnections); $i < $l; $i += 1) {
 				$restConnectionsCount += $result->MostOfftenConnections[$i]['Count'];
 			}
-			$newMostOfftenConnections[] = array(
+			$newMostOfftenConnections[] = [
 				'Count'	=> $restConnectionsCount,
 				'Option'=> $translator->Translate('Other Rest Options Combinations'),
 				'Answer'=> $translator->Translate('Other Rest Answers Combinations'),
 				'Value'	=> $translator->Translate('Other Rest Connections'),
-			);
+			];
 			if ($addCorrectness) {
 				$newMostOfftenConnections[count($newMostOfftenConnections) - 1]['Correct'] = -1;
 			}
@@ -424,7 +424,7 @@ class Statistics extends Models\Base
 	}
 	private function _setUpGraphsPercentageValuesInSingleGraphsData (& $graphData, $includeValuesInLabels = FALSE, $totalCount = -1) {
 		// for each property and value containing 'count' word in $key - complete total count
-		$totalCounts = array();
+		$totalCounts = [];
 		if ($totalCount == -1) {
 			foreach ($graphData as & $dataItem1) {
 				foreach ($dataItem1 as $key => $item) {
@@ -446,7 +446,7 @@ class Statistics extends Models\Base
 					$percentageKey = str_replace('Count', 'Percentage', $key);
 					$labelKey = str_replace('Count', 'Label', $key);
 					$newDataItem->$percentageKey = $percentage;
-					$labelData = $includeValuesInLabels ? array($dataItem2[$valueKey]) : array();
+					$labelData = $includeValuesInLabels ? [$dataItem2[$valueKey]] : [];
 					if ($this->user) {
 						$labelData[] = $item;
 						$labelData[] = "(" . $percentage . " %)";
@@ -475,20 +475,20 @@ class Statistics extends Models\Base
 	}
 	private function _setUpInvolvedPieGraphDataAndTranslations (& $result) {
 		$translator = Models\Translator::GetInstance();
-		$result->Involved = array(
-			array(
+		$result->Involved = [
+			[
 				'Value' => $translator->Translate('Answered'),
 				'Count'	=> $this->questionAnsweringPersonsCount,
-			),
-			array(
+			],
+			[
 				'Value' => $translator->Translate('Did not answer'),
 				'Count'	=> $this->questionnaireAnsweringPersonsCount - $this->questionAnsweringPersonsCount,
-			),
-		);
+			],
+		];
 		$this->_setUpGraphsPercentageValuesInSingleGraphsData($result->Involved, TRUE);
 	}
-	private function _addTranslationsIntoResult (& $result, $translations = array()) {
-		if (!isset($result->Translations)) $result->Translations = array();
+	private function _addTranslationsIntoResult (& $result, $translations = []) {
+		if (!isset($result->Translations)) $result->Translations = [];
 		$translator = Models\Translator::GetInstance();
 		foreach ($translations as $translation) {
 			$result->Translations[$translation] = $translator->Translate($translation);

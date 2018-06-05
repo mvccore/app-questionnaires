@@ -8,10 +8,10 @@ class MySql extends Statistics\Resource
 {
 	public function LoadStatisticsForInteger () {
 		$result = new \stdClass;
-		$resultColumns = array(
+		$resultColumns = [
 			'`a`.`Integer` AS `Value`', 
 			'COUNT(`a`.`Integer`) AS `Count`'
-		);
+		];
 		$groupByColumn = '`a`.`Integer`';
 		$nullCondition = '`a`.`Integer` IS NOT NULL';
 		$result->Overview = $this->getStatisticsAllAnswers(
@@ -19,7 +19,7 @@ class MySql extends Statistics\Resource
 		);
 		if (isset($this->question->Solution) && $this->user) {
 			$result->CorrectAnswersCount = $this->getStatisticsAllAnswers(
-				array($resultColumns[1]), '', 
+				[$resultColumns[1]], '', 
 				$nullCondition . " AND `a`.`Integer` = " . intval($this->question->Solution), 
 				'fetchColumn'
 			);
@@ -28,10 +28,10 @@ class MySql extends Statistics\Resource
 	}
 	public function LoadStatisticsForFloat () {
 		$result = new \stdClass;
-		$resultColumns = array(
+		$resultColumns = [
 			'`a`.`Float` AS `Value`', 
 			'COUNT(`a`.`Float`) AS `Count`',
-		);
+		];
 		$groupByColumn = '`a`.`Float`';
 		$nullCondition = '`a`.`Float` IS NOT NULL';
 		$result->Overview = $this->getStatisticsAllAnswers(
@@ -39,7 +39,7 @@ class MySql extends Statistics\Resource
 		);
 		if (isset($this->question->Solution) && $this->user) {
 			$result->CorrectAnswersCount = $this->getStatisticsAllAnswers(
-				array($resultColumns[1]), '', 
+				[$resultColumns[1]], '', 
 				$nullCondition . " AND `a`.`Float` = " . floatval(str_replace(',','.',$this->question->Solution)), 
 				'fetchColumn'
 			);
@@ -49,19 +49,19 @@ class MySql extends Statistics\Resource
 	public function LoadStatisticsForText () {
 		$result = new \stdClass;
 		$allAnswersNotCompared = $this->getStatisticsAllAnswers(
-			array(
+			[
 				'`a`.`Varchar` AS `Value`', 
 				'LOWER(`a`.`Varchar`) AS `ValueLowerCase`', 
 				'COUNT(`a`.`Varchar`) AS `Count`'
-			),
+			],
 			"`a`.`Varchar` ORDER BY `Count` DESC",
 			"`a`.`Varchar` IS NOT NULL"
 		);
 		if (count($allAnswersNotCompared) == 1 && $allAnswersNotCompared[0]['Count'] === 0) {
-			$allAnswersNotCompared = array();
+			$allAnswersNotCompared = [];
 		}
 		$result->AllAnswersCount = $this->getStatisticsAllAnswers(
-			array('COUNT(`a`.`Varchar`) AS `Count`'), '', 
+			['COUNT(`a`.`Varchar`) AS `Count`'], '', 
 			'`a`.`Varchar` IS NOT NULL', 'fetchColumn'
 		);
 		$allAnswersCompared = $this->getAllTextStatisticsCompared($allAnswersNotCompared);
@@ -79,19 +79,19 @@ class MySql extends Statistics\Resource
 	public function LoadStatisticsForTextarea () {
 		$result = new \stdClass;
 		$allAnswersNotCompared = $this->getStatisticsAllAnswers(
-			array(
+			[
 				'`a`.`Text` AS `Value`', 
 				'LOWER(`a`.`Text`) AS `ValueLowerCase`', 
 				'COUNT(`a`.`Text`) AS `Count`'
-			),
+			],
 			"`a`.`Text` ORDER BY `Count` DESC",
 			"`a`.`Text` IS NOT NULL"
 		);
 		if (count($allAnswersNotCompared) == 1 && $allAnswersNotCompared[0]['Count'] === 0) {
-			$allAnswersNotCompared = array();
+			$allAnswersNotCompared = [];
 		}
 		$result->AllAnswersCount = $this->getStatisticsAllAnswers(
-			array('COUNT(`a`.`Text`) AS `Count`'), '', 
+			['COUNT(`a`.`Text`) AS `Count`'], '', 
 			'`a`.`Text` IS NOT NULL', 'fetchColumn'
 		);
 		$result->Overview = $this->getAllTextStatisticsCompared($allAnswersNotCompared);
@@ -100,10 +100,10 @@ class MySql extends Statistics\Resource
 	}
 	public function LoadStatisticsForBoolean () {
 		$result = new \stdClass;
-		$resultColumns = array(
+		$resultColumns = [
 			'`a`.`Boolean` AS `Value`', 
 			'COUNT(`a`.`Boolean`) AS `Count`'
-		);
+		];
 		$groupByColumn = '`a`.`Boolean`';
 		$nullCondition = '`a`.`Boolean` IS NOT NULL';
 		$result->Overview = $this->getStatisticsAllAnswers(
@@ -114,16 +114,16 @@ class MySql extends Statistics\Resource
 	public function LoadStatisticsForBooleanAndText () {
 		$result = $this->loadStatisticsForBoolean();
 		$allAnswersNotCompared = $this->getStatisticsAllAnswers(
-			array(
+			[
 				'`a`.`Varchar` AS `Value`', 
 				'LOWER(`a`.`Varchar`) AS `ValueLowerCase`', 
 				'COUNT(`a`.`Varchar`) AS `Count`'
-			),
+			],
 			'`a`.`Varchar` ORDER BY `Count` DESC',
 			'`a`.`Varchar` IS NOT NULL'
 		);
 		if (count($allAnswersNotCompared) == 1 && $allAnswersNotCompared[0]['Count'] === 0) {
-			$allAnswersNotCompared = array();
+			$allAnswersNotCompared = [];
 		}
 		if (isset($this->question->Solution) && $this->user) {
 			$result->CorrectPersonsCount = parent::getStatisticsForTextCorrectPersonsCount();
@@ -138,9 +138,9 @@ class MySql extends Statistics\Resource
 		$result->Overview = $this->_getStatisticsForOptionsBasedAllAnswers();
 		if (isset($this->question->Solution) && $this->user) {
 			$result->CorrectAnswersCount = $this->getStatisticsAllAnswers(
-				array( 
+				[ 
 					'COUNT(`a`.`Option`) AS `Count`'
-				), '',
+				], '',
 				"`a`.`Option` IS NOT NULL AND `a`.`Option` = " . intval($this->question->Solution), 
 				'fetchColumn'
 			);
@@ -171,77 +171,77 @@ class MySql extends Statistics\Resource
 	}
 	private function _getStatisticsForOptionsBasedAllAnswers () {
 		return $this->getStatisticsAllAnswers(
-			array(
+			[
 				'`a`.`Option` AS `Value`',
 				'COUNT(`a`.`Option`) AS `Count`'
-			),
+			],
 			'CONCAT(`a`.`Option`)',
 			'`a`.`Option` IS NOT NULL'
 		);
 	}
 	private function _getStatisticsForIntegersBasedAllAnswers () {
 		return $this->getStatisticsAllAnswers(
-			array(
+			[
 				'`a`.`Integer` AS `Value`',
 				'COUNT(`a`.`Integer`) AS `Count`'
-			),
+			],
 			'CONCAT(`a`.`Integer`)',
 			'`a`.`Integer` IS NOT NULL'
 		);
 	}
 	protected function getStatisticsForConnectionsOptionsCorrectness () {
 		$sql = parent::getStatisticsForConnectionsOptionsCorrectness();
-		$sql = str_replace(array('[', ']', 'ISNULL('), array('`', '`', 'IFNULL('), $sql);
+		$sql = str_replace(['[', ']', 'ISNULL('], ['`', '`', 'IFNULL('], $sql);
 		$select = $this->db->prepare($sql);
-		$select->execute(array(
+		$select->execute([
 			':id_questionnaire1'=> $this->idQuestionnaire,
 			':id_question1'		=> $this->idQuestion,
 			':id_questionnaire2'=> $this->idQuestionnaire,
 			':id_question2'		=> $this->idQuestion,
-		));
+		]);
 		return self::setUpResultTypes($select->fetchAll(\PDO::FETCH_ASSOC));
 	}
 	protected function getStatisticsForConnectionsPeopleAnswering ($onlyCorrectAnswers = TRUE) {
 		$sql = parent::getStatisticsForConnectionsPeopleAnswering($onlyCorrectAnswers);
-		$sql = str_replace(array('[', ']', 'ISNULL('), array('`', '`', 'IFNULL('), $sql);
+		$sql = str_replace(['[', ']', 'ISNULL('], ['`', '`', 'IFNULL('], $sql);
 		$select = $this->db->prepare($sql);
-		$select->execute(array(
+		$select->execute([
 			':id_questionnaire'	=> $this->idQuestionnaire,
 			':id_question'		=> $this->idQuestion,
-		));
+		]);
 		return self::setUpResultTypes($select->fetchAll(\PDO::FETCH_ASSOC));
 	}
 	protected function getStatisticsForConnectionsMostOfftenConnections () {
 		$sql = parent::getStatisticsForConnectionsMostOfftenConnections();
-		$sql = str_replace(array('[', ']', 'ISNULL('), array('`', '`', 'IFNULL('), $sql);
+		$sql = str_replace(['[', ']', 'ISNULL('], ['`', '`', 'IFNULL('], $sql);
 		$select = $this->db->prepare($sql);
-		$select->execute(array(
+		$select->execute([
 			':id_questionnaire'	=> $this->idQuestionnaire,
 			':id_question'		=> $this->idQuestion,
-		));
+		]);
 		return self::setUpResultTypes($select->fetchAll(\PDO::FETCH_ASSOC));
 	}
 	protected function getStatisticsForCheckboxesOptionsCorrectness () {
 		$sql = parent::getStatisticsForCheckboxesOptionsCorrectness();
-		$sql = str_replace(array('[', ']', 'ISNULL('), array('`', '`', 'IFNULL('), $sql);
+		$sql = str_replace(['[', ']', 'ISNULL('], ['`', '`', 'IFNULL('], $sql);
 		$select = $this->db->prepare($sql);
-		$select->execute(array(
+		$select->execute([
 			':id_questionnaire'	=> $this->idQuestionnaire,
 			':id_question'		=> $this->idQuestion,
-		));
+		]);
 		return self::setUpResultTypes($select->fetchAll(\PDO::FETCH_ASSOC));
 	}
 
 	protected function getStatisticsForCheckboxesPeopleCorrectness () {
 		$sql = parent::getStatisticsForCheckboxesPeopleCorrectness();
-		$sql = str_replace(array('[', ']', 'ISNULL('), array('`', '`', 'IFNULL('), $sql);
+		$sql = str_replace(['[', ']', 'ISNULL('], ['`', '`', 'IFNULL('], $sql);
 		$select = $this->db->prepare($sql);
-		$select->execute(array(
+		$select->execute([
 			':id_questionnaire1'=> $this->idQuestionnaire,
 			':id_question1'		=> $this->idQuestion,
 			':id_questionnaire2'=> $this->idQuestionnaire,
 			':id_question2'		=> $this->idQuestion,
-		));
+		]);
 		$rawResult = $select->fetchAll(\PDO::FETCH_ASSOC);
 		foreach ($rawResult as & $item) {
 			list ($correct, $incorrect) = explode('_', $item['PersonsCorrectAndIncorrectAnswersCounts']);

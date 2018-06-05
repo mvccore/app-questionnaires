@@ -1,33 +1,41 @@
 <?php
 
-namespace App\Forms\Fields;
+namespace App\Forms\CustomFields;
 
 use \MvcCore\Ext\Form;
 
-class Connections extends Form\Core\FieldGroup
+class Connections extends \MvcCore\Ext\Forms\FieldsGroup
 {
-	public $Type = 'connections';
-	public $Options = array();
-	public $Connections = array();
-	public $TemplatePath = 'fields/connections';
-	public $Validators = array();
-	public $JsClass = 'MvcCoreForm.Connections';
-	public $Js = '__MVCCORE_FORM_DIR__/fields/connections.js';
+	protected $type = 'connections';
+	
+	protected $connections = [];
+
+	protected $viewScript = 'connections';
+
+	protected $validators = [];
+	
+	protected $jsClassName = 'MvcCoreForm.Connections';
+
+	protected $jsSupportingFile = \MvcCore\Ext\Forms\IForm::FORM_ASSETS_DIR_REPLACEMENT . '/fields/connections.js';
+	
 	/* setters *******************************************************************************/
 	public function SetConnections ($connections) {
-		$this->Connections = $connections;
+		$this->connections = $connections;
 		return $this;
 	}
 	/* core methods **************************************************************************/
-	public function __construct(array $cfg = array()) {
+	public function __construct(array $cfg = []) {
 		parent::__construct($cfg);
-		static::$Templates = (object) array_merge((array)parent::$Templates, (array)self::$Templates);
-		$this->SetValidators(array(function($submitValues, $fieldName, $field, Form & $form) {
+		static::$templates = (object) array_merge(
+			(array)	parent::$templates, 
+			(array)	self::$templates
+		);
+		/*$this->SetValidators([function($submitValues, $fieldName, $field, Form & $form) {
 			$valid = TRUE;
 			// filter submitted values for duplicated connections
-			$safeValue = array();
-			$valueKeys = array();
-			$keysToUnset = array();
+			$safeValue = [];
+			$valueKeys = [];
+			$keysToUnset = [];
 			foreach ($submitValues as $key => $submitValue) {
 				$submitValue = preg_replace("#[^0-9]#", '', trim($submitValue));
 				$submitValueInt = intval($submitValue);
@@ -53,34 +61,33 @@ class Connections extends Form\Core\FieldGroup
 					$label = $field->Label ? $field->Label : $fieldName;
 				}
 				$errorMsg = Form\Core\View::Format(
-					$errorMsg, array($label)
+					$errorMsg, [$label]
 				);
 				$form->AddError(
 					$errorMsg, $fieldName
 				);
 			}
 			return $safeValue;
-		}));
+		}]);*/
 	}
-	public function SetUp () {
-		parent::SetUp();
-		if (!$this->Translate) return;
-		$lang = $this->Form->Lang;
-		$translator = $this->Form->Translator;
-		foreach ($this->Connections as $key => $value) {
+	public function PreDispatch () {
+		parent::PreDispatch();
+		if (!$this->translate) return $this;
+		$form = & $this->form;
+		foreach ($this->connections as $key => & $value) {
 			if (gettype($value) == 'string') {
 				// most simple key/value array options configuration
-				if ($value) $this->Connections[$key] = call_user_func($translator, (string)$value, $lang);
+				if ($value) 
+					$this->connections[$key] = $form->Translate($value);
 			} else if (gettype($value) == 'array') {
 				// advanced configuration with key, text, css class, and any other attributes for single option tag
-				$optObj = (object) $value;
-				$text = isset($optObj->text) ? $optObj->text : $key;
-				if ($text) {
-					$this->Connections[$key]['text'] = call_user_func($translator, (string)$text, $lang);
-				}
+				$text = isset($value['text']) ? $value['text'] : $key;
+				if ($text) 
+					$this->connections[$key]['text'] = $form->Translate($text);
 			}
 		}
-		$params = array($this->Name . '[]', $this->Required);
-		$this->Form->AddJs($this->Js, $this->JsClass, $params);
+		$jsConstructorParams = [$this->name . '[]', $this->required];
+		$form->AddJsSupportFile($this->jsSupportingFile, $this->jsClassName, $jsConstructorParams);
+		return $this;
 	}
 }

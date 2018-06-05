@@ -7,8 +7,8 @@ class Nl2Br
 	public function Nl2Br ($str = NULL) {
 
 		return str_replace(
-			array("\n\r", "\n"),
-			array("\n", "<br />"),
+			["\n\r", "\n"],
+			["\n", "<br />"],
 			$str
 		);
 	}

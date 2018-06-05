@@ -1,6 +1,6 @@
 Class.Define('AuthForm', {
 	Static: {
-		FORM_ID: 'authentication',
+		FORM_SELECTOR: 'form.authentication',
 		_instance: null,
 		GetInstance: function () {
 			if (!this._instance) {
@@ -19,7 +19,7 @@ Class.Define('AuthForm', {
 	},
 	_initElms: function () {
 		var btns = [], firstBtn = null;
-		this._form = document.getElementById(this.self.FORM_ID);
+		this._form = document.querySelector(this.self.FORM_SELECTOR);
 		btns = this._form.getElementsByTagName('button');
 		firstBtn = btns[0];
 		if (firstBtn.className.indexOf('toggle') > -1) {

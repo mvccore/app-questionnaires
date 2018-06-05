@@ -10,7 +10,7 @@ class Resource extends Models\Base
 	/**
 	 * @var array
 	 */
-	protected static $columnsTypes = array();
+	protected static $columnsTypes = [];
 	/**
 	 * @var \App\Models\Question
 	 */
@@ -30,29 +30,29 @@ class Resource extends Models\Base
 	/**
 	 * @var array
 	 */
-	protected $filterData = array();
+	protected $filterData = [];
 	/**
 	 * @var array
 	 */
-	protected $user = array();
+	protected $user = [];
 
 	// faster method variant:
 	public static final function GetInstance () {
 		/** @var $user \MvcCore\Ext\Auth\User */
 		list($question, $filterData, $user) = func_get_args();
-		$instanceIndex = md5(implode('_', array(
+		$instanceIndex = md5(implode('_', [
 			__CLASS__,
 			$question->Questionnaire->Id,
 			$question->Id,
 			serialize($filterData),
 			isset($user->UserName) ? $user->UserName : ''
-		)));
+		]));
 		if (!isset(self::$instances[$instanceIndex])) {
 			self::$instances[$instanceIndex] = new static($question, $filterData, $user);
 		}
 		return self::$instances[$instanceIndex];
 	}
-	public function __construct (Models\Question & $question = NULL, $filterData = NULL, $user = array()) {
+	public function __construct (Models\Question & $question = NULL, $filterData = NULL, $user = []) {
 		parent::__construct();
 		$this->question = $question;
 		$this->idQuestionnaire = $question->Questionnaire->Id;
@@ -64,12 +64,12 @@ class Resource extends Models\Base
 	}
     private function _initFilterCondition () {
 		if (!$this->filterCondition) {
-			$filterConditions = array();
+			$filterConditions = [];
 			foreach ($this->filterData as $key => $values) {
 				$filterCondition = '';
 				$ucfKey = ucfirst($key);
 				if ($key == 'age') {
-					$values = gettype($values) == 'array' ? $values : array($values);
+					$values = gettype($values) == 'array' ? $values : [$values];
 					$filterCondition = "p.$ucfKey >= " . $values[0];
 					if (isset($values[1])) $filterCondition = "($filterCondition AND p.$ucfKey <= " . $values[1] . ')';
 				} else if ($key == 'from') {
@@ -123,7 +123,7 @@ class Resource extends Models\Base
 			self::$columnsTypes[$item['ColumnName']] = $item['DataType'];
 		}
 	}
-	protected static function setUpResultTypes ($result = array(), array $columnNamesAndTypes = array()) {
+	protected static function setUpResultTypes ($result = [], array $columnNamesAndTypes = []) {
 		$types = array_merge(self::$columnsTypes, $columnNamesAndTypes);
 		foreach ($result as & $resultItem) {
 			foreach ($resultItem as $itemName => & $itemValue) {
@@ -169,10 +169,10 @@ class Resource extends Models\Base
 		";
 		//xxx($sql);
 		$select = $this->db->prepare($sql);
-		$select->execute(array(
+		$select->execute([
 			':id_questionnaire'	=> $this->idQuestionnaire,
 			':id_question'		=> $this->idQuestion,
-		));
+		]);
 		// xcv(str_replace(array(':id_questionnaire', ':id_question'), array($this->idQuestionnaire, $this->idQuestion), $sql));
 		return intval($select->fetchColumn());
 	}
@@ -197,9 +197,9 @@ class Resource extends Models\Base
 				)";
 		}
 		$select = $this->db->prepare($sql);
-		$select->execute(array(
+		$select->execute([
 			':id_questionnaire'	=> $this->idQuestionnaire,
-		));
+		]);
 		// xcv(str_replace(array(':id_questionnaire', ':id_question'), array($this->idQuestionnaire, $this->idQuestion), $sql));
 		return intval($select->fetchColumn());
 	}
@@ -226,10 +226,10 @@ class Resource extends Models\Base
 			GROUP BY 
 				$groupByColumn";
 		$select = $this->db->prepare($sql);
-		$select->execute(array(
+		$select->execute([
 			':id_questionnaire'	=> $this->idQuestionnaire,
 			':id_question'		=> $this->idQuestion,
-		));
+		]);
 		/*if ($this->question->Id == 6) {
 			xcv(str_replace(array(':id_questionnaire', ':id_question'), array($this->idQuestionnaire, $this->idQuestion), $sql));
 		}*/
@@ -270,10 +270,10 @@ class Resource extends Models\Base
 				r.Count;
 		";
 		$select = $this->db->prepare($sql);
-		$select->execute(array(
+		$select->execute([
 			':id_questionnaire'	=> $this->idQuestionnaire,
 			':id_question'		=> $this->idQuestion,
-		));
+		]);
 		/*if ($this->question->Id == 14) {
 			xcv(str_replace(array(':id_questionnaire', ':id_question'), array($this->idQuestionnaire, $this->idQuestion), $sql));
 		}*/
@@ -281,13 +281,13 @@ class Resource extends Models\Base
 	}
 	protected function getStatisticsForConnectionsPeopleAnswering ($onlyCorrectAnswers = TRUE) {
 		// complete all possible answered counts sql array command
-		$sqlAnsweredOptsCount = array();
+		$sqlAnsweredOptsCount = [];
 		for ($i = count($this->question->Options); $i > -1; $i -= 1) $sqlAnsweredOptsCount[] = $i;
 		$sqlAnsweredOptsCountCmd = "SELECT " . implode(" AS Value UNION SELECT ", $sqlAnsweredOptsCount) . " AS Value";
 		// complete solution condition
 		$sqlSolutionCondition = '';
 		if ($onlyCorrectAnswers) {
-			$sqlSolutionConditionItems = array();
+			$sqlSolutionConditionItems = [];
 			foreach ($this->question->Solution as $optionKey => $optionAnswer) {
 				$sqlSolutionConditionItems[] = "(a.[Option] = $optionKey AND a.[Integer] = $optionAnswer)";
 			}
@@ -345,7 +345,7 @@ class Resource extends Models\Base
 		$sqlAllOptsArr = array_keys($this->question->Options);
 		$sqlAllOptsArrCmd = "SELECT " . implode(" AS Value UNION SELECT ", $sqlAllOptsArr) . " AS Value";
 		// complete solution condition
-		$sqlSolutionConditionItems = array();
+		$sqlSolutionConditionItems = [];
 		foreach ($this->question->Solution as $optionKey => $optionAnswer) {
 			$sqlSolutionConditionItems[] = "(a.[Option] = $optionKey AND a.[Integer] = $optionAnswer)";
 		}
@@ -434,7 +434,7 @@ class Resource extends Models\Base
 		$personsTable = self::TABLE_PERSONS;
 		$personsCount = $this->LoadQuestionAnsweringPersonsCount();
 		// complete all possible answered counts sql array command
-		$sqlAnswerOpts = array();
+		$sqlAnswerOpts = [];
 		for ($i = 0, $l = count($this->question->Checkboxes); $i < $l; $i += 1) $sqlAnswerOpts[] = $i;
 		$sqlAnswerOptsCmd = "SELECT " . implode(" AS [Option] UNION SELECT ", $sqlAnswerOpts) . " AS [Option]";
 		$sql = "
@@ -474,8 +474,8 @@ class Resource extends Models\Base
 	}
 	protected function getStatisticsForCheckboxesPeopleCorrectness () {
 		// complete solution conditions
-		$sqlSolutionConditionItemsCorrect = array();
-		$sqlSolutionConditionItemsIncorrect = array();
+		$sqlSolutionConditionItemsCorrect = [];
+		$sqlSolutionConditionItemsIncorrect = [];
 		foreach ($this->question->Solution as $option) {
 			$sqlSolutionConditionItemsCorrect[] = "a.[Option] = $option";
 			$sqlSolutionConditionItemsIncorrect[] = "a.[Option] != $option";
@@ -551,7 +551,7 @@ class Resource extends Models\Base
 	protected function getAllTextStatisticsCompared ($allAnswersNotCompared) {
 		$levTolerance = isset($this->question->LevenshteinComparationTolerance) ? $this->question->LevenshteinComparationTolerance : self::LEVENSTHEIN_COMPARATION_TOLERANCE_DEFAULT;
 		$levToleranceAddOne = $levTolerance + 1;
-		$allAnswersCompared = array();
+		$allAnswersCompared = [];
 		$allAnswersNotComparedCount = count($allAnswersNotCompared);
 		if (isset($this->question->Solution) && $this->user) {
 			$solutions = explode(',', mb_strtolower($this->question->Solution));
@@ -568,7 +568,7 @@ class Resource extends Models\Base
 		for ($key1 = 0; $key1 < $allAnswersNotComparedCount; $key1 += 1) {
 			if (!isset($allAnswersNotCompared[$key1])) continue;
 			$answerNotCompared = $allAnswersNotCompared[$key1];
-			$similarAnswers = array();
+			$similarAnswers = [];
 			$primaryValue = $answerNotCompared['ValueLowerCase'];
 			for ($key2 = 0; $key2 < $allAnswersNotComparedCount; $key2 += 1) {
 				if (!isset($allAnswersNotCompared[$key2])) continue;
@@ -614,12 +614,12 @@ class Resource extends Models\Base
 		// set up missing values with zeros
 		if ($itemsCount < 2) {
 			if ($itemsCount == 1) {
-				$result->Overview[] = array('Value' => !$result->Overview[0]['Value'], 'Count' => 0);
+				$result->Overview[] = ['Value' => !$result->Overview[0]['Value'], 'Count' => 0];
 			} else {
-				$result->Overview = array(
-					array('Value' => TRUE, 'Count' => 0),
-					array('Value' => FALSE, 'Count' => 0),
-				);
+				$result->Overview = [
+					['Value' => TRUE, 'Count' => 0],
+					['Value' => FALSE, 'Count' => 0],
+				];
 			}
 		}
 		// make positive values always first
@@ -645,7 +645,7 @@ class Resource extends Models\Base
 				r.ROUTINE_TYPE='FUNCTION' AND 
 				r.ROUTINE_NAME='Levenshtein';";
 		$select = $this->db->prepare($sql);
-		$select->execute(array());
+		$select->execute([]);
 		return boolval($select->fetchColumn());
 	}
 	protected function getStatisticsForTextCorrectPersonsCount () {
@@ -656,10 +656,10 @@ class Resource extends Models\Base
 		foreach ($solutions as $key => $solution) $solutions[$key] = strtolower(trim($solution));
 		$answersTable = self::TABLE_ANSWERS;
 		$personsTable = self::TABLE_PERSONS;
-		$sqlParams = array(
+		$sqlParams = [
 			':id_questionnaire' => $this->question->Questionnaire->Id,
 			':id_question'		=> $this->question->Id,
-		);
+		];
 		$childSql = "SELECT
 							p.Id,
 							LOWER(a.[Varchar]) AS [Varchar]
@@ -676,7 +676,7 @@ class Resource extends Models\Base
 								{$this->filterCondition} 
 							)";
 		if ($databaseLevenshteinExists) {
-			$levenshteinSqlItems = array();
+			$levenshteinSqlItems = [];
 			foreach ($solutions as $key => $solution) {
 				$levenshteinSqlItems[] = "dbo.Levenshtein(
 							LOWER(srcData.[Varchar]), :solution$key, 100
@@ -699,7 +699,7 @@ class Resource extends Models\Base
 						srcData.Id
 				) AS cnts;
 			";
-			if ($this->cfg->driver == 'mysql') $parentSql = str_replace(array('[Varchar]', 'dbo.Levenshtein('), array('`Varchar`', 'Levenshtein('), $parentSql);
+			if ($this->cfg->driver == 'mysql') $parentSql = str_replace(['[Varchar]', 'dbo.Levenshtein('], ['`Varchar`', 'Levenshtein('], $parentSql);
 			//xxx(array($parentSql, $sqlParams));
 			$select = $this->db->prepare($parentSql);
 			$select->execute($sqlParams);
@@ -709,7 +709,7 @@ class Resource extends Models\Base
 			$select = $this->db->prepare($parentSql);
 			$select->execute($sqlParams);
 			$rawResult = $select->fetchAll(\PDO::FETCH_ASSOC);
-			$personsIds = array();
+			$personsIds = [];
 			foreach ($rawResult as & $item) {
 				$primaryValue = $item['Varchar'];
 				foreach ($solutions as $solution) {

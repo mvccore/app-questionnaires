@@ -7,7 +7,7 @@ class System extends \App\Controllers\Base
 	public function JsErrorsLogAction () {
 		$this->DisableView();
 		if (\MvcCore\Config::IsProduction()) return;
-		$keys = array(
+		$keys = [
 			'message'=>1,
 			'uri'		=> 1,
 			'file'		=> 1,
@@ -16,8 +16,8 @@ class System extends \App\Controllers\Base
 			'callstack'	=> 1,
 			'browser'	=> 1,
 			'platform'	=> 0,
-		);
-		$data = array();
+		];
+		$data = [];
 		foreach ($keys as $key => $hex) {
 			$param = $this->GetParam($key);
 			if ($hex) $param = self::_hexToStr($param);

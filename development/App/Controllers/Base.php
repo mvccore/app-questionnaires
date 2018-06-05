@@ -7,38 +7,46 @@ use \MvcCore\Ext\Form,
 
 class Base extends \MvcCore\Controller
 {
-	public static $Lang = 'en'; // by default
-
-	/** @var \App\Models\Translator */
-	protected static $translator;
-
-	/** @var \App\Models\XmlModel */
-	protected $document;
-
-	/** @var \MvcCore\Ext\Auth\Virtual\User */
+	/** @var \MvcCore\Ext\Auths\Basics\User|\MvcCore\Ext\Auths\Basics\IUser */
 	protected $user = NULL;
 
-	protected $mediaSiteKey = '';
+	/** @var \App\Models\Document|\App\Models\Questionnaire|\App\Models\XmlModel|NULL */
+	protected $document = NULL;
 
-	public function Translate ($key, $lang = '') {
-		return self::$translator->Translate($key, $lang ? $lang : self::$Lang);
-	}
+	/** @var \App\Models\Translator|\MvcCore\Interfaces\IModel */
+	protected $translator = NULL;
+
+	/**
+	 * Default lang, changed later when document or questionnaire loaded.
+	 * @var string
+	 */
+	protected $lang = 'en';
+
+	/**
+	 * Default locale, changed later when document or questionnaire loaded.
+	 * @var string
+	 */
+	protected $locale = 'US';
+
+	/**
+	 * Media website version: `"full" | "mobile"`.
+	 * @var string
+	 */
+	protected $mediaSiteVersion = NULL;
+
 	public function Init () {
 		parent::Init();
-		self::$translator = \App\Models\Translator::GetInstance();
-		\App\Forms\Base::AllFormsInit();
-		$this->user = Auth::GetInstance()->GetUser();
-		$this->mediaSiteKey = $this->request->MediaSiteKey;
+		$this->translator = \App\Models\Translator::GetInstance();
+		\App\Forms\Base::AllFormsCustomizationInit($this->request);
+		$this->mediaSiteVersion = $this->request->GetMediaSiteVersion();
 	}
+
 	public function PreDispatch () {
 		parent::PreDispatch();
 		if ($this->viewEnabled) {
 
 			$this->_setUpBundles();
 			$this->_setUpCommonSeoProperties();
-		
-			$this->view->Request = $this->request;
-			$this->view->MediaSiteKey = $this->request->MediaSiteKey;
 			
 			$cfg = \MvcCore\Config::GetSystem();
 			$this->view->GoogleAnalyticsCode = $cfg->general->ga->code;
@@ -46,11 +54,17 @@ class Base extends \MvcCore\Controller
 			$this->_setUpAuthForm();
 		}
 	}
+
+	public function Translate ($key, $lang = NULL) {
+		return $this->translator->Translate($key, $lang);
+	}
+
 	/********************************************************************************************/
+
 	protected function addAsset ($assetsType = '', $assetsGroup = '', \SplFileInfo $file) {
 		$tmpRelPath = self::$tmpPath . '/' . $file->getBasename();
-		$tmpAbsPath = $this->request->AppRoot . $tmpRelPath;
-		$appCompilled = \MvcCore::GetInstance()->GetCompiled();
+		$tmpAbsPath = $this->request->GetAppRoot() . $tmpRelPath;
+		$appCompilled = $this->application->GetCompiled();
 		if ((substr($appCompilled, 0, 3) !== 'PHP') && $appCompilled !== 'PHAR' && !file_exists($tmpAbsPath)) {
 			\Nette\Utils\SafeStream::register();
 			$tryCnt = 0;
@@ -62,32 +76,39 @@ class Base extends \MvcCore\Controller
 		if (!$this->view->$assetsType($assetsGroup)->Contains($tmpRelPath)) 
 			$this->view->$assetsType($assetsGroup)->Append($tmpRelPath);
 	}
+
+	protected function setUpLangAndLocaleByDocument () {
+		if ($this->document && preg_match('#^[a-z]{2,3}\-[A-Z]{2,3}$#', $this->document->Localization)) {
+			list($this->lang, $this->locale) = explode('-', $this->document->Localization);
+			$this->request
+				->SetLang($this->lang)
+				->SetLocale($this->locale);
+		}
+	}
+
 	/********************************************************************************************/
 	private function _setUpAuthForm () {
 		// authentication form customization
-		/** @var $form \MvcCore\Ext\Auth\SignInForm|\MvcCore\Ext\Auth\SignOutForm */
-		$form = Auth::GetInstance()->GetForm();
+		/** @var $form \MvcCore\Ext\Auths\Basics\SignInForm|\MvcCore\Ext\Auths\Basics\SignOutForm */
+		$form = \MvcCore\Ext\Auths\Basic::GetInstance()->GetForm();
+		$userAuthenticate = $this->user == NULL;
 		$form
-			// initialize fields to customize them in lines bellow
-			->Init()
 			// add minimized class if form is not in signed in state
-			->AddCssClass(is_null($this->user) ? 'minimized' : '')
+			->SetCssClasses('authentication ' . ($userAuthenticate ? '' : 'minimized'))
 			// set up default mode rendering mode
-			->SetFieldsDefaultRenderMode(Form::FIELD_RENDER_MODE_LABEL_AROUND)
-			// set directory, where are located all form templates
-			->SetTemplateTypePath('Forms')
+			->SetDefaultFieldsRenderMode(Form::FIELD_RENDER_MODE_LABEL_AROUND)
 			// set signed-in/signed-out form template names
-			->SetTemplatePath(
-				'auth/' . (is_null($this->user) ? 'signed-out' : 'signed-in' )
+			->SetViewScript(
+				'auth/' . ($this->user === NULL ? 'signed-out' : 'signed-in' )
 			);
 		// add green-button css class for send button
-		$sendButton = $form->GetField('send')->AddCssClass('button-green');
+		$sendButton = $form->GetField('send')->AddCssClasses('button-green');
 		//$sendButton->SetTemplatePath
 		// ini the form in view to render
 		$this->view->AuthForm = $form;
 	}
 	private function _setUpBundles () {
-		\MvcCore\Ext\View\Helpers\Assets::SetGlobalOptions(
+		\MvcCore\Ext\Views\Helpers\Assets::SetGlobalOptions(
 			(array) \MvcCore\Config::GetSystem()->assets
 		);
 		$static = self::$staticPath;
@@ -101,7 +122,7 @@ class Base extends \MvcCore\Controller
 			->AppendRendered($static . '/css/components/custom-shorthands.css')
 			->AppendRendered($static . '/css/components/button.css')
 			->AppendRendered($static . '/css/front/common.all.css')
-			->AppendRendered($static . '/css/front/common.' . $this->mediaSiteKey . '.css');
+			->AppendRendered($static . '/css/front/common.' . $this->mediaSiteVersion . '.css');
 		$this->view->Css('fixedHeadPrint')
 			->AppendRendered($static . '/css/front/print.css', 'print');
 		$this->view->Js('fixedHead')
@@ -111,9 +132,9 @@ class Base extends \MvcCore\Controller
 	}
 	private function _setUpCommonSeoProperties () {
 		$this->view->OgSiteName = '';
-		$this->view->OgUrl = $this->request->RequestUrl;
+		$this->view->OgUrl = $this->request->GetRequestUrl();
 		if ($this->document) {
-			$this->document->OgImage = $this->request->DomainUrl . $this->document->OgImage;
+			$this->document->OgImage = $this->request->GetDomainUrl() . $this->document->OgImage;
 		}
 	}
 }

@@ -6,7 +6,7 @@ class XmlModel extends Base
 {
 	protected static $dataDir = null;
 	protected static $xmlNameSpace = null;
-	protected static $schemes = array();
+	protected static $schemes = [];
 	protected $xml;
 	protected $autoInit = FALSE;
 	public static function GetDataPath() {
@@ -16,7 +16,7 @@ class XmlModel extends Base
 		$path = static::sanitizePath($path);
 		// if request path is "/" or "/any-directory/any-subdirectory/" - fix path to "/index" or "/any-directory/any-subdirectory/index"
 		$xmlPath = (mb_substr($path, mb_strlen($path) - 1, 1) === '/') ? $path . 'index' : $path ;
-		$xmlFullPath = \MvcCore::GetInstance()->GetRequest()->AppRoot . static::$dataDir;
+		$xmlFullPath = \MvcCore\Application::GetInstance()->GetRequest()->GetAppRoot() . static::$dataDir;
 		$fileFullPath = str_replace('\\', '/', $xmlFullPath . $xmlPath . '.xml');
 		if (!file_exists($fileFullPath)) {
 			return FALSE;
@@ -25,8 +25,8 @@ class XmlModel extends Base
 		};
     }
 	public static function GetByPathMatch ($pathMatch = '') {
-		$result = array();
-		$xmlFullPath = \MvcCore::GetInstance()->GetRequest()->AppRoot . static::$dataDir;
+		$result = [];
+		$xmlFullPath = \MvcCore\Application::GetInstance()->GetRequest()->GetAppRoot() . static::$dataDir;
 		$di = new \DirectoryIterator($xmlFullPath);
 		foreach ($di as $item) {
 			if ($item->isDir()) continue;
@@ -69,10 +69,10 @@ class XmlModel extends Base
 		static::$xmlNameSpace = $ns;
 		$xmlScheme = NULL;
 		if (!isset(static::$schemes[$ns])) {
-			$scheme = (object) array(
-				'columnTypes'	=> array(),
-				'replacements'	=> array(),
-			);
+			$scheme = (object) [
+				'columnTypes'	=> [],
+				'replacements'	=> [],
+			];
 			$lastSlashPos = mb_strrpos($fileFullPath, '/');
 			if ($lastSlashPos === FALSE) $lastSlashPos = mb_strlen($lastSlashPos);
 			$schemeFileFullPath = str_replace('\\', '/', mb_substr($fileFullPath, 0, $lastSlashPos) . '/' . $matches[2]);
@@ -88,10 +88,10 @@ class XmlModel extends Base
 					$nodeType = substr(trim((string)$attrs['type']), 3);
 					$scheme->columnTypes[$nodeName] = $nodeType;
 					if ($nodeType == 'html') {
-						$scheme->replacements[] = array(
-							array("<$ns:$nodeName>",			"</$ns:$nodeName>",), 
-							array("<$ns:$nodeName><![CDATA[",	"]]></$ns:$nodeName>",), 
-						);
+						$scheme->replacements[] = [
+							["<$ns:$nodeName>",			"</$ns:$nodeName>",], 
+							["<$ns:$nodeName><![CDATA[",	"]]></$ns:$nodeName>",], 
+						];
 					}
 				}
 			}
@@ -117,7 +117,7 @@ class XmlModel extends Base
 		$xml = simplexml_load_string($xmlStr);
 		$xmlPossibleErrors = libxml_get_errors();
 		if (count($xmlPossibleErrors)) {
-			$msgs = array();
+			$msgs = [];
 			foreach ($xmlPossibleErrors as $e) {
 				$msg = $e->message;
 				$line = $e->line;
@@ -158,8 +158,8 @@ class XmlModel extends Base
 			}
 		} else if ($dataType == 'html') {
 			$this->$propertyName = str_replace(
-				array('%basePath'),
-				array(\MvcCore::GetInstance()->GetRequest()->BasePath,), 
+				['%basePath'],
+				[\MvcCore\Application::GetInstance()->GetRequest()->GetBasePath(),], 
 				$rawNodeValue
 			);
 		} else {
@@ -175,7 +175,7 @@ class XmlModel extends Base
 		$namespacedPath = ltrim(str_replace('/', '/'.static::$xmlNameSpace.':', '/' . trim($nodeNamesPath, '/')), '/');
 		$nodes = $this->xml->xpath($namespacedPath);
 		if (count($nodes)) return $nodes;
-		return array();
+		return [];
 	}
 	public function __toString() {
 		return $this->xml->asXML();
@@ -183,6 +183,6 @@ class XmlModel extends Base
 	// for serialize() method:
 	public function __sleep() {
 		$this->xml = $this->xml->asXML();
-		return array('xml');
+		return ['xml'];
 	}
 }

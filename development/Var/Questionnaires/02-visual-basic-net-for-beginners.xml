@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <qr:data xmlns:qr="../Questionare.xsd">
 	<qr:id>2</qr:id>
-	<qr:lang>cs</qr:lang>
+	<qr:localization>cs-CZ</qr:localization>
 	<qr:persons-form>false</qr:persons-form>
 	<qr:title>Visual Basic .NET pro začátečníky</qr:title>
 	<qr:description>

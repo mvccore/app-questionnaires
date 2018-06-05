@@ -24,24 +24,24 @@ class Statistics extends Questionnaire
 		$this->view->FilterForm = $this->_filterForm;
 		// complete javascript configuration data for Ext.JS app names: 'statistics':
 		$questions = $this->questionnaire->GetQuestions();
-		$jsConfiguration = (object) array(
-			'Questions'			=> array(),
-			'Translations'		=> array(),
-			'FilterFormId'		=> $this->_filterForm->Id,
-			'StatisticsUrl'		=> $this->Url('Statistics:GetQuestionStatistics', array(
+		$jsConfiguration = (object) [
+			'Questions'			=> [],
+			'Translations'		=> [],
+			'FilterFormId'		=> $this->_filterForm->GetId(),
+			'StatisticsUrl'		=> $this->Url('Statistics:GetQuestionStatistics', [
 				'path'				=> $this->path,
 				'id_question'		=> '__ID_QUESTION__',
-			))
-		);
+			])
+		];
 		foreach ($questions as & $question) {
-			$jsConfiguration->Questions[] = array(
+			$jsConfiguration->Questions[] = [
 				'Id'		=> $question->Id,
 				'Type'		=> $question->Type,
 				'Text'		=> $question->Text,
 				'Required'	=> $question->Required,
-			);
+			];
 		}
-		$translations = array('{0}. Question', 'question-tab', 'Yes', 'No', 'No answer', 'required', 'not required', 'No graph data msg');
+		$translations = ['{0}. Question', 'question-tab', 'Yes', 'No', 'No answer', 'required', 'not required', 'No graph data msg'];
 		foreach ($translations as $term) {
 			$jsConfiguration->Translations[$term] = $this->Translate($term);
 		}
@@ -56,36 +56,37 @@ class Statistics extends Questionnaire
 		
 		$filterFormData = $this->submitAndManageFormDataForDbLoad();
 
-		$idQuestion = intval($this->GetParam('id_question', '0-9'));
+		$idQuestion = $this->GetParam('id_question', '0-9', 0, 'int');
 		$question = $this->questionnaire->GetQuestion($idQuestion);
 		$success = FALSE;
 
 		$statistics = NULL;
 		if ($question instanceof Models\Question) {
 			$success = TRUE;
-			$statistics = Models\Question\Statistics::GetInstance($this->user, $question)->Load($filterFormData);
+			$statistics = Models\Question\Statistics::GetInstance($this->user, $question)
+				->Load($filterFormData);
 			// translate all summary table labels
 			if (isset($statistics->Summary)) {
 				foreach ($statistics->Summary as & $item) $item[0] = $this->Translate($item[0]);
 			}
 			// translate every key in statistics data array to display headings
-			$headingTranslations = array();
+			$headingTranslations = [];
 			foreach ($statistics as $key => $record) {
 				if ($key == 'Summary') continue;
 				$headingTranslations[$key] = $this->Translate("Graph Title: Question Type - '{$question->Type}', Graph Key - '$key'");
 			}
 			$headingTranslations['Summary'] = $this->Translate('Summary');
 			$statistics->Translations = array_merge(
-				isset($statistics->Translations) ? $statistics->Translations : array(), 
+				isset($statistics->Translations) ? $statistics->Translations : [], 
 				$headingTranslations
 			);
 		}
 		
 		if ($this->ajax) {
-			$this->JsonResponse(array(
+			$this->JsonResponse([
 				'success'	=> $success,
 				'data'		=> $statistics,
-			));
+			]);
 		} else {
 			//x($filterFormData);
 			xxx($statistics);
@@ -96,7 +97,7 @@ class Statistics extends Questionnaire
 
 			$extDebugVersions = 0; // set 1 for better development error messages in browser console
 
-			$appRoot = $this->request->AppRoot;
+			$appRoot = $this->request->GetAppRoot();
 			$static = self::$staticPath;
 
 			$extJsFilename = $extDebugVersions ? 'ext-all-debug.js' : 'ext-all.js';
@@ -105,9 +106,9 @@ class Statistics extends Questionnaire
 			$this->view->Css('varHead')
 				->AppendRendered($static . '/fonts/awesome/declarations/all.css')
 				->AppendRendered($static . '/css/front/person.all.css')
-				->AppendRendered($static . '/css/front/person.' . $this->mediaSiteKey . '.css')
+				->AppendRendered($static . '/css/front/person.' . $this->mediaSiteVersion . '.css')
 				->AppendRendered($static . '/css/front/statistics.all.css')
-				->AppendRendered($static . '/css/front/statistics.' . $this->mediaSiteKey . '.css')
+				->AppendRendered($static . '/css/front/statistics.' . $this->mediaSiteVersion . '.css')
 				->Append($static . '/css/libs/ext/6.0.0/theme-triton-custom/theme-triton-all-1.css')
 				->Append($static . '/css/libs/ext/6.0.0/theme-triton-custom/theme-triton-all-2.css')
 				->Append($static . '/css/libs/ext/6.0.0/theme-triton-custom/charts-all.css');
@@ -172,40 +173,41 @@ class Statistics extends Questionnaire
 	protected function setUpForm () {
 		$form = new Forms\Statistics($this);
 		$form
-			->SetTranslator(function ($key = '', $lang = '') {
-				return $this->Translate($key, $lang ? $lang : Base::$Lang);
+			->SetTranslator(function ($key, $lang = NULL) {
+				return $this->Translate($key, $lang);
 			})
-			->SetJsRenderer(function (\SplFileInfo $jsFile) {
+			->SetJsSupportFilesRenderer(function (\SplFileInfo $jsFile) {
 				$this->addAsset('Js', 'varHead', $jsFile);
 			})
-			->SetCssRenderer(function (\SplFileInfo $cssFile) {
+			->SetCssSupportFilesRenderer(function (\SplFileInfo $cssFile) {
 				$this->addAsset('Css', 'varHead', $cssFile);
 			})
-			->SetLang(Base::$Lang)
+			->SetLang($this->request->GetLang())
 			->SetMethod(\MvcCore\Ext\Form::METHOD_GET)
-			->SetAction($this->Url('Statistics:Submit', array('path' => $this->path)))
-			->SetSuccessUrl($this->Url('Statistics:Index', array('path' => $this->path)))
-			->SetAuthenticated(!is_null($this->user))
+			->SetAction($this->Url('Statistics:Submit', ['path' => $this->path]))
+			->SetSuccessUrl($this->Url('Statistics:Index', ['path' => $this->path]))
+			->SetAuthenticated($this->user !== NULL)
 			->SetQuestionnaire($this->questionnaire)
+			->SetPersonsForm($this->questionnaire->PersonsForm)
 			->SetMinMaxAges($this->_minMaxAges)
 			->Init()
-			->SetDefaults(array(
+			->SetValues([
 				'age'		=> $this->_minMaxAges,
 				'sex'		=> array_keys(Models\Person::$SexOptions),
 				'education'	=> array_keys(Models\Person::$EducationOptions),
 				'job'		=> array_keys(Models\Person::$JobOptions),
 				'from'		=> $this->_minMaxDates[0],
 				'to'		=> $this->_minMaxDates[1]
-			));
+			]);
 		$this->_filterForm = $form;
 	}
 	protected function submitAndManageFormDataForDbLoad () {
 		list(,$filterData,) = $this->_filterForm->Submit();
 		$dateFormat = 'Y-m-d\TH:i';
-		$minMaxDates = array(
+		$minMaxDates = [
 			date_format($this->_minMaxDates[0], $dateFormat),
 			date_format($this->_minMaxDates[1], $dateFormat)
-		);
+		];
 		$filterKeys = array_keys($filterData);
 		for ($i = 0, $l = count($filterKeys); $i < $l; $i += 1) {
 			$key = $filterKeys[$i];

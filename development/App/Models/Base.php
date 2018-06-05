@@ -10,10 +10,10 @@ class Base extends \MvcCore\Model
 
 	public static function TranslateHtmlEntitiesToUtfChars ($str = '') {
 		$result = $str;
-		$matches = array();
+		$matches = [];
 		preg_match_all("/&#([0-9]*);/", $str, $matches, PREG_OFFSET_CAPTURE);
 		if (isset($matches[0]) && count($matches[0]) > 0) {
-			$values = array(substr($str, 0, $matches[0][0][1]));
+			$values = [substr($str, 0, $matches[0][0][1])];
 			for ($i = 0, $l = count($matches[0]); $i < $l; $i += 1) {
 				$outerMatchPos = $matches[0][$i][1];
 				$outerMatchLen = strlen($matches[0][$i][0]);

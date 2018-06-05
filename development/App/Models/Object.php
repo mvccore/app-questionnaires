@@ -4,10 +4,10 @@ namespace App\Models;
 
 class Object extends Base
 {
-    public static function GetByIds ($ids = array(), $key = 'Id') {
+    public static function GetByIds ($ids = [], $key = 'Id') {
 		$records = self::GetResource()->GetByIds($ids);
-		if (!$records) return array();
-		$result = array();
+		if (!$records) return [];
+		$result = [];
 		foreach ($records as $record) {
 			$instance = new static();
 			$instance->SetUp($record);

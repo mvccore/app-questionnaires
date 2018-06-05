@@ -43,21 +43,21 @@ class Question extends XmlModel
 	public $LevenstheinComparationTolerance;
 
 	protected $xml;
-	private static $_manualyParsedNodes = array(
+	private static $_manualyParsedNodes = [
 		'radios'		=> 1, 
 		'checkboxes'	=> 1,
 		'options'		=> 1,
 		'connections'	=> 1,
-	);
-	private static $_integerTypeNodes = array(
+	];
+	private static $_integerTypeNodes = [
 		'id'			=> 1,
 		'min'			=> 1,
 		'max'			=> 1,
 		'max-length'	=> 1,
-	);
-	private static $_booleanTypeNodes = array(
+	];
+	private static $_booleanTypeNodes = [
 		'required'		=> 1,
-	);
+	];
     public function __construct() {
         //parent::__construct(); // not necessary for xml model
     }
@@ -73,7 +73,7 @@ class Question extends XmlModel
 	}
 	private function _xmlSetUpRadios () {
 		$nodes = $this->xmlGetNodes('radios/radio');
-		$radios = array();
+		$radios = [];
 		foreach ($nodes as $node) {
 			$radios[] = (string) $node;
 		}
@@ -81,13 +81,13 @@ class Question extends XmlModel
 	}
 	private function _xmlSetUpCheckboxes () {
 		$nodes = $this->xmlGetNodes('checkboxes/checkbox');
-		$checks = array();
+		$checks = [];
 		foreach ($nodes as $node) {
 			$checks[] = (string) $node;
 		}
 		$this->Checkboxes = $checks;
 		if (isset($this->Solution)) {
-			$solution = array();
+			$solution = [];
 			$answers = explode(',', $this->Solution);
 			foreach ($answers as $answer) {
 				$solution[] = intval($answer);
@@ -97,19 +97,19 @@ class Question extends XmlModel
 	}
 	private function _xmlSetUpConnections () {
 		$nodes = $this->xmlGetNodes('options/option');
-		$options = array();
+		$options = [];
 		foreach ($nodes as $node) {
 			$options[] = (string) $node;
 		}
 		$this->Options = $options;
 		$nodes = $this->xmlGetNodes('connections/connection');
-		$connections = array();
+		$connections = [];
 		foreach ($nodes as $node) {
 			$connections[] = (string) $node;
 		}
 		$this->Connections = $connections;
 		if (isset($this->Solution)) {
-			$solution = array();
+			$solution = [];
 			$answers = explode(',', $this->Solution);
 			foreach ($answers as $answer) {
 				$keyValue = explode(':', $answer);
