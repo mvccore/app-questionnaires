@@ -18,7 +18,7 @@ class Bootstrap
 		// Patch core to use extended debug class:
 		if (class_exists('\MvcCore\Ext\Debugs\Tracy')) {
 			\MvcCore\Ext\Debugs\Tracy::$Editor = 'MSVS2017';
-			$app->SetDebugClass(\MvcCore\Ext\Debugs\Tracy::class);
+			$app->SetDebugClass('\MvcCore\Ext\Debugs\Tracy');
 		}
 		
 		/**
@@ -28,13 +28,13 @@ class Bootstrap
 		$translator = \App\Models\Translator::GetInstance();
 		\MvcCore\Ext\Auths\Basic::GetInstance()
 			->SetPasswordHashSalt('*5e8D5asPLKTSWGQ6sTH5_64MsEYr')
-			->SetUserClass(\MvcCore\Ext\Auths\Users\SystemConfig::class)
+			->SetUserClass('\MvcCore\Ext\Auths\Users\SystemConfig')
 			->SetTranslator(function ($key, $lang = NULL) use (& $translator) {
 				return $translator->Translate($key, $lang);
 			});
 		
-		\MvcCore\Ext\Routers\Media::GetInstance(/*[
-			//'Index:Index'			=> "/",
+		\MvcCore\Ext\Routers\Media::GetInstance([
+			'Index:Index'			=> "/",
 			'Questionnaire:Submit'	=> [
 				'match'					=> "#^/questions/(?<path>[a-zA-Z0-9\-_]*)/send#",
 				'reverse'				=> '/questions/<path>/send',
@@ -55,7 +55,7 @@ class Bootstrap
 				'match'					=> "#^/results/(?<path>[a-zA-Z0-9\-_]*)#",
 				'reverse'				=> '/results/<path>',
 			],
-		]*/)
+		])
 			->SetStricModeBySession(TRUE)
 			->SetRouteToDefaultIfNotMatch(TRUE);
 
