@@ -1,11 +1,11 @@
 <?php /** @var $this \MvcCore\View */ ?>
 
-<?php echo $this->Evaluate($this->Questionnaire->Body); ?>
+<?php echo $this->Evaluate($this->questionnaire->Body); ?>
 
 <div class="hr"></div>
 
-<?php if ($this->DisplayFacebookShare): ?>
+<?php if ($this->displayFacebookShare): ?>
 	<?php echo $this->Facebook()->ShareButton('questionnaire-top'); ?>
 <?php endif; ?>
 
-<?php echo $this->QuestionnaireForm->Render(); ?>
+<?php echo $this->questionnaireForm->Render(); ?>

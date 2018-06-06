@@ -1,9 +1,9 @@
 <?php /** @var $this \MvcCore\View */ ?>
-<h1><?php echo $this->Translate($this->Document->Title); ?></h1>
-<?php if ($this->Questionnaires): ?>
-	<p><?php echo $this->Translate($this->Document->Description); ?></p>
+<h1><?php echo $this->Translate($this->document->Title); ?></h1>
+<?php if ($this->questionnaires): ?>
+	<p><?php echo $this->Translate($this->document->Description); ?></p>
 	<div class="hr"></div>
-	<?php foreach($this->Questionnaires as $questionnaire): ?>
+	<?php foreach($this->questionnaires as $questionnaire): ?>
 		<div>
 			<h3>
 				<a href="<?php echo $questionnaire->GetUrl(); ?>">

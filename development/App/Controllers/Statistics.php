@@ -20,8 +20,8 @@ class Statistics extends Questionnaire
 		$this->_minMaxDates = Models\Person::GetMinAndMaxDates($this->questionnaire->Id);
 	}
 	public function IndexAction () {
-		$this->view->Questionnaire = $this->questionnaire;
-		$this->view->FilterForm = $this->_filterForm;
+		$this->view->questionnaire = $this->questionnaire;
+		$this->view->filterForm = $this->_filterForm;
 		// complete javascript configuration data for Ext.JS app names: 'statistics':
 		$questions = $this->questionnaire->GetQuestions();
 		$jsConfiguration = (object) [
@@ -45,14 +45,14 @@ class Statistics extends Questionnaire
 		foreach ($translations as $term) {
 			$jsConfiguration->Translations[$term] = $this->Translate($term);
 		}
-		$this->view->JsConfiguration = $jsConfiguration;
+		$this->view->jsConfiguration = $jsConfiguration;
 	}
 	public function SubmitAction () {
 		$this->_filterForm->Submit();
 		$this->_filterForm->RedirectAfterSubmit();
 	}
 	public function GetQuestionStatisticsAction () {
-		$this->DisableView();
+		$this->SetViewEnabled(FALSE);
 		
 		$filterFormData = $this->submitAndManageFormDataForDbLoad();
 

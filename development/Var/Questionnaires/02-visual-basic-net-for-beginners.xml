@@ -27,10 +27,10 @@
 	</qr:perex>
 	<qr:body>
 		<h1>
-			<?php echo $this->Document->Title; ?>
+			<?php echo $this->document->Title; ?>
 		</h1>
 		<p class="align-left">
-			<?php echo $this->LineBreaks($this->Document->Description); ?>
+			<?php echo $this->LineBreaks($this->document->Description); ?>
 		</p>
 	</qr:body>
 </qr:data>

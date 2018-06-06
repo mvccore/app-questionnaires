@@ -1,10 +1,19 @@
-<?php /** @var $this \MvcCore\Ext\Form\Core\View */ ?>
-<?php echo $this->RenderBegin(); ?>
+<?php
+	/** @var $this \MvcCore\Ext\Forms\View */
 
-	<?php echo $this->RenderErrors(); ?>
-
+	/** @var $controller \MvcCore\Controller */
+	$controller = & $this->GetController();
+	/** @var $form \MvcCore\Ext\Form */
+	$form = & $this->GetForm();
+	/** @var $fields \MvcCore\Ext\Forms\Field[] */
+	$fields = & $form->GetFields();
+	
+	echo $this->RenderBegin();
+	
+	echo $this->RenderErrors();
+?>
 	<div class="fieldset fieldset-person">
-		<?php foreach ($this->fields as $key => $field): ?>
+		<?php foreach ($fields as $key => & $field): ?>
 			<div class="field <?php echo implode(' ', $field->GetCssClasses()); ?>">
 				<?php echo $field->Render(); ?>
 			</div>

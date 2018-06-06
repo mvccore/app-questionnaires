@@ -49,7 +49,8 @@ class Base extends \MvcCore\Controller
 			$this->_setUpCommonSeoProperties();
 			
 			$cfg = \MvcCore\Config::GetSystem();
-			$this->view->GoogleAnalyticsCode = $cfg->general->ga->code;
+			$this->view->googleAnalyticsCode = $cfg->general->ga->code;
+			$this->view->mediaSiteVersion = $this->mediaSiteVersion;
 
 			$this->_setUpAuthForm();
 		}
@@ -105,7 +106,7 @@ class Base extends \MvcCore\Controller
 		$sendButton = $form->GetField('send')->AddCssClasses('button-green');
 		//$sendButton->SetTemplatePath
 		// ini the form in view to render
-		$this->view->AuthForm = $form;
+		$this->view->authForm = $form;
 	}
 	private function _setUpBundles () {
 		\MvcCore\Ext\Views\Helpers\Assets::SetGlobalOptions(
@@ -131,8 +132,8 @@ class Base extends \MvcCore\Controller
 			->Append($static . '/js/front/AuthForm.js');
 	}
 	private function _setUpCommonSeoProperties () {
-		$this->view->OgSiteName = '';
-		$this->view->OgUrl = $this->request->GetRequestUrl();
+		$this->view->ogSiteName = '';
+		$this->view->ogUrl = $this->request->GetRequestUrl();
 		if ($this->document) {
 			$this->document->OgImage = $this->request->GetDomainUrl() . $this->document->OgImage;
 		}

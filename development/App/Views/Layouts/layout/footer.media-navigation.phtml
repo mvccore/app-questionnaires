@@ -4,7 +4,7 @@
 		\MvcCore\Ext\Routers\IMedia::MEDIA_VERSION_FULL	=> $this->Translate('classic'),
 		\MvcCore\Ext\Routers\IMedia::MEDIA_VERSION_MOBILE	=> $this->Translate('mobile'),
 	];
-	$fullUrl = $this->request->GetFullUrl();
+	$fullUrl = $this->GetController()->GetRequest()->GetFullUrl();
 	$questionMarchMatched = mb_strpos($fullUrl, '?') !== FALSE;
 	$i = 0;
 ?><div class="mc-footer-media-navigation"><?php

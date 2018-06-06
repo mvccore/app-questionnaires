@@ -1,19 +1,19 @@
 <?php /** @var $this \MvcCore\View */ ?>
-<h1><?php echo $this->Questionnaire->Title; ?></h1>
-<p><?php echo $this->Questionnaire->Perex; ?></p>
+<h1><?php echo $this->questionnaire->Title; ?></h1>
+<p><?php echo $this->questionnaire->Perex; ?></p>
 <p><?php echo $this->Translate('Anonymous results:') ?></p>
 <div class="hr"></div>
-<?php if ($this->FilterForm->GetAuthenticated() || $this->FilterForm->GetPersonsForm()): ?>
+<?php if ($this->filterForm->GetAuthenticated() || $this->filterForm->GetPersonsForm()): ?>
 	<h2><?php echo $this->Translate('Persons filter'); ?></h2>
-	<?php echo $this->FilterForm->Render(); ?>
+	<?php echo $this->filterForm->Render(); ?>
 <?php else: ?>
 	<div class="hidden">
-		<?php echo $this->FilterForm->Render(); ?>
+		<?php echo $this->filterForm->Render(); ?>
 	</div>
 <?php endif; ?>
 <h2 class="questions-statistics"><?php echo $this->Translate('Questions statistics'); ?></h2>
 <div id="statistics-questions-results">
 	<input type="hidden" id="statistics-questions-configuration" value="<?php
-		echo $this->JsonAttr($this->JsConfiguration);
+		echo $this->JsonAttr($this->jsConfiguration);
 	?>" />
 </div>

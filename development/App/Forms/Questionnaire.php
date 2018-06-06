@@ -48,6 +48,12 @@ class Questionnaire extends Base
 		]));
 		return $this;
 	}
+	
+	public function PreDispatch () {
+		parent::PreDispatch();
+		$this->view->personsForm = $this->personsForm;
+	}
+	
 	protected function initPersonFields () {
 		$age = new Fields\Number([
 			'name'			=> 'person_age',
@@ -84,6 +90,7 @@ class Questionnaire extends Base
 		]);
 		$this->AddFields($age, $sex, $edu, $job);
 	}
+	
 	protected function initQuestionsFields () {
 		foreach ($this->questions as $key => $question) {
 			$typedInitMethod = 'initQuestionField' . \MvcCore\Tool::GetPascalCaseFromDashed($question->Type);
@@ -101,6 +108,7 @@ class Questionnaire extends Base
 			}
 		}
 	}
+	
 	protected function completeQuestionNumberAndTextCode ($key, $text) {
 		$text = $this->parentController->GetView()->Nl2Br($text);
 		return '<span class="question-number-and-text">'.

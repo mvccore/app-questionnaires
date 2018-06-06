@@ -6,10 +6,10 @@
 <p>
     <?php echo str_replace(
 		['%linkBegin%', '%linkEnd%'],
-		['<br /><a href="' . $this->Url('Statistics:Index', ['path' => $this->Path]) . '">', '</a>'],
+		['<br /><a href="' . $this->Url('Statistics:Index', ['path' => $this->path]) . '">', '</a>'],
 		$this->Translate('If you are interested in how other people answered, %linkBegin%you can see the global anonymous results here%linkEnd%.')
 	); ?>
 </p>
 <p>
-    <a href="<?php echo $this->BackLink; ?>"><?php echo $this->Translate('Back to questions'); ?></a>
+    <a href="<?php echo $this->backLink; ?>"><?php echo $this->Translate('Back to questions'); ?></a>
 </p>

@@ -26,7 +26,7 @@ class Questionnaire extends Base
 	public function PreDispatch () {
 		parent::PreDispatch();
 		if ($this->viewEnabled) {
-			$this->view->Document = $this->questionnaire;
+			$this->view->document = $this->questionnaire;
 		}
 		$this->setUpForm();
 		$this->setUpAssets();
@@ -34,9 +34,9 @@ class Questionnaire extends Base
 	
 	public function IndexAction () {
 		// xx($this->questionnaire);
-		$this->view->Questionnaire = $this->questionnaire;
-		$this->view->QuestionnaireForm = $this->_questionnaireForm;
-		$this->view->DisplayFacebookShare = isset($this->questionnaire->FacebookShare) && $this->questionnaire->FacebookShare;
+		$this->view->questionnaire = $this->questionnaire;
+		$this->view->questionnaireForm = $this->_questionnaireForm;
+		$this->view->displayFacebookShare = isset($this->questionnaire->FacebookShare) && $this->questionnaire->FacebookShare;
 	}
 	public function SubmitAction () {
 		list ($result, $data, ) = $this->_questionnaireForm->Submit();
@@ -50,8 +50,8 @@ class Questionnaire extends Base
 		$this->_questionnaireForm->RedirectAfterSubmit();
 	}
 	public function CompletedAction () {
-		$this->view->BackLink = $this->questionnaire->GetUrl();
-		$this->view->Path = $this->path;
+		$this->view->backLink = $this->questionnaire->GetUrl();
+		$this->view->path = $this->path;
 	}
 
 	protected function initSetUpQuestionnaireAndQuestions () {

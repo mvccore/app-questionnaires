@@ -21,8 +21,8 @@ class Index extends Base
 	public function PreDispatch () {
 		parent::PreDispatch();
 		if ($this->document) {
-			$this->view->Document = $this->document;	
-			$this->view->Title = $this->document->Title;
+			$this->view->document = $this->document;	
+			$this->view->title = $this->document->Title;
 		}
 		if (!$this->ajax && $this->request->GetMethod() == \MvcCore\Request::METHOD_GET && !$this->document) {
 			if ($this->renderNotFoundIfNoDocument) {
@@ -44,8 +44,8 @@ class Index extends Base
 		$questionnairesCount = count($questionnaires);
 		if ($questionnairesCount === 0) {
 			// display no questionnaires message
-			$this->view->Questionnaires = [];
-			$this->view->Path = Models\Questionnaire::GetDataPath();
+			$this->view->questionnaires = [];
+			$this->view->path = Models\Questionnaire::GetDataPath();
 		} else if ($questionnairesCount === 1) {
 			// redirect to first questionnaire if there is only one
 			self::Redirect(
@@ -53,7 +53,7 @@ class Index extends Base
 			);
 		} else {
 			// list links to questionnaires
-			$this->view->Questionnaires = $questionnaires;
+			$this->view->questionnaires = $questionnaires;
 		}
 	}
 	public function NotFoundAction () {
@@ -64,8 +64,8 @@ class Index extends Base
 		$message = $this->request->GetParam('message', '\\a-zA-Z0-9_;, /\-\@\:');
 		$message = preg_replace('#`([^`]*)`#', '<code>$1</code>', $message);
 		$message = str_replace("\n", '<br />', $message);
-		$this->view->Title = "Error $code";
-		$this->view->Message = $message;
+		$this->view->title = "Error $code";
+		$this->view->message = $message;
 		$this->Render('error');
 	}
 }

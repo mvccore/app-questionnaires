@@ -1,8 +1,17 @@
-<?php /** @var $this \MvcCore\Ext\Form\Core\View */ ?>
-<?php echo $this->RenderBegin(); ?>
+<?php
+	/** @var $this \MvcCore\Ext\Forms\View */
 
-	<?php echo $this->RenderErrors(); ?>
-
+	/** @var $controller \MvcCore\Controller */
+	$controller = & $this->GetController();
+	/** @var $form \MvcCore\Ext\Form */
+	$form = & $this->GetForm();
+	/** @var $fields \MvcCore\Ext\Forms\Field[] */
+	$fields = & $form->GetFields();
+	
+	echo $this->RenderBegin();
+	
+	echo $this->RenderErrors();
+?>
 	<div class="fieldset fieldset-person">
 		<?php if ($this->personsForm): ?> 
 			<h2><?php echo $this->Translate('About you'); ?></h2>
@@ -10,11 +19,12 @@
 			<h2><?php echo $this->Translate('Questions'); ?></h2>
 		<?php endif; ?>
 		<?php $previousKey = ''; ?>
-		<?php foreach ($this->fields as $key => $field): ?>
-			<?php if ($field->GetName() == 'send' && $this->parentController->GetView()->DisplayFacebookShare): ?>
+		<?php foreach ($fields as $key => & $field): ?>
+			<?php $fieldName = $field->GetName(); ?>
+			<?php if ($fieldName == 'send' && $controller->GetView()->displayFacebookShare): ?>
 				<?php echo $this->Facebook()->ShareButton('questionnaire-bottom'); ?>
 			<?php endif; ?>
-			<?php if (strpos($field->GetName(), 'question') === 0 && strpos($this->fields[$previousKey]->GetName(), 'person') === 0): ?>
+			<?php if (strpos($fieldName, 'question') === 0 && strpos($fields[$previousKey]->GetName(), 'person') === 0): ?>
 					</div>
 				<div class="hr"></div>
 				<div class="fieldset fieldset-questions">
