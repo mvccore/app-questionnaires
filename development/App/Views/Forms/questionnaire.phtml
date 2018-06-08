@@ -1,6 +1,6 @@
 <?php
 	/** @var $this \MvcCore\Ext\Forms\View */
-
+	/** @var $this->view \MvcCore\View */
 	/** @var $controller \MvcCore\Controller */
 	$controller = & $this->GetController();
 	/** @var $form \MvcCore\Ext\Form */
@@ -21,7 +21,7 @@
 		<?php $previousKey = ''; ?>
 		<?php foreach ($fields as $key => & $field): ?>
 			<?php $fieldName = $field->GetName(); ?>
-			<?php if ($fieldName == 'send' && $controller->GetView()->displayFacebookShare): ?>
+			<?php if ($fieldName == 'send' && $this->view->displayFacebookShare): ?>
 				<?php echo $this->Facebook()->ShareButton('questionnaire-bottom'); ?>
 			<?php endif; ?>
 			<?php if (strpos($fieldName, 'question') === 0 && strpos($fields[$previousKey]->GetName(), 'person') === 0): ?>

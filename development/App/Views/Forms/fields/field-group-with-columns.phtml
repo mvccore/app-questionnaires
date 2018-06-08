@@ -1,41 +1,50 @@
 <?php
-	/** @var $field \MvcCore\Ext\Forms\Field */
-	$field = $this->GetField();
-	echo $this->RenderLabel();
-	$columnsCount = isset($this->columns) 
-		? $this->GetColumns() 
-		: intval(floor(sqrt(count($field->GetOptions()))));
+	/** @var $this->field \MvcCore\Ext\Forms\Field */
+	$options = & $this->field->GetOptions();
+	$columnsCount = isset($this->columns)
+		? $this->GetColumns()
+		: intval(floor(sqrt(count($options))));
 	$itemsInColumn = $columnsCount > 0
-		? intval(ceil(count($field->GetOptions())/$columnsCount))
+		? intval(ceil(count($options)/$columnsCount))
 		: 0;
+	echo $this->RenderLabel();
 ?>
 <div class="field-columns field-columns-<?php echo $columnsCount; ?>">
 	<div class="field-columns-row">
-		<div class="field-column"><?php
+		<div class="field-column">
+			<?php
 			$counter = 0;
 			$createdColumnsCount = 1;
-			foreach ($this->GetOptions() as $key => $value):
+			foreach ($options as $key => $value):
 				if ($counter > 0 && $counter % $itemsInColumn === 0):
 					$createdColumnsCount++;
-					?></div><div class="field-column"><?php
+			?>
+		</div>
+		<div class="field-column">
+			<?php
 				endif;
 				echo $this->RenderControlItem($key, $value);
-				?><br /><?php
+			?>
+			<br /><?php
 				$counter++;
 			endforeach;
 			// complete not rendered - empty columns to display columns properly
 			if ($columnsCount > $createdColumnsCount):
 				for ($i = 0, $l = $columnsCount - $createdColumnsCount; $i < $l; $i++):
-					?></div><div class="field-column"><?php
+				  ?>
+		</div>
+		<div class="field-column">
+			<?php
 					// if field is boolean and text - next additional column always contains additional text control
-					if ($i == 0 && $this->GetField() instanceof \App\Forms\CustomFields\BooleanAndText):
-						echo $this->GetField()->RenderControlItemText('text', '');
+					if ($i == 0 && $this->field instanceof \App\Forms\CustomFields\BooleanAndText):
+						echo $this->field->RenderControlItemText('text', '');
 					endif;
 				endfor;
 			endif;
-			if ($columnsCount == 1 && $this->GetField() instanceof \App\Forms\CustomFields\BooleanAndText):
-				echo $this->GetField()->RenderControlItemText('text', '');
+			if ($columnsCount == 1 && $this->field instanceof \App\Forms\CustomFields\BooleanAndText):
+				echo $this->field->RenderControlItemText('text', '');
 			endif;
-		?></div>
+			?>
+		</div>
 	</div>
 </div>

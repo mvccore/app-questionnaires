@@ -100,7 +100,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-auth",
-                "reference": "9467071143fa9161a7ce0bd9ddf01974124cf982",
+                "reference": "774ad81d23866a7ab1e88de165666880a843341b",
                 "shasum": null
             },
             "require": {
@@ -153,7 +153,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-auth-basic",
-                "reference": "54291fd6b546e42181445d9d67e82deb43ba67c6",
+                "reference": "ce6f7dda1fa1454d77283bf32f8c7f6a63ec998b",
                 "shasum": null
             },
             "require": {
@@ -308,7 +308,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-debug-tracy-mvccore",
-                "reference": "e68a331427aed1aa4f3c303d63587c8e5f26afd1",
+                "reference": "7f3c411724ce7720e3b979715ab81d69bc88f4e9",
                 "shasum": null
             },
             "require": {
@@ -455,7 +455,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-form",
-                "reference": "dce5b904845b66b9499df37f7b5073e79ca60897",
+                "reference": "cb92ad3e95f4379a70ad2299df551aad266b27ad",
                 "shasum": null
             },
             "require": {
@@ -506,7 +506,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-router-media",
-                "reference": "63ea5c1ded5e6171a1b836f6071e3ec50fa87ca6",
+                "reference": "b4c128a2fab0487dbce21f2546e1d1a3ad5e721d",
                 "shasum": null
             },
             "require": {
@@ -602,7 +602,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-view-helper-assets",
-                "reference": "e1e52f114d6706d529d260fb467769994496e801",
+                "reference": "3e7bd9172f3468971a3deca4637fcc293090970c",
                 "shasum": null
             },
             "require": {
@@ -707,7 +707,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/mvccore",
-                "reference": "00ad4766c633a10ebbb07a3b0561d0f7590d2f32",
+                "reference": "2a9d6a9f8edf3f77948009adefe3f0cbb1304d9a",
                 "shasum": null
             },
             "require": {

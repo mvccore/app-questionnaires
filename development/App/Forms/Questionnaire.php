@@ -60,7 +60,7 @@ class Questionnaire extends Base
 			'label'			=> 'Age',
 			'required'		=> TRUE,
 			'cssClasses'	=> ['person', 'number', 'age'],
-			'controlWrapper'=> '{control}&nbsp;' . $this->Translate('years'),
+			'wrapper'		=> '{control}&nbsp;' . $this->Translate('years'),
 		]);
 		$sex = new Fields\RadioGroup([
 			'name'			=> 'person_sex',
@@ -75,7 +75,7 @@ class Questionnaire extends Base
 			'required'		=> TRUE,
 			'cssClasses'	=> ['person', 'radio-group', 'edu'],
 			'options'		=> Models\Person::$EducationOptions,
-			'templatePath'	=> 'fields/field-group-with-columns',
+			'viewScript'	=> 'field-group-with-columns',
 			//'columns'		=> !empty($this->formColumnsCount) ? $this->formColumnsCount : 1,
 			'columns'		=> empty($this->formColumnsCount) ? 3 :  $this->formColumnsCount
 		]);
@@ -85,7 +85,7 @@ class Questionnaire extends Base
 			'required'		=> TRUE,
 			'cssClasses'	=> ['person', 'radio-group', 'job'],
 			'options'		=> Models\Person::$JobOptions,
-			'templatePath'	=> 'fields/field-group-with-columns',
+			'viewScript'	=> 'field-group-with-columns',
 			'columns'		=> empty($this->formColumnsCount) ? 3 :  $this->formColumnsCount
 		]);
 		$this->AddFields($age, $sex, $edu, $job);
@@ -134,13 +134,13 @@ class Questionnaire extends Base
 	}
 	protected function initQuestionFieldText ($key, Models\Question & $question) {
 		return new Fields\Text([
-			'maxlength'	=> $question->MaxLength,
+			'maxLength'	=> $question->MaxLength,
 			'renderMode'=> Form::FIELD_RENDER_MODE_NORMAL,
 		]);
 	}
 	protected function initQuestionFieldBooleanAndText ($key, Models\Question & $question) {
 		return new CustomFields\BooleanAndText([
-			'templatePath'	=> 'fields/field-group-with-columns',
+			'viewScript'	=> 'field-group-with-columns',
 			'columns'		=> empty($this->formColumnsCount)
 				? (!empty($question->Columns) ? $question->Columns : 3)
 				:  $this->formColumnsCount,
@@ -149,7 +149,7 @@ class Questionnaire extends Base
 	protected function initQuestionFieldCheckboxes ($key, Models\Question & $question) {
 		return new Fields\CheckboxGroup([
 			'options'		=> $question->Checkboxes,
-			'templatePath'	=> 'fields/field-group-with-columns',
+			'viewScript'	=> 'field-group-with-columns',
 			'columns'		=> empty($this->formColumnsCount)
 				? (!empty($question->Columns) ? $question->Columns : 3)
 				:  $this->formColumnsCount,
@@ -169,7 +169,7 @@ class Questionnaire extends Base
 	protected function initQuestionFieldRadios ($key, Models\Question & $question) {
 		return new Fields\RadioGroup([
 			'options'		=> $question->Radios,
-			'templatePath'	=> 'fields/field-group-with-columns',
+			'viewScript'	=> 'field-group-with-columns',
 			'columns'		=> empty($this->formColumnsCount)
 				? (!empty($question->Columns) ? $question->Columns : 3)
 				:  $this->formColumnsCount,
@@ -177,7 +177,7 @@ class Questionnaire extends Base
 	}
 	protected function initQuestionFieldTextarea ($key, Models\Question & $question) {
 		return new Fields\Textarea([
-			'maxlength'	=> $question->MaxLength,
+			'maxLength'	=> $question->MaxLength,
 			'renderMode'=> Form::FIELD_RENDER_MODE_NORMAL,
 		]);
 	}

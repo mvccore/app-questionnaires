@@ -11,9 +11,9 @@ class Resource extends Models\Base
 		$this->db->beginTransaction();
 
 		$currentDatetime = date('Y-m-d H:i:s', time());
-		if ($this->cfg->driver == 'mysql') {
+		if ($this->config->driver == 'mysql') {
 			$currentDatetime = 'NOW()';
-		} else if ($this->cfg->driver == 'mssql') {
+		} else if ($this->config->driver == 'sqlsrv') {
 			$currentDatetime = 'GETDATE()';
 		}
 		

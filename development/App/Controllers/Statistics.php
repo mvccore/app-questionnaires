@@ -49,7 +49,7 @@ class Statistics extends Questionnaire
 	}
 	public function SubmitAction () {
 		$this->_filterForm->Submit();
-		$this->_filterForm->RedirectAfterSubmit();
+		$this->_filterForm->SubmittedRedirect();
 	}
 	public function GetQuestionStatisticsAction () {
 		$this->SetViewEnabled(FALSE);
@@ -165,9 +165,9 @@ class Statistics extends Questionnaire
 
 				->Append($static . '/js/front/statistics/view/tabs/Content.js')
 				->Append($static . '/js/front/statistics/view/Tab.js')
-				->Append($static . '/js/front/statistics/view/Layout.js')
+				->Append($static . '/js/front/statistics/view/Layout.js');
 
-				->Append($static . '/js/front/statistics/app.js');
+				//->Append($static . '/js/front/statistics/app.js');
 		}
 	}
 	protected function setUpForm () {

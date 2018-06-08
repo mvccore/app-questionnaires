@@ -85,8 +85,8 @@ class Resource extends Models\Base
 		}
 	}
 	private function _initColumnsTypes () {
-		$driver = $this->cfg->driver;
-		$dbname = $this->cfg->dbname;
+		$driver = $this->config->driver;
+		$dbname = $this->config->database;
 		$answersTable = self::TABLE_ANSWERS;
 		$sql = "SELECT 
 			COLUMN_NAME AS ColumnName, 
@@ -96,7 +96,7 @@ class Resource extends Models\Base
 		WHERE 
 			c.TABLE_CATALOG = '$dbname' AND
 			c.TABLE_NAME = '$answersTable';";
-		if ($driver == 'mssql') {
+		if ($driver == 'sqlsrv') {
 			$sql = "SELECT 
 				COLUMN_NAME AS ColumnName, 
 				DATA_TYPE AS DataType
@@ -699,7 +699,7 @@ class Resource extends Models\Base
 						srcData.Id
 				) AS cnts;
 			";
-			if ($this->cfg->driver == 'mysql') $parentSql = str_replace(['[Varchar]', 'dbo.Levenshtein('], ['`Varchar`', 'Levenshtein('], $parentSql);
+			if ($this->config->driver == 'mysql') $parentSql = str_replace(['[Varchar]', 'dbo.Levenshtein('], ['`Varchar`', 'Levenshtein('], $parentSql);
 			//xxx(array($parentSql, $sqlParams));
 			$select = $this->db->prepare($parentSql);
 			$select->execute($sqlParams);

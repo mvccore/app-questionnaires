@@ -43,9 +43,9 @@ class Resource extends Models\Base
 				['IdQuestionnaire', 'IdQuestion', 'IdPerson'],
 				$columns
 			);
-			if ($this->cfg->driver == 'mysql') {
+			if ($this->config->driver == 'mysql') {
 				$columnsStr = '`'.implode('`,`', $columns) . '`';
-			} else if ($this->cfg->driver == 'mssql') {
+			} else if ($this->config->driver == 'sqlsrv') {
 				$columnsStr = '['.implode('],[', $columns) . ']';
 			} else {
 				$columnsStr = implode(',', $columns);

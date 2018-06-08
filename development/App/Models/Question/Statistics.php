@@ -10,7 +10,7 @@ class Statistics extends Models\Base
 	public $IdQuestion;
 
 	/**
-	 * @var \MvcCore\Ext\Auth\User
+	 * @var \MvcCore\Ext\Auths\Basics\IUser
 	 */
 	protected $user = [];
 	/**
@@ -18,7 +18,7 @@ class Statistics extends Models\Base
 	 */
 	protected $question = NULL;
 	/**
-	 * @var \App\Models\Question\Statistics\Resource\MsSql|\App\Models\Question\Statistics\Resource\MySql
+	 * @var \App\Models\Question\Statistics\Resource\SqlSrv|\App\Models\Question\Statistics\Resource\MySql
 	 */
 	protected $resource = NULL;
 	/**
@@ -41,15 +41,15 @@ class Statistics extends Models\Base
 		}
 		return self::$instances[$instanceIndex];
 	}
-	public function __construct (\MvcCore\Ext\Auth\User & $user = NULL, Models\Question & $question = NULL) {
+	public function __construct (\MvcCore\Ext\Auths\Basics\IUser & $user = NULL, Models\Question & $question = NULL) {
 		$this->user = & $user;
 		$this->question = & $question;
 		$this->IdQuestionnaire = $question->Questionnaire->Id;
 		$this->IdQuestion = $question->Id;
 
 		//parent::__construct(); // do not create resource in standard way
-		$this->cfg = self::GetCfg(self::$connectionIndex);
-		$this->db = self::GetDb(self::$connectionIndex);
+		$this->cfg = self::GetConfig(self::$connectionName);
+		$this->db = self::GetDb(self::$connectionName);
 		return $this;
 	}
 	public function Load (& $filterData) {
@@ -495,12 +495,12 @@ class Statistics extends Models\Base
 		}
 	}
 	private static function _getResource () {
-		$cfg = self::GetCfg();
+		$cfg = self::GetConfig();
 		$resourceClassPath = '\Resource';
 		if ($cfg->driver == 'mysql') {
-			$resourceClassPath .= '\MySql';
-		} else if ($cfg->driver == 'mssql') {
-			$resourceClassPath .= '\MsSql';
+			$resourceClassPath .= '\\MySql';
+		} else if ($cfg->driver == 'sqlsrv') {
+			$resourceClassPath .= '\\SqlSrv';
 		}
 		return parent::GetResource(func_get_arg(0), __CLASS__, $resourceClassPath);
 	}

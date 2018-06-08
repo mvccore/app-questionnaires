@@ -4,7 +4,7 @@ namespace App\Models\Question\Statistics\Resource;
 
 use \App\Models\Question\Statistics;
 
-class MsSql extends Statistics\Resource
+class SqlSrv extends Statistics\Resource
 {
 	public function LoadStatisticsForInteger () {
 		$result = new \stdClass;

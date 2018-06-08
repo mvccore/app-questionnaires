@@ -1,43 +1,43 @@
-<?php 
-	/** @var $field \App\Forms\CustomFields\Connections */
-	$field = $this->GetField();
-	$options = $field->GetOptions();
-	$connections = $field->GetConnections();
-	$value = $field->GetValue();
-	$name = $field->GetName();
-	$errors = $field->GetErrors();
-	$required = $field->GetRequired();
+<?php
+	/** @var $this->field \App\Forms\CustomFields\Connections */
+	$connections = $this->field->GetConnections();
+	$value = $this->field->GetValue();
+	$name = $this->field->GetName();
+	$errors = $this->field->GetErrors();
+	$required = $this->field->GetRequired();
 	echo $this->RenderLabel();
 ?>
 <table class="options-and-connections">
-	<?php foreach ($options as $key => $option): ?>
-		<tr>
-			<td class="option">
-				<?php echo intval($key + 1), '&nbsp;.', $option; ?>
-			</td>
-			<td class="connection">
-				<?php
-					$connection = $connections[$key];
-					$elmId = $name . \MvcCore\Ext\Form::HTML_IDS_DELIMITER . $key;
-					$value = isset($value[$key]) ? $value[$key] : '' ;
-					$errorClass = '';
-					if (
-						(strlen($value) === 0 && count($errors) > 0) ||
-						(strlen($value) === 0 && $required && count($value) > 0)
-					) $errorClass = ' error ';
-				?>
-				<label for="<?php echo $elmId; ?>" class="<?php echo $errorClass; ?>">
-					<input id="<?php echo $elmId; ?>"
-							class="<?php echo $errorClass; ?>"
-							name="<?php echo $name; ?>[]"
-							value="<?php echo $value; ?>"
-							min="1"
-							max="<?php echo count($connections); ?>"
-							step="1"
-							type="number" <?php  if ($required) echo 'required="required" '; ?> />
-					<span><?php echo $connection; ?></span>
-				</label>
-			</td>
-		</tr>
+	<?php foreach ($this->field->GetOptions() as $key => $option): ?>
+	<tr>
+		<td class="option">
+			<?php echo intval($key + 1), '&nbsp;.', $option; ?>
+		</td>
+		<td class="connection">
+			<?php
+			  $connection = $connections[$key];
+			  $elmId = $name . \MvcCore\Ext\Form::HTML_IDS_DELIMITER . $key;
+			  $value = isset($value[$key]) ? $value[$key] : '' ;
+			  $errorClass = '';
+			  if (
+				  (strlen($value) === 0 && count($errors) > 0) ||
+				  (strlen($value) === 0 && $required && count($value) > 0)
+			  ) $errorClass = ' error ';
+			?>
+			<label for="<?php echo $elmId; ?>" class="<?php echo $errorClass; ?>">
+				<input id="<?php echo $elmId; ?>"
+					class="<?php echo $errorClass; ?>"
+					name="<?php echo $name; ?>[]"
+					value="<?php echo $value; ?>"
+					min="1"
+					max="<?php echo count($connections); ?>"
+					step="1"
+					type="number" <?php  if ($required) echo 'required="required" '; ?> />
+				<span>
+					<?php echo $connection; ?>
+				</span>
+			</label>
+		</td>
+	</tr>
 	<?php endforeach; ?>
 </table>
