@@ -1,4 +1,5 @@
 <?php
+	/** @var $this \MvcCore\Ext\Forms\View */
 	/** @var $this->field \App\Forms\CustomFields\Connections */
 	$connections = $this->field->GetConnections();
 	$value = $this->field->GetValue();
@@ -23,10 +24,13 @@
 				  (strlen($value) === 0 && count($errors) > 0) ||
 				  (strlen($value) === 0 && $required && count($value) > 0)
 			  ) $errorClass = ' error ';
+			  $errorClassCode = strlen($errorClass) > 0
+				  ? ' class="' . $errorClass . '"'
+				  : '';
 			?>
-			<label for="<?php echo $elmId; ?>" class="<?php echo $errorClass; ?>">
+			<label for="<?php echo $elmId; ?>"<?php echo $errorClassCode; ?>>
 				<input id="<?php echo $elmId; ?>"
-					class="<?php echo $errorClass; ?>"
+					<?php echo $errorClassCode; ?>
 					name="<?php echo $name; ?>[]"
 					value="<?php echo $value; ?>"
 					min="1"

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b722b648294bd93322277662f120bd50",
+    "content-hash": "4978864d5562548a0d490950fd4eb54b",
     "packages": [
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -153,7 +153,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-auth-basic",
-                "reference": "ce6f7dda1fa1454d77283bf32f8c7f6a63ec998b",
+                "reference": "770d6558d8508d49f947d9abc85a8a306dc5992e",
                 "shasum": null
             },
             "require": {
@@ -455,7 +455,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-form",
-                "reference": "cb92ad3e95f4379a70ad2299df551aad266b27ad",
+                "reference": "6add99f476235e1145f05bab51a67f2367783b45",
                 "shasum": null
             },
             "require": {
@@ -549,6 +549,56 @@
                 "site",
                 "tablet",
                 "version"
+            ]
+        },
+        {
+            "name": "mvccore/ext-tool-mimetype-extension",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/mvccore/ext-tool-mimetype-extension",
+                "reference": "a090f84b67368776d59232aabe2ecbc1d72c2014",
+                "shasum": null
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Flidr",
+                    "homepage": "https://github.com/tomFlidr"
+                }
+            ],
+            "description": "MvcCore extension to get file mimetype(s) strings array from file extension string or to get file extension(s) strings array from file mimetype string.",
+            "keywords": [
+                "dynamic forms",
+                "ext",
+                "extension",
+                "form",
+                "forms",
+                "framework",
+                "html5",
+                "mvc",
+                "mvccore",
+                "mvccore",
+                "mvccore form",
+                "plug-in",
+                "plugin",
+                "submit",
+                "submitting",
+                "validate",
+                "validating",
+                "validation",
+                "web forms"
             ]
         },
         {
@@ -707,7 +757,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/mvccore",
-                "reference": "2a9d6a9f8edf3f77948009adefe3f0cbb1304d9a",
+                "reference": "ffc7e0aa890b61c487fd55b954ce05fe5d198e99",
                 "shasum": null
             },
             "require": {
@@ -882,6 +932,7 @@
     "stability-flags": {
         "mvccore/mvccore": 20,
         "mvccore/ext-form": 20,
+        "mvccore/ext-tool-mimetype-extension": 20,
         "mvccore/ext-router-media": 20,
         "mvccore/ext-view-helper-assets": 20,
         "mvccore/ext-view-helper-linebreaks": 20,

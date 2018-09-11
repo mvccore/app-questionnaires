@@ -32,7 +32,11 @@ class Question extends XmlModel
 	/** @var int */
 	public $Max;
 	/** @var int */
+	public $MinLength;
+	/** @var int */
 	public $MaxLength;
+	/** @var string */
+	public $Pattern;
 	/** @var string */
 	public $Body;
 	/** @var string */
@@ -53,6 +57,7 @@ class Question extends XmlModel
 		'id'			=> 1,
 		'min'			=> 1,
 		'max'			=> 1,
+		'min-length'	=> 1,
 		'max-length'	=> 1,
 	];
 	private static $_booleanTypeNodes = [

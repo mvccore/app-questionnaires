@@ -134,7 +134,9 @@ class Questionnaire extends Base
 	}
 	protected function initQuestionFieldText ($key, Models\Question & $question) {
 		return new Fields\Text([
+			'minLength'	=> $question->MinLength,
 			'maxLength'	=> $question->MaxLength,
+			'pattern'	=> $question->Pattern,
 			'renderMode'=> Form::FIELD_RENDER_MODE_NORMAL,
 		]);
 	}

@@ -8,7 +8,7 @@
 			<xs:sequence>
 				<xs:element name="id" type="xs:integer" />
 				<xs:element name="text" type="xs:html" />
-				<xs:element name="type" type="xs:string">
+				<xs:element name="type">
 					<xs:simpleType>
 						<xs:restriction base="xs:string">
 							<xs:enumeration value="boolean" />
@@ -52,10 +52,12 @@
 					</xs:complexType>
 				</xs:element>
 				<xs:element name="required" type="xs:boolean" />
-        <xs:element name="columns" type="xs:integer" />
+				<xs:element name="columns" type="xs:integer" />
 				<xs:element name="min" type="xs:integer" />
 				<xs:element name="max" type="xs:integer" />
+				<xs:element name="min-length" type="xs:integer" />
 				<xs:element name="max-length" type="xs:integer" />
+				<xs:element name="pattern" type="xs:string" />
 				<xs:element name="body" type="xs:html" />
 				<xs:element name="delimiter" type="xs:string" />
 				<xs:element name="solution" type="xs:string" />

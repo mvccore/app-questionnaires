@@ -67,7 +67,7 @@ class Statistics extends Base
 				'step'			=> 1,
 				'multiple'		=> TRUE,
 				'cssClasses'	=> ['person', 'range', 'age'],
-				'controlWrapper'=> '{control}&nbsp;' . $this->Translate('years'),
+				'wrapper'		=> '{control}&nbsp;' . $this->Translate('years'),
 			]);
 			$sex = new Fields\CheckboxGroup([
 				'name'			=> 'sex',

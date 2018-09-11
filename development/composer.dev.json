@@ -53,6 +53,9 @@
 		"url": "../../../packages/mvccore/ext-form"
 	},{
 		"type": "path",
+		"url": "../../../packages/mvccore/ext-tool-mimetype-extension"
+	},{
+		"type": "path",
 		"url": "../../../packages/mvccore/ext-auth"
 	},{
 		"type": "path",
@@ -77,6 +80,7 @@
 		"php": ">=5.4.0",
 		"mvccore/mvccore": "dev-master",
 		"mvccore/ext-form": "dev-master",
+		"mvccore/ext-tool-mimetype-extension": "dev-master",
 		"mvccore/ext-router-media": "dev-master",
 		"mvccore/ext-view-helper-assets": "dev-master",
 		"mvccore/ext-view-helper-linebreaks": "dev-master",

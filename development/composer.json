@@ -23,6 +23,7 @@
 		"php": ">=5.3.0",
 		"mvccore/mvccore": "^4.2",
 		"mvccore/ext-form": "^4.2",
+		"mvccore/ext-tool-mimetype-extension": "^4.2",
 		"mvccore/ext-request-apachedpi": "^4.2",
 		"mvccore/ext-router-media": "^4.2",
 		"mvccore/ext-view-helper-assets": "^4.2",

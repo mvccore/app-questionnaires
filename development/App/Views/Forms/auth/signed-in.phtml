@@ -3,7 +3,7 @@
 <div class="mc-header relative">
 	<?php echo $this->RenderBegin(); ?>
 		<span class="user-info">
-			<?php echo $this->Translate('User') ?>: <b><?php echo $this->user->FullName; ?></b>
+			<?php echo $this->Translate('User') ?>: <b><?php echo $this->user->GetFullName(); ?></b>
 		</span>
 		<?php foreach ($this->form->GetFields() as $key => & $field): ?>
 			<?php echo $field->Render(); ?>

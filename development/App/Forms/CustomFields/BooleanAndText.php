@@ -15,7 +15,7 @@ class BooleanAndText extends \MvcCore\Ext\Forms\FieldsGroup
 
 	protected $value = [];
 
-	protected $validators = [];
+	protected $validators = ['BooleanAndText'];
 
 	protected static $templates = [
 		'control' => '<input id="{id}" name="{name}[]" type="{type}" value="{value}"{checked}{attrs} />',
@@ -27,41 +27,6 @@ class BooleanAndText extends \MvcCore\Ext\Forms\FieldsGroup
 			(array) parent::$templates, 
 			(array) self::$templates
 		);
-		/*$this->SetValidators([function($submitValues, $fieldName, $field, Form & $form) {
-			// possible values - empty array, array with one or two elements,
-			//   first element could be boolean and also a text field
-			$valid = TRUE;
-			$safeValue = [];
-			if ($field->Required && count($submitValues) < 2) $valid = FALSE;
-			foreach ($submitValues as $key => $submitValue) {
-				if ($key > 1) break;
-				if ($key == 0 && count($submitValues) > 1) {
-					$safeValueLocal = strtolower(trim($submitValue));
-					$safeValueLocal = in_array($safeValueLocal, ['yes', 'no']) ? $safeValueLocal : '';
-					if ($field->Required && !$safeValueLocal) $valid = FALSE;
-					if ($safeValueLocal) $safeValue[] = $safeValueLocal;
-				} else {
-					$safeValueLocal = preg_replace("#[\\'\"\#`\<\>\[\]]#", '', trim($submitValue));
-					$safeValue[] = mb_substr($safeValueLocal, 0, 255);
-				}
-			}
-			if (!$valid) {
-				$errorMsg = Form::$DefaultMessages[Form::VALID];
-				if ($form->Translate) {
-					$errorMsg = call_user_func($form->Translator, $errorMsg);
-					$label = $field->Label ? call_user_func($form->Translator, $field->Label) : $fieldName;
-				} else {
-					$label = $field->Label ? $field->Label : $fieldName;
-				}
-				$errorMsg = Form\Core\View::Format(
-					$errorMsg, [$label]
-				);
-				$form->AddError(
-					$errorMsg, $fieldName
-				);
-			}
-			return $safeValue;
-		}]);*/
 	}
 
 	public function PreDispatch () {
@@ -71,7 +36,6 @@ class BooleanAndText extends \MvcCore\Ext\Forms\FieldsGroup
 		foreach ($this->options as $key => $value) 
 			if ($value) 
 				$this->options[$key] = $form->Translate($value);
-		return $this;
 	}
 
 	public function RenderControl () {
@@ -85,17 +49,20 @@ class BooleanAndText extends \MvcCore\Ext\Forms\FieldsGroup
 			$this->form->GetId(), $this->name, $key
 		]);
 		$controlAttrsStr = $this->completeControlAttrsStr($key, $option);
+		if (!$this->form->GetFormTagRenderingStatus()) 
+			$controlAttrsStr .= (strlen($controlAttrsStr) > 0 ? ' ' : '')
+				. 'form="' . $this->form->GetId() . '"';
 		$value = count($this->value) > 0 
 			? $this->value[count($this->value) - 1] 
 			: '';
-		$viewClass = $this->form->GetViewClass();
-		return $viewClass::Format(static::$templates->control, [
+		$formViewClass = $this->form->GetViewClass();
+		return $formViewClass::Format(static::$templates->control, [
 			'id'		=> $itemControlId,
 			'name'		=> $this->name,
 			'type'		=> 'text',
 			'value'		=> $value,
 			'checked'	=> '',
-			'attrs'		=> $controlAttrsStr ? " $controlAttrsStr" : '',
+			'attrs'		=> strlen($controlAttrsStr) > 0 ? ' ' . $controlAttrsStr : '',
 		]);
 	}
 
