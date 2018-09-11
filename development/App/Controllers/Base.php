@@ -74,8 +74,8 @@ class Base extends \MvcCore\Controller
 				usleep(100);
 			}
 		}
-		if (!$this->view->$assetsType($assetsGroup)->Contains($tmpRelPath)) 
-			$this->view->$assetsType($assetsGroup)->Append($tmpRelPath);
+		if (!$this->view->{$assetsType}($assetsGroup)->Contains($tmpRelPath)) 
+			$this->view->{$assetsType}($assetsGroup)->Append($tmpRelPath);
 	}
 
 	protected function setUpLangAndLocaleByDocument () {

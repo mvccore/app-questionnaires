@@ -165,9 +165,9 @@ class Statistics extends Questionnaire
 
 				->Append($static . '/js/front/statistics/view/tabs/Content.js')
 				->Append($static . '/js/front/statistics/view/Tab.js')
-				->Append($static . '/js/front/statistics/view/Layout.js');
+				->Append($static . '/js/front/statistics/view/Layout.js')
 
-				//->Append($static . '/js/front/statistics/app.js');
+				->Append($static . '/js/front/statistics/app.js');
 		}
 	}
 	protected function setUpForm () {
@@ -186,6 +186,7 @@ class Statistics extends Questionnaire
 			->SetMethod(\MvcCore\Ext\Form::METHOD_GET)
 			->SetAction($this->Url('Statistics:Submit', ['path' => $this->path]))
 			->SetSuccessUrl($this->Url('Statistics:Index', ['path' => $this->path]))
+			->SetErrorUrl($this->Url('Statistics:Index', ['path' => $this->path]))
 			->SetAuthenticated($this->user !== NULL)
 			->SetQuestionnaire($this->questionnaire)
 			->SetPersonsForm($this->questionnaire->PersonsForm)

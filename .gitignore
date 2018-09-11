@@ -56,14 +56,4 @@ composer.lock
 vendor/*
 development/Var/Logs/*
 development/vendor/*
-development/static/js/front/node_modules/simpleform-custom-js/dev-tools
-development/static/js/front/node_modules/simpleform-custom-js/node_modules
-development/static/js/front/node_modules/simpleform-custom-js/.npmignore
-development/static/js/front/node_modules/simpleform-custom-js/install.js
-development/static/js/front/node_modules/simpleform-custom-js/package.json
-development/static/js/front/node_modules/simpleform-custom-js/LICENCE.md
-development/static/js/front/node_modules/simpleform-custom-js/README.md
-development/static/js/front/node_modules/simpleform-custom-js/src/simple-form.js
-development/static/js/front/node_modules/simpleform-custom-js/src/fields/checkbox-group.js
-development/static/js/front/node_modules/simpleform-custom-js/src/fields/range.js
-development/static/js/front/node_modules/simpleform-custom-js/src/fields/reset.js
+development/static/js/front/forms-assets/node_modules

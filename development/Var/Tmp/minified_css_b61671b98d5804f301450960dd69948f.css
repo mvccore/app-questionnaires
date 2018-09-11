@@ -1,10 +1,10 @@
 
 /* /static/fonts/awesome/declarations/all.css */
-@font-face{font-family:'FontAwesome';src:url('?controller=controller&action=asset&path=/static/fonts/awesome/font-files/awesome.eot');src:url('?controller=controller&action=asset&path=/static/fonts/awesome/font-files/awesome.eot?#iefix') format('embedded-opentype'),
-url('?controller=controller&action=asset&path=/static/fonts/awesome/font-files/awesome.woff2') format('woff2'),
-url('?controller=controller&action=asset&path=/static/fonts/awesome/font-files/awesome.woff') format('woff'),
-url('?controller=controller&action=asset&path=/static/fonts/awesome/font-files/awesome.ttf') format('truetype'),
-url('?controller=controller&action=asset&path=/static/fonts/awesome/font-files/awesome.svg#FontAwesome') format('svg');font-weight:normal;font-style:normal}
+@font-face{font-family:'FontAwesome';src:url('../../static/fonts/awesome/font-files/awesome.eot');src:url('../../static/fonts/awesome/font-files/awesome.eot?#iefix') format('embedded-opentype'),
+url('../../static/fonts/awesome/font-files/awesome.woff2') format('woff2'),
+url('../../static/fonts/awesome/font-files/awesome.woff') format('woff'),
+url('../../static/fonts/awesome/font-files/awesome.ttf') format('truetype'),
+url('../../static/fonts/awesome/font-files/awesome.svg#FontAwesome') format('svg');font-weight:normal;font-style:normal}
 
 /* /static/css/front/person.all.css */
 label.person_age,label.person_sex,label.person_edu,label.person_job{line-height:1.7em}.field.button
@@ -26,7 +26,7 @@ form.statistics
 0 10px 0}form.statistics .loading
 span{display:inline-block;line-height:20px;height:20px;padding:6px
 0 5px 40px;margin:0
-auto 0 auto;background:transparent url('?controller=controller&action=asset&path=/static/img/theme/loading.gif') 0 0 no-repeat}form.statistics .field.from,
+auto 0 auto;background:transparent url('../../static/img/theme/loading.gif') 0 0 no-repeat}form.statistics .field.from,
 form.statistics
 .field.to{margin-top:0}form.statistics .field.from input,
 form.statistics .field.to
@@ -1242,3 +1242,10 @@ solid #ccc;background:#fff;-webkit-box-shadow:rgba(255, 255, 255, 0.6) 0 1px 1px
 .x-legend.x-docked-right .x-legend-inner,
 .x-legend-panel.x-docked-left .x-legend-inner,
 .x-legend-panel.x-docked-right .x-legend-inner{display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center}.x-legend.x-horizontal{white-space:nowrap}.x-legend.x-horizontal .x-legend-item{display:inline-block}.x-chart-toolbar{position:absolute;z-index:9;display:-webkit-box;display:-moz-box;display:-ms-box;display:box;padding: .6em}.x-chart-toolbar .x-button{margin: .2em}.x-chart-toolbar[data-side=left],.x-chart-toolbar[data-side=right]{top:0;-webkit-box-orient:vertical;-moz-box-orient:vertical;-ms-box-orient:vertical;box-orient:vertical}.x-chart-toolbar[data-side=left]{left:0}.x-chart-toolbar[data-side=right]{right:0}.x-chart-toolbar[data-side=top],.x-chart-toolbar[data-side=bottom]{-webkit-box-orient:horizontal;-moz-box-orient:horizontal;-ms-box-orient:horizontal;box-orient:horizontal;right:0}.x-chart-toolbar[data-side=top]{top:0}.x-chart-toolbar[data-side=bottom]{bottom:0;-webkit-box-orient:horizontal;-moz-box-orient:horizontal;-ms-box-orient:horizontal;box-orient:horizontal}
+
+/* /Var/Tmp/range.css */
+div.range-multiple{position:relative;width:200px;height:42px;text-align:center}div.range-multiple
+input{pointer-events:none;position:absolute;overflow:hidden;left:0;top:21px;width:200px;outline:none;height:21px;margin:0;padding:0}_:-ms-input-placeholder, :root div.range-multiple
+input{pointer-events:auto;position:relative;height:10px;top:0}div.range-multiple input::-webkit-slider-thumb{pointer-events:all;position:relative;z-index:1;outline:0}div.range-multiple input::-moz-range-thumb{pointer-events:all;position:relative;z-index:10;-moz-appearance:none;width:9px}div.range-multiple input::-moz-range-track{position:relative;z-index:-1;background-color:rgba(0, 0, 0, 1);border:0}div.range-multiple input:last-of-type::-moz-range-track{-moz-appearance:none;background:none transparent;border:0}div.range-multiple input[type=range]::-moz-focus-outer{border:0}div.range-multiple input[type=range]::-ms-track{background:transparent;border-color:transparent;color:transparent}div.range-multiple input[type=range]::-ms-range-track{background:transparent;border-color:transparent;color:transparent}div.range-multiple input[type=range]::-ms-fill-lower{background:transparent;border:1px
+solid #000}div.range-multiple input[type=range]::-ms-fill-upper{background:transparent;border:1px
+solid #000}

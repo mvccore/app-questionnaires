@@ -1,2 +1,2 @@
-npm install mvccore/ext-form-js
+npm install mvccore-ext-form-js
 pause

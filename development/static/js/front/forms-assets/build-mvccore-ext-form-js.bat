@@ -1,4 +1,4 @@
-cd node_modules/ext-form-js/dev-tools
+cd node_modules/mvccore-ext-form-js/dev-tools
 call build.cmd
 cd ../../..
 pause
