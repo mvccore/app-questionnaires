@@ -102,12 +102,7 @@ class Questionnaire extends Base
 				$field
 					->SetName('question_' . $question->Id)
 					->SetLabel($questionNumberAndText)
-					//->SetRequired(TRUE)
 					->AddCssClasses($question->Type);
-				if ($field instanceof \MvcCore\Ext\Forms\Fields\CheckboxGroup) {
-					$field->SetRequired();
-					$field->SetMaxOptions(3);
-				}
 				if (isset($question->Required)) {
 					$field->SetRequired($question->Required);
 				}
