@@ -61,6 +61,8 @@ class Questionnaire extends Base
 			'required'		=> TRUE,
 			'cssClasses'	=> ['person', 'number', 'age'],
 			'wrapper'		=> '{control}&nbsp;' . $this->Translate('years'),
+			'min'			=> 1,
+			'max'			=> 130,
 		]);
 		$sex = new Fields\RadioGroup([
 			'name'			=> 'person_sex',
@@ -100,7 +102,12 @@ class Questionnaire extends Base
 				$field
 					->SetName('question_' . $question->Id)
 					->SetLabel($questionNumberAndText)
+					//->SetRequired(TRUE)
 					->AddCssClasses($question->Type);
+				if ($field instanceof \MvcCore\Ext\Forms\Fields\CheckboxGroup) {
+					$field->SetRequired();
+					$field->SetMaxOptions(3);
+				}
 				if (isset($question->Required)) {
 					$field->SetRequired($question->Required);
 				}

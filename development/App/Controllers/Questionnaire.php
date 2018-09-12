@@ -39,15 +39,16 @@ class Questionnaire extends Base
 		$this->view->displayFacebookShare = isset($this->questionnaire->FacebookShare) && $this->questionnaire->FacebookShare;
 	}
 	public function SubmitAction () {
-		list ($result, $data, ) = $this->_questionnaireForm->Submit();
+		list ($result, $data, $errors) = $this->_questionnaireForm->Submit();
+		x([$result, $data, $errors]);
 		if ($result === Form::RESULT_SUCCESS) {
-			$personData = $this->_submitCompleteData($data, 'person_', 'string');
+			/*$personData = $this->_submitCompleteData($data, 'person_', 'string');
 			$answerData = $this->_submitCompleteData($data, 'question_', 'int');
 			$person = Models\Person::Create($personData);
-			Models\Questionnaire\Answers::Create($person->Id, $this->questions, $answerData);
+			Models\Questionnaire\Answers::Create($person->Id, $this->questions, $answerData);*/
 		}
-		$this->_questionnaireForm->ClearSession();
-		$this->_questionnaireForm->RedirectAfterSubmit();
+		//$this->_questionnaireForm->ClearSession();
+		$this->_questionnaireForm->SubmittedRedirect();
 	}
 	public function CompletedAction () {
 		$this->view->backLink = $this->questionnaire->GetUrl();
