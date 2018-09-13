@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4978864d5562548a0d490950fd4eb54b",
+    "content-hash": "800254bfd3ac03898cca754199c19439",
     "packages": [
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -100,7 +100,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-auth",
-                "reference": "774ad81d23866a7ab1e88de165666880a843341b",
+                "reference": "b7e6fa783075583ff321d8877f5b6aef48804ef3",
                 "shasum": null
             },
             "require": {
@@ -123,7 +123,7 @@
                     "homepage": "https://github.com/tomFlidr"
                 }
             ],
-            "description": "MvcCore Extension - Auth - authentication module with automatic authentication module type detection by loaded classes.",
+            "description": "MvcCore - Extension - Auth - authentication module with automatic authentication module type detection by loaded classes.",
             "keywords": [
                 "auth",
                 "authenticate",
@@ -153,11 +153,12 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-auth-basic",
-                "reference": "770d6558d8508d49f947d9abc85a8a306dc5992e",
+                "reference": "5e21221b145ebf8431f40bb8775b16099b2563df",
                 "shasum": null
             },
             "require": {
                 "mvccore/ext-form": "dev-master",
+                "mvccore/ext-form-field-text": "dev-master",
                 "mvccore/mvccore": "dev-master",
                 "php": ">=5.4.0"
             },
@@ -176,7 +177,7 @@
                     "homepage": "https://github.com/tomFlidr"
                 }
             ],
-            "description": "MvcCore Extension - Auth - Basic - simple authentication extension, only to signin/signout user. Extension can use credentials defined in system `config.ini` or in database. Possibility to extend user, signin/signout forms, submit controller and extension class itself.",
+            "description": "MvcCore - Extension - Auth - Basic - simple authentication extension, only to signin/signout user. Extension can use credentials defined in system `config.ini` or in database. Possibility to extend user, signin/signout forms, submit controller and extension class itself.",
             "keywords": [
                 "auth",
                 "authenticate",
@@ -206,7 +207,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-debug-tracy",
-                "reference": "83e1d72ccaf1b0227c235ebf71d32ad77025554c",
+                "reference": "4efde935e198e649c7a4a59189c992b5bb5be20e",
                 "shasum": null
             },
             "require": {
@@ -229,7 +230,7 @@
                     "homepage": "https://github.com/tomFlidr"
                 }
             ],
-            "description": "MvcCore Extension - Debug - Tracy - adapter class for Nette framework tracy/tracy library.",
+            "description": "MvcCore - Extension - Debug - Tracy - adapter class for Nette framework tracy/tracy library.",
             "keywords": [
                 "debug",
                 "debug bar",
@@ -251,7 +252,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-debug-tracy-auth",
-                "reference": "ddf05fac00012bedb738b67c128b08a048ff3d35",
+                "reference": "ccd0e1e6857ba5fe03b0a56199cd8b1176329535",
                 "shasum": null
             },
             "require": {
@@ -275,7 +276,7 @@
                     "homepage": "https://github.com/tomFlidr"
                 }
             ],
-            "description": "MvcCore Extension - Debug Tracy Panel - Auth - render and add into tracy debug panel currently authenticated user from \\MvcCore\\Ext\\Auth service singleton instance, printed by \\Tracy\\Dumper::toHtml(\\MvcCore\\Ext\\Auth::GetInstance()->GetUser());.",
+            "description": "MvcCore - Extension - Debug - Tracy - Panel Auth - render and add into tracy debug panel currently authenticated user from \\MvcCore\\Ext\\Auth service singleton instance, printed by \\Tracy\\Dumper::toHtml(\\MvcCore\\Ext\\Auth::GetInstance()->GetUser());.",
             "keywords": [
                 "auth",
                 "authenticate",
@@ -308,7 +309,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-debug-tracy-mvccore",
-                "reference": "7f3c411724ce7720e3b979715ab81d69bc88f4e9",
+                "reference": "6a4577e14fd6d64268e5042a95405d4723763f16",
                 "shasum": null
             },
             "require": {
@@ -331,7 +332,7 @@
                     "homepage": "https://github.com/tomFlidr"
                 }
             ],
-            "description": "MvcCore Extension - Debug Tracy Panel - MvcCore - render and add into tracy debug panel current MvcCore application instance, printed by \\Tracy\\Dumper::toHtml(\\MvcCore\\Application::GetInstance()); to display main application objects used to render current page response. Rendered objects inside MvcCore app: \\MvcCore\\Request, \\MvcCore\\Response, \\MvcCore\\Router, \\MvcCore\\Controller, all preroute, predispatch and postdispatch configured handlers and many other internal application values.",
+            "description": "MvcCore - Extension - Debug - Tracy - Panel MvcCore - render and add into tracy debug panel current MvcCore application instance, printed by \\Tracy\\Dumper::toHtml(\\MvcCore\\Application::GetInstance()); to display main application objects used to render current page response. Rendered objects inside MvcCore app: \\MvcCore\\Request, \\MvcCore\\Response, \\MvcCore\\Router, \\MvcCore\\Controller, all preroute, predispatch and postdispatch configured handlers and many other internal application values.",
             "keywords": [
                 "app overview",
                 "application",
@@ -360,7 +361,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-debug-tracy-routing",
-                "reference": "8f174e6b9e43a30aafd2e86b80979dfef30e32f5",
+                "reference": "63df7e6e40f0c9ea163d841278078ae836267f18",
                 "shasum": null
             },
             "require": {
@@ -383,7 +384,7 @@
                     "homepage": "https://github.com/tomFlidr"
                 }
             ],
-            "description": "MvcCore Extension - Debug Tracy Panel - Routing - render and add into tracy debug panel all configured routes in current MvcCore application router and to display currently matched route.",
+            "description": "MvcCore - Extension - Debug - Tracy - Panel Routing - render and add into tracy debug panel all configured routes in current MvcCore application router and to display currently matched route.",
             "keywords": [
                 "active route",
                 "current route",
@@ -409,7 +410,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-debug-tracy-session",
-                "reference": "6f84effc9b89a0abed5feeca9c7f29bce261aeda",
+                "reference": "972e94cbdfd1a0e54aa4db8a37df47c16484da05",
                 "shasum": null
             },
             "require": {
@@ -432,7 +433,7 @@
                     "homepage": "https://github.com/tomFlidr"
                 }
             ],
-            "description": "MvcCore Extension - Debug Tracy Panel - Session - render and add into tracy debug panel $_SESSION content and \\MvcCore\\Session namespaces content.",
+            "description": "MvcCore - Extension - Debug - Tracy - Panel Session - render and add into tracy debug panel $_SESSION content and \\MvcCore\\Session namespaces content.",
             "keywords": [
                 "basic session",
                 "debug",
@@ -455,10 +456,92 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-form",
-                "reference": "6add99f476235e1145f05bab51a67f2367783b45",
+                "reference": "7538b9a278ef2a2489ba7d2d3c470e03d2093585",
                 "shasum": null
             },
             "require": {
+                "mvccore/mvccore": "dev-master",
+                "php": ">=5.4.0"
+            },
+            "suggest": {
+                "mvccore/ext-form-field-button": "MvcCore form extension with button fields and input submit fields.",
+                "mvccore/ext-form-field-date": "MvcCore form extension with input field types date, datetime, time, week and month.",
+                "mvccore/ext-form-field-numeric": "MvcCore form extension with input field types number and range.",
+                "mvccore/ext-form-field-selection": "MvcCore form extension with fields select, country select, checkbox(es) and radios.",
+                "mvccore/ext-form-field-special": "MvcCore form extension with input type file and color.",
+                "mvccore/ext-form-field-text": "MvcCore form extension with input field types text, email, password, search, tel, url and textarea field.",
+                "mvccore/ext-form-validator-special": "MvcCore form extension with special text and numeric validators."
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Flidr",
+                    "homepage": "https://github.com/tomFlidr"
+                }
+            ],
+            "description": "MvcCore - Extension - Form - form extension with base classes to create and render web forms with HTML5 controls, to handle and validate submited user data, to manage forms sessions for default values, to manage user input errors and to extend and develop custom fields and field groups.",
+            "keywords": [
+                "button",
+                "checkbox",
+                "color",
+                "date",
+                "date",
+                "datetime",
+                "dynamic",
+                "email",
+                "ext",
+                "extension",
+                "field",
+                "fields",
+                "file",
+                "form",
+                "forms",
+                "framework",
+                "groups",
+                "html5",
+                "image",
+                "input",
+                "inputs",
+                "month",
+                "mvc",
+                "mvccore",
+                "mvccore",
+                "number",
+                "plug-in",
+                "plugin",
+                "radio",
+                "range",
+                "reset",
+                "search",
+                "select",
+                "tel",
+                "text",
+                "textarea",
+                "time",
+                "url",
+                "webform",
+                "week"
+            ]
+        },
+        {
+            "name": "mvccore/ext-form-field-button",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/mvccore/ext-form-field-button",
+                "reference": "dcb97c9bd673f5eb313b3c17d121b29f1ebf13b2",
+                "shasum": null
+            },
+            "require": {
+                "mvccore/ext-form": "dev-master",
                 "mvccore/mvccore": "dev-master",
                 "php": ">=5.4.0"
             },
@@ -477,27 +560,341 @@
                     "homepage": "https://github.com/tomFlidr"
                 }
             ],
-            "description": "MvcCore Extension - Form - render web forms with classic user controls and some HTML5 controls, to handle and validate submited user data, to manage forms sessions for default values, to manage user input errors and to extend and develop custom fields and field groups.",
+            "description": "MvcCore - Extension - Form - Field - Button - form field types - button:submit, button:reset, input:submit, input:reset and image.",
             "keywords": [
-                "dynamic forms",
+                "button",
+                "buttons",
                 "ext",
                 "extension",
                 "form",
                 "forms",
                 "framework",
                 "html5",
+                "image",
                 "mvc",
                 "mvccore",
                 "mvccore",
-                "mvccore form",
                 "plug-in",
                 "plugin",
+                "reset",
+                "resets",
                 "submit",
+                "submit",
+                "submits",
                 "submitting",
-                "validate",
-                "validating",
-                "validation",
-                "web forms"
+                "webform"
+            ]
+        },
+        {
+            "name": "mvccore/ext-form-field-date",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/mvccore/ext-form-field-date",
+                "reference": "41b6641483f10a82156ca3187c1bfac06e90da29",
+                "shasum": null
+            },
+            "require": {
+                "mvccore/ext-form": "dev-master",
+                "mvccore/mvccore": "dev-master",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Flidr",
+                    "homepage": "https://github.com/tomFlidr"
+                }
+            ],
+            "description": "MvcCore - Extension - Form - Field - Date - form field types - input:date, input:datetime-local, input:time, input:week and input:month.",
+            "keywords": [
+                "date",
+                "datetime",
+                "datetime-local",
+                "ext",
+                "extension",
+                "form",
+                "forms",
+                "framework",
+                "html5",
+                "input",
+                "inputs",
+                "month",
+                "mvc",
+                "mvccore",
+                "mvccore",
+                "plug-in",
+                "plugin",
+                "time",
+                "webform",
+                "week"
+            ]
+        },
+        {
+            "name": "mvccore/ext-form-field-numeric",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/mvccore/ext-form-field-numeric",
+                "reference": "b16ddf3e92a49b61e185a7b47e71620eb1d224a4",
+                "shasum": null
+            },
+            "require": {
+                "mvccore/ext-form": "dev-master",
+                "mvccore/mvccore": "dev-master",
+                "php": ">=5.4.0"
+            },
+            "suggest": {
+                "mvccore/ext-form-validator-special": "MvcCore form extension with special text and numeric validators."
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Flidr",
+                    "homepage": "https://github.com/tomFlidr"
+                }
+            ],
+            "description": "MvcCore - Extension - Form - Field - Numeric - form field types - input:number and input:range.",
+            "keywords": [
+                "ext",
+                "extension",
+                "float",
+                "form",
+                "forms",
+                "framework",
+                "html5",
+                "input",
+                "inputs",
+                "int",
+                "integer",
+                "multiple",
+                "mvc",
+                "mvccore",
+                "mvccore",
+                "number",
+                "plug-in",
+                "plugin",
+                "range",
+                "slider",
+                "webform"
+            ]
+        },
+        {
+            "name": "mvccore/ext-form-field-selection",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/mvccore/ext-form-field-selection",
+                "reference": "338e54cef829739cad93eb5f8fe50f8cde9450aa",
+                "shasum": null
+            },
+            "require": {
+                "mvccore/ext-form": "dev-master",
+                "mvccore/mvccore": "dev-master",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Flidr",
+                    "homepage": "https://github.com/tomFlidr"
+                }
+            ],
+            "description": "MvcCore - Extension - Form - Field - Selection - form field types - select, country select, checkbox, radio button, color and checkboxes group.",
+            "keywords": [
+                "checkbox",
+                "checkbox group",
+                "checkboxes",
+                "color",
+                "colors",
+                "countires",
+                "country",
+                "country select",
+                "ext",
+                "extension",
+                "form",
+                "forms",
+                "framework",
+                "groups",
+                "html5",
+                "input",
+                "inputs",
+                "mvc",
+                "mvccore",
+                "mvccore",
+                "plug-in",
+                "plugin",
+                "radio",
+                "radiobutton",
+                "radios",
+                "select",
+                "selects",
+                "states",
+                "switch",
+                "webform"
+            ]
+        },
+        {
+            "name": "mvccore/ext-form-field-text",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/mvccore/ext-form-field-text",
+                "reference": "98780c9d85906c789e4c43ee2ef3f7a10c1d276e",
+                "shasum": null
+            },
+            "require": {
+                "mvccore/ext-form": "dev-master",
+                "mvccore/mvccore": "dev-master",
+                "php": ">=5.4.0"
+            },
+            "suggest": {
+                "mvccore/ext-form-validator-special": "MvcCore form extension with special text and numeric validators."
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Flidr",
+                    "homepage": "https://github.com/tomFlidr"
+                }
+            ],
+            "description": "MvcCore - Extension - Form - Field - Text - form field types - input:text, input:email, input:password, input:search, input:tel, input:url and textarea.",
+            "keywords": [
+                "email",
+                "emails",
+                "ext",
+                "extension",
+                "form",
+                "forms",
+                "framework",
+                "gsm",
+                "html5",
+                "input",
+                "inputs",
+                "mobile",
+                "mvc",
+                "mvccore",
+                "mvccore",
+                "password",
+                "phone",
+                "plug-in",
+                "plugin",
+                "search",
+                "tel",
+                "telephone",
+                "text",
+                "textarea",
+                "texts",
+                "url",
+                "webform"
+            ]
+        },
+        {
+            "name": "mvccore/ext-form-validator-special",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/mvccore/ext-form-validator-special",
+                "reference": "83cca219f354fb60419a939055e9837cfabba924",
+                "shasum": null
+            },
+            "require": {
+                "mvccore/ext-form": "dev-master",
+                "mvccore/mvccore": "dev-master",
+                "php": ">=5.4.0"
+            },
+            "suggest": {
+                "mvccore/ext-form-field-numeric": "MvcCore form extension with input field types number and range.",
+                "mvccore/ext-form-field-text": "MvcCore form extension with input field types text, email, password, search, tel, url and textarea field."
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Flidr",
+                    "homepage": "https://github.com/tomFlidr"
+                }
+            ],
+            "description": "MvcCore - Extension - Form - Validator - Special - form special text and numeric validators - company ID (EU), company VAT ID (EU), credit card, hexadecimal number, IBAN bank account number, IP address and ZIP code.",
+            "keywords": [
+                "account",
+                "address",
+                "bank",
+                "card",
+                "code",
+                "company",
+                "company id",
+                "creaditcard",
+                "credit",
+                "eu",
+                "ext",
+                "extension",
+                "form",
+                "forms",
+                "framework",
+                "hex",
+                "hexadecimal",
+                "html5",
+                "iban",
+                "id",
+                "ip",
+                "ipv4",
+                "ipv6",
+                "mvc",
+                "mvccore",
+                "mvccore",
+                "numbers",
+                "numeric",
+                "payment",
+                "plug-in",
+                "plugin",
+                "special",
+                "text",
+                "validator",
+                "validators",
+                "vat",
+                "webform",
+                "zip",
+                "zip code"
             ]
         },
         {
@@ -506,7 +903,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-router-media",
-                "reference": "b4c128a2fab0487dbce21f2546e1d1a3ad5e721d",
+                "reference": "f7a20404666bf707543bd1ddbd04ef089a83c6e4",
                 "shasum": null
             },
             "require": {
@@ -529,7 +926,7 @@
                     "homepage": "https://github.com/tomFlidr"
                 }
             ],
-            "description": "MvcCore Extension - Router - Media - router to have media site version (full/tablet/mobile) flag in every GET url, very configurable.",
+            "description": "MvcCore - Extension - Router - Media - router to have media site version (full/tablet/mobile) flag in every GET url, very configurable.",
             "keywords": [
                 "address",
                 "ext",
@@ -557,7 +954,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-tool-mimetype-extension",
-                "reference": "a090f84b67368776d59232aabe2ecbc1d72c2014",
+                "reference": "4911ae06a0b210804fd49acf721bee1e6dc44765",
                 "shasum": null
             },
             "require": {
@@ -578,7 +975,7 @@
                     "homepage": "https://github.com/tomFlidr"
                 }
             ],
-            "description": "MvcCore extension to get file mimetype(s) strings array from file extension string or to get file extension(s) strings array from file mimetype string.",
+            "description": "MvcCore - Extension - Tool - MimeType & Extensions - extension to get file mimetype(s) strings array from file extension string or to get file extension(s) strings array from file mimetype string.",
             "keywords": [
                 "dynamic forms",
                 "ext",
@@ -607,7 +1004,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-view-helper",
-                "reference": "e9fc93879ee2ec1598c062e46439f859594b3c78",
+                "reference": "5a5fc736fd79b679c1c5e97c12af9542e3f247e4",
                 "shasum": null
             },
             "require": {
@@ -629,7 +1026,7 @@
                     "homepage": "https://github.com/tomFlidr"
                 }
             ],
-            "description": "MvcCore Extension - View Helper - abstract class code and interface support code to create more sofisticated view helpers with better setup and protected properties.",
+            "description": "MvcCore - Extension - View - Helper - abstract class code and interface support code to create more sofisticated view helpers with better setup and protected properties.",
             "keywords": [
                 "abstract",
                 "ext",
@@ -652,7 +1049,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-view-helper-assets",
-                "reference": "3e7bd9172f3468971a3deca4637fcc293090970c",
+                "reference": "734796ed1fd636b60b08c4586d9b0c6355c63bc5",
                 "shasum": null
             },
             "require": {
@@ -677,7 +1074,7 @@
                     "homepage": "https://github.com/tomFlidr"
                 }
             ],
-            "description": "MvcCore Extension - View Helper - Assets - to group, render, minify and cache javascript and css files, to prepare all application assets for final application packing.",
+            "description": "MvcCore - Extension - View - Helper - Assets - to group, render, minify and cache javascript and css files, to prepare all application assets for final application packing.",
             "keywords": [
                 "assets",
                 "assets caching",
@@ -707,7 +1104,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-view-helper-linebreaks",
-                "reference": "b2cf22deecabc0cd5bff7c371238ca5d7179e4f9",
+                "reference": "eebd0ed72cf20d6a8e26843e363d9d061eb25813",
                 "shasum": null
             },
             "require": {
@@ -730,7 +1127,7 @@
                     "homepage": "https://github.com/tomFlidr"
                 }
             ],
-            "description": "MvcCore Extension - View Helper - Line Breaks - processing any visible text content for non-line breaking spaces.",
+            "description": "MvcCore - Extension - View - Helper - Line Breaks - processing any visible text content for non-line breaking spaces.",
             "keywords": [
                 "conjunctions",
                 "digits",
@@ -757,7 +1154,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/mvccore",
-                "reference": "ffc7e0aa890b61c487fd55b954ce05fe5d198e99",
+                "reference": "a245d9d16952de018c2d6b644e8141dc3cd8c499",
                 "shasum": null
             },
             "require": {
@@ -932,6 +1329,12 @@
     "stability-flags": {
         "mvccore/mvccore": 20,
         "mvccore/ext-form": 20,
+        "mvccore/ext-form-field-button": 20,
+        "mvccore/ext-form-field-date": 20,
+        "mvccore/ext-form-field-numeric": 20,
+        "mvccore/ext-form-field-selection": 20,
+        "mvccore/ext-form-field-text": 20,
+        "mvccore/ext-form-validator-special": 20,
         "mvccore/ext-tool-mimetype-extension": 20,
         "mvccore/ext-router-media": 20,
         "mvccore/ext-view-helper-assets": 20,

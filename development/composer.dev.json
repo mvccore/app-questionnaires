@@ -53,6 +53,24 @@
 		"url": "../../../packages/mvccore/ext-form"
 	},{
 		"type": "path",
+		"url": "../../../packages/mvccore/ext-form-field-button"
+	},{
+		"type": "path",
+		"url": "../../../packages/mvccore/ext-form-field-date"
+	},{
+		"type": "path",
+		"url": "../../../packages/mvccore/ext-form-field-numeric"
+	},{
+		"type": "path",
+		"url": "../../../packages/mvccore/ext-form-field-selection"
+	},{
+		"type": "path",
+		"url": "../../../packages/mvccore/ext-form-field-text"
+	},{
+		"type": "path",
+		"url": "../../../packages/mvccore/ext-form-validator-special"
+	},{
+		"type": "path",
 		"url": "../../../packages/mvccore/ext-tool-mimetype-extension"
 	},{
 		"type": "path",
@@ -80,6 +98,12 @@
 		"php": ">=5.4.0",
 		"mvccore/mvccore": "dev-master",
 		"mvccore/ext-form": "dev-master",
+		"mvccore/ext-form-field-button": "dev-master",
+		"mvccore/ext-form-field-date": "dev-master",
+		"mvccore/ext-form-field-numeric": "dev-master",
+		"mvccore/ext-form-field-selection": "dev-master",
+		"mvccore/ext-form-field-text": "dev-master",
+		"mvccore/ext-form-validator-special": "dev-master",
 		"mvccore/ext-tool-mimetype-extension": "dev-master",
 		"mvccore/ext-router-media": "dev-master",
 		"mvccore/ext-view-helper-assets": "dev-master",
