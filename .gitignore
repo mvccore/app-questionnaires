@@ -52,10 +52,15 @@ Temporary Items
 .hgtags
 
 # Application third party modules contents
-composer.lock
+*.lock
 vendor/*
-development/Var/Logs/*
 development/vendor/*
+development/Var/Tmp/*
+development/Var/Logs/*
+release/Var/Logs/*
+composer-update-dev.cmd
+composer-update.cmd
+composer.dev.json
 development/static/js/front/forms-assets/mvccore-ext-form-js/.git
 development/static/js/front/forms-assets/mvccore-ext-form-js/dev-tools
 development/static/js/front/forms-assets/mvccore-ext-form-js/node_modules
