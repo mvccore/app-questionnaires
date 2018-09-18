@@ -71,7 +71,7 @@ class Statistics extends Base
 			]);
 			$sex = new Fields\CheckboxGroup([
 				'name'			=> 'sex',
-				'label'			=> 'Sex',
+				'label'			=> 'Gender',
 				'cssClasses'	=> ['person', 'radio-group', 'sex'],
 				'options'		=> Models\Person::$SexOptions,
 			]);

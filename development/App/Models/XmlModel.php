@@ -63,7 +63,10 @@ class XmlModel extends Base
 	protected static function loadXmlNamespaceAndSchema (& $xmlStr, & $fileFullPath) {
 		preg_match("# xmlns\:([a-z0-9]*)=\"([^\"]*)\"#", $xmlStr, $matches);
 		if (!isset($matches[1]) || !isset($matches[2])) {
-			throw new \Exception("[".get_called_class()."] No XML namespace and schema defined in file: '$fileFullPath'. Define namespace and scheme file in root node: '<schemeName:rootNodeName xmlns:schemeName=\"../Path/To/Scheme.xsd\">'");
+			throw new \Exception(
+				"[".get_called_class()."] No XML namespace and schema defined in file: '$fileFullPath'. ".
+				"Define namespace and scheme file in root node: '<schemeName:rootNodeName xmlns:schemeName=\"../Path/To/Scheme.xsd\">'"
+			);
 		}
 		$ns = $matches[1];
 		static::$xmlNameSpace = $ns;
@@ -77,6 +80,11 @@ class XmlModel extends Base
 			if ($lastSlashPos === FALSE) $lastSlashPos = mb_strlen($lastSlashPos);
 			$schemeFileFullPath = str_replace('\\', '/', mb_substr($fileFullPath, 0, $lastSlashPos) . '/' . $matches[2]);
 			$xmlScheme = static::loadXmlScheme($schemeFileFullPath);
+			if ($xmlScheme === FALSE)
+				throw new \Exception(
+					"[".get_called_class()."] No XML schema for file: '$fileFullPath' found in path: '$schemeFileFullPath'. "
+					."Define namespace and scheme file in root node correctly: '<schemeName:rootNodeName xmlns:schemeName=\"../Path/To/Scheme.xsd\">'"
+				);
 			$rootNodeDescriptorBase = $xmlScheme->children('xs', TRUE);
 			$rootNodeDescriptorBase->registerXPathNamespace('xs', 'http://www.w3.org/2001/XMLSchema');
 			foreach ($rootNodeDescriptorBase->xpath('//xs:element[@type]') as $dataNode) {
@@ -100,6 +108,7 @@ class XmlModel extends Base
 	}
 	protected static function loadXmlScheme ($schemeFileFullPath) {
 		$schemeFileRawContent = file_get_contents($schemeFileFullPath);
+		if ($schemeFileRawContent === FALSE) return FALSE;
 		return static::xmlLoadXmlFromString($schemeFileRawContent, $schemeFileFullPath);
 	}
 	protected static function processReplacementsBeforeParsing (& $content) {

@@ -1,18 +1,18 @@
 <?php
 
+ini_set('memory_limit', '256M');
+ini_set('max_execution_time', 300);
+
 $config = [
 	'sourcesDir'				=> __DIR__ . '/../../development',
 	'releaseFile'				=> __DIR__ . '/../../release/index.php',
 	// do not include script or file, where it's relative path from sourceDir match any of these rules:
 	'excludePatterns'			=> [
 
-		// Common excludes for every MvcCore app using composer:
+		// Common excludes for every MvcCore app using composer
 		"#/\.#",										// Everything started with '.' (.git, .htaccess ...)
-		"#^/web\.config#",								// Microsoft IIS .rewrite rules
+		"#\.(git|hg|svn|bak|bat|cmd|sh|md|txt|json|lock|phpt|config|htaccess|htpasswd|phpproj|phpproj.user)$#i",
 		"#^/Var/Logs/.*#",								// App development logs
-		"#composer(.*)(json|lock)#",					// composer.json, composer.lock, composer.dev.json and  composer.dev.lock
-		"#LICEN(C|S)E\.(txt|TXT|md|MD)#",				// libraries licence files
-		"#\.(bak|bat|cmd|sh|md|phpt|phpproj|phpproj.user)$#",
 
 		// Exclude specific PHP libraries
 		"#^/vendor/composer/.*#",						// composer itself
@@ -27,7 +27,7 @@ $config = [
 		// Exclude source css and js files, use only what is generated in '/Var/Tmp' dir
 		"#^/static/js#",
 		"#^/static/css#",
-		"#/declarations/([a-z]*).css$",
+		"#/declarations/([a-z]*).css$#",
 		"#/MvcCore/Ext/Forms/assets/(.*)#",
 	],
 	// include all scripts or files, where it's relative path from sourceDir match any of these rules:

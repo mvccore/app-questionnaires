@@ -6,14 +6,14 @@
 	// to pack PHP scripts, templates and all static files (CSS/JS/images and fonts),
 	// use this config bellow and:
 	//		set: ...->SetPhpFileSystemMode(Packager_Php::FS_MODE_STRICT_PACKAGE)
-	include_once(__DIR__.'/configs/php-with-composer-strict-package.php');
+	//include_once(__DIR__.'/configs/php-with-composer-strict-package.php');
 
 
 	// to pack PHP scripts and templates but without any static files,
 	// use this config bellow and:
 	//		set: ...->SetPhpFileSystemMode(Packager_Php::FS_MODE_PRESERVE_PACKAGE)
 	//		and follow copying instructions inside config:
-	//include_once(__DIR__.'/configs/php-with-composer-preserve-package.php');
+	include_once(__DIR__.'/configs/php-with-composer-preserve-package.php');
 
 
 	// to pack PHP scripts and templates but without any static files,
@@ -31,5 +31,5 @@
 
 
 	Packager_Php::Create($config)
-		->SetPhpFileSystemMode(Packager_Php::FS_MODE_STRICT_PACKAGE)
+		->SetPhpFileSystemMode(Packager_Php::FS_MODE_PRESERVE_PACKAGE)
 		->Run();

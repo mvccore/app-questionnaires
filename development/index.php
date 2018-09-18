@@ -6,4 +6,4 @@
 
 	\App\Bootstrap::Init();
 	
-	$app->Run();
+	$app->Run(1);

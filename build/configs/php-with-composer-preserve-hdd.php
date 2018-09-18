@@ -7,6 +7,9 @@
 // and you need to uncomment line 12 in Bootstrap.php
 // before compilation to generate css/js files properly in tmp
 
+ini_set('memory_limit', '128M');
+ini_set('max_execution_time', 300);
+
 $config = [
 	'sourcesDir'				=> __DIR__ . '/../../development',
 	'releaseFile'				=> __DIR__ . '/../../release/index.php',
@@ -14,11 +17,9 @@ $config = [
 	'excludePatterns'			=> [
 		// Common excludes for every MvcCore app using composer:
 		"#/\.#",										// Everything started with '.' (.git, .htaccess ...)
-		"#^/web\.config#",								// Microsoft IIS .rewrite rules
+		"#\.(bak|bat|cmd|sh|md|txt|json|lock|phpt|config|htaccess|htpasswd|phpproj|phpproj.user)$#i",
+		"#^/App/config.ini#",							// App system config
 		"#^/Var/Logs/.*#",								// App development logs
-		"#composer(.*)(json|lock)#",					// composer.json, composer.lock, composer.dev.json and  composer.dev.lock
-		"#LICEN(C|S)E\.(txt|TXT|md|MD)#",				// libraries licence files
-		"#\.(bak|bat|cmd|sh|md|phpt|phpproj|phpproj.user)$#",
 
 		// Exclude specific PHP libraries
 		"#^/vendor/composer/.*#",						// composer itself
@@ -30,17 +31,17 @@ $config = [
 		"#^/vendor/mobiledetect/.*#",					// Mobile detect lib, the only required class included later
 		"#^/vendor/mrclay/.*#",							// HTML/JS/CSS minify library
 
-		// Exclude all Form validators and fields by default
-		// and add strictly and only used validators and fields
-		// later in include patterns array for override rules
-		"#^/vendor/mvccore/ext-form/src/MvcCore/Ext/Forms/Validators/#",
-		"#^/vendor/mvccore/ext-form/src/MvcCore/Ext/Forms/([a-zA-Z0-9]*)\.php$#",
-
-		// Exclude everything from '/static/...', '/Var/Tmp' directory
-		// and souce JS/CSS from \MvcCore\Ext\Form extension:
-		"#^/static/.*#",
-		"#^/Var/Tmp/.*#",
+		// Exclude source css and js files, use only what is generated in '/Var/Tmp' dir
+		"#^/static/js#",
+		"#^/static/css#",
+		"#/declarations/([a-z]*).css$#",
 		"#/MvcCore/Ext/Forms/assets/(.*)#",
+		"#^/Var/Tmp/.*#",
+
+		// do not pack any source xml files - to manipulate with questionnaires in future
+		// not possible for PHAR packing!!!
+		"#^/Var/Questionnaires/(.*)#",
+		"#^/Var/Documents/(.*)#",
 	],
 	// include all scripts or files, where it's relative path from sourceDir match any of these rules:
 	// (include paterns always overides exclude patterns)

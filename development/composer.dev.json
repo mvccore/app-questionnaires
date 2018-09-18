@@ -62,6 +62,9 @@
 		"url": "../../../packages/mvccore/ext-form-field-numeric"
 	},{
 		"type": "path",
+		"url": "../../../packages/mvccore/ext-tool-locale-floatparser"
+	},{
+		"type": "path",
 		"url": "../../../packages/mvccore/ext-form-field-selection"
 	},{
 		"type": "path",

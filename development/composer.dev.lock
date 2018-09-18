@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "800254bfd3ac03898cca754199c19439",
+    "content-hash": "9edd24f645a5a56c3659256fab7eb9ff",
     "packages": [
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -153,7 +153,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-auth-basic",
-                "reference": "5e21221b145ebf8431f40bb8775b16099b2563df",
+                "reference": "86213491b8755b881f9d254039bd4601c58e98a1",
                 "shasum": null
             },
             "require": {
@@ -456,7 +456,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-form",
-                "reference": "7538b9a278ef2a2489ba7d2d3c470e03d2093585",
+                "reference": "0cfc35ec545d76327d27ff7f4ca5bf2a75fba78f",
                 "shasum": null
             },
             "require": {
@@ -537,7 +537,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-form-field-button",
-                "reference": "dcb97c9bd673f5eb313b3c17d121b29f1ebf13b2",
+                "reference": "4004dcdec99e5d0f1cc45fdada47044da6a55be4",
                 "shasum": null
             },
             "require": {
@@ -591,7 +591,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-form-field-date",
-                "reference": "41b6641483f10a82156ca3187c1bfac06e90da29",
+                "reference": "1b141bd1e00a070e041da6f63e5453df723dab28",
                 "shasum": null
             },
             "require": {
@@ -644,11 +644,12 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-form-field-numeric",
-                "reference": "b16ddf3e92a49b61e185a7b47e71620eb1d224a4",
+                "reference": "0f0fbb5937d83cc49e935a8e5859660cba156bc6",
                 "shasum": null
             },
             "require": {
                 "mvccore/ext-form": "dev-master",
+                "mvccore/ext-tool-locale-floatparser": "dev-master",
                 "mvccore/mvccore": "dev-master",
                 "php": ">=5.4.0"
             },
@@ -701,7 +702,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-form-field-selection",
-                "reference": "338e54cef829739cad93eb5f8fe50f8cde9450aa",
+                "reference": "5733dcf94b3ed5834ced65afb87b0e0447028ad1",
                 "shasum": null
             },
             "require": {
@@ -764,7 +765,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-form-field-text",
-                "reference": "98780c9d85906c789e4c43ee2ef3f7a10c1d276e",
+                "reference": "6dcd005b9a5002dbb936b5a138adf207887b9f71",
                 "shasum": null
             },
             "require": {
@@ -827,7 +828,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-form-validator-special",
-                "reference": "83cca219f354fb60419a939055e9837cfabba924",
+                "reference": "62dc44b49580bfb0fb6a8fc6c76a4f939de235cf",
                 "shasum": null
             },
             "require": {
@@ -946,6 +947,51 @@
                 "site",
                 "tablet",
                 "version"
+            ]
+        },
+        {
+            "name": "mvccore/ext-tool-locale-floatparser",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/mvccore/ext-tool-locale-floatparser",
+                "reference": "71a7773205cacd9a72fdb38ae62ba618624d457a",
+                "shasum": null
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Flidr",
+                    "homepage": "https://github.com/tomFlidr"
+                }
+            ],
+            "description": "MvcCore - Extension - Tool - Locale - FloatParser - Parse float by automatic floating point detection or parse float value by `Intl` extension.",
+            "keywords": [
+                "ext",
+                "extension",
+                "framework",
+                "internationalization",
+                "languages",
+                "locales",
+                "localization",
+                "mvc",
+                "mvccore",
+                "plug-in",
+                "plugin",
+                "setlocale",
+                "teritories",
+                "tool"
             ]
         },
         {
@@ -1154,7 +1200,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/mvccore",
-                "reference": "a245d9d16952de018c2d6b644e8141dc3cd8c499",
+                "reference": "291c197b21a11c2efc9ff83694840596624603f9",
                 "shasum": null
             },
             "require": {
