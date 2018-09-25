@@ -29,6 +29,9 @@
 		"url": "../../../packages/mvccore/ext-router-media"
 	},{
 		"type": "path",
+		"url": "../../../packages/mvccore/ext-router-extended"
+	},{
+		"type": "path",
 		"url": "../../../packages/mvccore/ext-view-helper"
 	},{
 		"type": "path",

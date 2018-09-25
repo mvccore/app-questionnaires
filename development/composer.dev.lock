@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9edd24f645a5a56c3659256fab7eb9ff",
+    "content-hash": "df82a0292961729d9ba759e56506f943",
     "packages": [
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -207,7 +207,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-debug-tracy",
-                "reference": "4efde935e198e649c7a4a59189c992b5bb5be20e",
+                "reference": "404aadd4d77421080391d0c6b9e53b389677c9c0",
                 "shasum": null
             },
             "require": {
@@ -230,7 +230,7 @@
                     "homepage": "https://github.com/tomFlidr"
                 }
             ],
-            "description": "MvcCore - Extension - Debug - Tracy - adapter class for Nette framework tracy/tracy library.",
+            "description": "MvcCore - Extension - Debug - Tracy - adapter class for Nette Framework `tracy/tracy` library.",
             "keywords": [
                 "debug",
                 "debug bar",
@@ -456,7 +456,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-form",
-                "reference": "0cfc35ec545d76327d27ff7f4ca5bf2a75fba78f",
+                "reference": "3296d539a231d365fc83eb0a25b0ac9d82b018ab",
                 "shasum": null
             },
             "require": {
@@ -591,7 +591,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-form-field-date",
-                "reference": "1b141bd1e00a070e041da6f63e5453df723dab28",
+                "reference": "41ce82375d0aa39724a2afeb7281e4e7964edc3d",
                 "shasum": null
             },
             "require": {
@@ -702,7 +702,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-form-field-selection",
-                "reference": "5733dcf94b3ed5834ced65afb87b0e0447028ad1",
+                "reference": "49033b5f29825b2e5c4afcf3bf52a064ab3bf50d",
                 "shasum": null
             },
             "require": {
@@ -765,7 +765,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-form-field-text",
-                "reference": "6dcd005b9a5002dbb936b5a138adf207887b9f71",
+                "reference": "c064ffbbcaf5e25e8ee8d5098e50f69ad4452fdc",
                 "shasum": null
             },
             "require": {
@@ -899,16 +899,58 @@
             ]
         },
         {
+            "name": "mvccore/ext-router-extended",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../packages/mvccore/ext-router-extended",
+                "reference": "4b40ebef0d42affcbcf9ef931fa79b54b9ee7802",
+                "shasum": null
+            },
+            "require": {
+                "mvccore/mvccore": "dev-master",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Flidr",
+                    "homepage": "https://github.com/tomFlidr"
+                }
+            ],
+            "description": "MvcCore - Extension - Router - Extended - trait with additional properties, setters and getters required by extended router implementations - localized router and media site version router.",
+            "keywords": [
+                "ext",
+                "extended",
+                "extension",
+                "framework",
+                "mvc",
+                "mvccore",
+                "plug-in",
+                "plugin",
+                "router"
+            ]
+        },
+        {
             "name": "mvccore/ext-router-media",
             "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-router-media",
-                "reference": "f7a20404666bf707543bd1ddbd04ef089a83c6e4",
+                "reference": "5a1cb2f010cfe16c92a3640ae1c3ae9ec6549fe0",
                 "shasum": null
             },
             "require": {
                 "mobiledetect/mobiledetectlib": "*",
+                "mvccore/ext-router-extended": "dev-master",
                 "mvccore/mvccore": "dev-master",
                 "php": ">=5.4.0"
             },
@@ -1000,7 +1042,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-tool-mimetype-extension",
-                "reference": "4911ae06a0b210804fd49acf721bee1e6dc44765",
+                "reference": "a7321185d5e38b59cfe4719ac4256ef7fd399596",
                 "shasum": null
             },
             "require": {
@@ -1095,7 +1137,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/ext-view-helper-assets",
-                "reference": "734796ed1fd636b60b08c4586d9b0c6355c63bc5",
+                "reference": "4eed5f658b04fb40739332d593e3692c9e7bc8a6",
                 "shasum": null
             },
             "require": {
@@ -1200,7 +1242,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../packages/mvccore/mvccore",
-                "reference": "291c197b21a11c2efc9ff83694840596624603f9",
+                "reference": "ac2cba180c462abd8d28f370bf174c0efd5f380b",
                 "shasum": null
             },
             "require": {

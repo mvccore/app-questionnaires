@@ -98,7 +98,6 @@ class Questionnaire extends Base
 	}
 	protected function setUpForm () {
 		$form = new Forms\Questionnaire($this);
-		
 		$form
 			->SetTranslator(function ($key, $lang = NULL) {
 				return $this->Translate($key, $lang);

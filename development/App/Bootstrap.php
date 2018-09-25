@@ -20,6 +20,8 @@ class Bootstrap
 			\MvcCore\Ext\Debugs\Tracy::$Editor = 'MSVS2017';
 			$app->SetDebugClass('\MvcCore\Ext\Debugs\Tracy');
 		}
+
+		$app->SetRouterClass('\\MvcCore\\Ext\\Routers\\Media');
 		
 		/**
 		 * Initialize authentication service extension.
@@ -32,8 +34,8 @@ class Bootstrap
 			->SetTranslator(function ($key, $lang = NULL) use (& $translator) {
 				return $translator->Translate($key, $lang);
 			});
-		
-		\MvcCore\Ext\Routers\Media::GetInstance([
+
+		\MvcCore\Router::GetInstance([
 			'Index:Index'			=> "/",
 			'Questionnaire:Submit'	=> [
 				'match'					=> "#^/questions/(?<path>[a-zA-Z0-9\-_]*)/send#",
